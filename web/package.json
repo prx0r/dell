@@ -1,0 +1,13 @@
+{
+  "name": "deal-radar-web",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "astro build",
+    "preview": "astro preview",
+    "dev": "astro dev"
+  },
+  "dependencies": {
+    "astro": "^5.18.2"
+  }
+}

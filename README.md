@@ -1,70 +1,52 @@
-# PĀṬALA DEAL RADAR — the live-updating LLM price + quality canonical resource
+# PĀṬALA DEAL RADAR — live LLM price + quality, built for agents
 
-*2026-08-15 · a standalone app + API that aggregates all machine-readable LLM pricing/quality sources
-into ONE canonical, live-updating model database, and answers "right now, what's the cheapest
-sufficiently intelligent model for X?" — the llm-scavenger concept made real.*
+A standalone service that aggregates all machine-readable LLM pricing/quality into ONE canonical,
+live-updating model DB, and exposes it three ways — **API, MCP, and a lean static site** — optimized
+for agents (token-minimal, cached, measured).
 
----
+## The three surfaces (agents are the primary users)
 
-## WHAT IT IS
-Instead of a static spreadsheet, this is a **live radar**:
-- **Ingests** every machine-readable LLM source into one normalized DB (3,439 models).
-- **Scores** by **effective cost per successful task** (not $/M tokens) — a model that needs 3 attempts
-  costs more.
-- **Derives frontiers**: top value / cheapest / top free / highest quality / biggest free quota.
-- **Answers the router query**: `route(task, min_quality, prefer_free)` → the top model right now.
-
-## THE DATA STACK
-| Source | Gives | Status |
-|---|---|---|
-| LiteLLM pricing DB | 3,040 provider/model combos | ✅ local clone |
-| simonw/llm-prices | current + historical prices | ✅ local clone |
-| awesome-free-llm-apis | free tiers + rate limits | ✅ local clone |
-| models.dev | live catalog | ✅ live API |
-| OpenRouter | live models + prices | ✅ live API |
-| artificial-analysis | coding/agentic/intelligence scores | ⏳ optional (AA_API_KEY) |
-
-## THE VALUE MATH (the clever part)
-```python
-quality = coding*0.4 + agentic*0.3 + intelligence*0.3
-cost_per_job = (in_tok*in_price + out_tok*out_price) / 1e6
-effective_cost = cost_per_job / success_rate     # penalizes retry-needing models
-value_score = quality / effective_cost           # the frontier we rank by
+### 1. MCP server (the primary interface) — `mcp/server.py`
+4 goal-oriented tools (perf doctrine: fewer tools work better for agents):
 ```
-
-## THE API (port 8799)
+pick_model(task, min_quality, prefer_free)  → best model for THIS task (coding/research/extraction/long-context/reasoning)
+check_live_prices()                          → price-health (canary + validation)
+get_model_details(model, task)               → granular detail + measured benchmark quality
+get_free_sources()                           → free-pool + rate limits
 ```
-GET /health                          models + fetched_at
-GET /models?search=&provider=&sort=value|price|quality&free=&limit=
-GET /frontiers?mode=chat|all         the Pareto frontiers
-GET /deals                           free-tier + subsidy signals (624 free models)
-GET /route?task=coding&min_quality=&prefer_free=&limit=   the router pick
-POST /refresh                        re-pull all sources
+Uses the MCP SDK v2 (MCPServer). Compact (token-minimal) by design.
+
+### 2. HTTP API (FastAPI, port 8799) — `app/api.py`
 ```
+/health /models /frontiers /deals /route
+/recommend /tasks /benchmarks /rate-limits /canary /validation
+/compute-sources /free-pool
+```
+Agent-optimized: `format=compact` (54% smaller payloads), `ETag` + `Cache-Control: stale-while-revalidate`,
+provenance envelope on every response.
 
-## VERIFIED (7/7 PASS)
-- **3,439 canonical models** from all sources
-- **Top free**: `openai/gpt-oss-20b:free` (quality 89.4), `nvidia/nemotron-3.5-lightning:free` (73.0)
-- **Route** with floor 70 + free-first → qwen2.5-coder-3b, gpt-oss-20b
-- **Quality floor is honest**: floor 95 → no model (max ~89), fail-closed
-- **Effective-cost penalizes retry-needing models**
+### 3. Lean static site (Astro, 0-JS) — `web/`
+One homepage with category sections (free/coding/reasoning/vision) + the MCP/API callout. SEO for
+agents: JSON-LD structured data, canonical, robots. Build: `cd web && npx astro build`.
 
-## RUN IT
+## The data (canonical, live)
+- **3,439+ models** from litellm + llm-prices + models.dev + OpenRouter
+- **modality/capability tags** (vision/audio/reasoning/tool_call) from models.dev
+- **measured benchmarks** (SWE-Bench 1134 models, GPQA, Terminal-Bench) as quality_source=measured
+- **rate limits** for free tiers + the free-pool compute sources
+
+## The legitimacy (anti-theatre)
+Prices pulled live + validated against the API (drift-catching). Quality labeled `measured` vs
+`estimated` (never overclaimed). Providers canary-checked (live since X). All gates reproducible:
+`app/test*.py` → 32 PASS.
+
+## Run it
 ```bash
 cd /root/dealradar
-python3 app/normalize.py                  # ingest all sources → data/canonical-models.json
-PYTHONPATH=. python3 -m uvicorn app.api:app --port 8799 --app-dir /root/dealradar  # serve
+python3 app/normalize.py          # re-pull + merge all sources → canonical DB
+python3 app/refresh.py            # daily: refresh + validate prices (exit 1 on drift)
+python3 app/canary.py             # daily: verify free providers are alive
+PYTHONPATH=. python3 -m uvicorn app.api:app --port 8799 --app-dir /root/dealradar   # API
+PYTHONPATH=mcp:app python3 mcp/server.py                                             # MCP (stdio)
+cd web && npx astro build         # the lean homepage
 ```
-
-## THE ROUTER INTEGRATION
-This is the canonical price/quality source the `model_router.py` (in patalacheckpoints) queries before
-a large job — instead of hardcoded tiers, the router asks `/route` and moves workloads onto whatever is
-cheapest today.
-
-## POLL CADENCE (the live-updating part)
-- Structured catalogs (models.dev, openrouter, litellm): every **6h**
-- Promos/changelogs (free-apis, llm-prices): **hourly–daily**
-- Real API canary on important providers: **1-2×/day** to verify advertised endpoints work
-
-*This is the standalone canonical resource. It aggregates, normalizes, scores, and fronts the LLM
-landscape live — so the project's model choice is always current, cost-aware, and quality-gated.*

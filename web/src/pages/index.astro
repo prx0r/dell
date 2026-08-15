@@ -1,0 +1,67 @@
+---
+// index.astro — the deal-radar homepage (single page, categories + sort, 0-JS)
+import Layout from '../layouts/Layout.astro';
+import { ranked, visionModels, freeModels } from '../lib/models.js';
+
+// categories: the queries people/agents actually ask
+const categories = [
+  { id: 'free', name: 'Free models', blurb: 'The best genuinely-free models, measured.', rows: freeModels(8) },
+  { id: 'coding', name: 'Coding', blurb: 'Best by SWE-Bench / Terminal-Bench (measured).', rows: ranked('coding', 8) },
+  { id: 'reasoning', name: 'Reasoning', blurb: 'Best by GPQA / Humanity\'s Last Exam.', rows: ranked('reasoning', 8) },
+  { id: 'vision', name: 'Vision', blurb: 'Cheapest models that accept image input.', rows: visionModels(8) },
+];
+const active = categories[0].id;
+---
+<Layout
+  title="Pāṭala Deal Radar — best LLM deals by category"
+  description="Live LLM pricing and measured benchmark quality: the best free, coding, reasoning, and vision models, ranked by measured quality × success / effective cost."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "Pāṭala Deal Radar",
+    description: "Canonical live LLM pricing and measured benchmark quality for model selection.",
+    url: Astro.site,
+  }}
+>
+  <p><strong>Pāṭala Deal Radar</strong> — the live, measured LLM deals. Use the <a href="#mcp">MCP tools</a> for the real interface; this page is the quick view.</p>
+
+  <!-- the MCP / API callout (the primary interface) -->
+  <section>
+    <h2>For agents (the primary interface)</h2>
+    <p>Call the MCP tools or the API — this page is just the human quick-view:</p>
+    <ul>
+      <li><code>pick_model(task="coding", prefer_free=true)</code> — MCP</li>
+      <li><code>/recommend?task=coding&amp;format=compact</code> — API</li>
+      <li><code>/models?modality=image&amp;sort=price</code> — vision, cheapest</li>
+    </ul>
+  </section>
+
+  <!-- the categories (0-JS: all shown, scroll to each) -->
+  {categories.map((c) => (
+    <section id={c.id}>
+      <h2>{c.name} <a href={`#${c.id}`}>#</a></h2>
+      <p>{c.blurb}</p>
+      <table>
+        <thead><tr><th>Model</th><th>Provider</th><th>Free</th><th>Benchmark</th><th>Cost/task</th></tr></thead>
+        <tbody>
+          {c.rows.map((m) => (
+            <tr>
+              <td><code>{m.model.split('/').pop()}</code></td>
+              <td>{m.provider}</td>
+              <td>{m.free ? 'yes' : 'no'}</td>
+              <td>{m.benchmark ? `${m.benchmark} ${m.benchmark_score}` : '—'}</td>
+              <td>{m.cost > 0 ? `$${m.cost.toFixed(6)}` : 'free'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  ))}
+
+  <section id="mcp">
+    <h2>Use it via MCP</h2>
+    <p>Add <code>mcp/server.py</code> to your agent (Claude/Cursor/etc.). Tools:
+    <code>pick_model</code>, <code>check_live_prices</code>, <code>get_model_details</code>,
+    <code>get_free_sources</code>.</p>
+  </section>
+</Layout>

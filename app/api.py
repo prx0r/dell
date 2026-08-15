@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT / "app") not in sys.path:
     sys.path.insert(0, str(ROOT / "app"))
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Response
 import normalize
 import quality
 import compute_sources
@@ -51,6 +51,15 @@ def health():
 
 def _env(**extra):
     return {"api_version": "1.0", "surface": "deal-radar", "served": "canonical-db", **extra}
+
+
+def _cache(response: Response, body: dict, max_age: int = 3600):
+    """Set ETag + immutable-ish cache headers on a response for agent caching (perf rule 8/9)."""
+    import hashlib
+    etag = '"' + hashlib.sha256(json.dumps(body, sort_keys=True, default=str).encode()).hexdigest()[:16] + '"'
+    response.headers["ETag"] = etag
+    response.headers["Cache-Control"] = f"public, max-age={max_age}, stale-while-revalidate=86400"
+    return etag
 
 
 @app.get("/models")
@@ -136,7 +145,9 @@ def get_free_pool():
 @app.get("/recommend")
 def recommend(task: str = Query("coding", description="coding|research|extraction|long-context|reasoning"),
               min_quality: float = 0.0, prefer_free: bool = False,
-              limit: int = Query(10, le=25)):
+              format: str = Query("full", description="full|compact — compact is token-minimal for agents"),
+              limit: int = Query(10, le=25),
+              response: Response = None):
     """The task-aware agent-performance recommendation: best model for THIS task type,
     ranked by quality × success / effective_cost, with per-axis breakdown."""
     if task not in task_ranking.TASKS:
@@ -146,8 +157,21 @@ def recommend(task: str = Query("coding", description="coding|research|extractio
     models = db.get("models", {})
     ranking = task_ranking.rank(models, quality.fetch_aa_quality(), task=task,
                                 min_quality=min_quality, prefer_free=prefer_free, limit=limit)
-    return {"task": task, "min_quality": min_quality, "prefer_free": prefer_free,
+    if format == "compact":
+        # token-minimal: just model + provider + the decision-relevant score
+        compact = [{"model": r["model"], "provider": r["provider"],
+                    "score": r["score"], "q": r["task_quality"],
+                    "cost": r["cost_per_task"], "free": r["free"]}
+                   for r in ranking]
+        body = {"task": task, "picks": compact, "provenance": _env()}
+        if response is not None:
+            _cache(response, body)
+        return body
+    body = {"task": task, "min_quality": min_quality, "prefer_free": prefer_free,
             "ranking": ranking, "tasks": task_ranking.TASKS, "provenance": _env()}
+    if response is not None:
+        _cache(response, body)
+    return body
 
 
 @app.get("/tasks")

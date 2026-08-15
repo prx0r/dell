@@ -6,3 +6,7 @@ litellm/
 llm-prices/
 awesome-free-llm-apis/
 data/lmarena-20250804.csv
+web/node_modules/
+web/dist/
+web/package-lock.json
+web/.astro/
