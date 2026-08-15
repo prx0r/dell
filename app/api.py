@@ -26,6 +26,7 @@ if str(ROOT / "app") not in sys.path:
 from fastapi import FastAPI, HTTPException, Query
 import normalize
 import quality
+import compute_sources
 
 app = FastAPI(title="Pāṭala Deal Radar", version="0.1",
               description="Live LLM pricing + quality + value frontiers (canonical, compute-on-write)")
@@ -97,6 +98,22 @@ def get_deals():
     d = quality.deals()
     d["provenance"] = _env()
     return d
+
+
+@app.get("/compute-sources")
+def get_compute_sources():
+    """The non-API free-pool compute sources (WebLLM/Petals/Oracle/Kaggle/etc.) as router tiers."""
+    fp = compute_sources.free_pool()
+    fp["provenance"] = _env()
+    return fp
+
+
+@app.get("/free-pool")
+def get_free_pool():
+    """The free-pool sources as router tiers, ordered (free-first)."""
+    tiers = compute_sources.as_router_tiers()
+    return {"tiers": tiers, "reachable_from_box": compute_sources.reachable_from_box(),
+            "provenance": _env()}
 
 
 @app.get("/route")
