@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+data/canonical-models.json
+# the cloned source repos (re-cloneable, not part of the app)
+litellm/
+llm-prices/
+awesome-free-llm-apis/
