@@ -24,10 +24,10 @@ def main():
     gate("normalizes all sources", len(m) > 500, f"{len(m)} canonical models")
 
     f = quality.frontiers(mode="chat", limit=5)
-    gate("frontiers produce best-free", len(f["best_free"]) > 0,
-         f"top free: {f['best_free'][0]['model'] if f['best_free'] else 'none'}")
-    gate("best-free has quality", f["best_free"][0]["quality"] > 0 if f["best_free"] else False,
-         f"q={f['best_free'][0]['quality'] if f['best_free'] else 0}")
+    gate("frontiers produce top-free", len(f["top_free"]) > 0,
+         f"top free: {f["top_free"][0]['model'] if f["top_free"] else 'none'}")
+    gate("top-free has quality", f["top_free"][0]["quality"] > 0 if f["top_free"] else False,
+         f"q={f["top_free"][0]['quality'] if f["top_free"] else 0}")
 
     # value/cost math is sane: cost_per_job scales with tokens
     rec = {"prompt_per_token": 1e-6, "completion_per_token": 2e-6, "cache_read_per_token": 0}
@@ -48,7 +48,7 @@ def main():
 
     # the router pick respects a quality floor (fail-closed: floor too high → none)
     f2 = quality.frontiers(mode="chat", limit=50)
-    cands = f2.get("best_value_paid", []) + f2.get("best_free", [])
+    cands = f2.get("best_value_paid", []) + f2.get("top_free", [])
     over95 = [c for c in cands if c.get("quality", 0) >= 95]
     gate("quality floor blocks weak (fail-closed)", len(over95) == 0,
          "no model clears a 95 floor (max ~89)")

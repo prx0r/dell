@@ -7,7 +7,7 @@ The clever part (per the reference): don't rank by $/M tokens. Compute:
 
 Quality comes from the artificial-analysis API (coding/agentic/intelligence scores) when a key is
 present; otherwise a conservative fallback. Then derive the PARETO FRONTIERS + DEALS a router cares
-about: cheapest, best value, best free, biggest quota, price-crash/new-free alerts.
+about: cheapest, top value, top free, biggest quota, price-crash/new-free alerts.
 """
 from __future__ import annotations
 
@@ -96,7 +96,7 @@ def value_score(rec: dict, quality: dict, success_rate: float = 0.85) -> dict:
 
 
 def frontiers(limit: int = 8, mode: str = "chat") -> dict:
-    """The Pareto frontiers: best value / cheapest / best free / biggest quota.
+    """The Pareto frontiers: top value / cheapest / top free / biggest quota.
     mode='chat' filters to text-chat models (drops image/audio/embedding models)."""
     db = json.loads(DB.read_text(encoding="utf-8"))
     models = db.get("models", {})
@@ -121,25 +121,42 @@ def frontiers(limit: int = 8, mode: str = "chat") -> dict:
         scored.append({"model": mid, "provider": rec.get("provider"), **vs,
                        "context": rec.get("context"), "rpm": rec.get("rpm"), "rpd": rec.get("rpd"),
                        "source": rec.get("source")})
-    paid = [s for s in scored if not s["free"] and s["cost_per_job"] > 0]
+    paid = [s for s in scored if not s["free"] and s["cost_per_job"] > 0
+            and not any(x in s["model"].lower() for x in ("ollama/", "image", "stable-diffusion", "embedding"))]
     free = [s for s in scored if s["free"] or s["cost_per_job"] == 0]
     return {
         "best_value_paid": sorted(paid, key=lambda s: -s["value"])[:limit],
         "cheapest_paid": sorted(paid, key=lambda s: s["cost_per_job"])[:limit],
         "best_quality": sorted(paid, key=lambda s: -s["quality"])[:limit],
-        "best_free": sorted(free, key=lambda s: -s["quality"])[:limit],
+        "top_free": sorted(free, key=lambda s: -s["quality"])[:limit],
         "biggest_free_quota": sorted(free, key=lambda s: (s["rpd"] or 0), reverse=True)[:limit],
     }
 
 
 def deals() -> dict:
-    """The deals layer: recurring-free / subsidy / promo signals from the sources."""
+    """The deals layer: recurring-free / subsidy / promo signals from the sources.
+    Filtered to REAL text-LLM free models (drops image/audio/embedding + local ollama)."""
     db = json.loads(DB.read_text(encoding="utf-8"))
     models = db.get("models", {})
-    free_models = [{"model": m, "provider": r.get("provider"), "rpm": r.get("rpm"), "rpd": r.get("rpd"),
-                    "source": r.get("source")} for m, r in models.items()
-                   if r.get("free") or (r.get("prompt_per_token", 0) == 0 and r.get("completion_per_token", 0) == 0)]
-    return {"recurring_free_models": free_models, "note": "free-tier models from awesome-free-llm-apis + openrouter :free + $0 sources"}
+    JUNK = ("image", "audio", "tts", "stt", "whisper", "stable-diffusion", "flux", "dall-e",
+            "sdxl", "embedding", "bge-", "e5-", "rerank", "colbert", "sample_spec", "ollama/",
+            "bedrock", "canvas", "nova-canvas", "1024", "playground")
+    free_models = []
+    seen = set()
+    for m, r in models.items():
+        low = m.lower()
+        if any(x in low for x in JUNK):
+            continue
+        is_free = r.get("free") or (r.get("prompt_per_token", 0) == 0 and r.get("completion_per_token", 0) == 0)
+        if not is_free:
+            continue
+        key = r.get("provider", "") + "/" + m.split("/")[-1]
+        if key in seen:
+            continue
+        seen.add(key)
+        free_models.append({"model": m.split("/")[-1], "provider": r.get("provider"),
+                            "rpm": r.get("rpm"), "rpd": r.get("rpd"), "source": r.get("source")})
+    return {"recurring_free_models": free_models, "note": "deduped text-LLM free models from all sources"}
 
 
 if __name__ == "__main__":

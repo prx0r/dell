@@ -11,8 +11,8 @@ Instead of a static spreadsheet, this is a **live radar**:
 - **Ingests** every machine-readable LLM source into one normalized DB (3,439 models).
 - **Scores** by **effective cost per successful task** (not $/M tokens) — a model that needs 3 attempts
   costs more.
-- **Derives frontiers**: best value / cheapest / best free / best quality / biggest free quota.
-- **Answers the router query**: `route(task, min_quality, prefer_free)` → the best model right now.
+- **Derives frontiers**: top value / cheapest / top free / highest quality / biggest free quota.
+- **Answers the router query**: `route(task, min_quality, prefer_free)` → the top model right now.
 
 ## THE DATA STACK
 | Source | Gives | Status |
@@ -44,7 +44,7 @@ POST /refresh                        re-pull all sources
 
 ## VERIFIED (7/7 PASS)
 - **3,439 canonical models** from all sources
-- **Best-free**: `openai/gpt-oss-20b:free` (quality 89.4), `nvidia/nemotron-3.5-lightning:free` (73.0)
+- **Top free**: `openai/gpt-oss-20b:free` (quality 89.4), `nvidia/nemotron-3.5-lightning:free` (73.0)
 - **Route** with floor 70 + free-first → qwen2.5-coder-3b, gpt-oss-20b
 - **Quality floor is honest**: floor 95 → no model (max ~89), fail-closed
 - **Effective-cost penalizes retry-needing models**
