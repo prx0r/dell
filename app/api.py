@@ -59,23 +59,30 @@ def list_models(search: str | None = None, provider: str | None = None,
     for mid, rec in models.items():
         # default: real text-LLM chat models (consistent with /frontiers chat mode)
         low = mid.lower()
+        prov_low = (rec.get("provider") or "").lower()
         if any(x in low for x in ("embedding", "embed", "audio", "tts", "stt", "image",
                                   "stable-diffusion", "flux", "dall-e", "sdxl", "whisper",
                                   "/e5-", "bge-", "rerank", "colbert", "ollama/", "sample_spec",
                                   "1024", "canvas", "playground", "bedrock/")):
             continue
+        if "embedding" in prov_low:
+            continue  # provider-level embedding model (e.g. fireworks_ai-embedding-models)
         if search and search.lower() not in mid.lower():
             continue
         if provider and rec.get("provider") != provider:
             continue
         if free is not None and bool(rec.get("free")) != free:
             continue
-        q = aa.get(mid, quality.quality_for(mid, rec.get("provider", "")))
-        vs = quality.value_score(rec, q)
+        q = aa.get(mid) or quality.quality_for(mid, rec.get("provider", ""))
+        if isinstance(q, dict) and "scores" not in q:
+            q = {"scores": q, "source": "measured"}
+        vs = quality.value_score(rec, q.get("scores", {}))
         out.append({"model": mid, "provider": rec.get("provider"),
                     "prompt_per_token": rec.get("prompt_per_token"),
                     "completion_per_token": rec.get("completion_per_token"),
-                    "context": rec.get("context"), **vs, "source": rec.get("source")})
+                    "context": rec.get("context"), **vs,
+                    "quality_source": q.get("source", "estimated"),
+                    "source": rec.get("source")})
     key = {"value": lambda s: s["value"], "price": lambda s: -s["cost_per_job"],
            "quality": lambda s: -s["quality"]}.get(sort, lambda s: s["value"])
     if sort == "price":

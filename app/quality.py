@@ -49,8 +49,12 @@ def _family(model: str) -> str:
 
 
 def quality_for(model: str, provider: str = "") -> dict:
+    """Conservative per-family quality estimate (0-100). Returns {scores, source}.
+    source='estimated' when this is a label-based family guess (no AA key / no measured eval);
+    source='measured' when it came from artificial-analysis."""
     fam = _family(model)
-    return FAMILY_QUALITY.get(fam, DEFAULT_Q)
+    scores = FAMILY_QUALITY.get(fam, DEFAULT_Q)
+    return {"scores": scores, "source": "estimated"}
 
 
 def fetch_aa_quality() -> dict:
@@ -114,11 +118,14 @@ def frontiers(limit: int = 8, mode: str = "chat") -> dict:
             ctx = rec.get("context")
             if isinstance(ctx, (int, float)) and ctx < 2048:
                 continue
-        q = aa.get(mid, quality_for(mid, rec.get("provider", "")))
-        vs = value_score(rec, q)
+        q = aa.get(mid) or quality_for(mid, rec.get("provider", ""))
+        if isinstance(q, dict) and "scores" not in q:
+            q = {"scores": q, "source": "measured"}  # AA returns raw scores → mark measured
         if rec.get("prompt_per_token", 0) == 0 and rec.get("completion_per_token", 0) == 0 and not rec.get("free"):
-            continue
+            continue  # a $0 non-free model is broken/local data, not a real deal
+        vs = value_score(rec, q.get("scores", DEFAULT_Q))
         scored.append({"model": mid, "provider": rec.get("provider"), **vs,
+                       "quality_source": q.get("source", "estimated"),
                        "context": rec.get("context"), "rpm": rec.get("rpm"), "rpd": rec.get("rpd"),
                        "source": rec.get("source")})
     paid = [s for s in scored if not s["free"] and s["cost_per_job"] > 0
