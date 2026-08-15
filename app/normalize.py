@@ -99,18 +99,27 @@ def _from_models_dev() -> dict:
     out = {}
     for mid, rec in d.items():
         price = rec.get("pricing")
-        if not isinstance(price, dict):
-            continue
-        in_ = float(price.get("input") or 0); out_ = float(price.get("output") or 0)
-        if in_ == 0 and out_ == 0:
-            continue  # no real price → skip (can't report $0)
+        in_ = out_ = 0.0
+        if isinstance(price, dict):
+            in_ = float(price.get("input") or 0); out_ = float(price.get("output") or 0)
+        # models.dev is the TAGGING source (modalities/capabilities/benchmarks). Keep the record even
+        # with null price — enrichment adds these tags to the price-bearing record from other sources.
         lim = rec.get("limit")
         out[mid] = {
             "provider": mid.split("/")[0], "model": mid,
             "prompt_per_token": in_ / 1e6, "completion_per_token": out_ / 1e6,
-            "cache_read_per_token": float(price.get("cache_read") or 0) / 1e6,
+            "cache_read_per_token": 0.0,
             "context": lim.get("context") if isinstance(lim, dict) else None,
             "free": in_ == 0 or out_ == 0, "rpm": None, "rpd": None,
+            # the tagging/modality gold we were dropping (adopt models.dev fully):
+            "input_modalities": rec.get("modalities", {}).get("input", []),
+            "output_modalities": rec.get("modalities", {}).get("output", []),
+            "reasoning": bool(rec.get("reasoning")),
+            "tool_call": bool(rec.get("tool_call")),
+            "structured_output": bool(rec.get("structured_output")),
+            "benchmarks": rec.get("benchmarks", []),
+            "license": rec.get("license"),
+            "open_weights": bool(rec.get("open_weights")),
             "source": "models.dev", "updated": int(time.time()),
         }
     return out
@@ -137,14 +146,43 @@ def _from_openrouter() -> dict:
     return out
 
 
+def _enrich_from_modelsdev(models: dict, md: dict) -> dict:
+    """Merge models.dev's richer tagging (modalities/capabilities/benchmarks/license/open_weights)
+    into every model record that shares an id or base name, even when a later price source wins."""
+    enriched = {}
+    for mid, rec in md.items():
+        base = mid.split("/")[-1].lower()
+        # find any canonical model whose base name matches this models.dev entry
+        for cmid, cref in models.items():
+            if base in cmid.lower() or cmid.lower().split("/")[-1] in base:
+                enriched[cmid] = {
+                    **cref,
+                    "input_modalities": rec.get("input_modalities", cref.get("input_modalities", [])),
+                    "output_modalities": rec.get("output_modalities", cref.get("output_modalities", [])),
+                    "reasoning": rec.get("reasoning", cref.get("reasoning", False)),
+                    "tool_call": rec.get("tool_call", cref.get("tool_call", False)),
+                    "structured_output": rec.get("structured_output", cref.get("structured_output", False)),
+                    "benchmarks": rec.get("benchmarks", cref.get("benchmarks", [])),
+                    "license": rec.get("license", cref.get("license")),
+                    "open_weights": rec.get("open_weights", cref.get("open_weights", False)),
+                }
+    return enriched
+
+
 def normalize() -> dict:
-    """Merge all sources into one canonical model DB. Later sources override same keys' details."""
+    """Merge all sources into one canonical model DB. Later sources override same keys' details,
+    but the models.dev tagging (modalities/capabilities/benchmarks) is preserved via _enrich_from_modelsdev."""
     merged = {}
+    md = {}
     for fn in (_from_litellm, _from_llm_prices, _from_free_apis, _from_models_dev, _from_openrouter):
         try:
-            merged.update(fn())
+            data = fn()
+            if fn == _from_models_dev:
+                md = data  # keep for enrichment
+            merged.update(data)
         except Exception as e:
             print(f"  [normalize] source {fn.__name__}: {e}")
+    merged = _enrich_from_modelsdev(merged, md)
     DATA.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"schema": "patala.dealradar.v1", "fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                                "count": len(merged), "models": merged}, indent=1, ensure_ascii=False), encoding="utf-8")

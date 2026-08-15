@@ -54,7 +54,8 @@ def _env(**extra):
 
 @app.get("/models")
 def list_models(search: str | None = None, provider: str | None = None,
-                sort: str = "value", free: bool | None = None, limit: int = Query(20, le=100)):
+                sort: str = "value", free: bool | None = None, modality: str | None = None,
+                limit: int = Query(20, le=100)):
     d = _db()
     models = d.get("models", {})
     aa = quality.fetch_aa_quality()
@@ -76,6 +77,8 @@ def list_models(search: str | None = None, provider: str | None = None,
             continue
         if free is not None and bool(rec.get("free")) != free:
             continue
+        if modality and modality not in (rec.get("input_modalities") or []):
+            continue  # modality filter (vision/audio/video/pdf/text) — the agent's "cheap vision model" query
         q = aa.get(mid) or quality.quality_for(mid, rec.get("provider", ""))
         if isinstance(q, dict) and "scores" not in q:
             q = {"scores": q, "source": "measured"}
@@ -84,6 +87,9 @@ def list_models(search: str | None = None, provider: str | None = None,
                     "prompt_per_token": rec.get("prompt_per_token"),
                     "completion_per_token": rec.get("completion_per_token"),
                     "context": rec.get("context"), **vs,
+                    "input_modalities": rec.get("input_modalities", []),
+                    "reasoning": rec.get("reasoning", False),
+                    "tool_call": rec.get("tool_call", False),
                     "quality_source": q.get("source", "estimated"),
                     "source": rec.get("source")})
     key = {"value": lambda s: s["value"], "price": lambda s: -s["cost_per_job"],
