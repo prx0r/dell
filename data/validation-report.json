@@ -1,0 +1,149 @@
+{
+ "schema": "patala.dealradar.validation.v1",
+ "validated_at": "2026-08-15T22:41:34Z",
+ "checked": 50,
+ "verified_ok": 28,
+ "drifted": [
+  {
+   "model": "anthropic.claude-opus-4-5-20251101-v1:0",
+   "cached": 5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.667
+  },
+  {
+   "model": "anthropic.claude-opus-4-6-v1",
+   "cached": 5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.667
+  },
+  {
+   "model": "global.anthropic.claude-opus-4-6-v1",
+   "cached": 5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.667
+  },
+  {
+   "model": "us.anthropic.claude-opus-4-6-v1",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  },
+  {
+   "model": "eu.anthropic.claude-opus-4-6-v1",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  },
+  {
+   "model": "au.anthropic.claude-opus-4-6-v1",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  },
+  {
+   "model": "anthropic.claude-opus-4-7",
+   "cached": 5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.667
+  },
+  {
+   "model": "global.anthropic.claude-opus-4-7",
+   "cached": 5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.667
+  },
+  {
+   "model": "us.anthropic.claude-opus-4-7",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  },
+  {
+   "model": "eu.anthropic.claude-opus-4-7",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  },
+  {
+   "model": "au.anthropic.claude-opus-4-7",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  },
+  {
+   "model": "anthropic.claude-opus-4-8",
+   "cached": 5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.667
+  },
+  {
+   "model": "global.anthropic.claude-opus-4-8",
+   "cached": 5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.667
+  },
+  {
+   "model": "us.anthropic.claude-opus-4-8",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  },
+  {
+   "model": "eu.anthropic.claude-opus-4-8",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  },
+  {
+   "model": "au.anthropic.claude-opus-4-8",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  },
+  {
+   "model": "jp.anthropic.claude-opus-4-8",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  },
+  {
+   "model": "jp.anthropic.claude-opus-4-7",
+   "cached": 5.5e-06,
+   "live": 1.5e-05,
+   "ratio": 0.633
+  }
+ ],
+ "ok_sample": [
+  {
+   "model": "us.writer.palmyra-x5-v1:0",
+   "cached": 6e-07,
+   "live": 6e-07,
+   "ratio": 0.0
+  },
+  {
+   "model": "writer.palmyra-x5-v1:0",
+   "cached": 6e-07,
+   "live": 6e-07,
+   "ratio": 0.0
+  },
+  {
+   "model": "amazon.nova-lite-v1:0",
+   "cached": 6e-08,
+   "live": 6e-08,
+   "ratio": 0.0
+  },
+  {
+   "model": "amazon.nova-2-lite-v1:0",
+   "cached": 3e-07,
+   "live": 3e-07,
+   "ratio": 0.0
+  },
+  {
+   "model": "apac.amazon.nova-2-lite-v1:0",
+   "cached": 3.3e-07,
+   "live": 3e-07,
+   "ratio": 0.1
+  }
+ ],
+ "note": "drift_threshold=20%; a drifted price means the cache is stale vs the live source"
+}

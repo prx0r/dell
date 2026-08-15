@@ -27,6 +27,9 @@ from fastapi import FastAPI, HTTPException, Query
 import normalize
 import quality
 import compute_sources
+import task_ranking
+import rate_limits
+import canary
 
 app = FastAPI(title="Pāṭala Deal Radar", version="0.1",
               description="Live LLM pricing + quality + value frontiers (canonical, compute-on-write)")
@@ -121,6 +124,62 @@ def get_free_pool():
     tiers = compute_sources.as_router_tiers()
     return {"tiers": tiers, "reachable_from_box": compute_sources.reachable_from_box(),
             "provenance": _env()}
+
+
+@app.get("/recommend")
+def recommend(task: str = Query("coding", description="coding|research|extraction|long-context|reasoning"),
+              min_quality: float = 0.0, prefer_free: bool = False,
+              limit: int = Query(10, le=25)):
+    """The task-aware agent-performance recommendation: best model for THIS task type,
+    ranked by quality × success / effective_cost, with per-axis breakdown."""
+    if task not in task_ranking.TASKS:
+        raise HTTPException(400, {"error": {"code": "BAD_TASK", "message": f"unknown task {task}; "
+                                             f"use {task_ranking.TASKS}", "retryable": False}})
+    db = _db()
+    models = db.get("models", {})
+    ranking = task_ranking.rank(models, quality.fetch_aa_quality(), task=task,
+                                min_quality=min_quality, prefer_free=prefer_free, limit=limit)
+    return {"task": task, "min_quality": min_quality, "prefer_free": prefer_free,
+            "ranking": ranking, "tasks": task_ranking.TASKS, "provenance": _env()}
+
+
+@app.get("/tasks")
+def get_tasks():
+    """The task profiles (per-axis weights + success + latency sensitivity)."""
+    return {"tasks": task_ranking.TASKS, "profiles": task_ranking.TASK_PROFILES,
+            "provenance": _env()}
+
+
+@app.get("/rate-limits")
+def get_rate_limits():
+    """Per-provider rate + token limits (esp. the free tiers) — how much each gives you."""
+    rl = rate_limits.all_rate_limits()
+    rl["provenance"] = _env()
+    return rl
+
+
+@app.get("/canary")
+def get_canary():
+    """The last provider live-check (canary-report.json): is each free endpoint actually alive?"""
+    p = ROOT / "data" / "canary-report.json"
+    if not p.exists():
+        return {"status": "never_run", "note": "run app/canary.py (cron daily) to probe providers",
+                "provenance": _env()}
+    d = json.loads(p.read_text(encoding="utf-8"))
+    d["provenance"] = _env()
+    return d
+
+
+@app.get("/validation")
+def get_validation():
+    """The last price-validation report (cron): were cached prices verified against live sources?"""
+    p = ROOT / "data" / "validation-report.json"
+    if not p.exists():
+        return {"status": "never_run", "note": "run app/refresh.py (cron) to validate prices",
+                "provenance": _env()}
+    d = json.loads(p.read_text(encoding="utf-8"))
+    d["provenance"] = _env()
+    return d
 
 
 @app.get("/route")
