@@ -5,3 +5,4 @@ data/canonical-models.json
 litellm/
 llm-prices/
 awesome-free-llm-apis/
+data/lmarena-20250804.csv
