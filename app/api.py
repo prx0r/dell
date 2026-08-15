@@ -31,6 +31,7 @@ import task_ranking
 import rate_limits
 import canary
 import benchmark_quality
+import layer_recommend
 
 app = FastAPI(title="Pāṭala Deal Radar", version="0.1",
               description="Live LLM pricing + quality + value frontiers (canonical, compute-on-write)")
@@ -190,6 +191,27 @@ def get_benchmarks(task: str = Query("coding", description="coding|reasoning|res
                                             "retryable": False}})
     return {"task": task, "benchmarks": benchmark_quality.top_benchmarked(task, limit),
             "provenance": _env()}
+
+
+@app.get("/recommend-layer")
+def recommend_layer(layer: str = Query("T1", description="T1|ARGMAP|L2|L200|C1|L0|L1"),
+                    limit: int = Query(3, le=5)):
+    """The best model for a TRANSLATION layer (per the per-layer translation stack): maps each layer to
+    a task and ranks by measured benchmark quality. For setting HERMES_MODEL per layer worker."""
+    if layer.upper() not in layer_recommend.LAYER_MAP:
+        raise HTTPException(400, {"error": {"code": "BAD_LAYER", "message": f"unknown layer {layer}",
+                                            "retryable": False}})
+    r = layer_recommend.recommend_layer(layer, limit=limit)
+    r["provenance"] = _env()
+    return r
+
+
+@app.get("/layer-config")
+def get_layer_config():
+    """The full per-layer model config (worker-consumable: layer → model + task + why) for HERMES_MODEL."""
+    cfg = layer_recommend.layer_config()
+    cfg["provenance"] = _env()
+    return cfg
 
 
 @app.get("/rate-limits")

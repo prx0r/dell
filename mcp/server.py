@@ -31,6 +31,7 @@ import benchmark_quality
 import compute_sources
 import rate_limits
 import canary
+import layer_recommend
 
 server = MCPServer(name="deal-radar")
 
@@ -94,6 +95,13 @@ def get_free_sources() -> dict:
     """The free-compute pool: the non-API free sources (WebLLM/Petals/Oracle/etc. as router tiers)
     + the per-provider rate limits (rpm/rpd/tokens for free tiers)."""
     return {"free_pool": compute_sources.free_pool(), "rate_limits": rate_limits.all_rate_limits()}
+
+
+@server.tool()
+def recommend_model_for_layer(layer: str = "T1", limit: int = 3) -> dict:
+    """The best model for a TRANSLATION layer (T1/ARGMAP/L2/L200/C1), ranked by measured benchmark
+    quality for the layer's task. Use to set HERMES_MODEL per layer in the translation stack."""
+    return layer_recommend.recommend_layer(layer, limit=limit)
 
 
 def main():
