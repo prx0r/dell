@@ -30,6 +30,7 @@ import compute_sources
 import task_ranking
 import rate_limits
 import canary
+import benchmark_quality
 
 app = FastAPI(title="Pāṭala Deal Radar", version="0.1",
               description="Live LLM pricing + quality + value frontiers (canonical, compute-on-write)")
@@ -153,6 +154,17 @@ def recommend(task: str = Query("coding", description="coding|research|extractio
 def get_tasks():
     """The task profiles (per-axis weights + success + latency sensitivity)."""
     return {"tasks": task_ranking.TASKS, "profiles": task_ranking.TASK_PROFILES,
+            "provenance": _env()}
+
+
+@app.get("/benchmarks")
+def get_benchmarks(task: str = Query("coding", description="coding|reasoning|research|extraction"),
+                   limit: int = Query(10, le=25)):
+    """The REAL measured benchmark leaders for a task (SWE-Bench / GPQA / etc.) — quality_source=measured."""
+    if task not in benchmark_quality.TASK_BENCHMARKS:
+        raise HTTPException(400, {"error": {"code": "BAD_TASK", "message": f"unknown task {task}",
+                                            "retryable": False}})
+    return {"task": task, "benchmarks": benchmark_quality.top_benchmarked(task, limit),
             "provenance": _env()}
 
 
