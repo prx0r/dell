@@ -42,9 +42,11 @@ LAYER_MAP = {
 
 
 def recommend_layer(layer: str, limit: int = 3, force_task: str | None = None) -> dict:
-    """The best models for a translation layer. Returns picks + the layer's task fit + why.
-    Excludes price-0 artifacts (models with no real price that win by cost) and ranks by
-    MEASURED benchmark quality for the layer's task, so a hard layer gets a quality model."""
+    """The best models for a translation layer, ranked COST-FIRST then VALUE (via the routing module,
+    which correctly handles free models + price-0 artifacts):
+      1. genuinely-free models always win (you literally gain from them)
+      2. then paid models by value (quality / cost)
+    """
     spec = LAYER_MAP.get(layer.upper())
     if not spec:
         return {"error": f"unknown layer {layer}; use {list(LAYER_MAP)}"}
@@ -52,23 +54,12 @@ def recommend_layer(layer: str, limit: int = 3, force_task: str | None = None) -
     if not task:
         return {"layer": layer, "deterministic": True, "why": spec["why"],
                 "picks": [], "note": "no model needed — deterministic stage"}
-    db = _db_models()
-    # rank by measured benchmark quality for the task, excluding price-0 artifacts
-    quality_ranked = benchmark_quality.top_benchmarked(task, limit=200)
-    picks = []
-    for q in quality_ranked:
-        rec = db.get(q["model"])
-        if not rec:
-            continue
-        price0 = (rec.get("prompt_per_token", 0) == 0 and rec.get("completion_per_token", 0) == 0)
-        if price0 and not rec.get("free"):
-            continue  # price-0 non-free artifact
-        cost = (rec.get("prompt_per_token", 0) * 20000 + rec.get("completion_per_token", 0) * 4000)
-        picks.append({"model": q["model"], "provider": rec.get("provider"),
-                      "free": rec.get("free", False), "q": q["benchmark_score"],
-                      "benchmark": q["benchmark"], "cost": cost, "task_fit": task})
-        if len(picks) >= limit:
-            break
+    from routing import recommend
+    r = recommend(task=task, limit=limit)
+    picks = [{"model": p["model"], "provider": p["provider"], "free": p["free"],
+              "q": p["q"], "benchmark": p.get("benchmark"), "cost": p["cost"],
+              "task_fit": task, "value": (p["q"] / p["cost"]) if p["cost"] > 0 else float("inf")}
+             for p in r["picks"]]
     return {"layer": layer, "task": task, "prefer_free": spec["prefer_free"],
             "why": spec["why"], "picks": picks}
 

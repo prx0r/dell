@@ -32,6 +32,7 @@ import compute_sources
 import rate_limits
 import canary
 import layer_recommend
+import advanced_query
 
 server = MCPServer(name="deal-radar")
 
@@ -102,6 +103,15 @@ def recommend_model_for_layer(layer: str = "T1", limit: int = 3) -> dict:
     """The best model for a TRANSLATION layer (T1/ARGMAP/L2/L200/C1), ranked by measured benchmark
     quality for the layer's task. Use to set HERMES_MODEL per layer in the translation stack."""
     return layer_recommend.recommend_layer(layer, limit=limit)
+
+
+@server.tool()
+def recommend_for_query(query: str, limit: int = 5) -> dict:
+    """Recommend a model from a natural-language query (e.g. 'image model for batch work' vs
+    'image model for 4 calls per day'). The algorithm computes the usage profile + volume strategy +
+    per-model utility/value/reason, so the LLM gets the granular reasoning AND can dig into the data.
+    Ordering: free-first, then value (quality/cost)."""
+    return advanced_query.analyze(query, limit=limit)
 
 
 def main():

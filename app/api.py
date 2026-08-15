@@ -32,6 +32,7 @@ import rate_limits
 import canary
 import benchmark_quality
 import layer_recommend
+import advanced_query
 
 app = FastAPI(title="Pāṭala Deal Radar", version="0.1",
               description="Live LLM pricing + quality + value frontiers (canonical, compute-on-write)")
@@ -212,6 +213,16 @@ def get_layer_config():
     cfg = layer_recommend.layer_config()
     cfg["provenance"] = _env()
     return cfg
+
+
+@app.get("/ask")
+def ask(query: str = Query(..., description="natural-language model query, e.g. 'image model for batch work' or 'image model for 4 calls per day'"),
+        limit: int = Query(5, le=10)):
+    """The advanced natural-language model recommendation. Parses the query → usage profile
+    (task/modality/batch/daily-calls) → volume-tuned utility recommendation + rate-limit annotation."""
+    r = advanced_query.recommend_for_query(query, limit=limit)
+    r["provenance"] = _env()
+    return r
 
 
 @app.get("/rate-limits")
