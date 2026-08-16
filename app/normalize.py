@@ -125,6 +125,48 @@ def _from_models_dev() -> dict:
     return out
 
 
+def _from_hf_router() -> dict:
+    """Hugging Face Inference Providers (router.huggingface.co) — OpenAI-compatible, free tier + per-
+    provider pricing/latency/throughput. The single best add: real pricing + the SPEED data we lacked."""
+    import urllib.request
+    req = urllib.request.Request("https://router.huggingface.co/v1/models",
+                                 headers={"User-Agent": "deal-radar/0.1 (mailto:dev@patala.local)"})
+    try:
+        d = json.loads(urllib.request.urlopen(req, timeout=30).read())
+    except Exception:
+        return {}
+    out = {}
+    for m in d.get("data", []):
+        # prefer the cheapest LIVE provider for this model
+        provs = [p for p in (m.get("providers") or []) if p.get("status") == "live"]
+        if not provs:
+            continue
+        cheapest = min(provs, key=lambda p: (p.get("pricing") or {}).get("input") or 0)
+        price = cheapest.get("pricing") or {}
+        in_ = float(price.get("input") or 0); out_ = float(price.get("output") or 0)
+        mid = m["id"]
+        out[mid] = {
+            "provider": cheapest.get("provider", mid.split("/")[0]),
+            "model": mid,
+            "prompt_per_token": in_ / 1e6, "completion_per_token": out_ / 1e6,
+            "cache_read_per_token": 0.0,
+            "context": cheapest.get("context_length"),
+            "free": bool(cheapest.get("is_free")),
+            "rpm": None, "rpd": None,
+            "input_modalities": m.get("architecture", {}).get("input_modalities", []),
+            "output_modalities": m.get("architecture", {}).get("output_modalities", []),
+            "reasoning": m.get("reasoning", False),
+            "tool_call": bool(cheapest.get("supports_tools")),
+            "structured_output": bool(cheapest.get("supports_structured_output")),
+            # the SPEED data (first_token_latency_ms + throughput) — the missing axis!
+            "latency_ms": cheapest.get("first_token_latency_ms"),
+            "throughput_tps": cheapest.get("throughput"),
+            "source": "hf-router", "updated": int(time.time()),
+        }
+    return out
+    return out
+
+
 def _from_openrouter() -> dict:
     import urllib.request
     req = urllib.request.Request("https://openrouter.ai/api/v1/models", headers={"User-Agent": "deal-radar/0.1 (mailto:dev@patala.local)"})
@@ -148,11 +190,11 @@ def _from_openrouter() -> dict:
 
 def _enrich_from_modelsdev(models: dict, md: dict) -> dict:
     """Merge models.dev's richer tagging (modalities/capabilities/benchmarks/license/open_weights)
-    into every model record that shares an id or base name, even when a later price source wins."""
-    enriched = {}
+    into every model record that shares an id or base name, even when a later price source wins.
+    START from all models; only OVERLAY the models.dev tags on matches (never discard non-matches)."""
+    enriched = dict(models)  # keep every model
     for mid, rec in md.items():
         base = mid.split("/")[-1].lower()
-        # find any canonical model whose base name matches this models.dev entry
         for cmid, cref in models.items():
             if base in cmid.lower() or cmid.lower().split("/")[-1] in base:
                 enriched[cmid] = {
@@ -174,9 +216,9 @@ def normalize() -> dict:
     but the models.dev tagging (modalities/capabilities/benchmarks) is preserved via _enrich_from_modelsdev."""
     merged = {}
     md = {}
-    for fn in (_from_litellm, _from_llm_prices, _from_free_apis, _from_models_dev, _from_openrouter):
+    for fn in (_from_litellm, _from_llm_prices, _from_free_apis, _from_models_dev, _from_openrouter, _from_hf_router):
         try:
-            data = fn()
+            data = fn() or {}
             if fn == _from_models_dev:
                 md = data  # keep for enrichment
             merged.update(data)
