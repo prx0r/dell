@@ -4,6 +4,19 @@ A standalone service that aggregates all machine-readable LLM pricing/quality in
 live-updating model DB, and exposes it three ways — **API, MCP, and a lean static site** — optimized
 for agents (token-minimal, cached, measured).
 
+## The agent-run layer (hermes-orchestrated)
+
+dealradar is now fully agent-runnable, like sanskritbenchy:
+- **`VISION.md` / `GOALS.md`** — the goal + checkpointed roadmap (P1–P5), each a falsifiable gate.
+- **`agent/run.py`** — the orchestrator (validate/normalize/refresh/canary/recommend/report/watchdog),
+  logs every step to `data/agent-runs.jsonl`.
+- **`agent/watchdog.py`** — the daily health/freshness cycle (cron `dealradar-daily-watchdog`, 04:30 UTC).
+- **`agent/audit.py`** — the golden-file audit (the executable ONE RULE): recompute on fixed data, fail on
+  mismatch. Every result is content-addressed via `app/run_recorder.py` (nanopublication triples).
+- **`HERMES-MCP-API.md`** — how a hermes agent drives the service (MCP tools + recipes).
+- **`skills/deal-radar/SKILL.md`** — the hermes driver skill (verified loads).
+- **Kanban board** `dealradar` — P1–P5 tasks with dependency links.
+
 ## The three surfaces (agents are the primary users)
 
 ### 1. MCP server (the primary interface) — `mcp/server.py`

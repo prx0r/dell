@@ -1,0 +1,81 @@
+{
+  "schema": "dealradar.manifest.v1",
+  "description": "The machine resolver for dealradar. Every doc/script -> id + owner + validator.",
+  "date": "2026-08-16",
+  "docs": {
+    "README.md": {
+      "id": "dr:readme",
+      "owner": "dealradar",
+      "role": "the project index",
+      "validator": "check.py --refs"
+    },
+    "VISION.md": {
+      "id": "dr:vision",
+      "owner": "dealradar",
+      "role": "the goal + roadmap",
+      "validator": "check.py --refs"
+    },
+    "GOALS.md": {
+      "id": "dr:goals",
+      "owner": "dealradar",
+      "role": "the P1-P5 checkpoints",
+      "validator": "check.py --refs"
+    },
+    "AGENTS.md": {
+      "id": "dr:agents",
+      "owner": "all",
+      "role": "governing file + anti-mess standard",
+      "validator": "check.py --refs"
+    },
+    "HERMES-MCP-API.md": {
+      "id": "dr:mcp-api",
+      "owner": "dealradar",
+      "role": "the hermes MCP/API interface",
+      "validator": "check.py --refs"
+    },
+    "DEV-PLAN.md": {
+      "id": "dr:devplan",
+      "owner": "dealradar",
+      "role": "the dev plan",
+      "validator": "check.py --refs"
+    },
+    "LEGITIMACY.md": {
+      "id": "dr:legitimacy",
+      "owner": "dealradar",
+      "role": "the anti-theatre gate",
+      "validator": "check.py --refs"
+    }
+  },
+  "implementation": {
+    "agent/run.py": {
+      "id": "dr:agent:run",
+      "owner": "dealradar",
+      "role": "the agent orchestrator",
+      "validator": "run: python3 agent/run.py --step report"
+    },
+    "agent/audit.py": {
+      "id": "dr:agent:audit",
+      "owner": "dealradar",
+      "role": "the golden-file audit",
+      "validator": "run: python3 agent/audit.py --list"
+    },
+    "agent/watchdog.py": {
+      "id": "dr:agent:watchdog",
+      "owner": "dealradar",
+      "role": "the watchdog",
+      "validator": "run: python3 agent/watchdog.py --dry-run"
+    },
+    "agent/trace.py": {
+      "id": "dr:agent:trace",
+      "owner": "dealradar",
+      "role": "the central run/experiment trace",
+      "validator": "run: python3 agent/trace.py --all"
+    },
+    "app/run_recorder.py": {
+      "id": "dr:kernel:run_recorder",
+      "owner": "dealradar",
+      "role": "content-addressed run records + nanopublications",
+      "validator": "run: import"
+    }
+  }
+}

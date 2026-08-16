@@ -10,3 +10,7 @@ web/node_modules/
 web/dist/
 web/package-lock.json
 web/.astro/
+data/agent-runs.jsonl
+data/watchdog.jsonl
+data/runs/
+golden/
