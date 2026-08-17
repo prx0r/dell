@@ -560,3 +560,38 @@ def health():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("CANONICAL_PORT", "8803")))
+
+
+@app.get("/v1/verification-runs")
+def list_verification_runs(limit: int = Query(10, le=50)):
+    """List recent verification runs."""
+    conn = canonical_db.connect()
+    canonical_db.migrate(conn)
+    rows = conn.execute("SELECT * FROM verification_runs ORDER BY started_at DESC LIMIT ?", (limit,)).fetchall()
+    conn.close()
+    return {"runs": [dict(r) for r in rows], "count": len(rows)}
+
+
+@app.get("/v1/deals/{deal_id}/evidence")
+def get_deal_evidence(deal_id: str):
+    """Get evidence for a specific deal."""
+    conn = canonical_db.connect()
+    canonical_db.migrate(conn)
+    rows = conn.execute("""
+        SELECT e.* FROM evidence_v2 e
+        JOIN claims c ON e.claim_id = c.claim_id
+        WHERE c.offer_id = ?
+    """, (deal_id,)).fetchall()
+    conn.close()
+    return {"deal_id": deal_id, "evidence": [dict(r) for r in rows], "count": len(rows)}
+
+
+@app.get("/v1/deals/{deal_id}/verification")
+def get_deal_verification(deal_id: str):
+    """Get verification status for a specific deal."""
+    from verification import get_verification_status
+    conn = canonical_db.connect()
+    canonical_db.migrate(conn)
+    status = get_verification_status(conn, deal_id)
+    conn.close()
+    return status
