@@ -386,6 +386,84 @@ def recommend(task: str = Query("coding"), max_cost: float = None,
     return result
 
 
+
+@app.get("/best/{badge}")
+@app.get("/v1/best/{badge}")
+def best_by_badge(badge: str, limit: int = Query(10, le=50)):
+    """Get best models for a badge category."""
+    data = _load_all()
+    import scoring
+    scored = [scoring.score_and_badge(o) for o in data["offers"]]
+    badged = [s for s in scored if badge in (s.get("badges") or [])]
+    badged.sort(key=lambda x: x["vector"]["workhorse"], reverse=True)
+    return {"badge": badge, "picks": badged[:limit], "count": len(badged)}
+
+
+@app.get("/v1/score/{model_id:path}")
+def score_model(model_id: str):
+    """Get scoring vector for a specific model."""
+    data = _load_all()
+    import scoring
+    matches = [o for o in data["offers"] if model_id.lower() in (o.get("model_id") or "").lower()]
+    if not matches:
+        return {"error": "Model not found", "model_id": model_id}
+    results = []
+    for o in matches[:5]:
+        scored = scoring.score_and_badge(o)
+        results.append({
+            "model_id": scored.get("model_id"),
+            "provider": scored.get("provider_id"),
+            "vector": scored["vector"],
+            "badges": scored.get("badges", []),
+        })
+    return {"model_id": model_id, "offerings": results}
+
+
+@app.get("/v1/badges")
+def list_badges():
+    """List all available badge categories."""
+    import scoring
+    return {"badges": [{"id": b, "name": scoring.BADGE_LABELS.get(b, b)} for b in scoring.BADGE_RULES]}
+
+
+@app.get("/v1/stacks")
+def recommend_stacks(task: str = Query("coding_agent"), budget: float = Query(1.0)):
+    """Recommend agent stack: planner + workers + reviewer."""
+    data = _load_all()
+    import scoring
+    planner = scoring.recommend(data["offers"], task=task, budget=budget*0.4, limit=1)
+    workers = scoring.recommend(data["offers"], task=task, budget=budget*0.4, limit=2)
+    reviewer = scoring.recommend(data["offers"], task=task, budget=budget*0.2, limit=1)
+    return {"task": task, "budget": budget,
+            "stack": {"planner": planner.get("pick"), "workers": [w.get("model") for w in workers.get("all_picks", [])], "reviewer": reviewer.get("pick")}}
+
+
+@app.get("/categories/{category}")
+def get_category(category: str, limit: int = Query(15, le=50)):
+    """Get deals by category (workhorse, value, free, etc.)."""
+    return best_by_badge(category, limit)
+
+
+@app.get("/providers/{provider_id}/setup")
+def provider_setup(provider_id: str):
+    """Step-by-step setup instructions for a provider."""
+    import providers as pm
+    p = pm.get_provider(provider_id)
+    if not p:
+        return {"error": f"Unknown provider: {provider_id}"}
+    return {"provider": p.name, "difficulty": p.setup_difficulty,
+            "difficulty_label": ["", "Instant", "Account required", "Approval needed", "Enterprise"][p.setup_difficulty],
+            "steps": p.setup_steps, "signup_url": p.signup_url, "free_tier": p.free_tier}
+
+
+@app.get("/workload/{workload}")
+def workload_picks(workload: str, limit: int = Query(10)):
+    """Best models for a workload type."""
+    data = _load_all()
+    import scoring
+    result = scoring.recommend(data["offers"], task=workload, limit=limit)
+    return {"workload": workload, "picks": result.get("all_picks", [])[:limit]}
+
 # --- Stats ---
 
 @app.get("/v1/stats")

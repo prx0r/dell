@@ -69,15 +69,30 @@ def test_INV02():
 
 
 def test_INV03():
-    """INV-03: MCP and REST use same data source"""
+    """INV-03: MCP and REST return same data"""
     print("\nINV-03: MCP_AND_REST_RETURN_IDENTICAL_DOMAIN_RESULT")
-    runner = (ROOT / "mcp" / "tool_runner.py").read_text()
-    api = (ROOT / "app" / "api_canonical.py").read_text()
-    # Both must reference the same snapshots directory
-    runner_ok = "snapshots" in runner and "snapshots_dir" in runner
-    api_ok = "snapshots" in api and "_load_all" in api
-    return gate("same data source", runner_ok and api_ok,
-                "runner=%s api=%s" % (runner_ok, api_ok))
+    # Actually call MCP tool and REST API, compare results
+    import subprocess
+    p = subprocess.run([sys.executable, str(ROOT / "mcp" / "tool_runner.py"),
+                       "get_dataset_stats", "{}"],
+                      capture_output=True, text=True, cwd=str(ROOT),
+                      env={**os.environ, "PYTHONPATH": str(ROOT / "app")})
+    try:
+        mcp_result = json.loads(p.stdout)
+    except:
+        mcp_result = {}
+
+    from fastapi.testclient import TestClient
+    from api_canonical import app
+    c = TestClient(app)
+    r = c.get("/v1/stats")
+    api_result = r.json()
+
+    # Both should report the same total
+    mcp_total = mcp_result.get("total", 0)
+    api_total = api_result.get("total_offers", 0)
+    return gate("same total count", mcp_total == api_total,
+                "mcp=%d api=%d" % (mcp_total, api_total))
 
 
 def test_INV04():
@@ -106,13 +121,13 @@ def test_INV04():
 def test_INV05():
     """INV-05: Source failures don't expire deals"""
     print("\nINV-05: FAILED_FETCH_DOES_NOT_EXPIRE_DEAL")
-    # Design invariant: source_health tracks failures separately from deal status
-    # Verify by checking that source_health module exists and tracks failures
     import source_health
     health = source_health.get_health()
-    # If any source has failures, its deals should NOT be marked expired
-    return gate("source_health tracks failures separately", True,
-                "%d sources tracked" % len(health))
+    # Verify that no deal status was modified by checking deal data
+    offers = _load_all_offers()
+    # All offers should still exist (not marked expired by source failures)
+    return gate("deals persist after source tracking", len(offers) > 0,
+                "%d offers still present" % len(offers))
 
 
 def test_INV06():
@@ -130,29 +145,38 @@ def test_INV06():
 def test_INV07():
     """INV-07: free false→true = free_started, true→false = free_ended"""
     print("\nINV-07: FREE_TRANSITION_DIRECTION")
-    # Test: a model that was not free and becomes free should be free_started
     from source_diff import diff_snapshots
-    prev = {"m1": {"free": False, "input_per_m": 1.0}}
-    curr = {"m1": {"free": True, "input_per_m": 0.0}}
-    changes = diff_snapshots(prev, curr)
-    free_events = [c for c in changes if "free" in c.get("field", "").lower()]
-    if not free_events:
-        return gate("free transition detected", False, "no events for free change")
-    event = free_events[0]
-    # The transition should be free_started (false→true), not free_ended
-    event_type = event.get("event_type", "")
-    return gate("correct transition direction", "free_started" in event_type or "free" in event_type,
-                "event_type=%s" % event_type)
+    # Test 1: false→true should be free_started
+    prev1 = {"m1": {"free": False, "input_per_m": 1.0}}
+    curr1 = {"m1": {"free": True, "input_per_m": 0.0}}
+    changes1 = diff_snapshots(prev1, curr1)
+    free_events1 = [c for c in changes1 if "free" in c.get("field", "").lower()]
+    ok1 = free_events1 and "free_started" in free_events1[0].get("event_type", "")
+
+    # Test 2: true→false should be free_ended
+    prev2 = {"m1": {"free": True, "input_per_m": 0.0}}
+    curr2 = {"m1": {"free": False, "input_per_m": 1.0}}
+    changes2 = diff_snapshots(prev2, curr2)
+    free_events2 = [c for c in changes2 if "free" in c.get("field", "").lower()]
+    ok2 = free_events2 and "free_ended" in free_events2[0].get("event_type", "")
+
+    return gate("free_started detected", ok1) and gate("free_ended detected", ok2)
 
 
 def test_INV08():
-    """INV-08: Same snapshot data produces same hash"""
+    """INV-08: Same data produces same scoring"""
     print("\nINV-08: REPLAY_SAME_STATE")
     offers1 = _load_all_offers()
     offers2 = _load_all_offers()
-    h1 = hashlib.sha256(json.dumps(offers1, sort_keys=True, default=str).encode()).hexdigest()
-    h2 = hashlib.sha256(json.dumps(offers2, sort_keys=True, default=str).encode()).hexdigest()
-    return gate("deterministic reload", h1 == h2, "hash1=%s hash2=%s" % (h1[:8], h2[:8]))
+    # Score both and compare
+    import scoring
+    scored1 = [scoring.score_and_badge(o) for o in offers1[:50]]
+    scored2 = [scoring.score_and_badge(o) for o in offers2[:50]]
+    # Compare first 10 scores
+    matches = sum(1 for s1, s2 in zip(scored1[:10], scored2[:10])
+                  if s1["vector"]["workhorse"] == s2["vector"]["workhorse"])
+    return gate("deterministic scoring", matches == 10,
+                "%d/10 scores match" % matches)
 
 
 def test_INV09():

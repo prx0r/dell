@@ -8,17 +8,43 @@ Based on real data, not heuristics:
 - Context: real context windows from models.dev/OpenRouter
 
 Scoring formula (inspired by Databricks' real-world task completion research):
-  value = intelligence / effective_cost
+  value = intelligence * cost_score / 100
   
-Where effective_cost accounts for:
-  - actual token price
-  - rate limits (fewer requests = higher effective cost)
-  - context window (smaller = more re-prompting = higher effective cost)
+Where cost_score is inverted: higher = cheaper.
 """
 from __future__ import annotations
 
 import json
 from typing import Any
+
+# Badge labels for API responses
+BADGE_LABELS = {
+    "mega_deal": "🔥 Mega Deal",
+    "frontier": "🏆 Frontier",
+    "workhorse": "🐎 Workhorse",
+    "coder": "💻 Coder",
+    "agentic": "🤖 Agentic",
+    "fast": "⚡ Fast",
+    "hidden_gem": "💎 Hidden Gem",
+    "free": "🆓 Free",
+    "long_context": "📄 Long Context",
+    "tool_caller": "🛠️ Tool Caller",
+}
+
+# Badge rules (thresholds for automatic assignment)
+BADGE_RULES = {
+    "mega_deal": lambda v, o: (o.get("metadata",{}).get("capacity_multiplier") or 0) >= 3.0 or
+                               (o.get("metadata",{}).get("multiplier") or 0) >= 2.0,
+    "frontier": lambda v, o: (v.get("intelligence") or 0) >= 80,
+    "workhorse": lambda v, o: (v.get("workhorse") or 0) >= 70,
+    "coder": lambda v, o: (v.get("coding") or 0) >= 70,
+    "agentic": lambda v, o: (v.get("agentic") or 0) >= 60 and (v.get("tool_calling") or 0) >= 60,
+    "fast": lambda v, o: (v.get("speed") or 0) >= 80,
+    "hidden_gem": lambda v, o: (v.get("value") or 0) >= 80,
+    "free": lambda v, o: o.get("free", False),
+    "long_context": lambda v, o: (v.get("context_score") or 0) >= 80,
+    "tool_caller": lambda v, o: (v.get("tool_calling") or 0) >= 75,
+}
 
 # Benchmark scoring: use recognized benchmarks
 # From LLMRouterBench (ACL 2026): benchmarks predict real-world task performance
