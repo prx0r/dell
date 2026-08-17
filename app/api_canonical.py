@@ -394,6 +394,54 @@ def stats():
     }
 
 
+@app.get("/v1/probe")
+def probe(provider: str = None):
+    """Live probe of free API endpoints. Tests if endpoints actually work."""
+    import live_probe
+    if provider:
+        result = live_probe.probe_endpoint(provider)
+        return result
+    results = live_probe.probe_all()
+    return {"probes": results, "count": len(results)}
+
+
+@app.get("/v1/history")
+def history():
+    """Historical snapshot comparison — what changed since last poll."""
+    import history as hist
+    comparison = hist.get_latest_comparison()
+    if comparison is None:
+        return {"message": "No historical data yet. First poll creates baseline."}
+    return comparison
+
+
+@app.get("/v1/verify/{model_id:path}")
+def verify_deal(model_id: str):
+    """Verify a specific deal by probing its provider."""
+    import live_probe
+    all_offers = _load_all()["offers"]
+    matches = [o for o in all_offers if model_id.lower() in (o.get("model_id") or "").lower()]
+    if not matches:
+        return {"error": "Model not found", "model_id": model_id}
+
+    offer = matches[0]
+    provider_id = offer.get("provider_id", "")
+    probe_result = live_probe.get_probe_status(provider_id) or {}
+
+    return {
+        "model_id": model_id,
+        "provider": provider_id,
+        "price_per_m": offer.get("input_per_m"),
+        "free": offer.get("free"),
+        "mega_deal": offer.get("metadata", {}).get("capacity_multiplier") is not None or
+                     offer.get("metadata", {}).get("multiplier") is not None,
+        "live_probe": probe_result,
+        "source_url": offer.get("metadata", {}).get("source_url"),
+        "verification_status": "LIVE_PROBED" if probe_result.get("live") else
+                               "SOURCE_LINKED" if offer.get("metadata", {}).get("source_url") else "UNVERIFIED",
+    }
+
+
 
 @app.get("/v1/glossary")
 def glossary():
