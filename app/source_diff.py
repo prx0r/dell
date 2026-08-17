@@ -1,100 +1,116 @@
-"""Semantic diff engine for comparing offer snapshots."""
+"""app/source_diff.py — Semantic diff for offer snapshots.
 
-import logging
-from typing import Any, Optional
+Compares previous vs current state of offers, keyed by model_id.
+Detects price changes, free tier transitions, quota changes, etc.
+"""
+from __future__ import annotations
 
-logger = logging.getLogger(__name__)
-
-CHANGE_DETECTORS = {
-    "price_usd": "price_change",
-    "discount_percent": "discount_change",
-    "free_tier": "free_tier_change",
-    "rate_limit_rpm": "rate_limit_change",
-    "rate_limit_rpd": "rate_limit_change",
-    "rate_limit_tpd": "rate_limit_change",
-    "multiplier": "multiplier_change",
-    "quota_tokens": "quota_change",
-    "quota_requests": "quota_change",
-    "context_window": "context_change",
-    "promo_expiry": "expiry_change",
-}
-
-
-def _classify_change(key: str, prev_val: Any, curr_val: Any) -> dict:
-    """Classify the nature of a single field change."""
-    event_type = CHANGE_DETECTORS.get(key, "field_change")
-
-    direction = "increased"
-    if prev_val is None and curr_val is not None:
-        direction = "added"
-    elif prev_val is not None and curr_val is None:
-        direction = "removed"
-    elif prev_val is not None and curr_val is not None:
-        try:
-            if isinstance(prev_val, (int, float)) and isinstance(curr_val, (int, float)):
-                direction = "increased" if curr_val > prev_val else "decreased"
-            elif str(prev_val) != str(curr_val):
-                direction = "modified"
-        except Exception:
-            direction = "modified"
-
-    if event_type == "price_change" and direction == "decreased":
-        event_type = "price_drop"
-    elif event_type == "price_change" and direction == "increased":
-        event_type = "price_increase"
-
-    if key == "free_tier":
-        if prev_val and not curr_val:
-            event_type = "free_started"
-        elif not prev_val and curr_val:
-            event_type = "free_ended"
-        elif prev_val and curr_val:
-            event_type = "free_modified"
-
-    return {
-        "event_type": event_type,
-        "field": key,
-        "direction": direction,
-        "previous_value": prev_val,
-        "current_value": curr_val,
-    }
+from typing import Any
 
 
 def diff_snapshots(prev: dict, curr: dict) -> list[dict]:
-    """Compare two snapshots of the same offer and detect changes.
-
-    Args:
-        prev: Previous snapshot of the offer.
-        curr: Current snapshot of the offer.
-
-    Returns:
-        List of change event dicts with fields:
-            event_type, field, direction, previous_value, current_value
+    """Compare previous vs current offer states.
+    
+    Both prev and curr must be dicts keyed by model_id.
+    Returns list of change events.
     """
     if not isinstance(prev, dict) or not isinstance(curr, dict):
-        logger.error("Both prev and curr must be dicts, got %s and %s", type(prev), type(curr))
         return []
 
-    changes: list[dict] = []
-    all_keys = set(list(prev.keys()) + list(curr.keys()))
+    changes = []
 
-    for key in sorted(all_keys):
-        prev_val = prev.get(key)
-        curr_val = curr.get(key)
-
-        if prev_val == curr_val:
+    # Detect offers in current that weren't in previous (new offers)
+    for model_id, curr_state in curr.items():
+        if model_id not in prev:
+            changes.append({
+                "field": "offer_added",
+                "model_id": model_id,
+                "event_type": "offer_added",
+                "current": curr_state,
+            })
             continue
 
-        try:
-            change = _classify_change(key, prev_val, curr_val)
-            changes.append(change)
-            logger.debug("Change detected in field '%s': %s", key, change["event_type"])
-        except Exception as exc:
-            logger.error("Failed to classify change for field '%s': %s", key, exc)
+        prev_state = prev[model_id]
+        # Compare fields
+        field_changes = _compare_fields(prev_state, curr_state, model_id)
+        changes.extend(field_changes)
 
-    if changes:
-        logger.info("Detected %d changes between snapshots", len(changes))
-    else:
-        logger.debug("No changes detected between snapshots")
+    # Detect offers in previous that aren't in current (removed offers)
+    for model_id in prev:
+        if model_id not in curr:
+            changes.append({
+                "field": "offer_removed",
+                "model_id": model_id,
+                "event_type": "offer_removed",
+                "previous": prev[model_id],
+            })
 
     return changes
+
+
+def _compare_fields(prev: dict, curr: dict, model_id: str) -> list[dict]:
+    """Compare two offer states field by field."""
+    changes = []
+    
+    # Fields to compare with their transition types
+    fields = {
+        "free": _classify_free_transition,
+        "input_per_m": lambda p, c: _classify_price_transition(p, c, "input_per_m"),
+        "output_per_m": lambda p, c: _classify_price_transition(p, c, "output_per_m"),
+        "context_tokens": lambda p, c: _classify_value_change(p, c, "context_tokens"),
+        "requests_day": lambda p, c: _classify_value_change(p, c, "requests_day"),
+    }
+    
+    for field_name, classifier in fields.items():
+        prev_val = prev.get(field_name)
+        curr_val = curr.get(field_name)
+        if prev_val != curr_val:
+            change = classifier(prev_val, curr_val)
+            if change:
+                change["model_id"] = model_id
+                changes.append(change)
+    
+    return changes
+
+
+def _classify_free_transition(prev: Any, curr: Any) -> dict | None:
+    """Classify free tier transition."""
+    if prev is None and curr is None:
+        return None
+    if prev == curr:
+        return None
+    
+    # false → true = free_started (model became free)
+    # true → false = free_ended (model stopped being free)
+    if not prev and curr:
+        return {"field": "free", "event_type": "free_started", "previous": prev, "current": curr}
+    elif prev and not curr:
+        return {"field": "free", "event_type": "free_ended", "previous": prev, "current": curr}
+    else:
+        return {"field": "free", "event_type": "free_changed", "previous": prev, "current": curr}
+
+
+def _classify_price_transition(prev: Any, curr: Any, field: str) -> dict | None:
+    """Classify price change."""
+    if prev is None and curr is None:
+        return None
+    if prev == curr:
+        return None
+    
+    if prev is None and curr is not None:
+        return {"field": field, "event_type": "price_discovered", "previous": prev, "current": curr}
+    elif prev is not None and curr is None:
+        return {"field": field, "event_type": "price_lost", "previous": prev, "current": curr}
+    elif prev is not None and curr is not None:
+        if curr < prev:
+            return {"field": field, "event_type": "price_drop", "previous": prev, "current": curr}
+        elif curr > prev:
+            return {"field": field, "event_type": "price_increase", "previous": prev, "current": curr}
+    return None
+
+
+def _classify_value_change(prev: Any, curr: Any, field: str) -> dict | None:
+    """Classify general value change."""
+    if prev == curr:
+        return None
+    return {"field": field, "event_type": "value_changed", "previous": prev, "current": curr}

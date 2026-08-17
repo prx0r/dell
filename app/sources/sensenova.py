@@ -37,8 +37,8 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
         offers.append(OfferSnapshot(
             provider_id="sensenova", model_id="sensenova/public-beta",
             provider_model_slug="public-beta", offer_kind="free_tier", free=True,
-            requests_day=calls * 5,  # per 5h window
-            metadata={"source_url": URL, "calls_per_window": calls, "window_hours": 5,
-                      "automation_allowed": None,  # unknown, not fabricated
-                      "global_access": None}))  # unknown, not fabricated
+            metadata={"source_url": URL, "calls_per_window": calls,
+                      "window_hours": 5, "scope": "per_model",
+                      "automation_allowed": None,
+                      "global_access": None}))
     return offers

@@ -7,11 +7,10 @@ No code injection possible — arguments are parsed as JSON, not interpolated in
 import sys
 import json
 import os
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1] if "__file__" in dir() else Path("/root/ass-rape-spunk-porn")
 sys.path.insert(0, str(ROOT / "app"))
-
-from pathlib import Path
 
 def load_offers():
     offers = []
