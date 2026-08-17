@@ -260,9 +260,6 @@ def deals_live(limit: int = Query(20, le=100)):
             # Both must be fresh for "live" status
             if not price_fresh and not avail_fresh:
                 continue
-                    continue
-            except:
-                continue
         
         o["verification"] = {
             "level": level,
@@ -875,3 +872,37 @@ def plan_free_workload(
             "alternatives": len(fallback),
         }
     }
+
+
+@app.post("/v1/resolve")
+def resolve_route(request: dict):
+    """Resolve the best route for a workload.
+    
+    Input:
+    {
+      "workload": {"task": "coding", "input_tokens": 2000, "output_tokens": 1000},
+      "constraints": {"tools": "required", "context_tokens": {"min": 64000}},
+      "preferences": {"optimize": "cost"},
+      "evidence_policy": {"unknown": "exclude", "stale": "exclude"}
+    }
+    
+    Output:
+    {
+      "recommended": {...},
+      "alternatives": [...],
+      "excluded": [...],
+      "decision": {...}
+    }
+    """
+    from resolve import ResolveRequest, resolve
+    
+    data = _load_all()
+    req = ResolveRequest(
+        workload=request.get("workload"),
+        constraints=request.get("constraints"),
+        preferences=request.get("preferences"),
+        evidence_policy=request.get("evidence_policy"),
+    )
+    
+    result = resolve(req, data["offers"])
+    return result.to_dict()
