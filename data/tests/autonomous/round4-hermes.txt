@@ -1,0 +1,154 @@
+Here's my critical test report across all 7 MCP tools.
+
+============================================================
+MCP LLM DEALS API — CRITICAL TEST REPORT
+============================================================
+Scenario: Coding agent, 500 calls/day, tool calling, cheap inference
+
+DATASET OVERVIEW (get_dataset_stats)
+  2,405 total deals, 599 free, 102 providers.
+  Appears healthy at a glance — but see issues below.
+
+------------------------------------------------------------
+WHAT THE API RETURNED (summary)
+------------------------------------------------------------
+find_inference_deals (max_price=$0.001, task="coding agent"):
+  Returns 454 deals. Top hits: gpt-5.5-pro, gpt-5.6-sol, etc.
+  ALL show input_per_m=0, output_per_m=0, free=1.
+
+get_free_models:
+  599 free models. All OpenAI in the default response.
+  Mix of text, image, audio, realtime — no filtering by modality.
+
+get_best_by_badge("free"):
+  599 picks. Top: gpt-5.5-pro, gpt-5.6-sol, gpt-5.4-pro, etc.
+
+get_best_by_badge("agentic"):
+  0 picks. Empty result.
+
+recommend_model(tool_calling=true, max_cost=$0.001):
+  Picks openai/gpt-5.5-pro. Lists alternatives:
+    cheapest = rekaai/reka-edge
+    fastest  = openai/gpt-5.5-pro
+    smartest = openai/gpt-5.5-pro
+
+explain_deal: Returns raw offer record. No human-readable summary.
+
+get_provider_setup("openai"):
+  Difficulty 2/5. Free tier: "$5 free credit (limited time)".
+
+get_deal_changes: 24 events, mostly zai, upstage, vercel, akashml.
+
+============================================================
+ISSUE LIST — BROKEN / UNCLEAR / MISSING
+============================================================
+
+1. CRITICAL — "Free" flag appears unreliable / possibly bogus.
+   Every OpenAI model (gpt-5.5-pro, gpt-5.6-sol, whisper, image
+   models) shows input_per_m=0, output_per_m=0, free=1. OpenAI's
+   own pricing page shows these are NOT free. The dataset is
+   pulling from models.dev which may mark everything as free
+   incorrectly. This is a data integrity issue that makes the
+   entire "free" filter untrustworthy.
+
+2. CRITICAL — No actual price data for non-free models.
+   When input_per_m and output_per_m are both 0 for 599/599
+   "free" models, the "max_price" filter in find_inference_deals
+   has no discriminatory power. There's no way to compare cheap
+   vs expensive since no prices are stored for the paid alternatives.
+
+3. CRITICAL — Rate limits and quotas are ALL null.
+   requests_per_day, requests_per_5h, requests_per_minute,
+   tokens_per_day — all null for every single deal. For a 500
+   calls/day use case, this is essential data. Without it you
+   cannot assess whether a free model can actually handle the
+   workload.
+
+4. HIGH — "agentic" badge returns 0 results.
+   get_best_by_badge("agentic") is empty despite many models
+   having tool_call=true in metadata. The badge system either
+   has a definition mismatch or the agentic badge was never
+   assigned to any model.
+
+5. HIGH — recommend_model ignores tool_calling filter.
+   Despite tool_calling=true, the result recommends gpt-5.5-pro
+   first. But the vector shows tool_calling=null. It also
+   recommends rekaai/reka-edge as "cheapest" without explaining
+   what that model is or whether it supports tool calling.
+   The scoring method (benchmark_weighted) reports
+   benchmark_count=0 for every model — so the ranking is
+   essentially random among ties.
+
+6. HIGH — Scoring vector is mostly empty.
+   Every model in get_best_by_badge and recommend_model has
+   intelligence=null, coding=null, research=null, agentic=null,
+   speed=null, tool_calling=null. Only cost_score, context_score,
+   reliability, workhorse, and value are populated. The _meta
+   confirms "benchmark_count: 0" and "dimensions_with_data: 4/7".
+   The badge ranking is meaningless.
+
+7. MEDIUM — explain_deal returns raw record, not an explanation.
+   The tool is named "explain_deal" but returns the same raw
+   JSON record as find_inference_deals. It doesn't explain:
+   what the deal means, whether it's real, how to access it,
+   what catches exist, or compare to alternatives.
+
+8. MEDIUM — get_free_models doesn't filter by capability.
+   Returns whisper (audio transcription), gpt-image-1 (image
+   generation), and gpt-realtime-2.1 (speech-to-speech) alongside
+   text models. No way to filter by modality or capability.
+   A coding agent gets irrelevant results.
+
+9. MEDIUM — get_provider_setup says "Add payment method (required)"
+   but the free tier is "$5 free credit (limited time)". This
+   contradicts the "free" deals. If payment is required, the
+   free claims in the dataset need a note about prerequisites.
+
+10. MEDIUM — All deals come from a single source (models.dev).
+    Every offer has source_url pointing to models.dev. The 102
+    providers in the dataset and the 30+ alternative sources
+    listed elsewhere (openrouter, etc.) are not surfacing in
+    actual deal records. The dataset claims breadth but delivers
+    one source.
+
+11. LOW — get_deal_changes has duplicate events.
+    The same zai $18/month and upstage 90% off entries appear
+    3-4 times each. No deduplication by source+text. No timestamp
+    on individual events (only the since_hours filter).
+
+12. LOW — No "alternatives" link from explain_deal.
+    explain_deal returns one offer record. It doesn't surface
+    the alternatives that recommend_model does, or the badge
+    context from get_best_by_badge. Each tool is isolated.
+
+13. LOW — automation_allowed and requires_card/phone/kyc are null.
+    For a coding agent use case, knowing if automation is allowed
+    is critical. These fields exist in the schema but are never
+    populated.
+
+14. LOW — No freshness/staleness indicator.
+    All records show created_at=2026-08-17 (today) and
+    updated_at within minutes. But there's no "last_verified"
+    or "data_age_days" field. A deal from models.dev could be
+    stale and the API would still mark it active.
+
+15. COSMETIC — find_inference_deals returns 454 results for a
+    max_price=0.001 query. This means virtually everything in
+    the dataset qualifies, suggesting the price filter is
+    non-functional given the zeroed-out pricing.
+
+============================================================
+BOTTOM LINE FOR THE USE CASE
+============================================================
+
+Recommended pick (if data were trustworthy): openai/gpt-5.6-luna
+  - tool_call=true, 1050K context, "cost-efficient" per description
+  - Coding Agent Index: 74.6, SWE-Bench Pro: 62.7
+  - BUT: you cannot verify it's actually free or what the real
+    price is, and rate limits are unknown.
+
+The API surface (7 tools) covers the right workflows, but the
+data quality issues (all-zero pricing, null rate limits, empty
+scoring vectors, single-source dependency) mean the recommendations
+are not yet actionable for production use. The badge/scoring system
+needs real benchmark data before it can differentiate models.

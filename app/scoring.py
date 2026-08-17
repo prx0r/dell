@@ -170,7 +170,13 @@ def score_vector(offer: dict, provider_meta=None) -> dict:
     reliability = 70  # baseline until we have real health data
 
     # --- Tool calling: from model metadata ---
-    tool_calling = 70 if meta.get("tool_call") else 30
+    tc = meta.get("tool_call")
+    if tc is True:
+        tool_calling = 70
+    elif tc is False:
+        tool_calling = 30
+    else:
+        tool_calling = None  # Unknown — don't penalize
 
     # --- Workhorse: composite score ---
     # Weighted average of available dimensions
@@ -181,7 +187,7 @@ def score_vector(offer: dict, provider_meta=None) -> dict:
     if speed is not None: dims["speed"] = speed
     if ctx_score is not None: dims["context"] = ctx_score
     dims["reliability"] = reliability
-    dims["tool_calling"] = tool_calling
+    dims["tool_calling"] = tool_calling if tool_calling is not None else 50  # Unknown = moderate
 
     if dims:
         workhorse = sum(dims.values()) / len(dims)
@@ -212,7 +218,7 @@ def score_vector(offer: dict, provider_meta=None) -> dict:
         "cost_score": round(cost_score, 1) if cost_score is not None else None,
         "context_score": round(ctx_score, 1) if ctx_score is not None else None,
         "reliability": round(reliability, 1),
-        "tool_calling": round(tool_calling, 1),
+        "tool_calling": round(tool_calling, 1) if tool_calling is not None else None,
         "workhorse": round(workhorse, 1),
         "value": round(value, 1) if value is not None else None,
         "_meta": {
@@ -302,7 +308,10 @@ def recommend(offers: list[dict], task: str = "coding",
     if min_context:
         scored = [s for s in scored if (s.get("context_tokens") or 0) >= min_context]
     if tool_calling:
-        scored = [s for s in scored if s["vector"].get("tool_calling", 0) >= 60]
+        # Filter by tool_calling: accept if known tool_call=True, or unknown (None)
+        scored = [s for s in scored
+                  if (s["vector"].get("tool_calling") or 0) >= 60
+                  or s["vector"].get("tool_calling") is None]
     if budget is not None:
         scored = [s for s in scored if s.get("free") or
                   (s.get("input_per_m") or 999) * 10000 / 1e6 <= budget]

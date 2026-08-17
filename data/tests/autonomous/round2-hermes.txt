@@ -1,0 +1,168 @@
+Now I have a thorough picture. Here's the full test report.
+
+---
+
+LLM DEALS API — TEST REPORT (7 MCP tools, 2026-08-17)
+
+Test scenario: "I need cheap inference for a coding agent doing 500 calls/day with tool calling."
+
+=====================================================================
+TOOL-BY-TOOL RESULTS
+=====================================================================
+
+get_dataset_stats: Works. Returns 2405 total, 599 free, 102 providers.
+  Minimal output but accurate and fast.
+
+find_inference_deals: Works but has issues (see below).
+
+get_free_models: Works. Returns 599 free models with full schemas.
+
+get_best_by_badge: Partially broken (see below).
+
+recommend_model: BROKEN for all tested queries.
+
+explain_deal: Works. Returns raw offer data with metadata.
+
+get_provider_setup: Works. Returns setup steps + difficulty rating.
+
+get_deal_changes: Works but noisy (see below).
+
+=====================================================================
+NUMBERED ISSUES
+=====================================================================
+
+1. recommend_model ALWAYS returns null
+   Tested 3 different queries (with cost/context constraints, with
+   tool_calling=true, with free-form task description). Every call
+   returns {"pick": null, "why": ["No models match your criteria"],
+   "alternatives": {}}. This is the single most important tool for
+   the use case and it's completely non-functional. The error message
+   gives no hint about what's wrong — are the params wrong? Is the
+   index empty? Is it a schema mismatch?
+
+2. get_best_by_badge: "coder" badge returns 0 results
+   "coder" is listed as a valid badge in the tool description but
+   returns {"count": 0, "picks": []}. Same for "agentic", "fast",
+   and "big-brain" — all return 0. Only "free" and "workhorse" work.
+   This means 4 of 6 documented badges are dead.
+
+3. get_best_by_badge: all working picks have identical scores
+   Every model in "free" and "workhorse" returns the EXACT same
+   vector: intelligence=null, coding=null, agentic=null, speed=null,
+   tool_calling=30, workhorse=75. The ranking is meaningless — it
+   looks like the scoring system has no actual benchmark data for
+   these models despite the metadata_json containing benchmark scores.
+   The _meta says "benchmark_count: 0" and "data_sources:
+   intelligence: none" which confirms the scoring is running on empty.
+
+4. "Free" models are almost certainly not real free offers
+   gpt-5.6-sol, gpt-5.5-pro, gpt-5.4-pro are listed as "free=1" with
+   input_per_m=0, output_per_m=0. These are frontier models that cost
+   real money to run. The "free" flag likely means "free tier" on
+   models.dev's data feed, which is different from "actually free to
+   use." There's no field distinguishing "free tier listing" from
+   "actually zero-cost API access." A user trusting this data would
+   expect $0 bills and get charged.
+
+5. All "free" models have zero rate limits recorded
+   Every free model has requests_per_day=null, tokens_per_day=null,
+   quota_scope=null. If these are truly free, they have usage caps
+   somewhere. If they're not truly free, the free=1 flag is
+   misleading. Either way, the user can't plan around invisible
+   limits.
+
+6. find_inference_deals with max_price=0.5 returns image models
+   gpt-image-1.5 (an image generator) is the first result for
+   "code generation" with max_price=0.5. The tool doesn't filter by
+   modality or task relevance — it just returns everything under the
+   price. Same problem: whisper-large-v3 (audio transcription) shows
+   up for a "code generation" query.
+
+7. find_inference_deals doesn't filter by tool_calling capability
+   The task param accepts free text but has no effect on filtering.
+   gpt-3.5-turbo (tool_call=false in metadata) shows up in a
+   "code generation" search that should require tool calling. The
+   "task" parameter appears to be cosmetic.
+
+8. explain_deal returns raw data, not an explanation
+   Despite the name "explain_deal," it returns the same raw JSON
+   record that find_inference_deals returns. There's no plain-English
+   summary, no comparison to alternatives, no verification status,
+   no warning about the deal being potentially fake. The user has to
+   parse JSON blobs with escaped-JSON-inside-JSON (metadata_json) to
+   understand what they're looking at.
+
+9. explain_deal returns multiple unrelated offers
+   Querying "openai/gpt-4o-mini" returns 2 results: the main offer
+   AND "gpt-4o-mini-realtime-dec-2024" which is a completely
+   different product (realtime voice). There's no way to distinguish
+   them — the tool returns a list with no explanation of why they
+   were matched or how they differ.
+
+10. metadata_json is escaped JSON inside JSON — a serialization smell
+    Every record has metadata_json as a STRING containing escaped
+    JSON (\"source_url\": \"...\", etc). This forces every consumer
+    to double-parse. It should be a nested object, not a serialized
+    string.
+
+11. get_deal_changes has massive duplication
+    The 24 results contain the same events repeated 3-4 times
+    (e.g., "upstage 90% off" appears 3 times, "akashml $100 credit"
+    appears 4 times, "vercel launch pricing" appears 4 times). There
+    appears to be no deduplication. All changes are from the same
+    timestamp — no way to tell what's genuinely new vs. a re-scrape.
+
+12. get_deal_changes events lack model/provider linkage
+    Each change has source_id (e.g., "zai", "upstage") but no
+    model_id or offer_id. The user sees "90% off from upstage" but
+    doesn't know which model, what the original price was, or what
+    the discounted price is. The details object is inconsistent:
+    some have price_usd, some have discount_percent, some have just
+    a note string.
+
+13. get_provider_setup: no mention of API key requirements or rate limits
+    OpenAI setup says "Add payment method (required)" but doesn't
+    mention the actual free credit amount clearly (just "$5 free credit
+    on signup (limited time)"), doesn't list rate limits, and doesn't
+    note that models.dev's "free" OpenAI models aren't actually
+    accessible without billing. The difficulty rating (2) is opaque —
+    what's the scale?
+
+14. No provider filtering on find_inference_deals or get_free_models
+    With 102 providers and 599 free models, there's no way to filter
+    by provider in the list endpoints. The user must paginate through
+    everything.
+
+15. All "free" offers have source_url pointing to models.dev only
+    599 models are tagged free=1, but every single one traces to
+    "https://models.dev/models.json". No cross-verification from
+    other sources (OpenRouter, provider APIs, etc). Per the project's
+    "One Rule": a number isn't real until verified against a real
+    source. These are scraped listings, not verified deals.
+
+16. No staleness/expiry indicators
+    created_at and updated_at are present but starts_at and
+    expires_at are null on virtually every record. There's no way to
+    know if a "free" offer expired yesterday or runs forever. The
+    get_deal_changes tool partially addresses this but is too noisy
+    and undeduplicated to be useful.
+
+=====================================================================
+SUMMARY
+=====================================================================
+
+Tools that work:       get_dataset_stats, get_free_models,
+                       get_provider_setup
+
+Tools that partially work: find_inference_deals, explain_deal,
+                          get_best_by_badge (only 2/6 badges),
+                          get_deal_changes (noisy)
+
+Tools that are broken: recommend_model (always null)
+
+Critical gap for your use case: The tool you'd most want —
+"recommend me a cheap model for coding with tool calling" — is
+completely broken. The badge system is mostly decorative (4/6 dead).
+The free flag is unreliable (frontier models listed as $0). And there
+is no way to filter or search by the single most important capability:
+tool_calling support.

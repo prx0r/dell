@@ -1,0 +1,164 @@
+All 7 tools exercised. Here is the full test report.
+
+====================================================================
+LLM DEALS API — TEST REPORT
+Test scenario: Cheap inference for coding agent, 500 calls/day, tool calling
+Tools tested: all 7 (get_dataset_stats, find_inference_deals, get_free_models,
+                get_best_by_badge, recommend_model, get_provider_setup, explain_deal)
+Plus: get_providers, get_deal_changes
+====================================================================
+
+TOOLS THAT WORKED
+-----------------
+
+1. get_dataset_stats — Clean. Returns total/free/provider counts. OK.
+   Result: 2405 models, 599 free, 102 providers.
+
+2. get_free_models — Returns a list. OK structurally, but see issues below.
+
+3. find_inference_deals — Returns deals sorted by relevance. Has both
+   free and paid results. The "task" and "max_price" params work.
+   Note: the free_only=true call returned the same 599 count as
+   get_free_models — correct dedup.
+
+4. get_best_by_badge — Works for "free" and "workhorse". OK.
+   Returns scored picks with vector dimensions.
+
+5. get_provider_setup — Clean, returns steps + difficulty + free_tier. OK.
+
+6. get_providers — Rich data: steps, rate limits, capabilities. Best
+   endpoint for provider comparison.
+
+7. get_deal_changes — Returns recent events. OK, but see issues below.
+
+
+====================================================================
+ISSUES (numbered)
+====================================================================
+
+1. recommend_model is BROKEN for tool_calling=true queries.
+   With task="coding", tool_calling=true: returns {pick: null,
+   "No models match your criteria"}.
+   With task="coding", tool_calling=true, max_cost=10: same null.
+   With task="general chat" (no tool_calling): returns gpt-5.5-pro.
+   CONCLUSION: The tool_calling filter logic is broken or the
+   metadata is not being matched against correctly. The dataset
+   clearly has models with tool_call=true in metadata_json.
+
+2. get_best_by_badge("coder") returns EMPTY (count=0, picks=[]).
+   The badge "coder" does not exist despite models having coding
+   benchmarks (SWE-Bench, Terminal-Bench, etc.). There are only
+   badges "free", "workhorse", and "long_context" apparently.
+   MISSING BADGES: coder, agentic, fast, big-brain — all advertised
+   in the tool description as valid options.
+
+3. recommend_model returns the SAME score (75) for ALL 5 picks,
+   and the SAME vector for all. The top 5 are:
+   gpt-5.5-pro, gpt-5.6-sol, gpt-5.4-pro, gpt-5.6-luna, gpt-4.1-nano
+   — all scoring 75 with identical vectors. This means the scoring
+   function is NOT differentiating between models. A 1M-context pro
+   model and a 1M-context nano model getting the same score is wrong.
+   The _meta says "benchmark_count: 0, dimensions_with_data: 4/7"
+   confirming most dimensions are null/unpopulated.
+
+4. Scoring vector is mostly NULL. For every model in get_best_by_badge
+   and recommend_model: intelligence=null, coding=null, research=null,
+   agentic=null, speed=null. Only cost_score, context_score,
+   reliability, tool_calling, workhorse, value have numbers. The
+   "benchmark_weighted" method has zero benchmarks. This makes the
+   ranking meaningless for quality differentiation.
+
+5. explain_deal is a DUMB PASS-THROUGH. It just returns the raw
+   deal record — the same thing you can get from find_inference_deals.
+   It says it should explain "alternatives" and context, but it
+   returns a single raw offer record with no human-readable explanation,
+   no comparison, no "why this deal" narrative.
+
+6. get_free_models returns models with NO REQUEST LIMITS even though
+   the provider (Groq) documents 30 RPM, 1000 RPD. Every free model
+   shows requests_per_day=null, requests_per_minute=null, tokens_per_day
+   =null. This makes "free" deceptive — users can't know if a "free"
+   model has hidden rate limits that make it unusable for 500 calls/day.
+
+7. All free models are from OpenAI. The free_models endpoint returned
+   20 results, ALL from openai provider. The dataset has 599 free models
+   across 102 providers — the endpoint appears to not paginate properly
+   or to be default-sorting to one provider. Models from Groq, Cerebras,
+   Google (Gemini free tier), Mistral, etc. are missing from the free list.
+
+8. find_inference_deals with task="coding" returns WHISPER and IMAGE
+   models. Whisper (audio transcription) and gpt-image-1.5 (image
+   generation) are not coding models. The task filter is either not
+   working or the "coding" keyword is too loose.
+
+9. get_deal_changes has DUPLICATE entries. The same zai "$18/month"
+   event appears 3 times. The same upstage "90% off" appears 3 times.
+   The same akashml "$100 free credit" appears 4 times. This looks
+   like a dedup bug in the change detection pipeline.
+
+10. get_deal_changes returns RAW EVENTS, not structured changes.
+    Each entry is a fragment (price_mention, credit_amount, etc.)
+    with no model_id, no provider context, no before/after pricing.
+    You can't tell WHICH model the "$18/month" refers to without
+    cross-referencing source_id="zai" manually.
+
+11. metadata_json is DOUBLE-ESCAPED. Every deal has metadata_json
+    as a JSON string containing another JSON string. Example:
+    metadata_json="{\"source_url\": \"...\", \"tool_call\": true, ...}"
+    This means consumers must json.loads() the field, then
+    json.loads() again to get the actual object. Unusual and error-prone.
+
+12. Rate limits are MISSING from deal records. For paid deals like
+    gpt-4o ($2.50/M input), there's no requests_per_minute,
+    requests_per_day, or tokens_per_day. For a user doing 500 calls/day,
+    you can't determine if a deal will work without checking the
+    provider's external docs.
+
+13. effective_cost_per_task is always null in recommend_model output.
+    Even though it has pricing data (input_per_m, output_per_m),
+    it can't estimate a per-task cost for a coding agent doing
+    500 calls/day. This is the ONE number a user most wants.
+
+14. "source" attribution is INCONSISTENT. Some deals cite
+    "https://models.dev/models.json", others cite
+    "https://artificialanalysis.ai/api/v2/language/models/free?page=3".
+    The "free" models from models.dev have $0 pricing. The paid
+    models from AA have actual prices. But the dataset doesn't
+    indicate whether models.dev "$0/free" means genuinely free or
+    just missing pricing data.
+
+15. No "last_verified" or "freshness" indicator on deals. A deal
+    from 2023 (gpt-3.5-turbo, last_updated 2023-11-06) sits next
+    to 2026 deals. Users can't tell if a "free" deal is current or
+    a stale artifact from the source feed.
+
+
+====================================================================
+FOR THE USE CASE: 500 calls/day coding agent with tool calling
+====================================================================
+
+The API CANNOT actually answer this question. Here is why:
+
+- recommend_model returns null when tool_calling=true (BUG #1)
+- get_best_by_badge("coder") returns empty (BUG #2)
+- The ranking scores are all identical (BUG #3-4)
+- Free models show no rate limits (BUG #6)
+
+Best I can reconstruct manually from the raw data:
+- gpt-4.1-nano is free, has tool_call=true, 1M context, but coding
+  benchmark is just 8.9% on Aider Polyglot — terrible for coding.
+- gpt-5.1-codex-mini is free, tool_call=true, 400K context, no
+  coding benchmarks published.
+- gpt-5.3-codex is free, tool_call=true, 400K context, has SWE-Atlas
+  benchmarks but they're mediocre (32-42%).
+- gpt-5.4-mini is free, tool_call=true, 400K context, has strong
+  benchmarks (SWE-Bench 54.4%, OSWorld 72.1%).
+
+BUT: none of these "free" offers disclose rate limits. If OpenAI's
+actual free API caps at 10 RPM, you can only do 14,400 calls/day.
+If it caps at 3 RPM, you're at 4,320. Without this data in the API,
+the user can't plan.
+
+The honest answer from this API: "Here are free models with tool
+calling, but I can't tell you which one is best or if any of them
+will handle your volume."

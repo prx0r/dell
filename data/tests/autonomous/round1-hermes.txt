@@ -1,0 +1,175 @@
+Here's the full test report.
+
+========================================================================
+LLM DEALS API — CRITICAL TEST REPORT
+Use case: 500 calls/day coding agent, tool calling required, cheap inference
+========================================================================
+
+TOOL-BY-TOOL RESULTS
+------------------------------------------------------------------------
+
+1. get_dataset_stats — WORKS
+   Returns: 2405 total offers, 599 free, 102 providers.
+   Assessment: Clean, minimal response. Good.
+
+2. get_free_models — WORKS (with caveats)
+   Returns 599 free offers. Mostly OpenAI models with input_per_m=0,
+   output_per_m=0. Includes image models (gpt-image-1), audio models
+   (whisper), and realtime models — not useful for a coding agent but
+   returned anyway. No filtering by modality or capability.
+
+3. get_best_by_badge — PARTIALLY BROKEN
+   - "free" badge: works, returns 599 picks (the full free set)
+   - "workhorse" badge: works, returns 296 picks
+   - "coder" badge: BROKEN — returns 0 picks
+   - "agentic" badge: BROKEN — returns 0 picks
+
+   The badge system exists (badges like "free", "workhorse",
+   "long_context" appear in the vector output) but key use-case
+   badges ("coder", "agentic") are empty. For a coding agent user,
+   this is the most important query and it returns nothing.
+
+4. find_inference_deals — WORKS (with issues)
+   - Returned 842 results for max_price=0.5, task="coding with tool
+     calling" — but the results are NOT filtered by task or price.
+     Image models, audio transcription, and deep research models
+     all appear. The "task" parameter appears ignored.
+   - free_only=true filter: also appears ignored — same results
+     include paid models (gpt-5-nano at $0.05/$0.40 per M).
+   - The tool returns everything, not a curated list.
+
+5. recommend_model — BROKEN
+   Both calls returned: {"pick": null, "why": ["No models match
+   your criteria"], "alternatives": {}}
+   - Call 1: max_cost=1, task="coding agent with tool calling",
+     tool_calling=true — zero results despite many free models with
+     tool_call=true in the dataset.
+   - Call 2: max_cost=0.5, min_context=128000, task="coding",
+     tool_calling=true — same empty result.
+
+   This is the MOST BROKEN tool. It's the one a user would actually
+   rely on to get a recommendation. The filtering logic is too
+   restrictive or the parameters aren't being applied correctly.
+
+6. explain_deal — WORKS
+   - openai/gpt-5-nano: returns 3 variants (base, minimal, medium).
+     Good detail: pricing, context, source URL, intelligence index.
+   - openai/gpt-5.6-sol: returns 1 offer. Shows benchmarks,
+     metadata, description. Useful.
+   - anthropic/claude-sonnet-4: returns 5 variants. Shows both
+     free (models.dev sourced) and paid (artificialanalysis sourced)
+     offers. Good.
+
+7. get_provider_setup — WORKS
+   Returns structured setup steps for each provider. Tested
+   openrouter and anthropic. Both accurate and useful.
+
+8. get_providers — WORKS
+   Returns 15 providers with good detail: setup steps, rate limits,
+   capabilities (tool_calling, vision, etc.), agentic notes.
+   Useful for comparing providers.
+
+9. get_deal_changes — WORKS (with noise)
+   Returns 24 changes over 7 days. Contains duplicates (same
+   akashml "$100 free credit" appears 4 times, same upstage
+   discount appears 3x). Events are raw mentions, not deduplicated.
+
+========================================================================
+ISSUES — NUMBERED LIST
+========================================================================
+
+1. recommend_model is completely broken for the core use case.
+   "coding agent, tool calling, $1/day" should return dozens of
+   candidates. Returns null with "No models match" every time.
+   The filtering logic is either too strict or the parameters
+   (task, tool_calling, max_cost, min_context) aren't wired
+   through to the query.
+
+2. get_best_by_badge("coder") returns 0 picks. Same for "agentic".
+   These are the two most important badges for the stated use case.
+   The badge taxonomy appears incomplete — "free" and "workhorse"
+   work, but the specialized badges are hollow.
+
+3. find_inference_deals ignores the "task" parameter. Passing
+   task="coding with tool calling" returns image models, audio
+   models, and deep research models. No task-based filtering is
+   happening.
+
+4. find_inference_deals ignores the "free_only" parameter. Setting
+   free_only=true still returns paid models (gpt-5-nano at
+   $0.05/$0.40 per M). The flag is a no-op.
+
+5. get_free_models returns image/audio/realtime models alongside
+   text chat models. No filtering by modality, capability, or
+   use case. A coding agent user gets whisper-large-v3 as a
+   "free model" suggestion — useless for their task.
+
+6. All "free" offers have input_per_m=0 and output_per_m=0 with
+   NO rate limits recorded (requests_per_day=null, tokens_per_day=
+   null). These are almost certainly from models.dev which reports
+   list prices, not actual free-tier quotas. The dataset conflates
+   "price listed as $0 on a model catalog" with "actually free to
+   use at volume". Critical distinction missing.
+
+7. get_deal_changes has no deduplication. The same source event
+   appears 3-4x in a single 7-day window. Makes the feed noisy
+   and unreliable for automation.
+
+8. get_best_by_badge returns identical vector scores for every
+   pick in the result set (all 10 free picks have the exact same
+   vector: cost=100, context=100, reliability=70, tool_calling=30,
+   workhorse=75, value=50). This means the ranking is meaningless —
+   there's no differentiation between a nano model and a frontier
+   model. The scoring algorithm isn't producing differentiated
+   results.
+
+9. explain_deal for openai/gpt-5.6-sol returns the model as "free"
+   (input=0, output=0) from models.dev. But GPT-5.6 Sol is a
+   frontier model — this is almost certainly wrong. The dataset
+   has a "free" flag problem where models.dev catalog entries with
+   no price data are being treated as free.
+
+10. No tool provides a way to filter by provider. You can't ask
+    "what's cheap on Groq" or "what's free on Together" directly.
+    get_providers lists providers but find_inference_deals and
+    recommend_model don't accept provider filters.
+
+11. The get_providers data has inconsistencies. OpenRouter says
+    "200 free requests/day" in free_requests_day but the rate_limit_notes
+    say "50 RPD" for free tier. These contradict each other.
+
+12. No tool provides total cost estimation. For a 500 calls/day
+    agent, the user needs "what will this cost per month?" — none
+    of the tools compute this. You have to manually multiply
+    pricing * estimated tokens.
+
+13. All results are wrapped in {"result": "..."} where the inner
+    value is a JSON STRING, not a parsed object. Every consumer
+    has to double-parse. This is an API ergonomics issue.
+
+14. No error states were observed (good), but there's also no way
+    to test invalid inputs — the tools either work or return empty.
+    No validation feedback for bad model names, unknown providers,
+    etc.
+
+========================================================================
+VERDICT
+========================================================================
+
+get_dataset_stats, explain_deal, get_provider_setup, get_providers:
+  These 4 tools work well and provide genuine value.
+
+get_free_models, get_best_by_badge, find_inference_deals:
+  These return data but the data is poorly filtered, not
+  deduplicated, and the "free" classification is unreliable.
+
+recommend_model:
+  Completely broken. Returns null for every reasonable query.
+  This is the most important tool for the stated use case.
+
+For the 500-calls/day coding agent scenario: you CANNOT get a
+useful recommendation from this API. You'd have to manually
+cross-reference find_inference_deals results with the metadata
+JSON (checking tool_call=true) and ignore the broken task/filter
+parameters. The API surface promises more than it delivers.
+========================================================================

@@ -83,7 +83,20 @@ def _load_all() -> dict:
     """Load from canonical SQLite DB. No silent fallback — DB is the truth."""
     conn = canonical_db.connect()
     canonical_db.migrate(conn)
-    offers = canonical_db.get_all_offers(conn)
+    rows = conn.execute("SELECT * FROM offers ORDER BY provider_id, model_id").fetchall()
+    offers = []
+    for r in rows:
+        o = dict(r)
+        # Parse metadata_json string into dict
+        meta_str = o.get("metadata_json", "{}")
+        if isinstance(meta_str, str):
+            try:
+                o["metadata"] = json.loads(meta_str)
+            except (json.JSONDecodeError, TypeError):
+                o["metadata"] = {}
+        else:
+            o["metadata"] = meta_str or {}
+        offers.append(o)
     conn.close()
     return {"offers": offers, "events": []}
 
@@ -160,7 +173,7 @@ def list_offerings(provider: str = None, model: str = None, free: bool = None,
 def list_deals(task: str = None, max_price: float = None, free: bool = None,
                openai_compatible: bool = None, automation_allowed: bool = None,
                country: str = None, min_context: int = None,
-               limit: int = Query(50, le=200)):
+               tool_calling: bool = None, limit: int = Query(50, le=200)):
     """What deals/promos/credits exist. The main endpoint."""
     data = _load_all()
     result = []
@@ -172,13 +185,14 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
             if in_m is not None and in_m > max_price:
                 continue
             elif in_m is None:
-                continue  # exclude unknown prices from max_price filter
+                continue
         if min_context and (o.get("context_tokens") or 0) < min_context:
             continue
-        # Filter by task capability (tool calling for agentic tasks)
-        if task in ("coding", "agentic", "agentic_coding") and not o.get("metadata", {}).get("tool_call"):
-            # Allow through but note it
-            pass
+        # Filter by tool calling capability
+        if tool_calling is True:
+            meta = o.get("metadata", {})
+            if not meta.get("tool_call") and not o.get("metadata_json", "").find('"tool_call":true') >= 0:
+                continue
         # Filter by OpenAI compatibility
         if openai_compatible is not None:
             prov = providers_mod.get_provider(o.get("provider_id", ""))
