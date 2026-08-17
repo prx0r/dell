@@ -222,9 +222,16 @@ def deals_live(limit: int = Query(20, le=100)):
 
 
 @app.get("/v1/deals/free")
-def deals_free(limit: int = Query(20, le=100)):
-    """Free models/offers."""
-    return list_deals(free=True, limit=limit)
+def deals_free(limit: int = Query(20, le=100), qualified: bool = Query(True)):
+    """Free models ranked by actual utility (not just 'free')."""
+    data = _load_all()
+    if qualified:
+        from free_qualification import rank_free_deals
+        ranked = rank_free_deals(data["offers"])
+        return {"deals": ranked[:limit], "count": len(ranked),
+                "note": "Ranked by utility: context + capabilities + rate limits + provider quality"}
+    else:
+        return list_deals(free=True, limit=limit)
 
 
 @app.get("/v1/deals/expiring")
