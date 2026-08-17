@@ -191,3 +191,70 @@ Even better coverage
 ```
 
 The data layer becomes the gravity well. Everything else orbits it.
+
+---
+
+## Vision: LLM Routing with LiteLLM
+
+### The Idea
+
+LLM Deals becomes the intelligence layer that LiteLLM routes over.
+
+```
+LLM Deals (data layer)
+    ↓
+LiteLLM (routing layer)
+    ↓
+Providers (execution layer)
+```
+
+### How It Works
+
+1. **LLM Deals** tracks: prices, deals, quotas, rate limits, provider health
+2. **LiteLLM** routes: picks the best provider/model for each request
+3. **Providers** execute: actually run the inference
+
+### Integration Points
+
+LiteLLM can consume our data via:
+- REST API (`/v1/deals`, `/v1/recommend`)
+- MCP tools (`find_inference_deals`, `recommend_model`)
+- Static exports (`deals.json`, `workhorses.json`)
+
+### The Killer Feature
+
+```python
+# User configures LiteLLM
+litellm_settings = {
+    "model": "hot/workhorse",
+    "routing_strategy": "cost-optimized",
+    "fallback": "hot/free",
+    "rate_limit_aware": True,
+}
+
+# LiteLLM queries LLM Deals for:
+# - Current prices across all providers
+# - Free tier availability
+# - Rate limits per provider
+# - Provider health status
+# - Deal expiry tracking
+
+# Then routes each request to the optimal provider
+```
+
+### Revenue Model
+
+1. **LLM Deals API** — data layer ($29/mo Pro)
+2. **LiteLLM integration** — free, drives adoption
+3. **Provider partnerships** — they submit deals to us
+4. **White-label** — enterprise deploys our data layer
+
+### The Flywheel
+
+```
+More data sources → More deals → More agents use us
+    → More providers submit deals → Better data
+    → More integrations → More adoption
+```
+
+We become the Bloomberg terminal for LLM inference.
