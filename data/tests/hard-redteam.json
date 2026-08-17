@@ -1,0 +1,62 @@
+[
+  {
+    "attack": "SQL_injection",
+    "status": "PASS",
+    "detail": "Handled safely"
+  },
+  {
+    "attack": "massive_limit",
+    "status": "PASS",
+    "detail": "Returned 0"
+  },
+  {
+    "attack": "negative_limit",
+    "status": "PASS",
+    "detail": "Handled safely"
+  },
+  {
+    "attack": "nonexistent",
+    "status": "PASS",
+    "detail": "Status 404"
+  },
+  {
+    "attack": "malformed_json",
+    "status": "PASS",
+    "detail": "Handled safely"
+  },
+  {
+    "attack": "missing_fields",
+    "status": "PASS",
+    "detail": "Status 200"
+  },
+  {
+    "attack": "long_string",
+    "status": "PASS",
+    "detail": "Handled safely"
+  },
+  {
+    "attack": "unicode_injection",
+    "status": "PASS",
+    "detail": "Handled safely"
+  },
+  {
+    "attack": "concurrent",
+    "status": "PASS",
+    "detail": "10/10 OK"
+  },
+  {
+    "attack": "rapid_fire",
+    "status": "PASS",
+    "detail": "50 requests in 3.6s"
+  },
+  {
+    "attack": "wrong_method",
+    "status": "PASS",
+    "detail": "Status 405"
+  },
+  {
+    "attack": "path_traversal",
+    "status": "PASS",
+    "detail": "Status 404"
+  }
+]
