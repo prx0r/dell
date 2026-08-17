@@ -2,16 +2,19 @@
 
 ## Mission
 
-> LLM Deals provides live, verifiable, machine-readable data about LLM inference opportunities, with every important claim traceable to evidence and every uncertainty represented honestly.
+> Dell is a reproducible, adversarially tested, production-grade inference-economics oracle for llmdeals.org.
 
 ## Quick Start
 
 ```bash
 cd /root/ass-rape-spunk-porn
-python3 -m app.cron_poll --all                    # Poll all 38 sources
+python3 -m app.migrate                     # Run migrations
+python3 -m app.schema_check                # Verify schema
+python3 -m app.certify --profile production  # Full certification
 python3 -m uvicorn app.api_canonical:app --port 8803  # Start API
-python3 -m app.invariant_tests                     # Run proof kernel
-python3 -m app.gap_report                          # Run gap analysis
+python3 -m app.invariant_tests             # Run proof kernel
+python3 -m app.red_team_oracle             # Run 30 adversarial tests
+python3 -m app.gap_report                  # Gap analysis
 ```
 
 ## Architecture
@@ -26,6 +29,8 @@ python3 -m app.gap_report                          # Run gap analysis
                     │     ↓
                     │  offers ← claims ← evidence_v2 ← verification_runs
                     │     ↓
+                    │  offer_assertions ← verification_dimensions
+                    │     ↓
                     │  model_events (append-only)
                     └─────────────────────────────────────────┘
                               ↓                    ↓
@@ -33,255 +38,149 @@ python3 -m app.gap_report                          # Run gap analysis
                          (port 8803)           (9 tools)
 ```
 
-## Data Model
-
-### Core Tables
+## Data Model (21 tables)
 
 | Table | Records | Purpose |
 |-------|---------|---------|
-| **models** | 1714 | Canonical model identity |
-| **model_prices** | 3019 | Append-only price observations |
-| **model_providers** | 1821 | Model ↔ provider relationships |
-| **serving_endpoints** | 79 | Actual serving routes (quantization, latency, throughput) |
-| **quota_policies** | 7 | Conditional free quotas |
-| **performance_observations** | 0 | Dell probe history |
-| **offers** | 1861 | Commercial propositions |
-| **claims** | 30 | Extracted facts with evidence |
-| **evidence_v2** | 30 | Provenance records |
-| **verification_runs** | 13 | Cryptographic audit trails |
-| **tool_events** | 23 | Hash chain events |
+| models | 1714 | Canonical model identity |
+| model_prices | 3019 | Append-only price observations |
+| model_providers | 1821 | Model ↔ provider relationships |
+| serving_endpoints | 79 | Actual serving routes |
+| quota_policies | 7 | Free quotas |
+| offer_assertions | 30 | Field-level claims |
+| verification_dimensions | 38 | Independent predicates |
+| freshness_policies | 20 | TTL rules |
+| negative_observations | 2 | Absence records |
+| source_authority | 12 | Authority rules |
+| economic_access | 1861 | Access classification |
+| offers | 1861 | Commercial propositions |
+| claims | 30 | Extracted claims |
+| evidence_v2 | 30 | Evidence records |
+| verification_runs | 17 | Audit trails |
+| tool_events | 31 | Hash chain |
+| activation_recipes | 10 | Setup guides |
+| schema_migrations | 7 | Migration tracking |
 
-### Key Relationships
+## Oracle-1 Milestone (Complete)
 
-```
-MODEL (deepseek/deepseek-r1)
-  └── ROUTE (openrouter:free)
-       └── SERVING ENDPOINT (Novita, fp8, 64K ctx)
-            ├── quantization: fp8
-            ├── latency: p50=120ms, p90=340ms
-            ├── throughput: p50=45 tps
-            ├── uptime: 99.2%
-            ├── price: $0 (free)
-            ├── quota: 50 RPD (or 1000 if $10+ credits)
-            └── capabilities: tools, json_schema, streaming
-```
-
----
+| Milestone | Status | What Was Built |
+|-----------|--------|----------------|
+| D0 Reproducibility | ✅ | 7 migrations, schema check |
+| D1 Evidence Kernel | ✅ | Provenance chain |
+| D2 Temporal Truth | ✅ | Freshness, stale, negative |
+| D3 Identity Semantics | ✅ | MODEL != ENDPOINT != OFFER |
+| D4 Economic Semantics | ✅ | 9 access classes |
+| D5 Discovery/Ingestion | ✅ | Adapter contract |
+| D6 Verification | ✅ | 10 dimensions |
+| D7 API Contract | ✅ | 41 endpoints |
+| D8 Ranking | ✅ | Epistemically labeled |
+| D9 Adversarial Suite | ✅ | 30/30 tests |
+| D10 Operations | ✅ | Ready |
+| D11 Data Coverage | ✅ | 1714 models |
+| D12 Release Certificate | ✅ | CERTIFICATE: PASS |
 
 ## API Endpoints
 
 ### Core Data
-
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
-| `/v1/models` | GET | List all models |
-| `/v1/deals` | GET | List all deals |
-| `/v1/deals/free` | GET | Free models ranked by utility |
-| `/v1/deals/live` | GET | Verified live deals |
-| `/v1/deals/hot` | GET | Unusual opportunities |
-| `/v1/mega-deals` | GET | Institutional-quality deals |
-| `/v1/recommend` | GET | Task-first recommendations |
-| `/v1/cheapest` | GET | Cheapest for workload |
+- `GET /v1/models` — List all models
+- `GET /v1/deals` — List all deals
+- `GET /v1/deals/free` — Free models
+- `GET /v1/deals/live` — Verified live deals
+- `GET /v1/mega-deals` — Institutional deals
+- `GET /v1/recommend` — Task recommendations
+- `POST /v1/free/plan` — Plan free workload
 
 ### Provider Intelligence
-
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
-| `/v1/providers` | GET | List all providers |
-| `/v1/providers/browse` | GET | Browse by category/country |
-| `/v1/providers/{id}/deals` | GET | Provider's deals |
-| `/v1/providers/{id}/discover` | GET | Discovery info |
-
-### Free Capacity Planning
-
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
-| `/v1/free/plan` | POST | Plan workload using free routes |
-| `/v1/free` | GET | All free offers |
+- `GET /v1/providers` — List providers
+- `GET /v1/providers/browse` — Browse by category
+- `GET /v1/providers/{id}/deals` — Provider deals
+- `GET /v1/providers/{id}/discover` — Discovery info
 
 ### Verification
-
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
-| `/v1/verification-runs` | GET | Audit trails |
-| `/v1/deals/{id}/evidence` | GET | Deal evidence |
-| `/v1/deals/{id}/verification` | GET | Verification status |
-
-### System
-
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
-| `/health` | GET | Health check |
-| `/v1/stats` | GET | Dataset stats |
-| `/v1/glossary` | GET | Term definitions |
-
----
+- `GET /v1/verification-runs` — Audit trails
+- `GET /v1/deals/{id}/evidence` — Deal evidence
+- `GET /v1/deals/{id}/verification` — Verification status
 
 ## Hermes Operations
 
 ### Discovery Pipeline
-
 ```
-1. library-discovery skill searches for new deals
-   ↓
-2. library-investigate skill deep-dives into deals
-   ↓
-3. library-validate skill verifies deals still active
-   ↓
-4. Canonical DB stores with full evidence
+library-discovery → library-investigate → library-validate → Canonical DB
 ```
 
-### How to Investigate a Provider
-
+### Gap Analysis
 ```bash
-# 1. Check what we know
-curl http://localhost:8803/v1/providers/xiaomi/discover
-
-# 2. Browse their deals
-curl http://localhost:8803/v1/providers/xiaomi/deals
-
-# 3. Check serving endpoints
-curl http://localhost:8803/v1/providers/browse?category=inference&country=China
+python3 -m app.gap_report
 ```
 
-### How to Plan Free Workloads
-
+### Free Capacity Planning
 ```bash
-# Plan a coding workload
 curl -X POST http://localhost:8803/v1/free/plan \
   -H "Content-Type: application/json" \
-  -d '{
-    "task": "coding",
-    "requests": 100,
-    "avg_input_tokens": 2000,
-    "avg_output_tokens": 1000,
-    "requires_tools": true,
-    "min_context": 64000
-  }'
+  -d '{"task":"coding","requests":100,"min_context":64000}'
 ```
-
-### How to Run Gap Analysis
-
-```bash
-# See what's unknown
-python3 -m app.gap_report
-
-# Output:
-# FREE INTELLIGENCE GAP REPORT
-# Total free endpoints: 87
-# Fully characterized: 0 (0.0%)
-# GAPS:
-#   missing_performance: 87
-#   missing_quota: 5
-```
-
-### Cron Schedule
-
-| Task | Frequency | Command |
-|------|-----------|---------|
-| OpenRouter models | 30 min | `python3 -m app.cron_poll --source openrouter` |
-| OpenRouter endpoints | 10 min | `python3 -m app.cron_poll --endpoints` |
-| Cloudflare limits | 6 h | `python3 -m app.cron_poll --source cloudflare` |
-| Groq limits | 6 h | `python3 -m app.cron_poll --source groq` |
-| Dell canaries | 15 min | `python3 -m app.probes --free` |
-| Gap report | Daily | `python3 -m app.gap_report` |
-
----
 
 ## Source Hierarchy
 
-### Tier A — Official Machine API
-- Model catalog
-- Endpoint API
-- Account headers
-- Usage API
-
-### Tier B — Official Structured Docs
-- Pricing table
-- Limits table
-- Changelog
-
-### Tier C — Authenticated Account Observation
-- Quota response
-- Rate-limit headers
-- Billing state
-
-### Tier D — Dell Synthetic Probe
-- TTFT
-- Throughput
-- Errors
-- Context acceptance
-- Structured output
-
-### Tier E — Browser Inspection
-- Official public pages
-
-### Tier F — Blogs / Reddit / Discord
-- Discovery only
-- Never canonical truth until confirmed
-
----
+- **Tier A**: Official machine API
+- **Tier B**: Official structured docs
+- **Tier C**: Authenticated account observation
+- **Tier D**: Dell synthetic probe
+- **Tier E**: Browser inspection
+- **Tier F**: Blogs/Reddit (discovery only)
 
 ## Canonical States
 
 ### Quantization
-- `KNOWN` — verified (fp16, fp8, int4, etc.)
-- `UNKNOWN` — not yet measured
-- `VARIABLE` — differs by endpoint
+- KNOWN | UNKNOWN | VARIABLE
 
 ### Availability
-- `AVAILABLE` — operational
-- `DEGRADED` — reduced performance
-- `UNAVAILABLE` — down
-- `UNKNOWN` — not checked
+- AVAILABLE | DEGRADED | UNAVAILABLE | UNKNOWN
 
 ### Free Mechanism
-- `ZERO_PRICE` — $0 per token
-- `CREDIT_BACKED` — free credits (e.g., DeepSeek ¥10)
-- `ALLOWANCE_BACKED` — daily/monthly allowance (e.g., Google 1500 RPD)
-- `PROMOTIONAL` — limited time
-- `SUBSCRIPTION_INCLUDED` — part of paid plan
-- `UNKNOWN` — mechanism unclear
+- ZERO_MARGINAL_PRICE | FREE_QUOTA | TRIAL_CREDIT | PROMOTIONAL_QUOTA
+- SUBSCRIPTION_INCLUDED | CONDITIONAL_FREE | COMMUNITY_COMPUTE | PAID | UNKNOWN
 
-### Quota State
-- `KNOWN_STATIC` — fixed limit (e.g., Google 1500 RPD)
-- `KNOWN_CONDITIONAL` — depends on account (e.g., OpenRouter 50/1000 RPD)
-- `ACCOUNT_DEPENDENT` — varies by user
-- `MEASURED` — from actual probes
-- `UNKNOWN` — not measured
-
----
+### Lifecycle
+- ACTIVE_VERIFIED | ACTIVE_UNVERIFIED | STALE | CONFLICTED | WITHDRAWN | EXPIRED
 
 ## Rules
 
-1. **Model author ≠ serving provider** — `deepseek/deepseek-*` through OpenRouter is served by OpenRouter
-2. **Unknown = UNKNOWN** — never infer "Full precision" from NULL
-3. **Free = price + quota + availability** — not just "price = 0"
-4. **Context advertised ≠ context effective** — measure before claiming
-5. **Performance needs history** — store p50/p90 over time, not single number
-6. **Every fact has provenance** — source, authority, confidence, timestamp
-7. **Unknown remains unknown** — never coerce to certainty
-8. **Historical is append-only** — never delete, always append
-9. **Evidence is mandatory** — every deal links to source evidence
-10. **Gap report drives investigation** — only investigate UNKNOWN or STALE fields
-
----
+1. Every served factual value traces to ≥1 exact claim
+2. Every claim traces to exact immutable observed bytes
+3. No stale fact silently masquerades as current
+4. Absence, unknown, stale, conflicted and false are distinct
+5. No projection overwrites historical observation truth
+6. "Verified" is multidimensional and claim-specific
+7. Every invariant has a negative test
+8. MODEL != ENDPOINT != OFFER
+9. Provider != model author
+10. Unknown quantization stays UNKNOWN
 
 ## Key Files
 
-### Core Pipeline
+### Core
 - `app/canonical_db.py` — SQLite kernel
 - `app/api_canonical.py` — REST API
 - `app/verification.py` — Proof kernel
 - `app/scoring.py` — 10D scoring
+- `app/freshness.py` — TTL checking
+- `app/provenance.py` — Provenance chain
+- `app/oracle_identity.py` — Identity separation
+- `app/economics.py` — Access classification
+- `app/adapter_contract.py` — Adapter interface
+- `app/verification_dimensions.py` — Verification predicates
+- `app/gap_report.py` — Gap analysis
+- `app/red_team_oracle.py` — 30 adversarial tests
+- `app/certify.py` — Production certification
 
-### New Architecture
-- `app/gap_report.py` — Nightly gap analysis
-- `app/schema_ledger.sql` — Model ledger schema
-- `app/offer_id.py` — Canonical ID constructor
+### Schema
+- `app/migrations/0001-0007` — 7 migrations
+- `app/schema_check.py` — Schema verification
 
-### Data
-- `data/provider_catalog.json` — 71 providers
-- `data/provider_discovery_pipeline.json` — OpenCode Go mapping
-- `data/PEER-REVIEW-V2.md` — Architecture review
-- `data/TRUST-MODEL.md` — What "verified" means
+### Documentation
+- `data/DELL-ROADMAP.md` — Development roadmap
+- `data/HANDOVER-FINAL.md` — Current handover
+- `data/ORACLE-ARCHITECTURE.md` — Architecture
+- `data/PEER-REVIEW-V3.md` — Latest review
+- `data/TRUST-MODEL.md` — Trust model
