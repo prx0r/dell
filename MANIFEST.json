@@ -1,7 +1,7 @@
 {
   "product": "dell",
   "version": "1.0.0",
-  "git_sha": "65ddbd6b9aa6449fad2fc8631658adee9bd09cb5",
+  "git_sha": "3c5bdb308683d9f2e2ad0b32750f9cbf1b9afe36",
   "schema_version": 7,
   "stats": {
     "offers": 1861,
@@ -12,5 +12,6 @@
   "api_routes": 24,
   "mcp_tools": 9,
   "proof_kernel": "14/14",
-  "mutation_kill_rate": 0.9
+  "mutation_kill_rate": 1.0,
+  "certificate": "PASS"
 }
