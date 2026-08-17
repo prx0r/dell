@@ -40,6 +40,11 @@ def run_discovery(sources: list[str] | None = None) -> dict:
     conn = canonical_db.connect()
     canonical_db.migrate(conn)
 
+    # Register all sources in DB (persistent scheduler state)
+    for src in registry.get_all_sources():
+        canonical_db.upsert_source(conn, src.source_id, src.adapter_module,
+                                   src.cadence_minutes, src.priority)
+
     t0 = time.time()
     all_offers = []
     all_events = []
