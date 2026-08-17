@@ -1,46 +1,137 @@
-# AGENTS.md — dealradar (the live LLM price + quality service)
+# LLM Deals — Agent Operating Manual
 
-*2026-08-16 · The governing file for any agent working in this project. Read this FIRST, then `VISION.md`,
-then the root `AGENTS.md` for the box rules. This file defines the ONE RULE + the **deterministic anti-mess
-standard** shared with `sanskritbenchy`.*
+## Mission
 
----
+> LLM Deals provides live, verifiable, machine-readable data about LLM inference opportunities, with every important claim traceable to evidence and every uncertainty represented honestly.
 
-## 0. THE ONE RULE
+## Architecture
 
-> **Nothing is "real" because a model is listed. It is real only when a logged test passes on real data,
-> the price/quality resolves to a verified source, and the number is machine-computed — not asserted.**
-
-## 1. THE DETERMINISTIC ANTI-MESS STANDARD (same as sanskritbenchy)
-
-1. **Timestamp every build note / handover** (`HANDSOVER-YYYY-MM-DD.md` or `*YYYY-MM-DD*` header).
-2. **Track every run + experiment with a log.** Run steps via `agent/run.py --step X` → logs to
-   `data/agent-runs.jsonl` + `data/runs/agent-steps.jsonl`. Query with `python3 agent/trace.py`.
-3. **Content-address every headline number.** Use `app/run_recorder.py`
-   (`sha256(gold ‖ code ‖ config) → out_hash` + nanopublication). A number with no run record is theater.
-4. **Register every doc/script in the MANIFEST** or `check.py` flags it.
-5. **Audit on fixed data.** `agent/audit.py --bench suite` recomputes the tests and fails on mismatch.
-6. **One concern = one doc; reference, don't copy.**
-
-## 2. THE GATE
-
-```bash
-cd /root/ass-rape-spunk-porn
-export PYTHONPATH=app:.
-python3 app/test.py          # 25 PASS (the test suite)
-python3 agent/audit.py --bench suite   # the golden-file audit
-python3 agent/trace.py --all           # every run is logged
+```
+38 Source Adapters → Canonical SQLite → DealService → REST + MCP + Site
+      ↓                                    ↓
+  Observations                      /v1/catalog
+      ↓                             /v1/deals
+  Claims                            /v1/deals/hot
+      ↓                             /v1/free
+  Evidence                          /v1/models
+      ↓                             /v1/providers
+  Adjudication                      /v1/recommend
+      ↓
+  Append-only Events
+      ↓
+  Current Projections
 ```
 
-## 3. THE BOX RULES (from the root AGENTS.md)
+## Key Files
 
-- **Never `sleep` to wait**; **never `pkill`** (kill by exact PID).
-- **RAM is the scarcest resource** — refresh/canary hit the network; run one at a time, ~2GB free.
-- **Reuse, don't rebuild** (litellm, llm-prices, awesome-free-llm-apis are the sources).
-- **Quality = measured, not marketing** (`quality_source=measured`).
+| File | Purpose |
+|------|---------|
+| `app/discovery.py` | Pipeline orchestrator — polls sources, extracts, commits |
+| `app/canonical_db.py` | SQLite kernel — all writes through this |
+| `app/service.py` | DealService — one service for REST/MCP/site |
+| `app/api_canonical.py` | Canonical API (port 8803) |
+| `app/scoring.py` | 10-dimensional scoring + 21 badges |
+| `app/identity/resolver.py` | Model identity resolution |
+| `app/discovery_claims.py` | Observation → claim → evidence |
+| `app/event_recorder.py` | Append-only deal events |
+| `app/deal_classifier.py` | Deals vs catalog split |
+| `app/mega_deals.py` | Institutional-quality deal detection |
+| `app/free_qualification.py` | Free deal utility scoring |
+| `app/candidate.py` | Typed CandidateOffer |
+| `app/artifact_store.py` | Content-addressed raw artifacts |
+| `app/history.py` | Historical snapshot comparison |
+| `app/live_probe.py` | Live endpoint verification |
+| `app/expiry.py` | Expiry tracking with precision |
+| `mcp/server.mjs` | MCP server (9 tools, Node.js) |
 
-## 4. THE STANDARD IN ONE SENTENCE
+## How to Run
 
-> **Timestamped, logged, content-addressed, registered** — every build note is dated, every run is in the
-> trace, every number is a content-addressed nanopublication on fixed data, every doc is in the MANIFEST,
-> and `test.py` + `audit.py` + `trace.py` enforce it deterministically.
+```bash
+# Full pipeline
+python3 -m app.cron_poll --all
+
+# Start API
+python3 -m uvicorn app.api_canonical:app --port 8803
+
+# Run invariant tests
+python3 -m app.invariant_tests
+
+# Hermes test
+hermes -z "Use llm-deals MCP to find cheapest coding model"
+```
+
+## The DAG
+
+```
+Source Adapter
+  → Observation (immutable)
+  → Claim (extracted fact)
+  → Evidence (provenance)
+  → Adjudication
+  → Domain Event (append-only)
+  → Current Projection (API response)
+```
+
+## Identity Resolution
+
+```
+EXACT_SAME_MODEL → propagate benchmarks, context
+SIBLING_VARIANT → do NOT propagate
+SAME_MODEL_DIFFERENT_PROVIDER → may propagate context with evidence
+```
+
+## Scoring (10 dimensions)
+
+Intelligence | Workhorse | Value | Coding | Agentic | Tool Calling | Research | Long Context | Speed | Reliability
+
+## Deal Classification
+
+A deal is NOT every cheap model. It's an UNUSUALLY favorable opportunity:
+- Temporary free
+- Usage multiplier (2x+)
+- High capacity (3x+ baseline)
+- Price anomaly
+- Signup/startup credits
+- Batch/off-peak discounts
+
+Ordinary market-rate models stay in /catalog.
+
+## Tri-State Semantics
+
+```python
+price_state: FREE | PAID | UNKNOWN  # never: False = UNKNOWN
+automation_allowed: TRUE | FALSE | CONDITIONAL | UNKNOWN
+region: NULL | country_code  # NULL = unknown, NOT "global"
+```
+
+## Invariants
+
+1. Unknown price never becomes free
+2. Unknown region never becomes global
+3. Unknown terms never become allowed
+4. One model can have N provider offerings
+5. Raw observations can be replayed
+6. Every claim has evidence
+7. MCP and REST return identical results
+8. Same input → same scoring output
+9. Failed fetches don't expire deals
+10. Source failures tracked separately from deal status
+
+## Rules
+
+- Read state before claiming: `python3 -m app.cron_poll --step state`
+- Never skip the proposal: `python3 -m app.cron_poll --step propose`
+- Commit only logged results
+- No fabricated data — adapters must not invent facts
+- Region=NULL means unknown, NOT global
+- Price=NULL means unknown, NOT $0
+- Free=False means unknown, NOT paid
+
+## Kanban
+
+| Board | Purpose |
+|-------|---------|
+| library-production | Main pipeline queue |
+| library-scout | New deal discovery |
+| library-verify | Deal verification |
+| library-curate | Final curation + commit |

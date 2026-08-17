@@ -8,56 +8,37 @@
 
 ```bash
 pip install -r requirements.txt
-python -m app.cron_poll --all     # Poll all 17 sources
-python -m uvicorn app.api_canonical:app --port 8803  # Start API
+python3 -m app.cron_poll --all           # Poll 38 sources
+python3 -m uvicorn app.api_canonical:app --port 8803  # Start API
+python3 -m app.invariant_tests           # Run tests (10/10)
 ```
 
-## Architecture
+## 5 API Surfaces
 
-```
-Source Adapters → Canonical SQLite → DealService → REST + MCP + Site
-      ↓                                    ↓
-  Observations                      /v1/catalog
-      ↓                             /v1/deals
-  Claims                            /v1/deals/hot
-      ↓                             /v1/free
-  Evidence                          /v1/models
-      ↓                             /v1/providers
-  Adjudication                      /v1/recommend
-      ↓
-  Append-only Events
-      ↓
-  Current Projections
-```
+| Port | API | Purpose |
+|------|-----|---------|
+| 8799 | V1 | Original (deprecated) |
+| 8800 | V2 | Categories + providers |
+| 8801 | V3 | Scoring + badges |
+| 8802 | Hot | OpenAI-compatible router |
+| 8803 | **Canonical** | **The data layer** |
 
-## API (port 8803)
+## Canonical API Endpoints
 
 | Endpoint | Purpose |
 |----------|---------|
 | `GET /v1/models` | What models exist |
 | `GET /v1/providers` | What providers exist |
 | `GET /v1/deals` | Unusual opportunities |
-| `GET /v1/deals/hot` | Active deals |
+| `GET /v1/deals/hot` | Active deals only |
 | `GET /v1/free` | Free models ranked by utility |
 | `GET /v1/catalog` | Everything (exhaustive) |
 | `GET /v1/recommend` | Task-first recommendation |
+| `GET /v1/mega-deals` | Institutional-quality deals |
+| `GET /v1/verify/{model}` | Verify a specific deal |
+| `GET /v1/probe` | Test if endpoints work |
 | `GET /v1/stats` | Dataset statistics |
-| `GET /v1/glossary` | Terms for agents |
-
-## Sources (17 adapters)
-
-| Source | Data |
-|--------|------|
-| OpenRouter | 414 models, prices, free tiers |
-| models.dev | 349 models, benchmarks, capabilities |
-| HuggingFace Router | 312 models, per-provider pricing |
-| Artificial Analysis | 608 models, intelligence scores |
-| OpenCode Go | 11 models, 30K+ req/5h capacity |
-| Alibaba Bailian | 246 free per-model quotas |
-| Vercel Changelog | Launch pricing |
-| Hacker News | Community leads |
-| RSS (8 blogs) | Deal announcements |
-| SenseNova, Sakura, Scaleway, OVH, Z.AI, + more | Regional providers |
+| `GET /v1/glossary` | All terms documented |
 
 ## MCP Tools (9)
 
@@ -73,9 +54,17 @@ Source Adapters → Canonical SQLite → DealService → REST + MCP + Site
 | `explain_deal` | Deal deep-dive |
 | `get_dataset_stats` | Overview |
 
+## Data
+
+- **2396 offers** from 38 source adapters
+- **599 free offers** with utility scoring
+- **102 providers** with setup instructions
+- **37 claims**, **131 events** in canonical DB
+- **10/10 invariant tests** passing
+
 ## Identity System
 
-```text
+```
 EXACT_SAME_MODEL → can propagate benchmarks
 SIBLING_VARIANT → cannot propagate benchmarks
 SAME_MODEL_DIFFERENT_PROVIDER → may propagate context
@@ -87,9 +76,10 @@ SAME_MODEL_DIFFERENT_PROVIDER → may propagate context
 
 21 badges: Mega Deal, Frontier, Workhorse, Coder, Agentic, Fast, Hidden Gem, Free, Long Context, Tool Caller, etc.
 
-## Testing
+## Tri-State Semantics
 
-```bash
-python -m app.invariant_tests  # 10/10 invariants
-python -m app.cron_poll         # Full pipeline
+```python
+price_state: FREE | PAID | UNKNOWN
+automation_allowed: TRUE | FALSE | CONDITIONAL | UNKNOWN
+region: NULL | country_code  # NULL = unknown, NOT "global"
 ```
