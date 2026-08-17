@@ -366,6 +366,17 @@ def economics(task: str = Query("coding_agent"), limit: int = Query(20, le=50)):
     return {"task": task, "workload": models_v2.WORKLOAD_PRESETS.get(task, {}), "economics": results[:limit]}
 
 
+@app.get("/v1/recommend")
+def recommend(task: str = Query("coding"), max_cost: float = None,
+              tool_calling: bool = False, min_context: int = 0, limit: int = 5):
+    """Task-first recommendation using legitimate scores."""
+    data = _load_all()
+    import scoring
+    result = scoring.recommend(data["offers"], task=task, min_context=min_context,
+                               tool_calling=tool_calling, budget=max_cost, limit=limit)
+    return result
+
+
 # --- Stats ---
 
 @app.get("/v1/stats")
