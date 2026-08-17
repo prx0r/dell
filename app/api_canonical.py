@@ -345,7 +345,7 @@ def best_value(limit: int = Query(10, le=50)):
     data = _load_all()
     import scoring
     scored = [scoring.score_and_badge(o) for o in data["offers"]]
-    scored.sort(key=lambda x: x["vector"]["value"], reverse=True)
+    scored.sort(key=lambda x: x["vector"].get("value") or 0, reverse=True)
     return {"best_value": scored[:limit]}
 
 
@@ -441,7 +441,7 @@ def best_by_badge(badge: str, limit: int = Query(10, le=50)):
     import scoring
     scored = [scoring.score_and_badge(o) for o in data["offers"]]
     badged = [s for s in scored if badge in (s.get("badges") or [])]
-    badged.sort(key=lambda x: x["vector"]["workhorse"], reverse=True)
+    badged.sort(key=lambda x: x["vector"].get("workhorse") or 0, reverse=True)
     return {"badge": badge, "picks": badged[:limit], "count": len(badged)}
 
 
