@@ -29,7 +29,7 @@ def detect_mega_deals(offers: list[dict]) -> list[dict]:
         score = 0
 
         # 1. Capacity multiplier (MiMo pattern)
-        cap_mult = o.get("metadata", {}).get("capacity_multiplier")
+        cap_mult = o.get("metadata", {}).get("capacity_ratio_vs_median") or o.get("metadata", {}).get("capacity_multiplier")
         if cap_mult and cap_mult >= 3.0:
             reasons.append("%s capacity vs baseline" % ("%.1fx" % cap_mult))
             score += min(40, cap_mult * 5)
