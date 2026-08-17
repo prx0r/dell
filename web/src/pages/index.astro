@@ -1,193 +1,103 @@
 ---
-// index.astro — Deal Radar V2 homepage (0-JS, hot deals + free + expiring + workhorses)
 import Layout from '../layouts/Layout.astro';
-
-// Read snapshot data at build time
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
-const dataDir = join(process.cwd(), '..', 'snapshots');
-const eventsDir = join(process.cwd(), '..', 'events');
+// Load data from canonical DB at build time
+const dataDir = join(process.cwd(), '..', 'data');
+let offers = [];
+let stats = { total: 0, free: 0, providers: 0 };
 
-let allOffers = [];
-let allEvents = [];
-
-// Load snapshots
-if (existsSync(dataDir)) {
-  const { readdirSync } = await import('fs');
-  for (const f of readdirSync(dataDir)) {
-    if (f.endsWith('.json')) {
-      try {
-        const data = JSON.parse(readFileSync(join(dataDir, f), 'utf-8'));
-        allOffers = allOffers.concat(data.offers || []);
-      } catch {}
+if (existsSync(join(dataDir, 'llmdeals.sqlite3'))) {
+  // Try to read snapshot exports
+  const snapshotsDir = join(process.cwd(), '..', 'snapshots');
+  if (existsSync(snapshotsDir)) {
+    const { readdirSync } = await import('fs');
+    for (const f of readdirSync(snapshotsDir)) {
+      if (f.endsWith('.json')) {
+        try {
+          const data = JSON.parse(readFileSync(join(snapshotsDir, f), 'utf-8'));
+          offers = offers.concat(data.offers || []);
+        } catch {}
+      }
     }
   }
 }
 
-// Load events
-if (existsSync(eventsDir)) {
-  const { readdirSync } = await import('fs');
-  for (const f of readdirSync(eventsDir).sort().reverse().slice(0, 10)) {
-    if (f.endsWith('.json')) {
-      try {
-        allEvents = allEvents.concat(JSON.parse(readFileSync(join(eventsDir, f), 'utf-8')));
-      } catch {}
-    }
-  }
-}
+const freeOffers = offers.filter(o => o.free);
+const providers = [...new Set(offers.map(o => o.provider_id))];
+const megaDeals = offers.filter(o => o.metadata?.capacity_multiplier >= 3 || o.metadata?.multiplier >= 2);
 
-// Compute sections
-const freeOffers = allOffers.filter(o => o.free).slice(0, 12);
-const paidOffers = allOffers.filter(o => !o.free && o.input_per_m > 0);
-const cheapest = [...paidOffers].sort((a, b) => (a.input_per_m || 999) - (b.input_per_m || 999)).slice(0, 12);
-const byProvider = {};
-for (const o of allOffers) {
-  const p = o.provider_id || 'unknown';
-  if (!byProvider[p]) byProvider[p] = 0;
-  byProvider[p]++;
-}
-const providers = Object.entries(byProvider).sort((a, b) => b[1] - a[1]);
+stats = { total: offers.length, free: freeOffers.length, providers: providers.length };
 ---
-<Layout
-  title="Deal Radar — LLM inference deals, pricing, free models"
-  description="Live LLM deals: free models, cheapest inference, provider promotions, and deal scoring. The Slickdeals for AI compute."
-  jsonLd={{
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Deal Radar",
-    description: "LLM inference deal intelligence — find the cheapest, free, and best-value AI models.",
-    url: Astro.site,
-    applicationCategory: "DeveloperApplication",
-  }}
->
-  <header>
-    <h1>Deal Radar</h1>
-    <p class="tagline">LLM inference deals &mdash; {allOffers.length} offers from {providers.length} providers</p>
-  </header>
+<Layout title="LLM Deals" description="Canonical LLM inference deal data layer">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+    * { font-family: 'Share Tech Mono', 'Courier New', monospace; margin: 0; padding: 0; }
+    body { background: #000; color: #0f0; padding: 20px; max-width: 1200px; margin: 0 auto; }
+    h1 { font-size: 1.2em; border-bottom: 1px solid #0f0; padding-bottom: 5px; }
+    h2 { font-size: 1em; color: #0a0; margin-top: 20px; }
+    .stat { display: inline-block; margin-right: 20px; }
+    .stat-num { font-size: 1.5em; color: #0f0; }
+    .stat-label { font-size: 0.8em; color: #0a0; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85em; }
+    th, td { padding: 4px 8px; text-align: left; border-bottom: 1px solid #111; }
+    th { color: #0a0; }
+    .mega { color: #ff0; }
+    .free { color: #0ff; }
+    .ctx { color: #888; }
+    a { color: #0f0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .api { background: #111; padding: 10px; margin: 10px 0; font-size: 0.85em; }
+    code { background: #111; padding: 2px 4px; }
+  </style>
 
-  <!-- HOT RIGHT NOW -->
-  <section id="hot">
-    <h2>Hottest Deals</h2>
-    <p>Top offers sorted by deal score (discount, quality, rate limits, urgency).</p>
-    {allOffers.length === 0 ? (
-      <p class="empty">No data yet. Run <code>python3 -m app.poll --all</code> to fetch deals.</p>
-    ) : (
-      <table>
-        <thead><tr><th>Model</th><th>Provider</th><th>Input $/M</th><th>Output $/M</th><th>Free</th><th>Kind</th></tr></thead>
-        <tbody>
-          {allOffers.slice(0, 20).map(o => (
-            <tr>
-              <td><code>{(o.model_id || '').split('/').pop()}</code></td>
-              <td>{o.provider_id}</td>
-              <td>{o.input_per_m != null ? `$${o.input_per_m.toFixed(2)}` : '—'}</td>
-              <td>{o.output_per_m != null ? `$${o.output_per_m.toFixed(2)}` : '—'}</td>
-              <td>{o.free ? 'FREE' : ''}</td>
-              <td>{o.offer_kind || ''}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    )}
-  </section>
+  <h1>LLM DEALS // CANONICAL DATA LAYER</h1>
 
-  <!-- FREE NOW -->
-  <section id="free">
-    <h2>Free Models</h2>
-    <p>Currently free-to-use models across all providers.</p>
-    {freeOffers.length === 0 ? (
-      <p class="empty">No free models found.</p>
-    ) : (
-      <table>
-        <thead><tr><th>Model</th><th>Provider</th><th>Kind</th></tr></thead>
-        <tbody>
-          {freeOffers.map(o => (
-            <tr>
-              <td><code>{(o.model_id || '').split('/').pop()}</code></td>
-              <td>{o.provider_id}</td>
-              <td>{o.offer_kind || ''}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    )}
-  </section>
+  <div>
+    <span class="stat"><span class="stat-num">{stats.total}</span> <span class="stat-label">MODELS</span></span>
+    <span class="stat"><span class="stat-num free">{stats.free}</span> <span class="stat-label">FREE</span></span>
+    <span class="stat"><span class="stat-num">{stats.providers}</span> <span class="stat-label">PROVIDERS</span></span>
+    <span class="stat"><span class="stat-num mega">{megaDeals.length}</span> <span class="stat-label">MEGA DEALS</span></span>
+  </div>
 
-  <!-- CHEAPEST -->
-  <section id="cheapest">
-    <h2>Cheapest Paid</h2>
-    <p>Lowest input cost per million tokens.</p>
-    {cheapest.length === 0 ? (
-      <p class="empty">No paid models found.</p>
-    ) : (
-      <table>
-        <thead><tr><th>Model</th><th>Provider</th><th>Input $/M</th><th>Output $/M</th></tr></thead>
-        <tbody>
-          {cheapest.map(o => (
-            <tr>
-              <td><code>{(o.model_id || '').split('/').pop()}</code></td>
-              <td>{o.provider_id}</td>
-              <td>${o.input_per_m?.toFixed(2) || '—'}</td>
-              <td>${o.output_per_m?.toFixed(2) || '—'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    )}
-  </section>
-
-  <!-- RECENT CHANGES -->
-  <section id="changes">
-    <h2>Recent Changes</h2>
-    {allEvents.length === 0 ? (
-      <p class="empty">No events detected yet.</p>
-    ) : (
-      <ul>
-        {allEvents.slice(0, 15).map(e => (
-          <li><strong>{e.event_type || 'change'}</strong>: {e.title || e.source_id || 'unknown'}</li>
-        ))}
-      </ul>
-    )}
-  </section>
-
-  <!-- PROVIDERS -->
-  <section id="providers">
-    <h2>Providers</h2>
+  <h2>// MEGA DEALS</h2>
+  {megaDeals.length === 0 ? (
+    <p class="ctx">No mega deals detected.</p>
+  ) : (
     <table>
-      <thead><tr><th>Provider</th><th>Offers</th></tr></thead>
-      <tbody>
-        {providers.map(([name, count]) => (
-          <tr><td>{name}</td><td>{count}</td></tr>
-        ))}
-      </tbody>
+      <tr><th>MODEL</th><th>PROVIDER</th><th>MULTIPLIER</th><th>CTX</th></tr>
+      {megaDeals.slice(0, 10).map(o => (
+        <tr class="mega">
+          <td>{o.model_id?.split('/').pop()}</td>
+          <td>{o.provider_id}</td>
+          <td>{o.metadata?.capacity_multiplier ? `${o.metadata.capacity_multiplier}x CAPACITY` : o.metadata?.multiplier ? `${o.metadata.multiplier}x USAGE` : ''}</td>
+          <td class="ctx">{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '-'}</td>
+        </tr>
+      ))}
     </table>
-  </section>
+  )}
 
-  <!-- API -->
-  <section id="api">
-    <h2>API</h2>
-    <ul>
-      <li><code>GET /deals/hot</code> — hottest deals</li>
-      <li><code>GET /deals/free</code> — free models</li>
-      <li><code>GET /deals/expiring?days=7</code> — expiring soon</li>
-      <li><code>GET /deals/workhorses?workload=coding_agent</code> — best for workload</li>
-      <li><code>GET /deals/changes</code> — recent price changes</li>
-      <li><code>GET /sources/health</code> — source health</li>
-      <li><code>GET /api/stats</code> — overall stats</li>
-    </ul>
-    <p>MCP: <code>mcp/server.py</code> with tools: <code>pick_model</code>, <code>check_live_prices</code>,
-    <code>get_model_details</code>, <code>get_free_sources</code>.</p>
-  </section>
+  <h2>// FREE MODELS (TOP 20)</h2>
+  <table>
+    <tr><th>MODEL</th><th>PROVIDER</th><th>CTX</th><th>RPD</th></tr>
+    {freeOffers.slice(0, 20).map(o => (
+      <tr>
+        <td class="free">{o.model_id?.split('/').pop()}</td>
+        <td>{o.provider_id}</td>
+        <td class="ctx">{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '-'}</td>
+        <td>{o.requests_per_day || '-'}</td>
+      </tr>
+    ))}
+  </table>
+
+  <h2>// ALL PROVIDERS ({providers.length})</h2>
+  <p class="ctx">{providers.join(', ')}</p>
+
+  <div class="api">
+    <h2>// API</h2>
+    <p><code>GET /v1/deals</code> <code>GET /v1/deals/free</code> <code>GET /v1/mega-deals</code></p>
+    <p><code>GET /v1/models</code> <code>GET /v1/providers</code> <code>GET /v1/recommend</code></p>
+    <p><code>GET /v1/glossary</code> <code>GET /v1/probe</code> <code>GET /v1/history</code></p>
+  </div>
 </Layout>
-
-<style>
-  header { text-align: center; margin-bottom: 2rem; }
-  .tagline { color: #666; font-size: 0.95rem; }
-  section { margin-bottom: 2.5rem; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-  th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid #eee; }
-  th { background: #f8f8f8; font-weight: 600; }
-  code { background: #f0f0f0; padding: 0.15em 0.4em; border-radius: 3px; font-size: 0.85em; }
-  .empty { color: #999; font-style: italic; }
-  ul { line-height: 1.8; }
-</style>

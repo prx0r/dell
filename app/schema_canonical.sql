@@ -71,3 +71,50 @@ CREATE INDEX IF NOT EXISTS idx_offers_free ON offers(free);
 CREATE INDEX IF NOT EXISTS idx_events_offer ON deal_events(offer_id);
 CREATE INDEX IF NOT EXISTS idx_obs_source ON source_observations(source_id);
 CREATE INDEX IF NOT EXISTS idx_sources_enabled ON sources(enabled, priority, last_fetch_at);
+
+-- Claims (immutable extraction from source)
+CREATE TABLE IF NOT EXISTS claims (
+    claim_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    offer_id TEXT NOT NULL,
+    claim_type TEXT NOT NULL,
+    claim_value TEXT NOT NULL,
+    source_observation_id INTEGER,
+    confidence REAL DEFAULT 0.5,
+    created_at TEXT NOT NULL
+);
+
+-- Evidence (provenance for each claim)
+CREATE TABLE IF NOT EXISTS evidence (
+    evidence_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    claim_id INTEGER NOT NULL,
+    evidence_type TEXT NOT NULL,
+    source_url TEXT,
+    excerpt TEXT,
+    selector TEXT,
+    content_hash TEXT,
+    created_at TEXT NOT NULL
+);
+
+-- Verification checks
+CREATE TABLE IF NOT EXISTS verification_checks (
+    check_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    offer_id TEXT NOT NULL,
+    check_type TEXT NOT NULL,
+    status TEXT NOT NULL,
+    checked_at TEXT NOT NULL,
+    details TEXT,
+    confidence REAL DEFAULT 0.5
+);
+
+-- Activation recipes (step-by-step setup instructions)
+CREATE TABLE IF NOT EXISTS activation_recipes (
+    recipe_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    provider_id TEXT NOT NULL,
+    steps_json TEXT NOT NULL,
+    requires_human INTEGER NOT NULL DEFAULT 1,
+    requires_card INTEGER NOT NULL DEFAULT 0,
+    requires_phone INTEGER NOT NULL DEFAULT 0,
+    requires_kyc INTEGER NOT NULL DEFAULT 0,
+    estimated_minutes INTEGER,
+    created_at TEXT NOT NULL
+);
