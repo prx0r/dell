@@ -1,0 +1,86 @@
+{
+  "passed": 20,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "health",
+      "status": "PASS"
+    },
+    {
+      "name": "stats",
+      "status": "PASS"
+    },
+    {
+      "name": "models",
+      "status": "PASS"
+    },
+    {
+      "name": "deals",
+      "status": "PASS"
+    },
+    {
+      "name": "free_deals",
+      "status": "PASS"
+    },
+    {
+      "name": "mega_deals",
+      "status": "PASS"
+    },
+    {
+      "name": "recommend",
+      "status": "PASS"
+    },
+    {
+      "name": "providers",
+      "status": "PASS"
+    },
+    {
+      "name": "provider_browse",
+      "status": "PASS"
+    },
+    {
+      "name": "verification_runs",
+      "status": "PASS"
+    },
+    {
+      "name": "history",
+      "status": "PASS"
+    },
+    {
+      "name": "free_plan",
+      "status": "PASS"
+    },
+    {
+      "name": "resolve",
+      "status": "PASS"
+    },
+    {
+      "name": "glossary",
+      "status": "PASS"
+    },
+    {
+      "name": "deal_evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "deal_verification",
+      "status": "PASS"
+    },
+    {
+      "name": "cheapest",
+      "status": "PASS"
+    },
+    {
+      "name": "best_value",
+      "status": "PASS"
+    },
+    {
+      "name": "badges",
+      "status": "PASS"
+    },
+    {
+      "name": "score",
+      "status": "PASS"
+    }
+  ]
+}

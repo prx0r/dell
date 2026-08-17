@@ -1,0 +1,25 @@
+{
+  "schema": "dell.final_hardening.acceptance.v1",
+  "deterministic_release": {
+    "proof_kernel_pass_rate": 1.0,
+    "critical_mutation_kill_rate": 1.0,
+    "overall_mutation_kill_rate_min": 0.95,
+    "rest_mcp_parity": 1.0,
+    "hard_constraint_violations": 0,
+    "unsupported_factual_claims": 0,
+    "stale_leakage": 0,
+    "unknown_coercions": 0,
+    "evidence_retrieval_rate_min": 0.95
+  },
+  "evidence_targets": {
+    "top_100_critical_field_coverage_target": 0.95,
+    "note": "Target is value-weighted, not a fabricated global completeness claim."
+  },
+  "status_values": [
+    "PASS",
+    "FAIL",
+    "PARTIAL",
+    "BLOCKED",
+    "SKIP"
+  ]
+}
