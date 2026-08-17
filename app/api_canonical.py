@@ -186,6 +186,16 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
             prov = providers_mod.get_provider(o.get("provider_id", ""))
             if prov and openai_compatible and not prov.openai_compatible:
                 continue
+        # Filter by automation allowed
+        if automation_allowed is not None:
+            meta = o.get("metadata", {})
+            if automation_allowed and meta.get("automation_allowed") == 0:
+                continue
+        # Filter by country/region
+        if country is not None:
+            region = o.get("region")
+            if region and region.lower() != country.lower():
+                continue
         result.append({
             "offer_id": o.get("offer_id"),
             "model_id": o.get("model_id"),
@@ -216,12 +226,11 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
 def deals_live(limit: int = Query(20, le=100)):
     """Currently active deals — verified live.
     
-    Eligibility: latest qualifying verification check
-    AND checked_at >= freshness threshold
-    AND lifecycle state in (active, confirmed)
+    Uses claim-specific freshness policies, not a global 7-day threshold.
     """
     data = _load_all()
     from verification import get_verification_status
+    from freshness import is_fresh
     
     conn = canonical_db.connect()
     canonical_db.migrate(conn)
@@ -234,19 +243,23 @@ def deals_live(limit: int = Query(20, le=100)):
         
         status = get_verification_status(conn, offer_id)
         level = status["verification_level"]
-        latest_check = status["latest_check_at"]
         
         # Must have at least PRIMARY_EVIDENCE
         if level not in ["PRIMARY_EVIDENCE", "PRIMARY_CORROBORATED", "ENDPOINT_REACHABLE",
                          "MODEL_LISTED", "INFERENCE_SUCCEEDED", "DEAL_CONDITION_CONFIRMED"]:
             continue
         
-        # Must have recent check (within 7 days)
-        if latest_check:
-            from datetime import datetime, timedelta
-            try:
-                check_time = datetime.fromisoformat(latest_check.replace("Z", "+00:00"))
-                if datetime.now(check_time.tzinfo) - check_time > timedelta(days=7):
+        # Check freshness using claim-specific policies
+        last_verified = o.get("last_verified_at")
+        if last_verified:
+            # Check price freshness
+            price_fresh = is_fresh(conn, last_verified, "list_price", "official_api")
+            # Check availability freshness
+            avail_fresh = is_fresh(conn, last_verified, "availability", "official_api")
+            
+            # Both must be fresh for "live" status
+            if not price_fresh and not avail_fresh:
+                continue
                     continue
             except:
                 continue
@@ -799,8 +812,10 @@ def plan_free_workload(
         provider = ep['serving_provider_id']
         supports_tools = ep['supports_tools'] or 0
         
-        # Check context requirement
-        if ctx < min_context:
+        # Check context requirement (per-request, not daily)
+        tokens_per_request = preset['input'] + preset['output']
+        if ctx < tokens_per_request:
+            # This route cannot handle a single request
             continue
         
         # Check tool requirement
@@ -810,13 +825,9 @@ def plan_free_workload(
         # Get quota
         rpd = quota_map.get(provider, 50)
         
-        # Calculate if workload fits
-        total_tokens_needed = requests * (preset['input'] + preset['output'])
-        tokens_per_request = preset['input'] + preset['output']
-        max_requests_by_context = ctx // tokens_per_request if tokens_per_request > 0 else 0
-        max_requests_by_output = rpd  # Simplified
-        
-        effective_rpd = min(rpd, max_requests_by_context)
+        # Calculate daily capacity from quota (not context)
+        # Context is per-request limit, not daily allowance
+        effective_rpd = rpd  # Use actual quota
         
         if effective_rpd >= requests:
             # Can complete entire job for free

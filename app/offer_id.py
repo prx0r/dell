@@ -53,6 +53,14 @@ class OfferId:
                 "offer_type": parts[3],
                 "region": parts[4],
             }
+        elif len(parts) == 6:
+            # Handle case where model_id contains multiple colons
+            return {
+                "provider_id": parts[0],
+                "model_id": parts[1] + ":" + parts[2] + ":" + parts[3],
+                "offer_type": parts[4],
+                "region": parts[5],
+            }
         else:
             raise ValueError(f"Invalid offer_id format: {offer_id}")
     
