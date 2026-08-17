@@ -1,0 +1,127 @@
+{
+  "review_date": "2026-08-17",
+  "reviewer_rating": "3.5/10 as canonical data layer",
+  "total_claims": 30,
+  "claims": [
+    {
+      "id": "P0-01",
+      "severity": "P0",
+      "claim": "Five APIs + multiple schemas = no canonical contract",
+      "status": "OPEN",
+      "validation": "ls app/api*.py | wc -l should equal 1 after fix",
+      "fix": "Consolidate to one canonical API + one MCP"
+    },
+    {
+      "id": "P0-02",
+      "severity": "P0",
+      "claim": "Discovery does not write canonical SQLite DB",
+      "status": "OPEN",
+      "validation": "discovery.py must call db.insert_observation() for every fetch",
+      "fix": "Route all writes through db.py"
+    },
+    {
+      "id": "P0-03",
+      "severity": "P0",
+      "claim": "Adapters fabricate fallback facts",
+      "status": "OPEN",
+      "validation": "grep -r 'known_models\\|fallback.*model\\|hardcoded' app/sources/ should return 0",
+      "fix": "Remove all hardcoded fallbacks from adapters"
+    },
+    {
+      "id": "P0-04",
+      "severity": "P0",
+      "claim": "Unknown prices become $0",
+      "status": "OPEN",
+      "validation": "NULL price never treated as 0 in any API endpoint",
+      "fix": "Use three-valued: 0=free, number=price, NULL=unknown"
+    },
+    {
+      "id": "P0-05",
+      "severity": "P0",
+      "claim": "Change detector is structurally broken (dict vs list mismatch)",
+      "status": "OPEN",
+      "validation": "source_diff.diff_snapshots() receives dicts, not lists",
+      "fix": "Rewrite with stable offer identity"
+    },
+    {
+      "id": "P0-06",
+      "severity": "P0",
+      "claim": "MCP has code-injection surface (python -c with user input)",
+      "status": "OPEN",
+      "validation": "No spawnSync with user-provided strings in server.mjs",
+      "fix": "MCP calls REST API or Python functions directly, not python -c"
+    },
+    {
+      "id": "P0-07",
+      "severity": "P0",
+      "claim": "Raw evidence isn't durably preserved",
+      "status": "OPEN",
+      "validation": "Every observation has artifact_uri pointing to stored bytes",
+      "fix": "Content-addressed artifact storage"
+    },
+    {
+      "id": "P1-08",
+      "severity": "P1",
+      "claim": "Poll schedule/health only in RAM",
+      "status": "OPEN",
+      "validation": "Source registry state persists across process restarts",
+      "fix": "Use SQLite or file-based state"
+    },
+    {
+      "id": "P1-09",
+      "severity": "P1",
+      "claim": "Expiry invents temporal precision (date→midnight UTC)",
+      "status": "OPEN",
+      "validation": "Date-only expiry has precision=day, not instant timestamp",
+      "fix": "Store precision/timezone/boundary"
+    },
+    {
+      "id": "P1-10",
+      "severity": "P1",
+      "claim": "Verification is heuristic theatre",
+      "status": "OPEN",
+      "validation": "verify_deal_is_live() checks actual deal state, not text mentions",
+      "fix": "Introduce Claim/Evidence verification"
+    },
+    {
+      "id": "P1-11",
+      "severity": "P1",
+      "claim": "Provider metadata is static Python that will rot",
+      "status": "OPEN",
+      "validation": "providers.py contains no editorial opinions",
+      "fix": "Move to evidence-backed records"
+    },
+    {
+      "id": "P1-12",
+      "severity": "P1",
+      "claim": "Heuristic scores presented as measurements",
+      "status": "OPEN",
+      "validation": "Score responses include 'method: heuristic, evidence_coverage: X'",
+      "fix": "Label scores as experimental projections"
+    },
+    {
+      "id": "P1-13",
+      "severity": "P1",
+      "claim": "Tests are mainly smoke tests",
+      "status": "OPEN",
+      "validation": "Invariant tests exist for all P0 claims",
+      "fix": "Build invariant test suite"
+    },
+    {
+      "id": "P2-14",
+      "severity": "P2",
+      "claim": "Git stores generated snapshots/events",
+      "status": "OPEN",
+      "validation": "snapshots/ and events/ in .gitignore",
+      "fix": "Move to runtime storage"
+    },
+    {
+      "id": "P2-15",
+      "severity": "P2",
+      "claim": "Router work dominates core data work",
+      "status": "OPEN",
+      "validation": "router.py and api_hot.py moved to experiments/",
+      "fix": "Separate router from core"
+    }
+  ]
+}

@@ -15,3 +15,7 @@ data/watchdog.jsonl
 data/runs/
 golden/
 .env
+snapshots/
+events/
+.env
+app/data/

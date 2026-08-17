@@ -111,15 +111,18 @@ def score_vector(offer: dict, provider_meta: dict = None) -> dict:
     else: long_context = 20
 
     # --- Workhorse (the composite: success × reliability × speed ÷ cost) ---
-    in_m = offer.get("input_per_m") or 0
+    in_m = offer.get("input_per_m")
     out_m = offer.get("output_per_m") or 0
     is_free = offer.get("free", False)
 
     # Effective cost (lower = better workhorse)
     if is_free:
         cost_score = 100
+    elif in_m is None:
+        cost_score = 30  # unknown price, moderate score
+    elif in_m == 0:
+        cost_score = 100  # confirmed free
     elif in_m > 0:
-        # $0.1/M = 90, $1/M = 60, $10/M = 20, $100/M = 5
         cost_score = max(0, min(100, 100 - (in_m * 8)))
     else:
         cost_score = 50
@@ -134,12 +137,21 @@ def score_vector(offer: dict, provider_meta: dict = None) -> dict:
     )
 
     # --- Value (intelligence per dollar) ---
-    if is_free:
+    # Use blended price: weighted average of input/output (4:1 ratio typical)
+    blended = None
+    if in_m is not None and out_m is not None:
+        blended = (in_m * 4 + out_m) / 5  # 80% input weight, 20% output
+    elif in_m is not None:
+        blended = in_m
+    elif out_m is not None:
+        blended = out_m
+
+    if offer.get("free"):
         value = 100
-    elif in_m > 0:
-        value = min(100, (intelligence / max(in_m, 0.01)) * 2)
+    elif blended is not None and blended > 0:
+        value = min(100, (intelligence / blended) * 2)
     else:
-        value = 50
+        value = 50  # unknown price, moderate value
 
     return {
         "intelligence": round(intelligence, 1),
@@ -152,6 +164,11 @@ def score_vector(offer: dict, provider_meta: dict = None) -> dict:
         "long_context": round(long_context, 1),
         "speed": round(speed, 1),
         "reliability": round(reliability, 1),
+        "_meta": {
+            "method": "heuristic",
+            "version": "v0.experimental",
+            "evidence_coverage": round(len([v for v in [intelligence, speed, tool_calling] if v != 50]) / 3, 2),
+        },
     }
 
 
@@ -279,7 +296,7 @@ def effective_cost_per_task(offer: dict, task: str = "coding_task") -> dict:
     cheaper tokens ≠ cheaper tasks if the model burns more tokens.
     """
     profile = TASK_PROFILES.get(task, TASK_PROFILES["coding_task"])
-    in_m = offer.get("input_per_m") or 0
+    in_m = offer.get("input_per_m")
     out_m = offer.get("output_per_m") or 0
     is_free = offer.get("free", False)
 

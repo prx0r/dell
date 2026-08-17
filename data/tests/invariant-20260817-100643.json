@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-08-17T10:06:43Z",
+  "total": 10,
+  "passed": 9,
+  "failed": 1,
+  "tests": [
+    {
+      "name": "UNKNOWN_PRICE_NEVER_EQUALS_FREE",
+      "status": "PASS"
+    },
+    {
+      "name": "FALLBACK_DATA_CANNOT_ENTER_CANONICAL_STATE",
+      "status": "PASS"
+    },
+    {
+      "name": "MCP_AND_REST_RETURN_IDENTICAL_DOMAIN_RESULT",
+      "status": "PASS"
+    },
+    {
+      "name": "EXTRACTOR_FAILURE_PRODUCES_NO_FACTS",
+      "status": "PASS"
+    },
+    {
+      "name": "FAILED_FETCH_DOES_NOT_EXPIRE_DEAL",
+      "status": "PASS"
+    },
+    {
+      "name": "DATE_ONLY_EXPIRY_NEVER_BECOMES_EXACT_TIMESTAMP",
+      "status": "PASS"
+    },
+    {
+      "name": "FREE_FALSE_FREE_TRUE_IS_FREE_STARTED",
+      "status": "PASS"
+    },
+    {
+      "name": "REPLAY_SAME_OBSERVATIONS_SAME_STATE",
+      "status": "FAIL"
+    },
+    {
+      "name": "EVERY_CLAIM_HAS_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "name": "PROVIDER_PAGE_DISAPPEARANCE != DEAL_EXPIRED",
+      "status": "PASS"
+    }
+  ]
+}

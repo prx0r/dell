@@ -184,8 +184,11 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
         if free is not None and bool(o.get("free")) != free:
             continue
         if max_price is not None:
-            in_m = o.get("input_per_m") or 0
-            if in_m > max_price:
+            in_m = o.get("input_per_m")
+            if in_m is not None and in_m > max_price:
+                continue
+            elif in_m is None:
+                continue  # exclude unknown prices from max_price filter
                 continue
         if min_context and (o.get("context_tokens") or 0) < min_context:
             continue
@@ -199,8 +202,10 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
             "offer_kind": o.get("offer_kind"),
             "metadata": o.get("metadata", {}),
         })
-    result.sort(key=lambda x: x.get("input_per_m") or 0)
+    result.sort(key=lambda x: x.get("input_per_m") if x.get("input_per_m") is not None else 9999)
     result = _enrich_with_freshness(result)
+    # INVARIANT: exclude offers with unknown prices unless explicitly requested
+    result = [o for o in result if o.get("price_known", True)]
     return {"deals": result[:limit], "count": len(result)}
 
 
@@ -245,9 +250,9 @@ def list_prices(model: str = None, provider: str = None, sort: str = "input",
             "free": o.get("free"),
         })
     if sort == "input":
-        result.sort(key=lambda x: x.get("input_per_m") or 0)
+        result.sort(key=lambda x: x.get("input_per_m") if x.get("input_per_m") is not None else 9999)
     elif sort == "output":
-        result.sort(key=lambda x: x.get("output_per_m") or 0)
+        result.sort(key=lambda x: x.get("output_per_m") if x.get("output_per_m") is not None else 9999)
     return {"prices": result[:limit], "count": len(result)}
 
 
@@ -274,8 +279,10 @@ def cheapest(task: str = Query("short_chat"), limit: int = Query(10, le=50)):
     for o in data["offers"]:
         if o.get("free"):
             cost = 0
+        elif o.get("input_per_m") is None:
+            cost = 9999  # unknown price, sort last
         else:
-            in_m = o.get("input_per_m") or 0
+            in_m = o.get("input_per_m")
             out_m = o.get("output_per_m") or 0
             preset = models_v2.WORKLOAD_PRESETS.get(task, models_v2.WORKLOAD_PRESETS["short_chat"])
             cost = (in_m * preset["input_tokens"] + out_m * preset["output_tokens"]) / 1_000_000 * preset["requests"]

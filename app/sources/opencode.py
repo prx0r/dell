@@ -146,21 +146,9 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
                       "multiplier": mult_value, "note": f"Page shows {mult_value}x usage multiplier"},
         ))
 
-    # If no structured data found, create a baseline offer for known models
-    if not offers and "opencode" in observation.url:
-        # Known OpenCode Go models
-        known_models = [
-            "deepseek-v4-flash", "mimo-v2.5", "qwen3-coder",
-            "claude-sonnet-4-20250514", "gpt-4o-mini",
-        ]
-        for model in known_models:
-            offers.append(OfferSnapshot(
-                provider_id="opencode-go",
-                model_id=f"opencode-go/{model}",
-                provider_model_slug=model,
-                offer_kind="provider_route",
-                metadata={"source_url": observation.url, "extracted_from": "known_models_list"},
-            ))
+    # If no structured data found, DO NOT fabricate known models
+    # Adapters are forbidden from providing fallback commercial facts
+    # Unknown models remain unknown until observed in actual page content
 
     return offers
 
