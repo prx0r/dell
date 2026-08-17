@@ -104,15 +104,28 @@ def run_discovery(sources: list[str] | None = None) -> dict:
                     unique.append(o_dict)
             source_offers = unique
 
-            # Write to canonical DB
+            # Write to canonical DB with ALL adapter data
             for o in source_offers:
+                meta = o.get("metadata", {})
                 canonical_db.upsert_offer(
                     conn, o["offer_id"], o.get("provider_id", ""),
                     o.get("model_id", ""), o.get("offer_kind", "metered_api"),
                     o.get("input_per_m"), o.get("output_per_m"),
                     o.get("free", False), o.get("context_tokens"),
-                    o.get("requests_per_day"), o.get("metadata", {}).get("source_url"),
-                    "global")
+                    o.get("requests_per_day"),
+                    source_url=meta.get("source_url"),
+                    region=None,  # NULL = unknown, NOT 'global'
+                    cache_read_per_m=o.get("cache_read_per_m"),
+                    requests_per_5h=o.get("requests_per_5h") or meta.get("requests_per_5h"),
+                    requests_per_minute=o.get("requests_minute"),
+                    quota_scope=meta.get("scope"),
+                    quota_window_hours=meta.get("window_hours"),
+                    usage_multiplier=o.get("usage_multiplier") or meta.get("multiplier"),
+                    capacity_multiplier=meta.get("capacity_multiplier"),
+                    max_output_tokens=o.get("max_output_tokens"),
+                    automation_allowed=meta.get("automation_allowed"),
+                    deal_type=o.get("offer_kind"),
+                    metadata_json=json.dumps(meta))
 
             # Extract promotion events
             for obs in observations:

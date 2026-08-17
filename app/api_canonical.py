@@ -27,6 +27,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import models_v2
 import providers as providers_mod
+import canonical_db
 
 app = FastAPI(title="LLM Deals", version="1.0",
               description="The canonical live data layer for LLM inference economics")
@@ -79,26 +80,12 @@ def _enrich_with_freshness(offers: list[dict]) -> list[dict]:
 
 
 def _load_all() -> dict:
-    """Load from canonical SQLite DB (preferred) or JSON snapshots (fallback)."""
-    try:
-        conn = canonical_db.connect()
-        canonical_db.migrate(conn)
-        offers = canonical_db.get_all_offers(conn)
-        conn.close()
-        if offers:
-            return {"offers": offers, "events": []}
-    except Exception:
-        pass
-    # Fallback to JSON snapshots
-    snapshots_dir = ROOT / "snapshots"
-    all_offers = []
-    if snapshots_dir.exists():
-        for f in snapshots_dir.glob("*.json"):
-            try:
-                all_offers.extend(json.loads(f.read_text()).get("offers", []))
-            except Exception:
-                continue
-    return {"offers": all_offers, "events": []}
+    """Load from canonical SQLite DB. No silent fallback — DB is the truth."""
+    conn = canonical_db.connect()
+    canonical_db.migrate(conn)
+    offers = canonical_db.get_all_offers(conn)
+    conn.close()
+    return {"offers": offers, "events": []}
 
 
 # --- Core Endpoints ---
@@ -528,8 +515,9 @@ def verify_deal(model_id: str):
                      offer.get("metadata", {}).get("multiplier") is not None,
         "live_probe": probe_result,
         "source_url": offer.get("metadata", {}).get("source_url"),
-        "verification_status": "LIVE_PROBED" if probe_result.get("live") else
-                               "SOURCE_LINKED" if offer.get("metadata", {}).get("source_url") else "UNVERIFIED",
+        "verification_status": "ENDPOINT_REACHABLE" if probe_result.get("live") else
+                               "SOURCE_LINKED" if offer.get("metadata", {}).get("source_url") or offer.get("source_url") else "UNVERIFIED",
+        "verification_note": "Endpoint reachable (HTTP %s) — does NOT prove deal is active" % probe_result.get("status_code", "?") if probe_result.get("live") else "No live probe available",
     }
 
 

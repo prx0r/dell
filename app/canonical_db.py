@@ -51,29 +51,78 @@ def generate_offer_id(provider_id: str, model_id: str, offer_type: str,
     return "%s:%s:%s:%s" % (provider_id, model_clean, offer_type, region)
 
 
-def upsert_offer(conn, offer_id: str, provider_id: str, model_id: str,
+def upsert_offer(conn, offer_id: str, provider_id: str, model_id: str = None,
                  offer_type: str = "metered_api", input_per_m: float = None,
                  output_per_m: float = None, free: bool = False,
                  context_tokens: int = None, requests_per_day: int = None,
-                 source_url: str = None, region: str = "global"):
-    """Insert or update an offer."""
+                 source_url: str = None, region: str = None,
+                 # Rich fields
+                 cache_read_per_m: float = None, cache_write_per_m: float = None,
+                 requests_per_5h: int = None, requests_per_minute: int = None,
+                 tokens_per_day: int = None, quota_scope: str = None,
+                 quota_window_hours: float = None, subscription_usd: float = None,
+                 credits_included: float = None, usage_multiplier: float = None,
+                 capacity_multiplier: float = None, max_output_tokens: int = None,
+                 automation_allowed: int = None, requires_card: int = None,
+                 requires_phone: int = None, requires_kyc: int = None,
+                 starts_at: str = None, expires_at: str = None,
+                 expiry_precision: str = None, deal_type: str = None,
+                 deal_status: str = "active", metadata_json: str = "{}"):
+    """Insert or update an offer. Preserves ALL adapter data."""
     now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     conn.execute("""
         INSERT INTO offers (offer_id, provider_id, model_id, offer_type,
-            input_per_m, output_per_m, free, context_tokens, requests_per_day,
-            source_url, region, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            input_per_m, output_per_m, cache_read_per_m, cache_write_per_m,
+            free, requests_per_day, requests_per_5h, requests_per_minute,
+            tokens_per_day, quota_scope, quota_window_hours,
+            subscription_usd, credits_included, usage_multiplier, capacity_multiplier,
+            context_tokens, max_output_tokens,
+            region, automation_allowed, requires_card, requires_phone, requires_kyc,
+            starts_at, expires_at, expiry_precision,
+            deal_type, deal_status,
+            source_url, metadata_json, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(offer_id) DO UPDATE SET
             input_per_m = COALESCE(excluded.input_per_m, input_per_m),
             output_per_m = COALESCE(excluded.output_per_m, output_per_m),
+            cache_read_per_m = COALESCE(excluded.cache_read_per_m, cache_read_per_m),
+            cache_write_per_m = COALESCE(excluded.cache_write_per_m, cache_write_per_m),
             free = excluded.free,
-            context_tokens = COALESCE(excluded.context_tokens, context_tokens),
             requests_per_day = COALESCE(excluded.requests_per_day, requests_per_day),
+            requests_per_5h = COALESCE(excluded.requests_per_5h, requests_per_5h),
+            requests_per_minute = COALESCE(excluded.requests_per_minute, requests_per_minute),
+            tokens_per_day = COALESCE(excluded.tokens_per_day, tokens_per_day),
+            quota_scope = COALESCE(excluded.quota_scope, quota_scope),
+            quota_window_hours = COALESCE(excluded.quota_window_hours, quota_window_hours),
+            subscription_usd = COALESCE(excluded.subscription_usd, subscription_usd),
+            credits_included = COALESCE(excluded.credits_included, credits_included),
+            usage_multiplier = COALESCE(excluded.usage_multiplier, usage_multiplier),
+            capacity_multiplier = COALESCE(excluded.capacity_multiplier, capacity_multiplier),
+            context_tokens = COALESCE(excluded.context_tokens, context_tokens),
+            max_output_tokens = COALESCE(excluded.max_output_tokens, max_output_tokens),
+            region = COALESCE(excluded.region, region),
+            automation_allowed = COALESCE(excluded.automation_allowed, automation_allowed),
+            requires_card = COALESCE(excluded.requires_card, requires_card),
+            requires_phone = COALESCE(excluded.requires_phone, requires_phone),
+            requires_kyc = COALESCE(excluded.requires_kyc, requires_kyc),
+            starts_at = COALESCE(excluded.starts_at, starts_at),
+            expires_at = COALESCE(excluded.expires_at, expires_at),
+            expiry_precision = COALESCE(excluded.expiry_precision, expiry_precision),
+            deal_type = COALESCE(excluded.deal_type, deal_type),
+            deal_status = excluded.deal_status,
             source_url = COALESCE(excluded.source_url, source_url),
+            metadata_json = excluded.metadata_json,
             updated_at = excluded.updated_at
     """, (offer_id, provider_id, model_id, offer_type,
-          input_per_m, output_per_m, int(free), context_tokens, requests_per_day,
-          source_url, region, now, now))
+          input_per_m, output_per_m, cache_read_per_m, cache_write_per_m,
+          int(free), requests_per_day, requests_per_5h, requests_per_minute,
+          tokens_per_day, quota_scope, quota_window_hours,
+          subscription_usd, credits_included, usage_multiplier, capacity_multiplier,
+          context_tokens, max_output_tokens,
+          region, automation_allowed, requires_card, requires_phone, requires_kyc,
+          starts_at, expires_at, expiry_precision,
+          deal_type, deal_status,
+          source_url, metadata_json, now, now))
 
 
 def upsert_source(conn, source_id: str, adapter_module: str, cadence_minutes: int,

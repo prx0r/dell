@@ -98,32 +98,33 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
         count_int = int(count.replace(",", ""))
         
         # Detect if this model has significantly more requests than baseline
-        multiplier = round(count_int / baseline, 1) if baseline > 0 else 1.0
-        
+        # This is a DERIVED metric, not an observed provider term
+        capacity_ratio = round(count_int / baseline, 1) if baseline > 0 else 1.0
+
         if mid in existing_models:
             for o in offers:
                 if o.model_id == mid:
                     o.metadata["requests_per_5h"] = count_int
-                    if multiplier > 1.5:
-                        o.offer_kind = "capacity_multiplier"
-                        o.metadata["capacity_multiplier"] = multiplier
-                        o.metadata["evidence"] = "%s req/5h vs baseline %s req/5h = %.1fx capacity" % (count, baseline, multiplier)
+                    if capacity_ratio > 1.5:
+                        o.metadata["capacity_ratio_vs_median"] = capacity_ratio
+                        o.metadata["derived_metric"] = True
+                        o.metadata["evidence"] = "%s req/5h vs median %s = %.1fx" % (count, baseline, capacity_ratio)
             continue
-        
-        offer_kind = "capacity_multiplier" if multiplier > 1.5 else "metered_api"
+
+        # Offer kind: only use "usage_multiplier" if explicitly stated (e.g. "2x usage")
+        # "capacity_multiplier" is a derived metric, not an observed deal term
         offers.append(OfferSnapshot(
             provider_id="opencode-go",
             model_id=mid,
             provider_model_slug=model,
-            offer_kind=offer_kind,
-            usage_multiplier=multiplier if multiplier > 1.5 else None,
+            offer_kind="metered_api",
             metadata={
                 "source_url": observation.url,
                 "extracted_from": "data_attribute",
                 "requests_per_5h": count_int,
-                "capacity_multiplier": multiplier,
-                "baseline_requests_per_5h": baseline,
-                "evidence": "%s req/5h vs baseline %s req/5h = %.1fx capacity" % (count, baseline, multiplier),
+                "capacity_ratio_vs_median": capacity_ratio,
+                "derived_metric": True,
+                "evidence": "%s req/5h vs median %s req/5h" % (count, baseline),
             },
         ))
 

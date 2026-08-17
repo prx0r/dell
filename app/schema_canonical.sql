@@ -26,19 +26,51 @@ CREATE TABLE IF NOT EXISTS source_observations (
     metadata_json TEXT DEFAULT '{}'
 );
 
--- Offers (canonical truth)
+-- Offers (canonical truth) — preserves ALL adapter data
 CREATE TABLE IF NOT EXISTS offers (
     offer_id TEXT PRIMARY KEY,
     provider_id TEXT NOT NULL,
     model_id TEXT,
     offer_type TEXT NOT NULL DEFAULT 'metered_api',
+    -- Pricing
     input_per_m REAL,
     output_per_m REAL,
+    cache_read_per_m REAL,
+    cache_write_per_m REAL,
+    -- Free tier
     free INTEGER NOT NULL DEFAULT 0,
-    context_tokens INTEGER,
+    -- Quota (preserved, not collapsed)
     requests_per_day INTEGER,
+    requests_per_5h INTEGER,
+    requests_per_minute INTEGER,
+    tokens_per_day INTEGER,
+    quota_scope TEXT,
+    quota_window_hours REAL,
+    -- Subscription
+    subscription_usd REAL,
+    credits_included REAL,
+    usage_multiplier REAL,
+    capacity_multiplier REAL,
+    -- Context
+    context_tokens INTEGER,
+    max_output_tokens INTEGER,
+    -- Eligibility (NULL = unknown, NOT 'global')
+    region TEXT,
+    automation_allowed INTEGER,
+    requires_card INTEGER,
+    requires_phone INTEGER,
+    requires_kyc INTEGER,
+    -- Timing
+    starts_at TEXT,
+    expires_at TEXT,
+    expiry_precision TEXT,
+    -- Classification
+    deal_type TEXT,
+    deal_status TEXT DEFAULT 'active',
+    -- Provenance
     source_url TEXT,
-    region TEXT DEFAULT 'global',
+    metadata_json TEXT DEFAULT '{}',
+    -- Timestamps
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
 );
