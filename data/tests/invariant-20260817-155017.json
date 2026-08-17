@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-08-17T15:50:17Z",
+  "total": 10,
+  "passed": 10,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "INV-01: Free=$0 is known, null=unknown, never\u6df7\u6dc6",
+      "status": "PASS"
+    },
+    {
+      "name": "INV-02: Adapters never fabricate fallback facts",
+      "status": "PASS"
+    },
+    {
+      "name": "INV-03: MCP and REST return same data",
+      "status": "PASS"
+    },
+    {
+      "name": "INV-04: Extractor returns [] on fetch failure",
+      "status": "PASS"
+    },
+    {
+      "name": "INV-05: Source failures don't expire deals",
+      "status": "PASS"
+    },
+    {
+      "name": "INV-06: Date-only expiry has day precision, not instant",
+      "status": "PASS"
+    },
+    {
+      "name": "INV-07: free false\u2192true = free_started, true\u2192false = free_ended",
+      "status": "PASS"
+    },
+    {
+      "name": "INV-08: Same data produces same scoring",
+      "status": "PASS"
+    },
+    {
+      "name": "INV-09: Every offer has a source URL",
+      "status": "PASS"
+    },
+    {
+      "name": "INV-10: Source failures tracked separately from deal status",
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-08-17T19:23:28Z",
+  "total_free_endpoints": 2,
+  "fully_characterized": 0,
+  "characterization_rate": 0.0,
+  "gaps": {
+    "fully_characterized": 0,
+    "missing_quantization": 0,
+    "missing_performance": 2,
+    "missing_context": 0,
+    "missing_capabilities": 0,
+    "missing_quota": 1
+  },
+  "details": {
+    "fully_characterized": [],
+    "missing_quantization": [],
+    "missing_performance": [
+      "or:google/lyria-3-pro-preview:Google AI Studio",
+      "or:google/lyria-3-clip-preview:Google AI Studio"
+    ],
+    "missing_context": [],
+    "missing_capabilities": [],
+    "missing_quota": [
+      "Google AI Studio"
+    ]
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "run_id": "utility-20260817-201901",
+  "started_at": "2026-08-17T20:18:56Z",
+  "completed_at": "2026-08-17T20:19:02Z",
+  "duration_seconds": 5.0610878467559814,
+  "results": {
+    "rest": [
+      {
+        "test": "REST:/health",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/stats",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/models?limit=3",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/deals?limit=3",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/deals/free?limit=3",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/mega-deals?limit=3",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/recommend?task=coding",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/providers?limit=3",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/verification-runs?limit=3",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/history?limit=3",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/free/plan",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      },
+      {
+        "test": "REST:/v1/deals/nonexistent/evidence",
+        "status": "PASS",
+        "expected": 200,
+        "actual": 200
+      }
+    ],
+    "user_questions": [
+      {
+        "question": "Cheapest coding model?",
+        "status": "PASS",
+        "has_data": true
+      },
+      {
+        "question": "Best free coding model?",
+        "status": "PASS",
+        "has_data": true
+      },
+      {
+        "question": "Cheapest >=128k?",
+        "status": "PASS",
+        "has_data": true
+      },
+      {
+        "question": "Mega deals?",
+        "status": "PASS",
+        "has_data": true
+      },
+      {
+        "question": "Providers?",
+        "status": "PASS",
+        "has_data": true
+      },
+      {
+        "question": "Verification status?",
+        "status": "PASS",
+        "has_data": true
+      },
+      {
+        "question": "Free plan for 100 requests?",
+        "status": "PASS",
+        "has_data": true
+      },
+      {
+        "question": "Deal history?",
+        "status": "PASS",
+        "has_data": true
+      },
+      {
+        "question": "Best value?",
+        "status": "PASS",
+        "has_data": true
+      },
+      {
+        "question": "Cheapest?",
+        "status": "PASS",
+        "has_data": true
+      }
+    ],
+    "coverage": {
+      "catalog_coverage": {
+        "total_offers": 1861,
+        "with_economic_access": 1861,
+        "pct": 100.0
+      },
+      "provenance_coverage": {
+        "total_offers": 1861,
+        "with_assertions": 19,
+        "with_claims": 19,
+        "with_evidence": 19,
+        "pct_assertions": 1.0,
+        "pct_claims": 1.0,
+        "pct_evidence": 1.0
+      },
+      "verification_coverage": {
+        "total_offers": 1861,
+        "with_verification": 19,
+        "pct": 1.0
+      },
+      "freshness_coverage": {
+        "total_offers": 1861,
+        "with_freshness": 19,
+        "pct": 1.0
+      },
+      "lifecycle_coverage": {
+        "total_offers": 1861,
+        "with_lifecycle": 1861,
+        "pct": 100.0
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-08-17T19:53:52Z",
+  "tests": [
+    {
+      "name": "FRESHNESS",
+      "status": "WARN",
+      "detail": "Deals returned but no freshness"
+    },
+    {
+      "name": "NEGATIVE_OBS",
+      "status": "PASS",
+      "detail": "Proper error/empty response"
+    },
+    {
+      "name": "SOURCE_AUTH",
+      "status": "PASS",
+      "detail": "Source URLs present"
+    },
+    {
+      "name": "ECON_ACCESS",
+      "status": "PASS",
+      "detail": "Price states present"
+    },
+    {
+      "name": "VERIF_DIMS",
+      "status": "PASS",
+      "detail": "3 verification runs"
+    },
+    {
+      "name": "LIFECYCLE",
+      "status": "WARN",
+      "detail": "No lifecycle states"
+    },
+    {
+      "name": "RECONCILE",
+      "status": "PASS",
+      "detail": "100 deals loaded"
+    }
+  ],
+  "summary": {
+    "pass": 5,
+    "warn": 2,
+    "fail": 0
+  }
+}

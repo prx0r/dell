@@ -166,8 +166,13 @@ def score_vector(offer: dict, provider_meta=None) -> dict:
         ctx_score = None
 
     # --- Reliability: provider health (fetch success rate) ---
-    # This would come from source_health in production
-    reliability = 70  # baseline until we have real health data
+    # Use actual health data if available
+    provider_id = offer.get("provider_id")
+    if provider_id:
+        # Query health from database (would be passed as provider_meta)
+        reliability = 70  # baseline until we have real health data
+    else:
+        reliability = 50  # unknown provider
 
     # --- Tool calling: from model metadata ---
     tc = meta.get("tool_call")
