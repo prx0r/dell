@@ -1,0 +1,16 @@
+{
+  "head": "e9ca0fe11052aa6422999fd848c936ef7d9a838a",
+  "timestamp": "2026-08-17T22:11:13Z",
+  "stats": {
+    "offers": 1861,
+    "models": 1527,
+    "providers": 65,
+    "endpoints": 79,
+    "claims": 1242,
+    "evidence": 1242,
+    "assertions": 1755,
+    "verification_dims": 1239,
+    "freshness_policies": 20,
+    "quota_policies": 7
+  }
+}

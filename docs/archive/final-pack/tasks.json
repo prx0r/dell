@@ -1,0 +1,110 @@
+{
+  "schema": "dell.final_hardening.tasks.v1",
+  "baseline_sha": "e9ca0fe11052aa6422999fd848c936ef7d9a838a",
+  "zero_tolerance": [
+    "hard_constraint_violation",
+    "unknown_as_known",
+    "stale_as_current",
+    "quota_window_conflation",
+    "identity_false_merge",
+    "expired_deal_resurrection",
+    "rest_mcp_semantic_disagreement",
+    "unsupported_factual_assertion",
+    "evidence_integrity_failure"
+  ],
+  "checkpoints": [
+    {
+      "id": "CP0",
+      "name": "baseline",
+      "depends_on": []
+    },
+    {
+      "id": "CP1",
+      "name": "decision-service",
+      "depends_on": [
+        "CP0"
+      ]
+    },
+    {
+      "id": "CP2",
+      "name": "scoring-v3",
+      "depends_on": [
+        "CP1"
+      ]
+    },
+    {
+      "id": "CP3",
+      "name": "badge-semantics",
+      "depends_on": [
+        "CP2"
+      ]
+    },
+    {
+      "id": "CP4",
+      "name": "rest-mcp-convergence",
+      "depends_on": [
+        "CP1",
+        "CP3"
+      ]
+    },
+    {
+      "id": "CP5",
+      "name": "free-planner",
+      "depends_on": [
+        "CP1"
+      ]
+    },
+    {
+      "id": "CP6",
+      "name": "field-evidence-coverage",
+      "depends_on": [
+        "CP1"
+      ]
+    },
+    {
+      "id": "CP7",
+      "name": "endpoint-measurements",
+      "depends_on": [
+        "CP2",
+        "CP6"
+      ]
+    },
+    {
+      "id": "CP8",
+      "name": "hermes-skills",
+      "depends_on": [
+        "CP4",
+        "CP6"
+      ]
+    },
+    {
+      "id": "CP9",
+      "name": "docs-repo-convergence",
+      "depends_on": [
+        "CP4"
+      ]
+    },
+    {
+      "id": "CP10",
+      "name": "final-certificate",
+      "depends_on": [
+        "CP1",
+        "CP2",
+        "CP3",
+        "CP4",
+        "CP5",
+        "CP6",
+        "CP8",
+        "CP9"
+      ]
+    },
+    {
+      "id": "CP11",
+      "name": "live-operations-certificate",
+      "depends_on": [
+        "CP7",
+        "CP10"
+      ]
+    }
+  ]
+}

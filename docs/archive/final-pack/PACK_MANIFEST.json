@@ -1,0 +1,77 @@
+{
+  "pack": "dell-final-perfect-pack",
+  "version": "1.0.0",
+  "created_utc": "2026-08-17T22:07:18.902470+00:00",
+  "target_repo": "prx0r/dell",
+  "reviewed_sha": "e9ca0fe11052aa6422999fd848c936ef7d9a838a",
+  "files": {
+    "00_READ_ME_FIRST.md": {
+      "sha256": "8d1fc14f0787892e161220ae1b27d5d6ad2c4a926110d0955c1df56809130af0",
+      "bytes": 1738
+    },
+    "01_EXECUTIVE_PEER_REVIEW.md": {
+      "sha256": "2773a38e3b7d18c4477a9fa703af39ec0b9a39872880217f2b7abf7d0fe8e166",
+      "bytes": 4557
+    },
+    "02_FINAL_ARCHITECTURE.md": {
+      "sha256": "67e30923a088e2259c6f59582f4ced5e39485a20254d8b4353e0d454beb8b65b",
+      "bytes": 2073
+    },
+    "03_DECISION_SERVICE_SPEC.md": {
+      "sha256": "705f86a9cd4c550833f8adc1d95825bc470261519b43f2cb101a79654adf672a",
+      "bytes": 3867
+    },
+    "04_SCORING_AND_BADGES_V3.md": {
+      "sha256": "d4e68d09360590a3bf06a1361a2e573b3af7e57b6d1f3ca1c5bf46c450b216c5",
+      "bytes": 3818
+    },
+    "05_MCP_REST_CONVERGENCE.md": {
+      "sha256": "677744f39a144af95edc3fa4fe67815ae9411c0c817b8eb72216da7887ec3186",
+      "bytes": 1654
+    },
+    "06_EVIDENCE_AND_FRESHNESS.md": {
+      "sha256": "d240b03be4bce698d1d011d15840ca0a9ecde01e46bd58f858f7ead6d8ec463b",
+      "bytes": 1570
+    },
+    "07_HERMES_SKILLS_AND_AUTONOMY.md": {
+      "sha256": "a80d16bf92eb606a468e8b6ed7fda60a94a194bc8985a13704543965d27b2a75",
+      "bytes": 1781
+    },
+    "08_VALIDATION_MATRIX.md": {
+      "sha256": "125b548603caad8fbc21042acc2519de452565e1811bb409b86ccd294d224c18",
+      "bytes": 3575
+    },
+    "09_EXTERNAL_API_DESIGN.md": {
+      "sha256": "c6f7cb625d06285c0d287598c262962f98caa614b2d033133c4cd1db4e81cfdd",
+      "bytes": 1678
+    },
+    "10_REPO_ORGANIZATION_AND_DOCS.md": {
+      "sha256": "73dad158a864d48bd2b5a1d0609803290a663bc38776ef690cd8b9055e809c5d",
+      "bytes": 1531
+    },
+    "11_PRODUCTION_OPERATIONS.md": {
+      "sha256": "1aca0db94ed614d3c5470d8a5b81916d784b8f45b4e0e8698fc6ddfcf9ce95a8",
+      "bytes": 1293
+    },
+    "12_FINAL_RELEASE_CERTIFICATE.md": {
+      "sha256": "fa299f852735142b0d976fc44e647be3061dce7af274e292435f7b0d8cd12e5d",
+      "bytes": 2096
+    },
+    "13_IMPLEMENTATION_ORDER.md": {
+      "sha256": "3cb8bb344dd1b00aa6c0a49759fb8ac09df1f78cf0f42348a21baf224e654042",
+      "bytes": 2579
+    },
+    "14_AGENT_PROMPT.md": {
+      "sha256": "665a9f3d10d4185b218f53cb94770c162e5021765022dfbff14734b13bb9b426",
+      "bytes": 2526
+    },
+    "acceptance_criteria.json": {
+      "sha256": "80f4ea5c96296396b3fff64383a7d8733c11c97d5e216ec4afbb86f7697c6b15",
+      "bytes": 656
+    },
+    "tasks.json": {
+      "sha256": "e9e978cc843a80522739c392227f44898f15d102837db93ae3dcb05571b2c395",
+      "bytes": 1919
+    }
+  }
+}
