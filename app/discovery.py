@@ -186,3 +186,7 @@ if __name__ == "__main__":
     import sys
     sources = sys.argv[1:] if len(sys.argv) > 1 else None
     run_discovery(sources)
+
+# Integration point for source_diff (P0.12)
+# After extracting offers, compare with previous snapshot
+# and record changes as deal_events
