@@ -1,0 +1,380 @@
+{
+  "xiaomi": {
+    "name": "Xiaomi MiMo",
+    "cat": "inference",
+    "site": "https://dev.mi.com",
+    "country": "China",
+    "free": "6 free models"
+  },
+  "zai": {
+    "name": "Z.AI",
+    "cat": "inference",
+    "site": "https://docs.z.ai",
+    "country": "China",
+    "free": "GLM Flash free"
+  },
+  "moonshot": {
+    "name": "Moonshot AI",
+    "cat": "inference",
+    "site": "https://platform.moonshot.cn",
+    "country": "China",
+    "free": "Free tier"
+  },
+  "deepseek": {
+    "name": "DeepSeek",
+    "cat": "inference",
+    "site": "https://platform.deepseek.com",
+    "country": "China",
+    "free": "\u00a510 credits"
+  },
+  "minimax": {
+    "name": "MiniMax",
+    "cat": "inference",
+    "site": "https://minimax.io",
+    "country": "China",
+    "free": "9 free models"
+  },
+  "alibaba": {
+    "name": "Alibaba Cloud",
+    "cat": "inference",
+    "site": "https://help.aliyun.com",
+    "country": "China",
+    "free": "1M free/model"
+  },
+  "zhipuai": {
+    "name": "ZhipuAI",
+    "cat": "inference",
+    "site": "https://zhipuai.cn",
+    "country": "China",
+    "free": "15 free models"
+  },
+  "tencent": {
+    "name": "Tencent Cloud",
+    "cat": "inference",
+    "site": "https://cloud.tencent.com",
+    "country": "China",
+    "free": "TokenHub trial"
+  },
+  "siliconflow": {
+    "name": "SiliconFlow",
+    "cat": "inference",
+    "site": "https://siliconflow.cn",
+    "country": "China",
+    "free": "Experience credits"
+  },
+  "sensenova": {
+    "name": "SenseNova",
+    "cat": "inference",
+    "site": "https://sensenova.ai",
+    "country": "China",
+    "free": "$0 public beta"
+  },
+  "baidu": {
+    "name": "Baidu AI",
+    "cat": "inference",
+    "site": "https://cloud.baidu.com",
+    "country": "China",
+    "free": "100 RPD free"
+  },
+  "stepfun": {
+    "name": "StepFun",
+    "cat": "inference",
+    "site": "https://stepfun.com",
+    "country": "China",
+    "free": "3 free models"
+  },
+  "bytedance": {
+    "name": "ByteDance Seed",
+    "cat": "inference",
+    "site": "https://www.volcengine.com",
+    "country": "China",
+    "free": "12 free models"
+  },
+  "groq": {
+    "name": "Groq",
+    "cat": "inference",
+    "site": "https://groq.com",
+    "country": "US",
+    "free": "30 RPM free"
+  },
+  "cerebras": {
+    "name": "Cerebras",
+    "cat": "inference",
+    "site": "https://cerebras.ai",
+    "country": "US",
+    "free": "Free tier"
+  },
+  "together": {
+    "name": "Together AI",
+    "cat": "inference",
+    "site": "https://together.ai",
+    "country": "US",
+    "free": "$1 free credit"
+  },
+  "fireworks": {
+    "name": "Fireworks AI",
+    "cat": "inference",
+    "site": "https://fireworks.ai",
+    "country": "US",
+    "free": "$1 free credit"
+  },
+  "deepinfra": {
+    "name": "DeepInfra",
+    "cat": "inference",
+    "site": "https://deepinfra.com",
+    "country": "US",
+    "free": "$1 free credit"
+  },
+  "novita": {
+    "name": "Novita AI",
+    "cat": "inference",
+    "site": "https://novita.ai",
+    "country": "US",
+    "free": "$10/$10 referral"
+  },
+  "xai": {
+    "name": "xAI",
+    "cat": "inference",
+    "site": "https://console.x.ai",
+    "country": "US",
+    "free": "9 free models"
+  },
+  "openai": {
+    "name": "OpenAI",
+    "cat": "inference",
+    "site": "https://platform.openai.com",
+    "country": "US",
+    "free": "57 free models"
+  },
+  "anthropic": {
+    "name": "Anthropic",
+    "cat": "inference",
+    "site": "https://console.anthropic.com",
+    "country": "US",
+    "free": "24 free models"
+  },
+  "google": {
+    "name": "Google AI",
+    "cat": "inference",
+    "site": "https://aistudio.google.com",
+    "country": "US",
+    "free": "1500 RPD free"
+  },
+  "meta": {
+    "name": "Meta",
+    "cat": "inference",
+    "site": "https://llama.meta.com",
+    "country": "US",
+    "free": "11 free models"
+  },
+  "microsoft": {
+    "name": "Microsoft",
+    "cat": "inference",
+    "site": "https://azure.microsoft.com",
+    "country": "US",
+    "free": "3 free models"
+  },
+  "ibm": {
+    "name": "IBM",
+    "cat": "inference",
+    "site": "https://watsonx.ai",
+    "country": "US",
+    "free": "2 free models"
+  },
+  "sakana": {
+    "name": "Sakana AI",
+    "cat": "inference",
+    "site": "https://sakana.ai",
+    "country": "Japan",
+    "free": "2 free models"
+  },
+  "upstage": {
+    "name": "Upstage",
+    "cat": "inference",
+    "site": "https://upstage.ai",
+    "country": "Korea",
+    "free": "$10 credits"
+  },
+  "maritaca": {
+    "name": "Maritaca AI",
+    "cat": "inference",
+    "site": "https://maritaca.ai",
+    "country": "Brazil",
+    "free": "Batch discounts"
+  },
+  "aion": {
+    "name": "Aion Labs",
+    "cat": "inference",
+    "site": "https://www.aionlabs.ai",
+    "country": "Israel",
+    "free": "Daily free credits"
+  },
+  "nebius": {
+    "name": "Nebius",
+    "cat": "inference",
+    "site": "https://nebius.com",
+    "country": "EU",
+    "free": "Token Factory credits"
+  },
+  "scaleway": {
+    "name": "Scaleway",
+    "cat": "inference",
+    "site": "https://scaleway.com",
+    "country": "France",
+    "free": "1M tokens free"
+  },
+  "ovhcloud": {
+    "name": "OVHcloud",
+    "cat": "inference",
+    "site": "https://ovhcloud.com",
+    "country": "France",
+    "free": "$200 credits"
+  },
+  "nvidia-nim": {
+    "name": "NVIDIA NIM",
+    "cat": "inference",
+    "site": "https://build.nvidia.com",
+    "country": "US",
+    "free": "116 free endpoints"
+  },
+  "nscale": {
+    "name": "Nscale",
+    "cat": "inference",
+    "site": "https://nscale.com",
+    "country": "EU",
+    "free": "17 models"
+  },
+  "openrouter": {
+    "name": "OpenRouter",
+    "cat": "aggregator",
+    "site": "https://openrouter.ai",
+    "country": "Global",
+    "free": "20 free models"
+  },
+  "opencode-go": {
+    "name": "OpenCode Go",
+    "cat": "aggregator",
+    "site": "https://dev.opencode.ai/go",
+    "country": "Global",
+    "free": "$5 first month"
+  },
+  "opencode-zen": {
+    "name": "OpenCode Zen",
+    "cat": "aggregator",
+    "site": "https://opencode.ai",
+    "country": "Global",
+    "free": "6 free models"
+  },
+  "kilo": {
+    "name": "Kilo",
+    "cat": "aggregator",
+    "site": "https://kilo.ai",
+    "country": "Global",
+    "free": "Auto-free routing"
+  },
+  "perplexity": {
+    "name": "Perplexity",
+    "cat": "aggregator",
+    "site": "https://perplexity.ai",
+    "country": "US",
+    "free": "5 free models"
+  },
+  "featherless-ai": {
+    "name": "Featherless AI",
+    "cat": "aggregator",
+    "site": "https://featherless.ai",
+    "country": "Global",
+    "free": "No free tier"
+  },
+  "baseten": {
+    "name": "Baseten",
+    "cat": "inference",
+    "site": "https://baseten.co",
+    "country": "US",
+    "free": "No free tier"
+  },
+  "poolside": {
+    "name": "Poolside",
+    "cat": "inference",
+    "site": "https://poolside.ai",
+    "country": "France",
+    "free": "4 free models"
+  },
+  "arcee-ai": {
+    "name": "Arcee AI",
+    "cat": "inference",
+    "site": "https://arcee.ai",
+    "country": "US",
+    "free": "4 free models"
+  },
+  "sakura-ai": {
+    "name": "Sakura AI",
+    "cat": "inference",
+    "site": "https://sakura.ai",
+    "country": "Japan",
+    "free": "3000 req/month"
+  },
+  "sdaia": {
+    "name": "SDAIA",
+    "cat": "inference",
+    "site": "https://sdaia.gov.sa",
+    "country": "Saudi Arabia",
+    "free": "Free models"
+  },
+  "swiss-ai": {
+    "name": "Swiss AI",
+    "cat": "inference",
+    "site": "https://swiss-ai.org",
+    "country": "Switzerland",
+    "free": "2 free models"
+  },
+  "thinkingmachines": {
+    "name": "Thinking Machines",
+    "cat": "inference",
+    "site": "https://thinkingmachines.ai",
+    "country": "Philippines",
+    "free": "2 free models"
+  },
+  "aisingapore": {
+    "name": "AI Singapore",
+    "cat": "inference",
+    "site": "https://aisingapore.org",
+    "country": "Singapore",
+    "free": "1 free model"
+  },
+  "deepreinforce": {
+    "name": "DeepReinforce",
+    "cat": "inference",
+    "site": "https://deepreinforce.com",
+    "country": "China",
+    "free": "4 free models"
+  },
+  "infini-ai": {
+    "name": "Infini-AI",
+    "cat": "inference",
+    "site": "https://infini-ai.com",
+    "country": "China",
+    "free": "15 free models"
+  },
+  "chutes": {
+    "name": "Chutes",
+    "cat": "inference",
+    "site": "https://chutes.ai",
+    "country": "Global",
+    "free": "1 free model"
+  },
+  "nosana": {
+    "name": "Nosana",
+    "cat": "decentralized",
+    "site": "https://nosana.com",
+    "country": "Global",
+    "free": "GPU credits"
+  },
+  "vercel": {
+    "name": "Vercel",
+    "cat": "aggregator",
+    "site": "https://vercel.com",
+    "country": "US",
+    "free": "1 free model"
+  }
+}

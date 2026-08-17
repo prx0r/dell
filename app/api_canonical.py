@@ -586,6 +586,117 @@ def glossary():
         return json.loads(glossary_path.read_text())
     return {"error": "Glossary not found"}
 
+
+@app.get("/v1/providers/browse")
+def browse_providers(category: str = None, country: str = None):
+    """Browse providers by category or country.
+    
+    Categories: inference, aggregator, research, blog, decentralized
+    """
+    catalog_path = Path(__file__).parent.parent / "data" / "provider_catalog.json"
+    if not catalog_path.exists():
+        return {"error": "Provider catalog not found"}
+    
+    catalog = json.loads(catalog_path.read_text())
+    providers = []
+    
+    for pid, pdata in catalog.items():
+        if category and pdata.get("cat") != category:
+            continue
+        if country and pdata.get("country", "").lower() != country.lower():
+            continue
+        
+        # Get offer count from DB
+        conn = canonical_db.connect()
+        canonical_db.migrate(conn)
+        offers = conn.execute(
+            "SELECT COUNT(*) FROM offers WHERE provider_id = ?", (pid,)
+        ).fetchone()[0]
+        free = conn.execute(
+            "SELECT COUNT(*) FROM offers WHERE provider_id = ? AND free = 1", (pid,)
+        ).fetchone()[0]
+        mega = conn.execute(
+            "SELECT COUNT(*) FROM offers WHERE provider_id = ? AND (usage_multiplier > 1 OR requests_per_5h > 10000)", (pid,)
+        ).fetchone()[0]
+        conn.close()
+        
+        providers.append({
+            "provider_id": pid,
+            "name": pdata.get("name"),
+            "category": pdata.get("cat"),
+            "country": pdata.get("country"),
+            "site": pdata.get("site"),
+            "free_tier": pdata.get("free"),
+            "offers": offers,
+            "free_offers": free,
+            "mega_deals": mega,
+        })
+    
+    providers.sort(key=lambda x: x["offers"], reverse=True)
+    return {"providers": providers, "count": len(providers)}
+
+
+@app.get("/v1/providers/{provider_id}/deals")
+def provider_deals(provider_id: str, limit: int = Query(20, le=100)):
+    """Get all deals from a specific provider."""
+    data = _load_all()
+    deals = [o for o in data["offers"] if o.get("provider_id") == provider_id]
+    
+    # Enrich with verification
+    from verification import get_verification_status
+    conn = canonical_db.connect()
+    canonical_db.migrate(conn)
+    
+    enriched = []
+    for d in deals:
+        status = get_verification_status(conn, d.get("offer_id"))
+        d["verification"] = {
+            "level": status["verification_level"],
+            "claims": status["claims_count"],
+            "evidence": status["evidence_count"],
+        }
+        enriched.append(d)
+    
+    conn.close()
+    
+    # Sort: mega deals first, then free, then by price
+    enriched.sort(key=lambda x: (
+        0 if (x.get("usage_multiplier") or 0) > 1 else 1,
+        0 if x.get("free") else 1,
+        x.get("input_per_m") or 9999
+    ))
+    
+    return {"provider": provider_id, "deals": enriched[:limit], "count": len(enriched)}
+
+
+@app.get("/v1/providers/{provider_id}/discover")
+def discover_provider(provider_id: str):
+    """Get discovery info for a provider — where to find their deals."""
+    catalog_path = Path(__file__).parent.parent / "data" / "provider_catalog.json"
+    if not catalog_path.exists():
+        return {"error": "Provider catalog not found"}
+    
+    catalog = json.loads(catalog_path.read_text())
+    pdata = catalog.get(provider_id)
+    if not pdata:
+        return {"error": "Provider not in catalog"}
+    
+    return {
+        "provider_id": provider_id,
+        "name": pdata.get("name"),
+        "category": pdata.get("cat"),
+        "country": pdata.get("country"),
+        "site": pdata.get("site"),
+        "free_tier": pdata.get("free"),
+        "discovery_urls": [pdata.get("site")],
+        "next_steps": [
+            "Visit %s to check current offerings" % pdata.get("site"),
+            "Look for pricing page, model list, free tier info",
+            "Extract: model names, prices, quotas, promo badges",
+            "Compare against our DB for new deals",
+        ]
+    }
+
 @app.get("/health")
 def health():
     return {"status": "ok", "version": "1.0"}
