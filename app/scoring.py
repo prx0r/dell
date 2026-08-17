@@ -49,16 +49,21 @@ def score_vector(offer: dict, provider_meta: dict = None) -> dict:
     # --- Intelligence (from AA index or capability estimates) ---
     aa_intel = meta.get("intelligence_index")
     if aa_intel is not None:
-        # AA index ranges roughly 0-100, normalize
         intelligence = min(100, max(0, aa_intel))
     else:
-        # Estimate from capabilities
-        intelligence = 50
-        if meta.get("coding_index"): intelligence = max(intelligence, meta["coding_index"])
-        if meta.get("agentic_index"): intelligence = max(intelligence, meta["agentic_index"])
-        if prov.get("has_reasoning"): intelligence += 10
-        if prov.get("has_tool_calling"): intelligence += 5
-        intelligence = min(100, intelligence)
+        # Estimate from benchmarks
+        benchmarks = meta.get("benchmarks", [])
+        if benchmarks:
+            # Use best benchmark score as intelligence proxy
+            scores = [b.get("score", 0) for b in benchmarks if isinstance(b, dict) and b.get("score")]
+            intelligence = max(scores) if scores else 50
+        else:
+            intelligence = 50
+            if meta.get("coding_index"): intelligence = max(intelligence, meta["coding_index"])
+            if meta.get("agentic_index"): intelligence = max(intelligence, meta["agentic_index"])
+            if prov.get("has_reasoning"): intelligence += 10
+            if prov.get("has_tool_calling"): intelligence += 5
+            intelligence = min(100, intelligence)
 
     # --- Speed (from throughput/latency) ---
     tps = meta.get("throughput_tps")
