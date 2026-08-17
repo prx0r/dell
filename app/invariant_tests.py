@@ -183,7 +183,9 @@ def test_INV09():
     """INV-09: Every offer has a source URL"""
     print("\nINV-09: EVERY_CLAIM_HAS_EVIDENCE")
     offers = _load_all_offers()
-    no_source = [o for o in offers if not o.get("metadata", {}).get("source_url")]
+    # Check both metadata.source_url and direct source_url
+    no_source = [o for o in offers if not o.get("metadata", {}).get("source_url")
+                 and not o.get("source_url")]
     return gate("all offers have source URL", len(no_source) == 0,
                 "%d offers without source URL" % len(no_source))
 
