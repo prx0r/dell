@@ -46,23 +46,28 @@ def score_vector(offer: dict, provider_meta: dict = None) -> dict:
     else:
         prov = {}
 
-    # --- Intelligence (from AA index or capability estimates) ---
+    # --- Intelligence (from AA index, benchmarks, or capability estimates) ---
     aa_intel = meta.get("intelligence_index")
     if aa_intel is not None:
         intelligence = min(100, max(0, aa_intel))
     else:
-        # Estimate from benchmarks
+        # Use benchmark scores from models.dev
         benchmarks = meta.get("benchmarks", [])
         if benchmarks:
-            # Use best benchmark score as intelligence proxy
             scores = [b.get("score", 0) for b in benchmarks if isinstance(b, dict) and b.get("score")]
-            intelligence = max(scores) if scores else 50
+            if scores:
+                # Use median benchmark score as intelligence proxy
+                scores.sort()
+                intelligence = scores[len(scores)//2]
+            else:
+                intelligence = 50
         else:
-            intelligence = 50
-            if meta.get("coding_index"): intelligence = max(intelligence, meta["coding_index"])
-            if meta.get("agentic_index"): intelligence = max(intelligence, meta["agentic_index"])
-            if prov.get("has_reasoning"): intelligence += 10
-            if prov.get("has_tool_calling"): intelligence += 5
+            # Estimate from provider capabilities
+            intelligence = 40
+            if meta.get("reasoning"): intelligence += 15
+            if meta.get("tool_call"): intelligence += 10
+            if meta.get("structured_output"): intelligence += 5
+            if prov and prov.has_reasoning: intelligence += 5
             intelligence = min(100, intelligence)
 
     # --- Speed (from throughput/latency) ---
@@ -303,23 +308,23 @@ def effective_cost_per_task(offer: dict, task: str = "coding_task") -> dict:
     # Raw cost per task
     if is_free:
         raw_cost = 0.0
+    elif in_m is None:
+        raw_cost = None  # Unknown price
     else:
         input_cost = (in_m * profile["input_tokens"]) / 1_000_000
-        output_cost = (out_m * profile["output_tokens"]) / 1_000_000
+        output_cost = (out_m or 0) * profile["output_tokens"] / 1_000_000
         raw_cost = input_cost + output_cost
 
     # Effective cost = raw cost / success rate
     success_rate = profile["success_rate"]
-    effective = raw_cost / success_rate if success_rate > 0 else raw_cost
+    effective = raw_cost / success_rate if raw_cost is not None and success_rate > 0 else raw_cost
 
     return {
         "task": task,
         "task_description": profile["description"],
-        "raw_cost_per_task": round(raw_cost, 6),
+        "raw_cost_per_task": round(raw_cost, 6) if raw_cost is not None else None,
         "success_rate": success_rate,
-        "effective_cost_per_task": round(effective, 6),
-        "input_tokens": profile["input_tokens"],
-        "output_tokens": profile["output_tokens"],
+        "effective_cost_per_task": round(effective, 6) if effective is not None else None,
         "is_free": is_free,
     }
 

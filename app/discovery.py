@@ -107,12 +107,22 @@ def run_discovery(sources: list[str] | None = None) -> dict:
 
             registry.record_fetch(source_id, True)
 
-            # Extract offers from each observation
+            # Extract offers from observations
             source_offers = []
             for obs in observations:
                 if obs.status is not None and not obs.text.startswith("FETCH_ERROR"):
                     offers = adapter.extract(obs)
                     source_offers.extend(offers)
+
+            # Deduplicate: same model_id + provider_id = same offer
+            seen = set()
+            unique_offers = []
+            for o in source_offers:
+                key = f"{o.model_id}:{o.provider_id}"
+                if key not in seen:
+                    seen.add(key)
+                    unique_offers.append(o)
+            source_offers = unique_offers
 
             # Diff against previous snapshot
             prev = _load_snapshot(source_id)

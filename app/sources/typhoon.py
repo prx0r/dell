@@ -1,7 +1,4 @@
-"""app/sources/typhoon.py — OpenTyphoon adapter.
-
-Typhoon offers free Thai language model API access.
-"""
+"""app/sources/typhoon.py — OpenTyphoon adapter (Thai language models)."""
 from __future__ import annotations
 
 import re
@@ -14,6 +11,11 @@ URLS = [
     "https://opentyphoon.ai",
     "https://opentyphoon.ai/pricing",
 ]
+
+# Valid model patterns - must look like actual model names, not images/files
+MODEL_PATTERN = re.compile(r'(?:typhoon|opentyphoon)[\w.\-]*(?:\d+b?(?:-\w+)*)', re.IGNORECASE)
+# Exclude image/file extensions
+EXCLUDE = re.compile(r'\.(?:jpg|jpeg|png|gif|svg|webp|pdf|mp4|mp3|wav|zip|tar)', re.IGNORECASE)
 
 
 def fetch() -> list[Observation]:
@@ -46,24 +48,29 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
     text = observation.text
     offers = []
 
-    if re.search(r'(?i)(?:free|gratis|\$0|ฟรี)', text):
+    # Only create free tier if we find explicit pricing mention
+    if re.search(r'(?i)(?:free\s+tier|free\s+api|gratis|\$0|ฟรี\s+ใช้)', text):
         offers.append(OfferSnapshot(
             provider_id="opentyphoon", model_id="opentyphoon/free-api",
             provider_model_slug="free", offer_kind="free_tier", free=True,
-            metadata={"source_url": observation.url, "deal_type": "free_tier",
-                       "openai_compatible": True, "difficulty": 1,
-                       "region": "th", "focus": "thai_language"},
-        ))
+            metadata={"source_url": observation.url, "openai_compatible": True,
+                       "region": "th", "focus": "thai_language"}))
 
-    models = re.findall(r'(?:typhoon|opentyphoon)[\w.\-]*', text, re.IGNORECASE)
-    for model in set(models):
+    # Extract model names (only actual model names, not images/files)
+    for match in MODEL_PATTERN.finditer(text):
+        model = match.group()
+        # Skip if it looks like a file extension
+        if EXCLUDE.search(model):
+            continue
+        # Skip duplicates
+        if any(o.model_id == f"opentyphoon/{model.lower()}" for o in offers):
+            continue
         offers.append(OfferSnapshot(
             provider_id="opentyphoon",
             model_id=f"opentyphoon/{model.lower()}",
             provider_model_slug=model,
             offer_kind="metered_api",
             metadata={"source_url": observation.url, "openai_compatible": True,
-                       "focus": "thai_language"},
-        ))
+                       "focus": "thai_language"}))
 
     return offers

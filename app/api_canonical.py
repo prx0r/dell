@@ -189,7 +189,6 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
                 continue
             elif in_m is None:
                 continue  # exclude unknown prices from max_price filter
-                continue
         if min_context and (o.get("context_tokens") or 0) < min_context:
             continue
         result.append({
@@ -198,6 +197,7 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
             "input_per_m": o.get("input_per_m"),
             "output_per_m": o.get("output_per_m"),
             "free": o.get("free"),
+            "price_known": o.get("price_known", True),
             "context_tokens": o.get("context_tokens"),
             "offer_kind": o.get("offer_kind"),
             "metadata": o.get("metadata", {}),
@@ -365,6 +365,16 @@ def stats():
         "events": len(data["events"]),
     }
 
+
+
+@app.get("/v1/glossary")
+def glossary():
+    """Glossary of all terms used in the API. Agents should read this first."""
+    from pathlib import Path
+    glossary_path = Path(__file__).parent.parent / "data" / "glossary.json"
+    if glossary_path.exists():
+        return json.loads(glossary_path.read_text())
+    return {"error": "Glossary not found"}
 
 @app.get("/health")
 def health():
