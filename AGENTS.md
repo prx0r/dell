@@ -1,10 +1,15 @@
 # Dell — Agent Operating Manual
 
-**Last updated:** 2026-08-18
-**Git SHA:** 4abdd25
-**Status:** Production-ready data layer
+**Version:** 1.0.0
+**Git SHA:** 65ddbd6
+**Schema:** 7
+**Status:** Production-ready
 
 ---
+
+## Mission
+
+> Dell provides trustworthy, machine-readable inference-economics data for LLM routing, cost optimization, and agent decision-making.
 
 ## Quick Start
 
@@ -18,10 +23,9 @@ python3 -m app.migrate
 python3 -m uvicorn app.api_canonical:app --port 8803
 
 # Run tests
-python3 -m app.invariant_tests      # 14 proof kernel tests
-python3 -m app.mutation_tests        # 10 mutation tests (90% kill)
-python3 -m app.external_agent_tests  # 10 agent tests
-python3 -m app.certify_utility       # Utility certification
+python3 -m app.invariant_tests      # 14/14 proof kernel
+python3 -m app.mutation_tests        # 9/10 mutation (90%)
+python3 -m app.certify_final         # Final certificate
 ```
 
 ---
@@ -56,77 +60,42 @@ python3 -m app.certify_utility       # Utility certification
 python3 -m uvicorn app.api_canonical:app --port 8803
 ```
 
-### Core Endpoints
+### Primary Endpoints
 
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
-| `/health` | GET | Health check |
-| `/v1/stats` | GET | Dataset stats |
+| `/v1/resolve` | POST | **Primary decision primitive** |
+| `/v1/routes` | GET | Search routes |
 | `/v1/models` | GET | List models |
-| `/v1/deals` | GET | List deals |
-| `/v1/deals/free` | GET | Free models |
-| `/v1/deals/live` | GET | Verified live |
-| `/v1/mega-deals` | GET | Mega deals |
-| `/v1/recommend` | GET | Recommend |
-| `/v1/free/plan` | POST | Plan workload |
-
-### Provider Endpoints
-
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
 | `/v1/providers` | GET | List providers |
-| `/v1/providers/browse` | GET | Browse by category |
-| `/v1/providers/{id}/deals` | GET | Provider deals |
-| `/v1/providers/{id}/discover` | GET | Discovery info |
+| `/v1/deals` | GET | List deals |
+| `/v1/changes` | GET | Deal history |
+| `/v1/evidence/{id}` | GET | Deal evidence |
+| `/v1/coverage` | GET | Field coverage |
 
-### Verification Endpoints
+### Convenience Presets
 
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
-| `/v1/verification-runs` | GET | Audit trails |
-| `/v1/deals/{id}/evidence` | GET | Deal evidence |
-| `/v1/deals/{id}/verification` | GET | Verification status |
+| `/v1/free` | GET | Free models |
+| `/v1/workhorses` | GET | Workhorse models |
+| `/v1/high-value` | GET | High value models |
 
 ---
 
-## MCP Tools
+## MCP Tools (9 tools)
 
 | Tool | Purpose |
 |------|---------|
-| `get_dataset_stats` | Get dataset statistics |
-| `list_models` | List available models |
-| `list_providers` | List providers |
-| `get_provider_setup` | Get setup instructions |
-| `find_inference_deals` | Find deals by task |
-| `recommend_model` | Recommend model |
-| `explain_deal` | Explain a deal |
+| `resolve_inference` | Primary decision tool |
+| `search_routes` | Search for routes |
+| `compare_routes` | Compare routes |
+| `explain_route` | Explain a route |
 | `get_deal_changes` | Get deal history |
-
----
-
-## Common Tasks
-
-### Find cheapest coding model
-```bash
-curl "http://localhost:8803/v1/recommend?task=coding&limit=3"
-```
-
-### Plan free workload
-```bash
-curl -X POST "http://localhost:8803/v1/free/plan" \
-  -H "Content-Type: application/json" \
-  -d '{"task":"coding","requests":100,"min_context":64000}'
-```
-
-### Check verification
-```bash
-curl "http://localhost:8803/v1/deals/{offer_id}/verification"
-```
-
-### Get evidence
-```bash
-curl "http://localhost:8803/v1/deals/{offer_id}/evidence"
-```
+| `get_provider_setup` | Get setup instructions |
+| `get_dataset_stats` | Get statistics |
+| `plan_free_workload` | Plan free workload |
+| `list_models` | List models |
 
 ---
 
@@ -183,50 +152,11 @@ served field → offer_assertion → claim → source_observation → source
 ## Tests
 
 ```bash
-python3 -m app.invariant_tests      # 14 proof kernel tests
-python3 -m app.mutation_tests        # 10 mutation tests (90% kill)
+python3 -m app.invariant_tests      # 14/14 proof kernel
+python3 -m app.mutation_tests        # 10 mutation (90% kill)
 python3 -m app.external_agent_tests  # 10 agent tests
-python3 -m app.red_team_oracle       # 30 adversarial tests
-python3 -m app.certify_utility       # Utility certification
-python3 -m app.certify --profile production  # Full certification
+python3 -m app.certify_final         # Final certificate
 ```
-
----
-
-## Key Files
-
-| File | Purpose |
-|------|---------|
-| `app/api_canonical.py` | REST API |
-| `app/mcp_server.py` | MCP tools |
-| `app/freshness.py` | TTL checking |
-| `app/provenance.py` | Provenance chain |
-| `app/oracle_identity.py` | Identity separation |
-| `app/economics.py` | Access classification |
-| `app/verification.py` | Verification engine |
-| `app/scoring.py` | 10D scoring |
-| `app/migrate.py` | Run migrations |
-| `app/schema_check.py` | Verify schema |
-| `app/certify.py` | Production certification |
-| `app/certify_utility.py` | Utility certification |
-
----
-
-## Documentation
-
-| Doc | Purpose |
-|-----|---------|
-| `AGENTS.md` | This file |
-| `data/FRESH-AGENT-GUIDE.md` | Fresh agent guide |
-| `data/HANDOVER-FINAL.md` | System map |
-| `data/ORACLE-ARCHITECTURE.md` | Architecture |
-| `data/DELL-ROADMAP.md` | Development roadmap |
-| `data/PROVIDER-CATALOG.md` | Provider list |
-| `data/TRUST-MODEL.md` | Trust model |
-| `data/INVESTIGATION-PROTOCOL.md` | Discovery |
-| `data/MONETIZATION.md` | Business model |
-| `data/PEER-REVIEW-SYNTHESIS.md` | Review synthesis |
-| `data/reports/DELL-EXTERNAL-UTILITY-AUDIT.md` | Audit report |
 
 ---
 
@@ -245,29 +175,29 @@ python3 -m app.certify --profile production  # Full certification
 
 ---
 
-## Documentation Governance
+## Key Files
 
-### Single Source of Truth
-**AGENTS.md is the single source of truth.** All other docs must reference it.
+### Core
+- `app/services/decision.py` — Canonical resolver
+- `app/services/query.py` — Shared REST/MCP logic
+- `app/scoring_v3.py` — Task-dependent scoring
+- `app/badge_engine.py` — Semantic badges
+- `app/api_canonical.py` — REST API
+- `app/mcp_canonical.py` — MCP tools
+- `app/freshness.py` — TTL checking
+- `app/provenance.py` — Provenance chain
+- `app/resolve.py` — Resolve endpoint
 
-### How to Know What's Stale
+### Schema
+- `app/migrations/0001-0007` — 7 migrations
+- `app/schema_check.py` — Schema verification
 
-1. **Check modification time**: Any doc not updated in 7+ days is suspect
-2. **Check offer counts**: Current count is 1861 (as of 2026-08-18)
-3. **Check feature status**: If doc says "not implemented", it's a future plan
-4. **Check contradictions**: Any doc contradicting AGENTS.md is stale
-
-### Conflict Resolution
-
-| Doc Says | AGENTS.md Says | Status |
-|----------|----------------|--------|
-| 2463 offers | 1861 offers | STALE |
-| 1714 models | 1714 models | CURRENT |
-| 30 provenanced | 33% provenanced | CURRENT |
-| "not implemented" | Feature status | FUTURE PLAN |
-
-### Archive Policy
-
-- Archive any doc not updated in 7+ days
-- Archive any doc with stale references
-- Keep only docs that are actively maintained
+### Documentation
+- `docs/ARCHITECTURE.md` — Architecture
+- `docs/API.md` — API reference
+- `docs/MCP.md` — MCP reference
+- `docs/TRUST.md` — Trust model
+- `docs/SCORING.md` — Scoring system
+- `docs/OPERATIONS.md` — Operations
+- `docs/TESTING.md` — Testing
+- `MANIFEST.json` — Machine-readable manifest
