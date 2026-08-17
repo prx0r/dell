@@ -1,1 +1,2528 @@
-{"content_hash": "6898d7952bb513251620fdb0b5f67088a44b46ee12b77a240c459523a5c85742", "offers": [{"provider_id": "novita", "model_id": "novita/free-tier", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": true, "offer_kind": "free_tier", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "deal_type": "free_tier", "openai_compatible": true, "difficulty": 1}}, {"provider_id": "novita", "model_id": "novita/llama3api", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama3apisave70on", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/gemma", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-v4-flash", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 79, "metric": "resolved", "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3.5-27b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 72.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-27B"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-v3.2", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3.5-397b-a17b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 76.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3.7-max", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 80.4, "metric": "resolved", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "SWE-Bench Pro", "score": 60.6, "metric": "resolve rate", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "SWE-Bench Multilingual", "score": 78.3, "metric": "resolve rate", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "Terminal-Bench", "score": 69.7, "metric": "success rate", "harness": "Terminus-2", "version": "2.0", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "GPQA Diamond", "score": 92.4, "metric": "accuracy", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "Humanity's Last Exam", "score": 41.4, "metric": "accuracy", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "SciCode", "score": 53.5, "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "MCP Atlas", "score": 76.4, "metric": "success rate", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "NL2Repo", "score": 47.2, "harness": "Claude Code", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}]}}, {"provider_id": "novita", "model_id": "novita/gemma-4-31b-it", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-v3.1", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-llama-3.1-8b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/gemma-modelle", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/gemmamodelsofferinghighquality", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-235b-a22b-fp8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 59.6, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-09"}, {"name": "SWE-Bench Pro", "score": 21.41, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3-235b-a22b-fp8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 59.6, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-09"}, {"name": "SWE-Bench Pro", "score": 21.41, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-v3-turbo", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama3apiwithyour", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-3.1-8b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-r1-0528", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek-3b-moe", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/gemma-4-26b-a4b-it", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3.6-27b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 77.2, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.6-27B"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-v4-flash-0731", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Terminal-Bench", "score": 82.7, "metric": "pass@1", "variant": "max", "version": "2.1", "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"}, {"name": "NL2Repo", "score": 54.2, "metric": "resolve rate", "harness": "DeepSeek Harness minimal mode", "variant": "max effort", "source": "https://api-docs.deepseek.com/updates/", "date": "2026-07-31"}, {"name": "CyberGym", "score": 76.7, "metric": "score", "harness": "DeepSeek Harness minimal mode", "variant": "max effort", "source": "https://api-docs.deepseek.com/updates/", "date": "2026-07-31"}, {"name": "DeepSWE", "score": 54.4, "metric": "resolve rate", "harness": "DeepSeek Harness minimal mode", "variant": "max effort", "source": "https://api-docs.deepseek.com/updates/", "date": "2026-07-31"}, {"name": "Toolathlon-Verified", "score": 70.3, "metric": "score", "harness": "DeepSeek Harness minimal mode", "variant": "max effort", "source": "https://api-docs.deepseek.com/updates/", "date": "2026-07-31"}, {"name": "Agents' Last Exam", "score": 25.2, "metric": "score", "harness": "DeepSeek Harness minimal mode", "variant": "max effort", "source": "https://api-docs.deepseek.com/updates/", "date": "2026-07-31"}, {"name": "AutomationBench", "score": 25.1, "metric": "success rate", "variant": "max effort", "dataset": "public", "source": "https://api-docs.deepseek.com/updates/", "date": "2026-07-31"}, {"name": "DSBench-FullStack", "score": 68.7, "metric": "score", "variant": "max effort", "dataset": "internal", "source": "https://api-docs.deepseek.com/updates/", "date": "2026-07-31"}, {"name": "DSBench-Hard", "score": 59.6, "metric": "score", "variant": "max effort", "dataset": "internal", "source": "https://api-docs.deepseek.com/updates/", "date": "2026-07-31"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek-v3.1", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-ocr-2", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-ocr.", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseekoffering", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-4-maverick-17b-128e-instruct-fp8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llamaindex", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-235b-2507", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-v3.1-base", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-next-80b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-logo.svg", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3.8-max", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-coder-next", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen3.6-35b-a3b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 73.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B"}]}}, {"provider_id": "novita", "model_id": "novita/qwen-mt-plus", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/mistralai", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-omni-30b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-v3.2-exp", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-3.3-70b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Artificial Analysis Coding Index", "score": 10.7, "metric": "index", "source": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 26, "metric": "percent correct", "source": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 3, "metric": "success rate", "source": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3-235b-thinking.", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-v3-0324", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen_image_edit", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-4-scout-17b-16e-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-vl-235b-a22b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-vl-30b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen_image_text_to_image", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3.5-397b-a17b.", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 76.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"}]}}, {"provider_id": "novita", "model_id": "novita/qwen-2.5-72b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/gemma-3-27b-it", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-235b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 59.6, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-09"}, {"name": "SWE-Bench Pro", "score": 21.41, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-reranker-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3.5-27b.", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 72.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-27B"}]}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-omni-30b-a3b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-coder-30b-a3b-instruct-fp8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Artificial Analysis Coding Index", "score": 19.4, "metric": "index", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}, {"name": "SciCode", "score": 27.8, "metric": "percent correct", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}, {"name": "Terminal-Bench Hard", "score": 15.2, "metric": "success rate", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek-v3.2", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-v4-flash-0731", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-llama-4-scout-17b-16e-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen2.5", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-embedding-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3.5-397b-a17b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 76.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek-r1-0528-qwen3-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3.6-27b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 77.2, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.6-27B"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-coder-30b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Artificial Analysis Coding Index", "score": 19.4, "metric": "index", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}, {"name": "SciCode", "score": 27.8, "metric": "percent correct", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}, {"name": "Terminal-Bench Hard", "score": 15.2, "metric": "success rate", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-r1-0528-qwen3-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "novita", "model_id": "novita/llama3apidemo", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3.5", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/llama-3-70b-instruct.", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-v3.2-exp", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-v4-pro-0813", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-vl-235b-a22b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/mistral-nemo", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-vl-235b-a22b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-coder-480b-a35b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Pro", "score": 38.7, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-omni-30b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-ocr", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen2.5-7b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-ai", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-3-70b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-r1-distill-llama-70b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3-32b-fp8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 40, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-08"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3.5-35b-a3b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen3-235b-a22b-instruct-2507", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-v4-pro-0813", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/llama3", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3.5-122b-a10b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 72, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B"}]}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen-mt-plus", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/mistral-nemo-instruct-2407", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen-2.5-72b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen25", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3.5-122b-a10b.", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 72, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B"}]}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3.5-122b-a10b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 72, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek-r1-0528", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "novita", "model_id": "novita/qwen2-0.5b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-ocr", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/llamamodelsprovidingstateof", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-3-13b-modelle", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-omni-30b-a3b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-mt", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/gemma3", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-vl-235b-a22b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-embedding-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3.5-27b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 72.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-27B"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-v4-flash", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-235b-a22b-instruct-2507", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 59.6, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-09"}, {"name": "SWE-Bench Pro", "score": 21.41, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3-embedding-0.6b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-v3.1-terminus", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-coder-next", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-v3-turbo", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-235b-a22b-thinking-2507", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 59.6, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-09"}, {"name": "SWE-Bench Pro", "score": 21.41, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3-coder-30b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Artificial Analysis Coding Index", "score": 19.4, "metric": "index", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}, {"name": "SciCode", "score": 27.8, "metric": "percent correct", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}, {"name": "Terminal-Bench Hard", "score": 15.2, "metric": "success rate", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}]}}, {"provider_id": "novita", "model_id": "novita/llama3performs", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-vl-235b.", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-3.1-8b-instruct-fp8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3.7-max", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 80.4, "metric": "resolved", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "SWE-Bench Pro", "score": 60.6, "metric": "resolve rate", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "SWE-Bench Multilingual", "score": 78.3, "metric": "resolve rate", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "Terminal-Bench", "score": 69.7, "metric": "success rate", "harness": "Terminus-2", "version": "2.0", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "GPQA Diamond", "score": 92.4, "metric": "accuracy", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "Humanity's Last Exam", "score": 41.4, "metric": "accuracy", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "SciCode", "score": 53.5, "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "MCP Atlas", "score": 76.4, "metric": "success rate", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "NL2Repo", "score": 47.2, "harness": "Claude Code", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}]}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-coder-480b-a35b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Pro", "score": 38.7, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/qwen-logo.svg", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-reranker-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3.6-35b-a3b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 73.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3.7", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 80.4, "metric": "resolved", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "SWE-Bench Pro", "score": 60.6, "metric": "resolve rate", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "SWE-Bench Multilingual", "score": 78.3, "metric": "resolve rate", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "Terminal-Bench", "score": 69.7, "metric": "success rate", "harness": "Terminus-2", "version": "2.0", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "GPQA Diamond", "score": 92.4, "metric": "accuracy", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "Humanity's Last Exam", "score": 41.4, "metric": "accuracy", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "SciCode", "score": 53.5, "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "MCP Atlas", "score": 76.4, "metric": "success rate", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}, {"name": "NL2Repo", "score": 47.2, "harness": "Claude Code", "source": "https://qwen.ai/blog?id=qwen3.7", "date": "2026-05-19"}]}}, {"provider_id": "novita", "model_id": "novita/llama3smoothlywith", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llamallama3", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-v3.1-terminus", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-serie", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-embedding-0.6b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-vl-30b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-v3-0324", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-llama-3.3-70b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Artificial Analysis Coding Index", "score": 10.7, "metric": "index", "source": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 26, "metric": "percent correct", "source": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 3, "metric": "success rate", "source": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3-235b-a22b-thinking-2507-fp8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 59.6, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-09"}, {"name": "SWE-Bench Pro", "score": 21.41, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/mistral", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen3-235b-a22b-instruct-2507-fp8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 59.6, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-09"}, {"name": "SWE-Bench Pro", "score": 21.41, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/qwen2.5-72b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-r1-distill-llama-70b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "novita", "model_id": "novita/gemma.", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-r1-turbo", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "novita", "model_id": "novita/llamaindexintegrationguide", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3.8-max", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseekv32output", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-coder-480b-a35b-instruct-fp8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Pro", "score": 38.7, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/llama-llama-4-maverick-17b-128e-instruct-fp8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/llama-modelle", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3-next", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-v4-pro", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 80.6, "metric": "resolved", "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"}, {"name": "Artificial Analysis Coding Agent Index", "score": 50.1, "metric": "average pass@1", "harness": "Claude Code", "variant": "high", "source": "https://artificialanalysis.ai/agents/coding-agents"}, {"name": "SWE-Atlas Codebase QnA", "score": 67.8, "metric": "pass@1", "harness": "Claude Code", "variant": "high", "source": "https://artificialanalysis.ai/agents/coding-agents"}, {"name": "SWE-Bench Pro", "score": 18, "metric": "pass@1", "harness": "Claude Code", "variant": "high", "dataset": "hard-aa", "source": "https://artificialanalysis.ai/agents/coding-agents"}, {"name": "Terminal-Bench", "score": 64.7, "metric": "pass@1", "harness": "Claude Code", "variant": "high", "version": "2.1", "source": "https://artificialanalysis.ai/agents/coding-agents"}]}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3.5-35b-a3b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-deepseek-v4-pro", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-max", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Artificial Analysis Coding Index", "score": 26.4, "metric": "index", "source": "https://openrouter.ai/qwen/qwen3-max/benchmarks", "date": "2026-05-30"}, {"name": "SciCode", "score": 38.3, "metric": "percent correct", "source": "https://openrouter.ai/qwen/qwen3-max/benchmarks", "date": "2026-05-30"}, {"name": "Terminal-Bench Hard", "score": 20.5, "metric": "success rate", "source": "https://openrouter.ai/qwen/qwen3-max/benchmarks", "date": "2026-05-30"}]}}, {"provider_id": "novita", "model_id": "novita/deepseek-ocr-2", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/gemma-3-12b-it", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3.8", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Terminal-Bench", "score": 86.6, "metric": "accuracy", "variant": "xhigh", "version": "2.1", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "SWE-Bench Pro", "score": 67.7, "metric": "resolve rate", "harness": "Claude Code", "variant": "xhigh", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "DeepSWE", "score": 56.6, "metric": "resolve rate", "harness": "Claude Code", "variant": "xhigh", "version": "1.1", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "NL2Repo", "score": 55.9, "metric": "resolve rate", "harness": "Claude Code", "variant": "xhigh", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "FrontierSWE", "score": 73.5, "metric": "dominance score", "harness": "Claude Code", "variant": "xhigh", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "MLS-Bench-Lite", "score": 41, "metric": "score", "harness": "Claude Code", "variant": "xhigh", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "AutomationBench", "score": 27.3, "metric": "pass@1", "variant": "xhigh", "dataset": "600-task public subset", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "Toolathlon Verified", "score": 72.5, "metric": "pass@1", "variant": "xhigh", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "WideSearch", "score": 81.9, "metric": "F1", "variant": "xhigh", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "Humanity's Last Exam", "score": 56.2, "metric": "accuracy", "variant": "xhigh, with tools", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "GPQA Diamond", "score": 92.6, "metric": "accuracy", "variant": "xhigh", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "Humanity's Last Exam", "score": 43.6, "metric": "accuracy", "variant": "xhigh, no tools", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "IFBench", "score": 82.8, "metric": "score", "variant": "xhigh", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "OSWorld-Verified", "score": 86.1, "metric": "success rate", "variant": "xhigh", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}, {"name": "MMMU Pro", "score": 82.3, "metric": "accuracy", "variant": "xhigh", "source": "https://www.alibabacloud.com/blog/qwen3-8-max-a-new-bar-for-coding-and-cowork_603421", "date": "2026-08-03"}]}}, {"provider_id": "novita", "model_id": "novita/llama-3-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-image", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/mistralai-mistral-nemo", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwenseriesmodelsofferingefficientlanguage", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen3.6", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-next-80b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/qwen-qwen3-235b-a22b-thinking-2507", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 59.6, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-09"}, {"name": "SWE-Bench Pro", "score": 21.41, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3-max", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Artificial Analysis Coding Index", "score": 26.4, "metric": "index", "source": "https://openrouter.ai/qwen/qwen3-max/benchmarks", "date": "2026-05-30"}, {"name": "SciCode", "score": 38.3, "metric": "percent correct", "source": "https://openrouter.ai/qwen/qwen3-max/benchmarks", "date": "2026-05-30"}, {"name": "Terminal-Bench Hard", "score": 20.5, "metric": "success rate", "source": "https://openrouter.ai/qwen/qwen3-max/benchmarks", "date": "2026-05-30"}]}}, {"provider_id": "novita", "model_id": "novita/qwen3-vl-reranker-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/qwen-omni", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-v3.2-speciale", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true}}, {"provider_id": "novita", "model_id": "novita/deepseek-v3", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "novita", "model_id": "novita/deepseek-r1-turbo", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://novita.ai/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}], "timestamp": 1786961930.7581272}
+{
+  "content_hash": "7de448c770865adba12ebd4ebe6c46ae5adbe5a02063b53c3d4b482df4b2c820",
+  "offers": [
+    {
+      "provider_id": "novita",
+      "model_id": "novita/free-tier",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "free_tier",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "deal_type": "free_tier",
+        "openai_compatible": true,
+        "difficulty": 1
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-r1-0528",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/gemma-modelle",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-modelle",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/gemma-4-26b-a4b-it",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-mt-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-llama-3.3-70b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-llama-4-scout-17b-16e-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-vl-235b-a22b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen-mt-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-coder-30b-a3b-instruct-fp8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-v4-pro",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v3-0324",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-3.3-70b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-235b-a22b-thinking-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.5-35b-a3b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/gemma-3-27b-it",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-ocr.",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-vl-235b-a22b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/mistral-nemo-instruct-2407",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-r1-0528",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen_image_edit",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/gemma3",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.7-max",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-r1-distill-llama-70b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen_image_text_to_image",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-coder-next",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-next",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-v3-turbo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v4-pro",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-r1-0528-qwen3-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-next-80b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.5-397b-a17b.",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.5-122b-a10b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-235b-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-3-70b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-235b-a22b-instruct-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-235b-a22b-fp8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llamaindex",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llamaindexintegrationguide",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-omni-30b-a3b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v3.1-terminus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-coder-480b-a35b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-ocr-2",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-4-scout-17b-16e-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v4-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/gemma-3-12b-it",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama3apidemo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-max",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-llama-4-maverick-17b-128e-instruct-fp8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/mistralai",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.5-397b-a17b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/gemma-4-31b-it",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama3",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-max",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v3.1-base",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v3.2-speciale",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-embedding-0.6b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.6",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-mt",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-vl-30b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-reranker-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.5",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.5-27b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-235b-a22b-instruct-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3.8-max",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-embedding-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v3.2-exp",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.6-35b-a3b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-32b-fp8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-3-13b-modelle",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.5-27b.",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3.7-max",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-r1-turbo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-r1-0528-qwen3-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama3api",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-v3-0324",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-235b-a22b-thinking-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llamallama3",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-v3.1",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.8-max",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3.6-35b-a3b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-r1-distill-llama-70b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-v3.2",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-omni-30b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-serie",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3.5-35b-a3b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/gemma",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama3apisave70on",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-v3.2-exp",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3.6-27b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-235b-thinking.",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v3-turbo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-coder-next",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v4-flash-0731",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3.5-122b-a10b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3.5-27b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/mistralai-mistral-nemo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama3performs",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-235b-a22b-thinking-2507-fp8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-embedding-0.6b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-coder-480b-a35b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-image",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3.5-397b-a17b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama3smoothlywith",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/gemma.",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v3.1",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v3",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llamamodelsprovidingstateof",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/mistral",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-omni",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.7",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-3-70b-instruct.",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-3.1-8b-instruct-fp8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-coder-30b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-3b-moe",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-vl-235b-a22b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-v3.1-terminus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-omni-30b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-next-80b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen-2.5-72b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-235b-a22b-instruct-2507-fp8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/mistral-nemo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v3.2",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen2.5-72b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-coder-30b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-vl-reranker-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-vl-235b.",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-r1-turbo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen25",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-3-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-vl-235b-a22b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen2-0.5b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-ocr",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-coder-480b-a35b-instruct-fp8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-ocr",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-ai",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-v4-flash-0731",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwenseriesmodelsofferingefficientlanguage",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-logo.svg",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-4-maverick-17b-128e-instruct-fp8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-omni-30b-a3b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-reranker-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-logo.svg",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-v4-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-2.5-72b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.6-27b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseekv32output",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-3.1-8b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-vl-30b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen2.5-7b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-235b-a22b-fp8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-v4-pro-0813",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama-llama-3.1-8b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3-235b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen-qwen3-embedding-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseekoffering",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-deepseek-v4-pro-0813",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/deepseek-ocr-2",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/llama3apiwithyour",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/gemmamodelsofferinghighquality",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen2.5",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "novita/qwen3.5-122b-a10b.",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://novita.ai/pricing",
+        "openai_compatible": true
+      }
+    }
+  ],
+  "timestamp": 1786963826.8925347
+}

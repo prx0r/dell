@@ -1,1 +1,29 @@
-{"content_hash": "b0aa0063c1333ecee93a558f2a5e1612ac135aedecf191b72749fec8c9e6ab5c", "offers": [{"provider_id": "vercel", "model_id": null, "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "community_lead", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://vercel.com/changelog/claude-sonnet-5-ai-gateway", "excerpt": ":break-normal [&amp;_code]:whitespace-nowrap [&amp;_code]:text-gray-1000 [&amp;_code]:shadow-[var(--ds-shadow-border-small)] @max-md:[&amp;_code]:break-words @max-md:[&amp;_code]:whitespace-pre-wrap\">Launch pricing of $2 per million input tokens and $10 per million output tokens runs through August 31, 2026. <!-- -->Standard list price will be $3/M input tokens, $15/M output tokens.</p><p class=\"text-copy-16", "keywords": ["Launch pric", "$2", "$10", "through", "$3", "$15"]}}], "timestamp": 1786961866.9393775}
+{
+  "content_hash": "b02417d7e5bc4bc78c12da8de18d2bbd4e4f3664077786abaf54a530ab7498f8",
+  "offers": [
+    {
+      "provider_id": "vercel",
+      "model_id": null,
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "community_lead",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://vercel.com/changelog/claude-sonnet-5-ai-gateway",
+        "excerpt": ":break-normal [&amp;_code]:whitespace-nowrap [&amp;_code]:text-gray-1000 [&amp;_code]:shadow-[var(--ds-shadow-border-small)] @max-md:[&amp;_code]:break-words @max-md:[&amp;_code]:whitespace-pre-wrap\">Launch pricing of $2 per million input tokens and $10 per million output tokens runs through August 31, 2026. <!-- -->Standard list price will be $3/M input tokens, $15/M output tokens.</p><p class=\"text-copy-16",
+        "keywords": [
+          "Launch pric",
+          "$2",
+          "$10",
+          "through",
+          "$3",
+          "$15"
+        ]
+      }
+    }
+  ],
+  "timestamp": 1786963762.876419
+}

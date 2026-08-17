@@ -1,1 +1,24 @@
-{"content_hash": "48817d1b68798c182924e069ce7d039ab348fcc4944062c6f0bb0f006bd4868f", "offers": [{"provider_id": "aion", "model_id": "aion/daily-free", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": true, "offer_kind": "free_tier", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://www.aionlabs.ai/pricing", "deal_type": "daily_credits", "openai_compatible": false, "difficulty": 1, "region": "global"}}], "timestamp": 1786961925.4303124}
+{
+  "content_hash": "e7e53b22ce6f2d024cf928a59d43030671e08d111e0320a134da2e9e1b0c3e8e",
+  "offers": [
+    {
+      "provider_id": "aion",
+      "model_id": "aion/daily-free",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "free_tier",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://www.aionlabs.ai/pricing",
+        "deal_type": "daily_credits",
+        "openai_compatible": false,
+        "difficulty": 1,
+        "region": "global"
+      }
+    }
+  ],
+  "timestamp": 1786963822.1809704
+}
