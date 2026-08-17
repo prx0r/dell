@@ -35,16 +35,21 @@ def detect_mega_deals(offers: list[dict]) -> list[dict]:
             score += min(40, cap_mult * 5)
 
         # 2. Explicit usage multiplier (Luna pattern)
-        usage_mult = o.get("metadata", {}).get("multiplier")
+        usage_mult = o.get("metadata", {}).get("multiplier") or o.get("usage_multiplier")
         if usage_mult and usage_mult >= 2.0:
             reasons.append("%sx usage multiplier" % usage_mult)
             score += min(30, usage_mult * 10)
 
         # 3. High free quota (>10K requests)
-        rph = o.get("metadata", {}).get("requests_per_5h") or o.get("requests_day")
+        rph = o.get("metadata", {}).get("requests_per_5h") or o.get("requests_per_5h") or o.get("requests_day")
         if o.get("free") and rph and rph >= 10000:
             reasons.append("Free with %s requests" % f"{rph:,}")
             score += min(30, rph / 500)
+        
+        # 3b. Very high quota (>10K requests) even if not free
+        if rph and rph >= 10000:
+            reasons.append("Very high quota: %s req/5h" % f"{rph:,}")
+            score += min(30, rph / 1000)
 
         # 4. Free with very high capacity
         if o.get("free") and cap_mult and cap_mult >= 5.0:
