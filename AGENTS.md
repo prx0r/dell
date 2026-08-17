@@ -1,21 +1,30 @@
-# LLM Deals — Agent Operating Manual
+# Dell — Agent Operating Manual
 
-## Mission
+**Last updated:** 2026-08-18
+**Git SHA:** 4abdd25
+**Status:** Production-ready data layer
 
-> Dell is a reproducible, adversarially tested, production-grade inference-economics oracle for llmdeals.org.
+---
 
 ## Quick Start
 
 ```bash
 cd /root/ass-rape-spunk-porn
-python3 -m app.migrate                     # Run migrations
-python3 -m app.schema_check                # Verify schema
-python3 -m app.certify --profile production  # Full certification
-python3 -m uvicorn app.api_canonical:app --port 8803  # Start API
-python3 -m app.invariant_tests             # Run proof kernel
-python3 -m app.red_team_oracle             # Run 30 adversarial tests
-python3 -m app.gap_report                  # Gap analysis
+
+# Run migrations
+python3 -m app.migrate
+
+# Start API
+python3 -m uvicorn app.api_canonical:app --port 8803
+
+# Run tests
+python3 -m app.invariant_tests      # 14 proof kernel tests
+python3 -m app.mutation_tests        # 10 mutation tests (90% kill)
+python3 -m app.external_agent_tests  # 10 agent tests
+python3 -m app.certify_utility       # Utility certification
 ```
+
+---
 
 ## Architecture
 
@@ -38,111 +47,188 @@ python3 -m app.gap_report                  # Gap analysis
                          (port 8803)           (9 tools)
 ```
 
-## Data Model (21 tables)
+---
 
-| Table | Records | Purpose |
-|-------|---------|---------|
-| models | 1714 | Canonical model identity |
-| model_prices | 3019 | Append-only price observations |
-| model_providers | 1821 | Model ↔ provider relationships |
-| serving_endpoints | 79 | Actual serving routes |
-| quota_policies | 7 | Free quotas |
-| offer_assertions | 30 | Field-level claims |
-| verification_dimensions | 38 | Independent predicates |
-| freshness_policies | 20 | TTL rules |
-| negative_observations | 2 | Absence records |
-| source_authority | 12 | Authority rules |
-| economic_access | 1861 | Access classification |
-| offers | 1861 | Commercial propositions |
-| claims | 30 | Extracted claims |
-| evidence_v2 | 30 | Evidence records |
-| verification_runs | 17 | Audit trails |
-| tool_events | 31 | Hash chain |
-| activation_recipes | 10 | Setup guides |
-| schema_migrations | 7 | Migration tracking |
+## API Reference
 
-## Oracle-1 Milestone (Complete)
-
-| Milestone | Status | What Was Built |
-|-----------|--------|----------------|
-| D0 Reproducibility | ✅ | 7 migrations, schema check |
-| D1 Evidence Kernel | ✅ | Provenance chain |
-| D2 Temporal Truth | ✅ | Freshness, stale, negative |
-| D3 Identity Semantics | ✅ | MODEL != ENDPOINT != OFFER |
-| D4 Economic Semantics | ✅ | 9 access classes |
-| D5 Discovery/Ingestion | ✅ | Adapter contract |
-| D6 Verification | ✅ | 10 dimensions |
-| D7 API Contract | ✅ | 41 endpoints |
-| D8 Ranking | ✅ | Epistemically labeled |
-| D9 Adversarial Suite | ✅ | 30/30 tests |
-| D10 Operations | ✅ | Ready |
-| D11 Data Coverage | ✅ | 1714 models |
-| D12 Release Certificate | ✅ | CERTIFICATE: PASS |
-
-## API Endpoints
-
-### Core Data
-- `GET /v1/models` — List all models
-- `GET /v1/deals` — List all deals
-- `GET /v1/deals/free` — Free models
-- `GET /v1/deals/live` — Verified live deals
-- `GET /v1/mega-deals` — Institutional deals
-- `GET /v1/recommend` — Task recommendations
-- `POST /v1/free/plan` — Plan free workload
-
-### Provider Intelligence
-- `GET /v1/providers` — List providers
-- `GET /v1/providers/browse` — Browse by category
-- `GET /v1/providers/{id}/deals` — Provider deals
-- `GET /v1/providers/{id}/discover` — Discovery info
-
-### Verification
-- `GET /v1/verification-runs` — Audit trails
-- `GET /v1/deals/{id}/evidence` — Deal evidence
-- `GET /v1/deals/{id}/verification` — Verification status
-
-## Hermes Operations
-
-### Discovery Pipeline
-```
-library-discovery → library-investigate → library-validate → Canonical DB
-```
-
-### Gap Analysis
+### Start API
 ```bash
-python3 -m app.gap_report
+python3 -m uvicorn app.api_canonical:app --port 8803
 ```
 
-### Free Capacity Planning
+### Core Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/health` | GET | Health check |
+| `/v1/stats` | GET | Dataset stats |
+| `/v1/models` | GET | List models |
+| `/v1/deals` | GET | List deals |
+| `/v1/deals/free` | GET | Free models |
+| `/v1/deals/live` | GET | Verified live |
+| `/v1/mega-deals` | GET | Mega deals |
+| `/v1/recommend` | GET | Recommend |
+| `/v1/free/plan` | POST | Plan workload |
+
+### Provider Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/v1/providers` | GET | List providers |
+| `/v1/providers/browse` | GET | Browse by category |
+| `/v1/providers/{id}/deals` | GET | Provider deals |
+| `/v1/providers/{id}/discover` | GET | Discovery info |
+
+### Verification Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/v1/verification-runs` | GET | Audit trails |
+| `/v1/deals/{id}/evidence` | GET | Deal evidence |
+| `/v1/deals/{id}/verification` | GET | Verification status |
+
+---
+
+## MCP Tools
+
+| Tool | Purpose |
+|------|---------|
+| `get_dataset_stats` | Get dataset statistics |
+| `list_models` | List available models |
+| `list_providers` | List providers |
+| `get_provider_setup` | Get setup instructions |
+| `find_inference_deals` | Find deals by task |
+| `recommend_model` | Recommend model |
+| `explain_deal` | Explain a deal |
+| `get_deal_changes` | Get deal history |
+
+---
+
+## Common Tasks
+
+### Find cheapest coding model
 ```bash
-curl -X POST http://localhost:8803/v1/free/plan \
+curl "http://localhost:8803/v1/recommend?task=coding&limit=3"
+```
+
+### Plan free workload
+```bash
+curl -X POST "http://localhost:8803/v1/free/plan" \
   -H "Content-Type: application/json" \
   -d '{"task":"coding","requests":100,"min_context":64000}'
 ```
 
-## Source Hierarchy
+### Check verification
+```bash
+curl "http://localhost:8803/v1/deals/{offer_id}/verification"
+```
 
-- **Tier A**: Official machine API
-- **Tier B**: Official structured docs
-- **Tier C**: Authenticated account observation
-- **Tier D**: Dell synthetic probe
-- **Tier E**: Browser inspection
-- **Tier F**: Blogs/Reddit (discovery only)
+### Get evidence
+```bash
+curl "http://localhost:8803/v1/deals/{offer_id}/evidence"
+```
 
-## Canonical States
+---
 
-### Quantization
-- KNOWN | UNKNOWN | VARIABLE
+## Data Model (21 tables)
 
-### Availability
-- AVAILABLE | DEGRADED | UNAVAILABLE | UNKNOWN
+| Table | Purpose |
+|-------|---------|
+| models | Canonical model identity |
+| model_prices | Price observations |
+| model_providers | Model ↔ provider |
+| serving_endpoints | Actual routes |
+| quota_policies | Free quotas |
+| offer_assertions | Field-level claims |
+| verification_dimensions | Verification predicates |
+| freshness_policies | TTL rules |
+| negative_observations | Absence records |
+| source_authority | Authority rules |
+| economic_access | Access classification |
+| offers | Commercial propositions |
+| claims | Extracted claims |
+| evidence_v2 | Evidence records |
+| verification_runs | Audit trails |
+| tool_events | Hash chain |
+| activation_recipes | Setup guides |
+| schema_migrations | Migration tracking |
 
-### Free Mechanism
-- ZERO_MARGINAL_PRICE | FREE_QUOTA | TRIAL_CREDIT | PROMOTIONAL_QUOTA
-- SUBSCRIPTION_INCLUDED | CONDITIONAL_FREE | COMMUNITY_COMPUTE | PAID | UNKNOWN
+---
 
-### Lifecycle
-- ACTIVE_VERIFIED | ACTIVE_UNVERIFIED | STALE | CONFLICTED | WITHDRAWN | EXPIRED
+## Key Concepts
+
+### Provenance Chain
+```
+served field → offer_assertion → claim → source_observation → source
+```
+
+### Freshness
+- Prices: 24 hours
+- Context: 30 days
+- Model author: 1 year
+
+### Identity
+- MODEL: `deepseek/deepseek-r1`
+- ENDPOINT: `openrouter:deepseek/deepseek-r1:fp8`
+- OFFER: `openrouter:deepseek:deepseek-r1:free:global`
+
+### Economic Access
+- `FREE_QUOTA` — Free up to a limit
+- `ZERO_MARGINAL_PRICE` — Truly free
+- `TRIAL_CREDIT` — Free credits
+- `CONDITIONAL_FREE` — Free with conditions
+
+---
+
+## Tests
+
+```bash
+python3 -m app.invariant_tests      # 14 proof kernel tests
+python3 -m app.mutation_tests        # 10 mutation tests (90% kill)
+python3 -m app.external_agent_tests  # 10 agent tests
+python3 -m app.red_team_oracle       # 30 adversarial tests
+python3 -m app.certify_utility       # Utility certification
+python3 -m app.certify --profile production  # Full certification
+```
+
+---
+
+## Key Files
+
+| File | Purpose |
+|------|---------|
+| `app/api_canonical.py` | REST API |
+| `app/mcp_server.py` | MCP tools |
+| `app/freshness.py` | TTL checking |
+| `app/provenance.py` | Provenance chain |
+| `app/oracle_identity.py` | Identity separation |
+| `app/economics.py` | Access classification |
+| `app/verification.py` | Verification engine |
+| `app/scoring.py` | 10D scoring |
+| `app/migrate.py` | Run migrations |
+| `app/schema_check.py` | Verify schema |
+| `app/certify.py` | Production certification |
+| `app/certify_utility.py` | Utility certification |
+
+---
+
+## Documentation
+
+| Doc | Purpose |
+|-----|---------|
+| `AGENTS.md` | This file |
+| `data/FRESH-AGENT-GUIDE.md` | Fresh agent guide |
+| `data/HANDOVER-FINAL.md` | System map |
+| `data/ORACLE-ARCHITECTURE.md` | Architecture |
+| `data/DELL-ROADMAP.md` | Development roadmap |
+| `data/PROVIDER-CATALOG.md` | Provider list |
+| `data/TRUST-MODEL.md` | Trust model |
+| `data/INVESTIGATION-PROTOCOL.md` | Discovery |
+| `data/MONETIZATION.md` | Business model |
+| `data/PEER-REVIEW-SYNTHESIS.md` | Review synthesis |
+| `data/reports/DELL-EXTERNAL-UTILITY-AUDIT.md` | Audit report |
+
+---
 
 ## Rules
 
@@ -156,31 +242,3 @@ curl -X POST http://localhost:8803/v1/free/plan \
 8. MODEL != ENDPOINT != OFFER
 9. Provider != model author
 10. Unknown quantization stays UNKNOWN
-
-## Key Files
-
-### Core
-- `app/canonical_db.py` — SQLite kernel
-- `app/api_canonical.py` — REST API
-- `app/verification.py` — Proof kernel
-- `app/scoring.py` — 10D scoring
-- `app/freshness.py` — TTL checking
-- `app/provenance.py` — Provenance chain
-- `app/oracle_identity.py` — Identity separation
-- `app/economics.py` — Access classification
-- `app/adapter_contract.py` — Adapter interface
-- `app/verification_dimensions.py` — Verification predicates
-- `app/gap_report.py` — Gap analysis
-- `app/red_team_oracle.py` — 30 adversarial tests
-- `app/certify.py` — Production certification
-
-### Schema
-- `app/migrations/0001-0007` — 7 migrations
-- `app/schema_check.py` — Schema verification
-
-### Documentation
-- `data/DELL-ROADMAP.md` — Development roadmap
-- `data/HANDOVER-FINAL.md` — Current handover
-- `data/ORACLE-ARCHITECTURE.md` — Architecture
-- `data/PEER-REVIEW-V3.md` — Latest review
-- `data/TRUST-MODEL.md` — Trust model
