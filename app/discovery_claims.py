@@ -18,11 +18,12 @@ def extract_claims_from_adapter(adapter_module, observation) -> list[dict]:
     try:
         offers = adapter_module.extract(observation)
         for offer in offers:
-            # Convert OfferSnapshot to claims
+            # Build offer_id matching canonical_db format: provider:model:offer_type
+            offer_id = "%s:%s:%s" % (offer.provider_id, offer.model_id, offer.offer_kind)
             if offer.input_per_m is not None:
                 claims.append({
                     "subject_type": "commercial_offer",
-                    "subject_id": f"{offer.provider_id}:{offer.model_id}",
+                    "subject_id": offer_id,
                     "predicate": "input_price",
                     "value_json": json.dumps({"input_per_m": offer.input_per_m}),
                     "confidence": 0.9,
@@ -31,7 +32,7 @@ def extract_claims_from_adapter(adapter_module, observation) -> list[dict]:
             if offer.output_per_m is not None:
                 claims.append({
                     "subject_type": "commercial_offer",
-                    "subject_id": f"{offer.provider_id}:{offer.model_id}",
+                    "subject_id": offer_id,
                     "predicate": "output_price",
                     "value_json": json.dumps({"output_per_m": offer.output_per_m}),
                     "confidence": 0.9,
@@ -40,7 +41,7 @@ def extract_claims_from_adapter(adapter_module, observation) -> list[dict]:
             if offer.free:
                 claims.append({
                     "subject_type": "commercial_offer",
-                    "subject_id": f"{offer.provider_id}:{offer.model_id}",
+                    "subject_id": offer_id,
                     "predicate": "price_state",
                     "value_json": json.dumps({"price_state": "FREE"}),
                     "confidence": 0.95,
@@ -58,7 +59,7 @@ def extract_claims_from_adapter(adapter_module, observation) -> list[dict]:
             if offer.requests_per_5h or offer.requests_per_day:
                 claims.append({
                     "subject_type": "commercial_offer",
-                    "subject_id": f"{offer.provider_id}:{offer.model_id}",
+                    "subject_id": offer_id,
                     "predicate": "quota",
                     "value_json": json.dumps({
                         "requests_per_5h": offer.requests_per_5h,
@@ -70,7 +71,7 @@ def extract_claims_from_adapter(adapter_module, observation) -> list[dict]:
             if offer.usage_multiplier:
                 claims.append({
                     "subject_type": "deal",
-                    "subject_id": f"{offer.provider_id}:{offer.model_id}",
+                    "subject_id": offer_id,
                     "predicate": "usage_multiplier",
                     "value_json": json.dumps({"multiplier": offer.usage_multiplier}),
                     "confidence": 0.95,
