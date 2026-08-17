@@ -740,3 +740,120 @@ def get_deal_verification(deal_id: str):
     status = get_verification_status(conn, deal_id)
     conn.close()
     return status
+
+
+@app.post("/v1/free/plan")
+def plan_free_workload(
+    task: str = "coding",
+    requests: int = 100,
+    avg_input_tokens: int = 2000,
+    avg_output_tokens: int = 1000,
+    min_quality: float = 0.7,
+    requires_tools: bool = False,
+    min_context: int = 32000,
+):
+    """Plan a workload using only free routes.
+    
+    Input: task, request count, token volumes, requirements
+    Output: recommended routes that can complete the job for free
+    """
+    conn = canonical_db.connect()
+    canonical_db.migrate(conn)
+    
+    # Get all free endpoints
+    endpoints = conn.execute("""
+        SELECT endpoint_id, model_id, serving_provider_id, quantization,
+               context_tokens, max_output_tokens, supports_tools
+        FROM serving_endpoints WHERE is_free = 1
+    """).fetchall()
+    
+    # Get quota policies
+    quotas = conn.execute("""
+        SELECT provider, limit_value, window, condition
+        FROM quota_policies WHERE plan = 'free' AND metric = 'requests_day'
+    """).fetchall()
+    quota_map = {q['provider']: q['limit_value'] for q in quotas}
+    
+    # Task presets
+    TASK_PRESETS = {
+        "short_chat": {"input": 500, "output": 200},
+        "coding": {"input": 2000, "output": 1500},
+        "translation": {"input": 2000, "output": 2000},
+        "long_context": {"input": 50000, "output": 5000},
+    }
+    preset = TASK_PRESETS.get(task, {"input": avg_input_tokens, "output": avg_output_tokens})
+    
+    recommended = []
+    fallback = []
+    
+    for ep in endpoints:
+        ctx = ep['context_tokens'] or 0
+        max_out = ep['max_output_tokens'] or 0
+        provider = ep['serving_provider_id']
+        supports_tools = ep['supports_tools'] or 0
+        
+        # Check context requirement
+        if ctx < min_context:
+            continue
+        
+        # Check tool requirement
+        if requires_tools and not supports_tools:
+            continue
+        
+        # Get quota
+        rpd = quota_map.get(provider, 50)
+        
+        # Calculate if workload fits
+        total_tokens_needed = requests * (preset['input'] + preset['output'])
+        tokens_per_request = preset['input'] + preset['output']
+        max_requests_by_context = ctx // tokens_per_request if tokens_per_request > 0 else 0
+        max_requests_by_output = rpd  # Simplified
+        
+        effective_rpd = min(rpd, max_requests_by_context)
+        
+        if effective_rpd >= requests:
+            # Can complete entire job for free
+            free_fraction = 1.0
+            runtime_hours = requests / (effective_rpd / 24) if effective_rpd > 0 else float('inf')
+            
+            recommended.append({
+                "route": ep['endpoint_id'],
+                "model": ep['model_id'],
+                "provider": provider,
+                "quantization": ep['quantization'],
+                "context": ctx,
+                "free_fraction": free_fraction,
+                "effective_rpd": effective_rpd,
+                "runtime_hours": round(runtime_hours, 1),
+                "total_tokens": total_tokens_needed,
+            })
+        elif effective_rpd > 0:
+            # Can do partial job for free
+            free_fraction = effective_rpd / requests if requests > 0 else 0
+            fallback.append({
+                "route": ep['endpoint_id'],
+                "model": ep['model_id'],
+                "provider": provider,
+                "free_fraction": round(free_fraction, 2),
+                "effective_rpd": effective_rpd,
+                "use_after": "quota exhaustion",
+            })
+    
+    # Sort by free_fraction descending
+    recommended.sort(key=lambda x: x['free_fraction'], reverse=True)
+    fallback.sort(key=lambda x: x['free_fraction'], reverse=True)
+    
+    conn.close()
+    
+    return {
+        "task": task,
+        "requests": requests,
+        "total_tokens": requests * (preset['input'] + preset['output']),
+        "recommended": recommended[:5],
+        "fallback_plan": fallback[:5],
+        "summary": {
+            "can_complete_free": len(recommended) > 0,
+            "best_route": recommended[0] if recommended else None,
+            "alternatives": len(fallback),
+        }
+    }
