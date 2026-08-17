@@ -376,5 +376,124 @@
     "site": "https://vercel.com",
     "country": "US",
     "free": "1 free model"
+  },
+  "akash": {
+    "name": "Akash",
+    "cat": "decentralized",
+    "site": "https://akash.network",
+    "country": "Global",
+    "free": "GPU marketplace"
+  },
+  "aethir": {
+    "name": "Aethir",
+    "cat": "decentralized",
+    "site": "https://aethir.com",
+    "country": "Global",
+    "free": "Compute grants"
+  },
+  "petals": {
+    "name": "Petals",
+    "cat": "misc",
+    "site": "https://petals.dev",
+    "country": "Global",
+    "free": "Distributed inference"
+  },
+  "io-net": {
+    "name": "io.net",
+    "cat": "decentralized",
+    "site": "https://io.net",
+    "country": "Global",
+    "free": "GPU marketplace"
+  },
+  "gensyn": {
+    "name": "Gensyn",
+    "cat": "decentralized",
+    "site": "https://gensyn.ai",
+    "country": "Global",
+    "free": "Proof of learning"
+  },
+  "render": {
+    "name": "Render Network",
+    "cat": "decentralized",
+    "site": "https://rendernetwork.com",
+    "country": "Global",
+    "free": "GPU rendering"
+  },
+  "livepeer": {
+    "name": "Livepeer",
+    "cat": "decentralized",
+    "site": "https://livepeer.org",
+    "country": "Global",
+    "free": "Video AI"
+  },
+  "filecoin": {
+    "name": "Filecoin",
+    "cat": "decentralized",
+    "site": "https://filecoin.io",
+    "country": "Global",
+    "free": "Storage + compute"
+  },
+  "bittensor": {
+    "name": "Bittensor",
+    "cat": "decentralized",
+    "site": "https://bittensor.com",
+    "country": "Global",
+    "free": "ML marketplace"
+  },
+  "cerberus": {
+    "name": "Cerberus",
+    "cat": "decentralized",
+    "site": "https://cerberus.xyz",
+    "country": "Global",
+    "free": "GPU rental"
+  },
+  "ollama": {
+    "name": "Ollama",
+    "cat": "misc",
+    "site": "https://ollama.ai",
+    "country": "Global",
+    "free": "Local inference"
+  },
+  "lm-studio": {
+    "name": "LM Studio",
+    "cat": "misc",
+    "site": "https://lmstudio.ai",
+    "country": "Global",
+    "free": "Local inference"
+  },
+  "text-generation-webui": {
+    "name": "text-generation-webui",
+    "cat": "misc",
+    "site": "https://oobabooga.github.io",
+    "country": "Global",
+    "free": "Local inference"
+  },
+  "vllm": {
+    "name": "vLLM",
+    "cat": "misc",
+    "site": "https://vllm.ai",
+    "country": "Global",
+    "free": "Local inference"
+  },
+  "tgi": {
+    "name": "TGI",
+    "cat": "misc",
+    "site": "https://huggingface.co/docs/text-generation-inference",
+    "country": "Global",
+    "free": "Local inference"
+  },
+  "meituan": {
+    "name": "Meituan",
+    "cat": "inference",
+    "site": "https://meituan.com",
+    "country": "China",
+    "free": "Free models"
+  },
+  "trendyol": {
+    "name": "Trendyol",
+    "cat": "inference",
+    "site": "https://trendyol.com",
+    "country": "Turkey",
+    "free": "1 free model"
   }
 }
