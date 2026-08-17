@@ -197,6 +197,13 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
             "context_tokens": o.get("context_tokens"),
             "offer_kind": o.get("offer_kind"),
             "metadata": o.get("metadata", {}),
+            # Oracle-1 fields
+            "lifecycle_state": o.get("lifecycle_state", "ACTIVE_UNVERIFIED"),
+            "last_verified_at": o.get("last_verified_at"),
+            "last_source_success_at": o.get("last_source_success_at"),
+            "stale_reason": o.get("stale_reason"),
+            "valid_from": o.get("valid_from"),
+            "valid_until": o.get("valid_until"),
         })
     result.sort(key=lambda x: x.get("input_per_m") if x.get("input_per_m") is not None else 9999)
     result = _enrich_with_verification(result)
