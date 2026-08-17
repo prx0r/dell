@@ -74,7 +74,13 @@ class QuotaObject:
 
 def classify_economic_access(offer: dict) -> str:
     """Classify the economic access type for an offer."""
-    if not offer.get("free"):
+    free = offer.get("free")
+    
+    # None/unknown should be UNKNOWN, not PAID
+    if free is None:
+        return "UNKNOWN"
+    
+    if not free:
         return "PAID"
     
     # Check for quota
