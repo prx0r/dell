@@ -86,8 +86,9 @@ def commit_claims(conn, claims: list[dict], observation_id: int):
     now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     for claim in claims:
         conn.execute("""
-            INSERT INTO claims (subject_type, subject_id, predicate, value_json,
-                confidence, observation_id, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        """, (claim["subject_type"], claim["subject_id"], claim["predicate"],
-              claim["value_json"], claim.get("confidence", 0.5), observation_id, now))
+            INSERT INTO claims (offer_id, claim_type, claim_value,
+                source_observation_id, confidence, created_at)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (claim.get("subject_id", ""), claim.get("predicate", "unknown"),
+              claim.get("value_json", "{}"), observation_id,
+              claim.get("confidence", 0.5), now))

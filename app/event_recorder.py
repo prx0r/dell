@@ -17,12 +17,11 @@ def record_event(conn, deal_id: str, event_type: str,
     """Record a deal event."""
     now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     conn.execute("""
-        INSERT INTO deal_events (deal_id, event_type, effective_at, observed_at,
-            previous_json, current_json)
-        VALUES (?, ?, ?, ?, ?, ?)
-    """, (deal_id, event_type, now, now,
+        INSERT INTO deal_events (offer_id, event_type, previous_value, current_value, created_at)
+        VALUES (?, ?, ?, ?, ?)
+    """, (deal_id, event_type,
           json.dumps(previous_value) if previous_value else None,
-          json.dumps(current_value) if current_value else None))
+          json.dumps(current_value) if current_value else None, now))
 
 
 def record_changes(conn, offer_id: str, changes: list[dict], source_url: str = ""):
