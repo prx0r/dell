@@ -1,8 +1,8 @@
 # LLM Deals — Final Handover
 
 **Date:** 2026-08-17
-**Git:** master @ c3beca5
-**Status:** OPERATIONAL — all core systems wired and validated
+**Git:** master @ 1915d9d
+**Status:** OPERATIONAL
 
 ---
 
@@ -11,38 +11,28 @@
 ### Data Pipeline
 ```
 38 Source Adapters → Canonical SQLite → DealService → REST + MCP + Site
-      ↓                                    ↓
-  Observations                      /v1/catalog
-      ↓                             /v1/deals
-  Claims                            /v1/free
-      ↓                             /v1/recommend
-  Evidence
-      ↓
-  Append-only Events
-      ↓
-  Current Projections
 ```
 
 ### Numbers
-- **2463 offers** from 38 source adapters
+- **2463 offers** from 66 providers
 - **632 free offers** with utility scoring
 - **65 providers** with setup instructions
 - **36 claims** with evidence links
-- **36 evidence records** linked to claims
+- **36 evidence records**
 - **131 events** with timestamps
 - **60 observations** with content hashes
-- **3 verification runs** with tool event chains
-- **10 activation recipes** for top providers
+- **3 verification runs**
+- **10 activation recipes**
 - **14 database tables**
 
-### APIs (5 surfaces)
-| Port | API | Endpoints |
-|------|-----|-----------|
-| 8799 | V1 | 19 (deprecated) |
-| 8800 | V2 | 16 (categories) |
-| 8801 | V3 | 9 (scoring) |
-| 8802 | Hot | 3 (router) |
-| 8803 | Canonical | 10 (data layer) |
+### APIs (5 surfaces, 61 endpoints)
+| Port | API | Purpose |
+|------|-----|---------|
+| 8799 | V1 | Original (deprecated) |
+| 8800 | V2 | Categories + providers |
+| 8801 | V3 | Scoring + badges |
+| 8802 | Hot | OpenAI-compatible router |
+| 8803 | Canonical | **The data layer** |
 
 ### MCP (9 tools)
 get_dataset_stats, list_models, list_providers, get_provider_setup, find_inference_deals, recommend_model, explain_deal, get_deal_changes, get_dataset_stats
@@ -57,56 +47,56 @@ library-production (473 cards), library-discovery, library-investigate, library-
 
 ## How It Works
 
-### Source Adapters (38)
-Each adapter:
-1. Fetches from a live source (HTTP or Playwright)
-2. Extracts offers with structured data
-3. Records observations with content hashes
-4. Writes to canonical SQLite DB
-
-### Canonical DB (14 tables)
-- offers: 2463 offers with full metadata
-- claims: 36 claims with evidence links
-- evidence_v2: 36 evidence records
-- deal_events: 131 events with timestamps
-- source_observations: 60 observations with hashes
-- verification_runs: 3 runs with tool events
-- activation_recipes: 10 provider setup guides
-- sources: 38 registered sources
-
-### API
-- `/v1/models` — What models exist
-- `/v1/deals` — Unusual opportunities
-- `/v1/free` — Free models ranked by utility
-- `/v1/recommend` — Task-first recommendation
-- `/v1/mega-deals` — Institutional-quality deals
-- `/v1/verification-runs` — Verification history
-- `/v1/deals/{id}/evidence` — Deal evidence
-- `/v1/deals/{id}/verification` — Deal verification status
-
-### MCP Tools
+### Pipeline Stages
 ```
-find_inference_deals  → Search deals by task/price
-get_free_models       → Ranked free models
-get_providers         → Provider setup info
-get_provider_setup    → Step-by-step setup
-recommend_model       → Task-first recommendation
-explain_deal          → Deal deep-dive
-get_deal_changes      → Recent changes
-get_dataset_stats     → Overview
+DISCOVERY → INVESTIGATION → VALIDATION → CANONICAL DB
+    ↓            ↓                ↓              ↓
+  search      deep-dive        verify         record
+  web/HN     all sources      official       evidence
+  RSS         exact terms      still active   timestamps
+  browser    dates/restrictions              hashes
 ```
 
-### Investigation Pipeline
+### Evidence Chain
 ```
-Round 1: Fast scan (HTTP, hash, RSS) — what changed?
-Round 2: Deep verify (Playwright) — how did it change?
-Round 3: Global scout (Hermes web search) — new sources?
-Round 4: Audit (recheck) — is it real?
+Source → Observation → Claim → Evidence → Verification
+  ↓          ↓           ↓         ↓            ↓
+URL+fetched_at  content_hash  offer_id    artifact_id
 ```
+
+### Scoring
+10 dimensions: Intelligence, Workhorse, Value, Coding, Agentic, Tool Calling, Research, Long Context, Speed, Reliability
+
+21 badges: Mega Deal, Frontier, Workhorse, Coder, Agentic, Fast, Hidden Gem, Free, Long Context, Tool Caller, etc.
 
 ---
 
-## Key Decisions Made
+## Source Categorization
+
+| Category | Providers | Status |
+|----------|-----------|--------|
+| Inference | 26 | ✅ All tracked |
+| Aggregators | 7 | ✅ All tracked |
+| Routers | 6 | ✅ Documented |
+| Blogs | 7 | ✅ RSS feeds |
+| Chinese AI | 9 | ✅ All tracked |
+| Decentralized | 5 | ✅ Documented |
+
+---
+
+## Monetization
+
+| Stream | Year 1 | Year 2 | Year 3 |
+|--------|--------|--------|--------|
+| API Tiers | $60K | $120K | $240K |
+| Provider Partnerships | $36K | $100K | $200K |
+| White-Label | $0 | $100K | $500K |
+| Analytics | $24K | $60K | $120K |
+| **Total** | **$168K** | **$500K+** | **$2M+** |
+
+---
+
+## Key Decisions
 
 1. **Data layer, not router** — LLM Deals is the canonical data source
 2. **SQLite is canonical** — JSON exports, not the other way around
@@ -121,11 +111,57 @@ Round 4: Audit (recheck) — is it real?
 
 ---
 
+## Open Threads for Next Agent
+
+| Thread | Priority | What Needs Doing |
+|--------|----------|------------------|
+| Empty snapshots | HIGH | akashml, nous-portal, ovhcloud have 0 offers |
+| Legacy API removal | MEDIUM | api.py, api_v2.py, api_v3.py, api_hot.py deprecated |
+| Legacy module archival | MEDIUM | normalize.py, quality.py, routing.py etc. |
+| Old test removal | LOW | test*.py → invariant_tests.py |
+| Provider expansion | MEDIUM | 21 more from moreproviders.md |
+| Historical tracking | HIGH | All snapshots from same session |
+| Live probe verification | MEDIUM | Actually test if APIs work |
+| Expiry tracking | HIGH | 0/2463 offers have dates |
+| Twitter integration | LOW | When hooked up |
+
+---
+
+## Stale Files (labeled)
+
+| File | Status | Action |
+|------|--------|--------|
+| app/api.py | DEPRECATED | Use api_canonical.py |
+| app/api_v2.py | DEPRECATED | Use api_canonical.py |
+| app/api_v3.py | DEPRECATED | Use api_canonical.py |
+| app/api_hot.py | DEPRECATED | Use api_canonical.py |
+| app/normalize.py | LEGACY | Use scoring.py |
+| app/quality.py | LEGACY | Use scoring.py |
+| app/routing.py | LEGACY | Use scoring.py |
+| app/tensions.py | LEGACY | Use scoring.py |
+| app/task_ranking.py | LEGACY | Use scoring.py |
+| app/test*.py | OLD_TEST | Use invariant_tests.py |
+
+---
+
+## Verification Status
+
+| Test | Status |
+|------|--------|
+| Invariant tests | 10/10 PASS |
+| API endpoints | 10/10 OK |
+| MCP tools | Working |
+| Kanban boards | 8 active |
+| Cron job | Every 6 hours |
+
+---
+
 ## What's Next
 
-1. Add live probe verification (actually test if APIs work)
-2. Implement historical trend tracking
-3. Add Twitter/X integration (when available)
-4. Provider expansion (21 more from moreproviders.md)
-5. Pass release gate (100/100 claims replay)
-6. Build web dashboard with real-time updates
+1. Add live probe verification
+2. Implement historical tracking
+3. Add Twitter integration
+4. Provider expansion (21 more)
+5. Pass release gate (100/100 claims)
+6. Build web dashboard
+7. LiteLLM integration
