@@ -1,0 +1,154 @@
+=== HERMES AUTONOMOUS TEST Mon Aug 17 12:07:51 PM UTC 2026 ===
+
+TEST 1: Dataset stats
+Total offers: 2,405
+Free count: 599
+Providers: 102
+
+TEST 2: Cheapest coding model
+Here are the top 3 coding deals under $0.50/M tokens:
+
+  #  Model                          Provider  Input/M   Output/M
+  1  gpt-image-1.5                  openai     $0.00     $0.00  (free)
+  2  gpt-5.3-chat-latest            openai     $0.00     $0.00  (free)
+  3  gpt-5-nano                     openai     $0.05     $0.40
+
+Total matching deals in the dataset: 842.
+
+TEST 3: Free models
+Here are the top 5 free models:
+
+  Model                      Provider    Context Window
+  ──────────────────────────  ──────────  ──────────────
+  openai/gpt-image-1.5       openai      0 (image model)
+  openai/gpt-5.3-chat-latest openai      128,000
+  openai/gpt-3.5-turbo       openai      16,385
+  openai/whisper-large-v3    openai      448 (audio model)
+  openai/gpt-5.5-pro         openai      1,050,000
+
+All 5 are from OpenAI. The standout is gpt-5.5-pro with a 1M context window. The gpt-3.5-turbo and whisper models have much smaller contexts but serve specialized roles (compact chat and audio transcription respectively).
+
+TEST 4: Provider setup
+Here are the exact steps for DeepSeek:
+
+  1. Go to platform.deepseek.com
+  2. Sign up with email or phone (China phone works)
+  3. Top up balance (minimum ¥10)
+  4. Create API key
+  5. Use base_url: https://api.deepseek.com/v1
+
+Difficulty: 1 (very easy)
+Free tier: ¥10 free credit on signup
+
+TEST 5: Explain MiMo deal
+Here's everything about the `opencode-go/mimo-v2.5` deal:
+
+MODEL: opencode-go/mimo-v2.5
+PROVIDER: opencode-go
+OFFER ID: opencode-go:opencode-go:mimo-v2.5:metered_api:global
+DEAL TYPE: metered_api
+STATUS: Active
+
+PRICING:
+- Input per million tokens: Unknown
+- Output per million tokens: Unknown
+- Cache read per million tokens: Unknown
+- Cache write per million tokens: Unknown
+- Subscription USD: Unknown
+- Free: No (0)
+
+QUOTA & LIMITS:
+- Requests per 5h: 30,100
+- Requests per day: Unknown
+- Requests per minute: Unknown
+- Tokens per day: Unknown
+- Quota scope: Unknown
+- Quota window hours: Unknown
+
+CONTEXT & OUTPUT:
+- Context tokens: Unknown
+- Max output tokens: Unknown
+
+REQUIREMENTS:
+- Requires card: Unknown
+- Requires phone: Unknown
+- Requires KYC: Unknown
+
+REGION: Unknown
+AUTOMATION ALLOWED: Unknown
+
+SOURCE URL: https://dev.opencode.ai/go
+
+TIMESTAMPS:
+- Created: 2026-08-17T11:56:14Z
+- Updated: 2026-08-17T12:00:15Z
+
+EXTRA METADATA:
+- Capacity ratio vs median: 9.4x
+- Derived evidence: 30,100 req/5h vs median 3,200 req/5h
+
+TEST 6: Best workhorses
+Here are the top 5 workhorse models by score:
+
+ Rank  Model                         Workhorse  Cost  Context  Reliability  Tool Calling  Badges
+----  ----                          ----------  ----  -------  -----------  ------------  ------
+  1    openai/gpt-5.5-pro            75          100   100      70           30            free, workhorse, long_context
+  2    openai/gpt-5.6-sol            75          100   100      70           30            free, workhorse, long_context
+  3    openai/gpt-5.4-pro            75          100   100      70           30            free, workhorse, long_context
+  4    openai/gpt-5.6-luna           75          100   100      70           30            free, workhorse, long_context
+  5    openai/gpt-4.1-nano           75          100   100      70           30            free, workhorse, long_context
+
+All 5 are tied at a workhorse score of 75. Key observations:
+
+- All 5 are OpenAI models, all free
+- They all have perfect cost (100) and context (100) scores
+- Reliability sits at 70, tool calling at 30
+- Intelligence, coding, research, agentic, and speed dimensions are null (no benchmark data yet)
+- The scoring is benchmark_weighted with 4 of 7 dimensions populated
+
+Out of 296 total workhorse-badged models, these 5 top the rankings — though with identical scores, they appear to be ranked by internal tiebreaking (likely recency or model ID).
+
+TEST 7: Recommend for agentic coding
+Based on the data available in the LLM deals database, here's what I found:
+
+The `recommend_model` endpoint returned no results for your specific query (coding + tool_calling). However, from the deals data, here are the best coding-friendly models with tool calling:
+
+TOP PICKS FOR CODING + TOOL CALLING:
+
+1. openai/gpt-4o
+   - Input: $2.50/M | Output: $10/M
+   - 128K context
+   - Established model, strong at coding tasks
+
+2. openai/gpt-5.3-chat-latest (FREE)
+   - Input: $0 | Output: $0
+   - 128K context
+   - tool_call: true, structured_output: true
+   - No benchmarks listed yet though
+
+3. openai/gpt-5-nano (cheapest paid)
+   - Input: $0.05/M | Output: $0.40/M
+   - 400K context (huge!)
+   - Intelligence index: 20.1
+
+4. openai/gpt-4o-mini (budget option)
+   - Input: $0.15/M | Output: $0.60/M
+   - 128K context
+   - Coding index: 11.4
+
+My recommendation: If you want free, try gpt-5.3-chat-latest. If you want proven quality with tool calling, gpt-4o is the safe bet. If you want cheap + large context, gpt-5-nano at 400K tokens is impressive for $0.05/M input.
+
+TEST 8: Confusion attempts
+Here's what happened:
+
+The API returned:
+{"deals": [], "count": 5}
+
+It didn't error or crash. Instead:
+- `task=nonexistent_task` — returned no matching deals (empty array)
+- `max_price=-1` — silently ignored (no deals are below negative price)
+- `limit=-5` — silently ignored; defaulted to 5
+
+The function is forgiving — invalid/negative params don't cause errors, they just get silently normalized or ignored. The result is an empty deals array with a count of 5 (its default), suggesting the limit clamped to a valid range internally.
+
+=== TEST COMPLETE Mon Aug 17 12:09:45 PM UTC 2026 ===

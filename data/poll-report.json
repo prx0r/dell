@@ -1,0 +1,11 @@
+{
+  "timestamp": 1786968098.8382113,
+  "elapsed_seconds": 97.45,
+  "sources_processed": 1,
+  "offers_found": 2471,
+  "events_found": 131,
+  "errors": [
+    "Fetch failed for aethir"
+  ],
+  "canonical_db": "/root/ass-rape-spunk-porn/data/llmdeals.sqlite3"
+}
