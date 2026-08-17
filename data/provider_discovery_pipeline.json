@@ -1,0 +1,108 @@
+{
+  "opencode_models": {
+    "kimi-k3": {
+      "provider": "moonshot",
+      "site": "https://platform.moonshot.cn",
+      "github": "https://github.com/MoonshotAI"
+    },
+    "grok-4.5": {
+      "provider": "xai",
+      "site": "https://console.x.ai",
+      "github": null
+    },
+    "qwen3.8-max": {
+      "provider": "alibaba",
+      "site": "https://help.aliyun.com",
+      "github": "https://github.com/QwenLM"
+    },
+    "glm-5.2": {
+      "provider": "zhipuai",
+      "site": "https://zhipuai.cn",
+      "github": "https://github.com/THUDM"
+    },
+    "deepseek-v4-pro": {
+      "provider": "deepseek",
+      "site": "https://platform.deepseek.com",
+      "github": "https://github.com/deepseek-ai"
+    },
+    "minimax-m3": {
+      "provider": "minimax",
+      "site": "https://minimax.io",
+      "github": null
+    },
+    "deepseek-v4-flash": {
+      "provider": "deepseek",
+      "site": "https://platform.deepseek.com",
+      "github": "https://github.com/deepseek-ai"
+    },
+    "gpt-5.6-luna": {
+      "provider": "openai",
+      "site": "https://platform.openai.com",
+      "github": "https://github.com/openai"
+    },
+    "qwen3.7-plus": {
+      "provider": "alibaba",
+      "site": "https://help.aliyun.com",
+      "github": "https://github.com/QwenLM"
+    },
+    "hy3": {
+      "provider": "zai",
+      "site": "https://docs.z.ai",
+      "github": null
+    },
+    "mimo-v2.5": {
+      "provider": "xiaomi",
+      "site": "https://dev.mi.com",
+      "github": "https://github.com/XiaomiMiMo"
+    }
+  },
+  "github_details": {
+    "deepseek-ai": {
+      "stars": 102000,
+      "repos": 36,
+      "key_repos": [
+        "deepseek-harness (148K\u2605)",
+        "DeepGEMM (7.7K\u2605)",
+        "FlashMLA (12.9K\u2605)"
+      ]
+    },
+    "QwenLM": {
+      "stars": 15000,
+      "repos": 20,
+      "key_repos": [
+        "Qwen (30K\u2605)",
+        "QwenLM (2K\u2605)"
+      ]
+    },
+    "THUDM": {
+      "stars": 40000,
+      "repos": 100,
+      "key_repos": [
+        "GLM-4 (15K\u2605)",
+        "ChatGLM (8K\u2605)"
+      ]
+    },
+    "MoonshotAI": {
+      "stars": 5000,
+      "repos": 10,
+      "key_repos": [
+        "moonshot-api"
+      ]
+    },
+    "openai": {
+      "stars": 150000,
+      "repos": 50,
+      "key_repos": [
+        "openai-python (25K\u2605)",
+        "whisper (75K\u2605)"
+      ]
+    },
+    "XiaomiMiMo": {
+      "stars": 3000,
+      "repos": 5,
+      "key_repos": [
+        "MiMo (3K\u2605)"
+      ]
+    }
+  }
+}
