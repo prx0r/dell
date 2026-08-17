@@ -1,5 +1,5 @@
 {
-  "content_hash": "0441183985e28d0d9e6fdac3f93ec0849496deb62e5ca4b069cf1afca5e34fab",
+  "content_hash": "69467a1a542d5bfe625e651d4ed34be5232061bcab300dc19101ff1f14e80fea",
   "offers": [
     {
       "provider_id": "together",
@@ -146,8 +146,8 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 696,
-        "throughput_tps": 105.76839368386383,
+        "latency_ms": 527.8,
+        "throughput_tps": 116.541585601046,
         "hf_provider": "baseten",
         "supports_tools": true,
         "supports_structured_output": true
@@ -265,6 +265,25 @@
         "hf_provider": "together",
         "supports_tools": true,
         "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "fireworks-ai",
+      "model_id": "moonshotai/Kimi-K3",
+      "input_per_m": 3.0,
+      "output_per_m": 15.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 1048576,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 2032.8,
+        "throughput_tps": 50.02314115724241,
+        "hf_provider": "fireworks-ai",
+        "supports_tools": true,
+        "supports_structured_output": true
       }
     },
     {
@@ -621,8 +640,8 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 565.2,
-        "throughput_tps": 48.82828145989065,
+        "latency_ms": 238,
+        "throughput_tps": 42.12316547790085,
         "hf_provider": "deepinfra",
         "supports_tools": true,
         "supports_structured_output": true
@@ -773,8 +792,8 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 398.8,
-        "throughput_tps": 156.4442683344912,
+        "latency_ms": 288,
+        "throughput_tps": 92.93025005155918,
         "hf_provider": "deepinfra",
         "supports_tools": true,
         "supports_structured_output": true
@@ -1229,8 +1248,8 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 653.4,
-        "throughput_tps": 26.819047197721943,
+        "latency_ms": 449.2,
+        "throughput_tps": 14.614895379744118,
         "hf_provider": "deepinfra",
         "supports_tools": true,
         "supports_structured_output": true
@@ -1856,11 +1875,11 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 309.2,
-        "throughput_tps": 44.94210135190395,
+        "latency_ms": 460.8,
+        "throughput_tps": 30.80954775356908,
         "hf_provider": "deepinfra",
         "supports_tools": true,
-        "supports_structured_output": false
+        "supports_structured_output": true
       }
     },
     {
@@ -1913,8 +1932,8 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 570.4,
-        "throughput_tps": 150.8371674661477,
+        "latency_ms": 579.2,
+        "throughput_tps": 104.5668514817916,
         "hf_provider": "nscale",
         "supports_tools": true,
         "supports_structured_output": true
@@ -2013,6 +2032,25 @@
         "hf_provider": "featherless-ai",
         "supports_tools": null,
         "supports_structured_output": null
+      }
+    },
+    {
+      "provider_id": "baseten",
+      "model_id": "moonshotai/Kimi-K2.7-Code",
+      "input_per_m": 950000.0,
+      "output_per_m": 4.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 262000,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 426.2,
+        "throughput_tps": 164.47818244342403,
+        "hf_provider": "baseten",
+        "supports_tools": true,
+        "supports_structured_output": true
       }
     },
     {
@@ -2236,8 +2274,8 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 749,
-        "throughput_tps": 39.6323929544882,
+        "latency_ms": 592.2,
+        "throughput_tps": 37.553478278680096,
         "hf_provider": "nscale",
         "supports_tools": false,
         "supports_structured_output": true
@@ -2730,8 +2768,8 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1690.6,
-        "throughput_tps": 49.00262727209845,
+        "latency_ms": 1241,
+        "throughput_tps": 54.136036886471814,
         "hf_provider": "publicai",
         "supports_tools": true,
         "supports_structured_output": true
@@ -2966,6 +3004,82 @@
       }
     },
     {
+      "provider_id": "novita",
+      "model_id": "zai-org/GLM-4.6V-Flash",
+      "input_per_m": 300000.0,
+      "output_per_m": 900000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 131072,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 987.4,
+        "throughput_tps": 36.635086386766346,
+        "hf_provider": "novita",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "zai-org",
+      "model_id": "zai-org/GLM-4.6V-Flash",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 1304,
+        "throughput_tps": 85.59445347941454,
+        "hf_provider": "zai-org",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "zai-org/GLM-4.5-Air",
+      "input_per_m": 130000.0,
+      "output_per_m": 850000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 131072,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 546,
+        "throughput_tps": 63.619268567399885,
+        "hf_provider": "novita",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "zai-org",
+      "model_id": "zai-org/GLM-4.5-Air",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 2843,
+        "throughput_tps": 44.35547466935018,
+        "hf_provider": "zai-org",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
       "provider_id": "cohere",
       "model_id": "CohereLabs/command-a-plus-05-2026-w4a4",
       "input_per_m": 0.0,
@@ -3080,44 +3194,6 @@
       }
     },
     {
-      "provider_id": "novita",
-      "model_id": "zai-org/GLM-4.5-Air",
-      "input_per_m": 130000.0,
-      "output_per_m": 850000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 131072,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 546,
-        "throughput_tps": 63.619268567399885,
-        "hf_provider": "novita",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "zai-org",
-      "model_id": "zai-org/GLM-4.5-Air",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 2843,
-        "throughput_tps": 44.35547466935018,
-        "hf_provider": "zai-org",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
       "provider_id": "groq",
       "model_id": "openai/gpt-oss-safeguard-20b",
       "input_per_m": 0.0,
@@ -3139,6 +3215,44 @@
     {
       "provider_id": "featherless-ai",
       "model_id": "openai/gpt-oss-safeguard-20b",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": null,
+        "throughput_tps": null,
+        "hf_provider": "featherless-ai",
+        "supports_tools": null,
+        "supports_structured_output": null
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "input_per_m": 380000.0,
+      "output_per_m": 1.55,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 262144,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 1293.2,
+        "throughput_tps": 51.425002944524294,
+        "hf_provider": "novita",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "featherless-ai",
+      "model_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
       "cache_read_per_m": null,
@@ -3232,27 +3346,46 @@
       }
     },
     {
-      "provider_id": "novita",
-      "model_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-      "input_per_m": 380000.0,
-      "output_per_m": 1.55,
+      "provider_id": "publicai",
+      "model_id": "swiss-ai/Apertus-v1.5-70B",
+      "input_per_m": 820000.0,
+      "output_per_m": 2.92,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
-      "context_tokens": 262144,
+      "context_tokens": null,
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1293.2,
-        "throughput_tps": 51.425002944524294,
-        "hf_provider": "novita",
+        "latency_ms": 729.8,
+        "throughput_tps": 61.853063729569406,
+        "hf_provider": "publicai",
         "supports_tools": true,
-        "supports_structured_output": false
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "nscale",
+      "model_id": "Qwen/Qwen3-32B",
+      "input_per_m": 80000.0,
+      "output_per_m": 250000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 40960,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 697,
+        "throughput_tps": 45.7419901741464,
+        "hf_provider": "nscale",
+        "supports_tools": true,
+        "supports_structured_output": true
       }
     },
     {
       "provider_id": "featherless-ai",
-      "model_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "model_id": "Qwen/Qwen3-32B",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
       "cache_read_per_m": null,
@@ -3270,22 +3403,22 @@
       }
     },
     {
-      "provider_id": "publicai",
-      "model_id": "swiss-ai/Apertus-v1.5-70B",
-      "input_per_m": 820000.0,
-      "output_per_m": 2.92,
+      "provider_id": "deepinfra",
+      "model_id": "Qwen/Qwen3-32B",
+      "input_per_m": 80000.0,
+      "output_per_m": 280000.0,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
-      "context_tokens": null,
+      "context_tokens": 40960,
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 729.8,
-        "throughput_tps": 61.853063729569406,
-        "hf_provider": "publicai",
+        "latency_ms": 522.6,
+        "throughput_tps": 74.21884452878525,
+        "hf_provider": "deepinfra",
         "supports_tools": true,
-        "supports_structured_output": true
+        "supports_structured_output": false
       }
     },
     {
@@ -3347,25 +3480,6 @@
     },
     {
       "provider_id": "novita",
-      "model_id": "zai-org/GLM-4.6V-Flash",
-      "input_per_m": 300000.0,
-      "output_per_m": 900000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 131072,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 987.4,
-        "throughput_tps": 36.635086386766346,
-        "hf_provider": "novita",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "novita",
       "model_id": "Qwen/Qwen3.5-122B-A10B",
       "input_per_m": 400000.0,
       "output_per_m": 3.2,
@@ -3403,48 +3517,10 @@
       }
     },
     {
-      "provider_id": "novita",
-      "model_id": "MiniMaxAI/MiniMax-M2",
-      "input_per_m": 300000.0,
-      "output_per_m": 1.2,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 204800,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1508.4,
-        "throughput_tps": 53.84787162244919,
-        "hf_provider": "novita",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "featherless-ai",
-      "model_id": "MiniMaxAI/MiniMax-M2",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": null,
-        "throughput_tps": null,
-        "hf_provider": "featherless-ai",
-        "supports_tools": null,
-        "supports_structured_output": null
-      }
-    },
-    {
       "provider_id": "nscale",
-      "model_id": "Qwen/Qwen3-32B",
-      "input_per_m": 80000.0,
-      "output_per_m": 250000.0,
+      "model_id": "Qwen/Qwen3-14B",
+      "input_per_m": 70000.0,
+      "output_per_m": 200000.0,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
@@ -3452,16 +3528,16 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 697,
-        "throughput_tps": 45.7419901741464,
+        "latency_ms": 623.8,
+        "throughput_tps": 93.21998330672648,
         "hf_provider": "nscale",
         "supports_tools": true,
-        "supports_structured_output": true
+        "supports_structured_output": false
       }
     },
     {
       "provider_id": "featherless-ai",
-      "model_id": "Qwen/Qwen3-32B",
+      "model_id": "Qwen/Qwen3-14B",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
       "cache_read_per_m": null,
@@ -3480,9 +3556,9 @@
     },
     {
       "provider_id": "deepinfra",
-      "model_id": "Qwen/Qwen3-32B",
-      "input_per_m": 80000.0,
-      "output_per_m": 280000.0,
+      "model_id": "Qwen/Qwen3-14B",
+      "input_per_m": 120000.00000000001,
+      "output_per_m": 240000.00000000003,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
@@ -3490,8 +3566,8 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 184.2,
-        "throughput_tps": 59.29931897637327,
+        "latency_ms": 295,
+        "throughput_tps": 63.12017918535804,
         "hf_provider": "deepinfra",
         "supports_tools": true,
         "supports_structured_output": false
@@ -3556,6 +3632,44 @@
     },
     {
       "provider_id": "novita",
+      "model_id": "MiniMaxAI/MiniMax-M2",
+      "input_per_m": 300000.0,
+      "output_per_m": 1.2,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 204800,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 1508.4,
+        "throughput_tps": 53.84787162244919,
+        "hf_provider": "novita",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "featherless-ai",
+      "model_id": "MiniMaxAI/MiniMax-M2",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": null,
+        "throughput_tps": null,
+        "hf_provider": "featherless-ai",
+        "supports_tools": null,
+        "supports_structured_output": null
+      }
+    },
+    {
+      "provider_id": "novita",
       "model_id": "inclusionAI/Ling-2.6-1T",
       "input_per_m": 300000.0,
       "output_per_m": 2.5,
@@ -3571,44 +3685,6 @@
         "hf_provider": "novita",
         "supports_tools": true,
         "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "novita",
-      "model_id": "zai-org/GLM-4.5V",
-      "input_per_m": 600000.0,
-      "output_per_m": 1.8,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 65536,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1637.6666666666667,
-        "throughput_tps": 22.190530498317543,
-        "hf_provider": "novita",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "zai-org",
-      "model_id": "zai-org/GLM-4.5V",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 2355,
-        "throughput_tps": 26.76802826703785,
-        "hf_provider": "zai-org",
-        "supports_tools": true,
-        "supports_structured_output": false
       }
     },
     {
@@ -3707,6 +3783,25 @@
       }
     },
     {
+      "provider_id": "publicai",
+      "model_id": "swiss-ai/Apertus-v1.5-8B",
+      "input_per_m": 100000.0,
+      "output_per_m": 200000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 847.6,
+        "throughput_tps": 141.6577866662734,
+        "hf_provider": "publicai",
+        "supports_tools": true,
+        "supports_structured_output": true
+      }
+    },
+    {
       "provider_id": "novita",
       "model_id": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
       "input_per_m": 800000.0,
@@ -3742,101 +3837,6 @@
         "hf_provider": "featherless-ai",
         "supports_tools": null,
         "supports_structured_output": null
-      }
-    },
-    {
-      "provider_id": "zai-org",
-      "model_id": "zai-org/GLM-4.6V",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 2531.8,
-        "throughput_tps": 38.51301644767087,
-        "hf_provider": "zai-org",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "novita",
-      "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
-      "input_per_m": 90000.0,
-      "output_per_m": 580000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 131072,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 674.4,
-        "throughput_tps": 36.431273100499716,
-        "hf_provider": "novita",
-        "supports_tools": true,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "nscale",
-      "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
-      "input_per_m": 200000.0,
-      "output_per_m": 600000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 32768,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 767.8,
-        "throughput_tps": 19.257782933145503,
-        "hf_provider": "nscale",
-        "supports_tools": true,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "scaleway",
-      "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
-      "input_per_m": 855000.0,
-      "output_per_m": 2.565,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 403.2,
-        "throughput_tps": 64.62853958247956,
-        "hf_provider": "scaleway",
-        "supports_tools": true,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "deepinfra",
-      "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
-      "input_per_m": 90000.0,
-      "output_per_m": 550000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 262144,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 373.2,
-        "throughput_tps": 37.105411970442866,
-        "hf_provider": "deepinfra",
-        "supports_tools": true,
-        "supports_structured_output": true
       }
     },
     {
@@ -3889,8 +3889,8 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 3145.6,
-        "throughput_tps": 31.23775513818412,
+        "latency_ms": 4845.5,
+        "throughput_tps": 16.39957842976937,
         "hf_provider": "zai-org",
         "supports_tools": true,
         "supports_structured_output": false
@@ -3916,27 +3916,27 @@
       }
     },
     {
-      "provider_id": "nscale",
-      "model_id": "Qwen/Qwen3-14B",
-      "input_per_m": 70000.0,
-      "output_per_m": 200000.0,
+      "provider_id": "novita",
+      "model_id": "zai-org/GLM-4.5V",
+      "input_per_m": 600000.0,
+      "output_per_m": 1.8,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
-      "context_tokens": 40960,
+      "context_tokens": 65536,
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 623.8,
-        "throughput_tps": 93.21998330672648,
-        "hf_provider": "nscale",
+        "latency_ms": 1637.6666666666667,
+        "throughput_tps": 22.190530498317543,
+        "hf_provider": "novita",
         "supports_tools": true,
         "supports_structured_output": false
       }
     },
     {
-      "provider_id": "featherless-ai",
-      "model_id": "Qwen/Qwen3-14B",
+      "provider_id": "zai-org",
+      "model_id": "zai-org/GLM-4.5V",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
       "cache_read_per_m": null,
@@ -3946,28 +3946,9 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": null,
-        "throughput_tps": null,
-        "hf_provider": "featherless-ai",
-        "supports_tools": null,
-        "supports_structured_output": null
-      }
-    },
-    {
-      "provider_id": "deepinfra",
-      "model_id": "Qwen/Qwen3-14B",
-      "input_per_m": 120000.00000000001,
-      "output_per_m": 240000.00000000003,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 40960,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 295,
-        "throughput_tps": 63.12017918535804,
-        "hf_provider": "deepinfra",
+        "latency_ms": 2355,
+        "throughput_tps": 26.76802826703785,
+        "hf_provider": "zai-org",
         "supports_tools": true,
         "supports_structured_output": false
       }
@@ -4065,6 +4046,25 @@
         "hf_provider": "deepinfra",
         "supports_tools": true,
         "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "zai-org",
+      "model_id": "zai-org/GLM-4.6V",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 2531.8,
+        "throughput_tps": 38.51301644767087,
+        "hf_provider": "zai-org",
+        "supports_tools": true,
+        "supports_structured_output": false
       }
     },
     {
@@ -4183,6 +4183,215 @@
     },
     {
       "provider_id": "novita",
+      "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+      "input_per_m": 90000.0,
+      "output_per_m": 580000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 131072,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 674.4,
+        "throughput_tps": 36.431273100499716,
+        "hf_provider": "novita",
+        "supports_tools": true,
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "nscale",
+      "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+      "input_per_m": 200000.0,
+      "output_per_m": 600000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 32768,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 767.8,
+        "throughput_tps": 19.257782933145503,
+        "hf_provider": "nscale",
+        "supports_tools": true,
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "scaleway",
+      "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+      "input_per_m": 855000.0,
+      "output_per_m": 2.565,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 403.2,
+        "throughput_tps": 64.62853958247956,
+        "hf_provider": "scaleway",
+        "supports_tools": true,
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "deepinfra",
+      "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+      "input_per_m": 90000.0,
+      "output_per_m": 550000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 262144,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 373.2,
+        "throughput_tps": 37.105411970442866,
+        "hf_provider": "deepinfra",
+        "supports_tools": true,
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "MiniMaxAI/MiniMax-M2.1",
+      "input_per_m": 300000.0,
+      "output_per_m": 1.2,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 204800,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 1507.2,
+        "throughput_tps": 51.18939147920693,
+        "hf_provider": "novita",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "featherless-ai",
+      "model_id": "MiniMaxAI/MiniMax-M2.1",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": null,
+        "throughput_tps": null,
+        "hf_provider": "featherless-ai",
+        "supports_tools": null,
+        "supports_structured_output": null
+      }
+    },
+    {
+      "provider_id": "nscale",
+      "model_id": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+      "input_per_m": 50000.0,
+      "output_per_m": 50000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 131072,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 568,
+        "throughput_tps": 145.84963619486135,
+        "hf_provider": "nscale",
+        "supports_tools": false,
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "featherless-ai",
+      "model_id": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": null,
+        "throughput_tps": null,
+        "hf_provider": "featherless-ai",
+        "supports_tools": null,
+        "supports_structured_output": null
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "MiniMaxAI/MiniMax-M2.5",
+      "input_per_m": 300000.0,
+      "output_per_m": 1.2,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 204800,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 1074.8,
+        "throughput_tps": 56.21055375367166,
+        "hf_provider": "novita",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "featherless-ai",
+      "model_id": "MiniMaxAI/MiniMax-M2.5",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": null,
+        "throughput_tps": null,
+        "hf_provider": "featherless-ai",
+        "supports_tools": null,
+        "supports_structured_output": null
+      }
+    },
+    {
+      "provider_id": "nscale",
+      "model_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+      "input_per_m": 150000.0,
+      "output_per_m": 150000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 131072,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 567.8,
+        "throughput_tps": 167.47382300191063,
+        "hf_provider": "nscale",
+        "supports_tools": false,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "novita",
       "model_id": "meta-llama/Llama-3.3-70B-Instruct",
       "input_per_m": 135000.0,
       "output_per_m": 400000.0,
@@ -4272,158 +4481,6 @@
         "latency_ms": 448.6,
         "throughput_tps": 24.2920103925634,
         "hf_provider": "ovhcloud",
-        "supports_tools": true,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "novita",
-      "model_id": "MiniMaxAI/MiniMax-M2.1",
-      "input_per_m": 300000.0,
-      "output_per_m": 1.2,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 204800,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1507.2,
-        "throughput_tps": 51.18939147920693,
-        "hf_provider": "novita",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "featherless-ai",
-      "model_id": "MiniMaxAI/MiniMax-M2.1",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": null,
-        "throughput_tps": null,
-        "hf_provider": "featherless-ai",
-        "supports_tools": null,
-        "supports_structured_output": null
-      }
-    },
-    {
-      "provider_id": "nscale",
-      "model_id": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
-      "input_per_m": 50000.0,
-      "output_per_m": 50000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 131072,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 598.8,
-        "throughput_tps": 150.77996938298136,
-        "hf_provider": "nscale",
-        "supports_tools": false,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "featherless-ai",
-      "model_id": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": null,
-        "throughput_tps": null,
-        "hf_provider": "featherless-ai",
-        "supports_tools": null,
-        "supports_structured_output": null
-      }
-    },
-    {
-      "provider_id": "novita",
-      "model_id": "MiniMaxAI/MiniMax-M2.5",
-      "input_per_m": 300000.0,
-      "output_per_m": 1.2,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 204800,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1074.8,
-        "throughput_tps": 56.21055375367166,
-        "hf_provider": "novita",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "featherless-ai",
-      "model_id": "MiniMaxAI/MiniMax-M2.5",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": null,
-        "throughput_tps": null,
-        "hf_provider": "featherless-ai",
-        "supports_tools": null,
-        "supports_structured_output": null
-      }
-    },
-    {
-      "provider_id": "nscale",
-      "model_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
-      "input_per_m": 150000.0,
-      "output_per_m": 150000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 131072,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 567.8,
-        "throughput_tps": 167.47382300191063,
-        "hf_provider": "nscale",
-        "supports_tools": false,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "publicai",
-      "model_id": "swiss-ai/Apertus-v1.5-8B",
-      "input_per_m": 100000.0,
-      "output_per_m": 200000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 847.6,
-        "throughput_tps": 141.6577866662734,
-        "hf_provider": "publicai",
         "supports_tools": true,
         "supports_structured_output": true
       }
@@ -4543,22 +4600,60 @@
       }
     },
     {
-      "provider_id": "zai-org",
-      "model_id": "zai-org/GLM-4.5",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
+      "provider_id": "novita",
+      "model_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+      "input_per_m": 180000.0,
+      "output_per_m": 590000.0,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
-      "context_tokens": null,
+      "context_tokens": 131072,
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 2414,
-        "throughput_tps": 53.36206923483535,
-        "hf_provider": "zai-org",
-        "supports_tools": true,
+        "latency_ms": 821.4,
+        "throughput_tps": 59.985921921002685,
+        "hf_provider": "novita",
+        "supports_tools": false,
         "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "nscale",
+      "model_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+      "input_per_m": 90000.0,
+      "output_per_m": 290000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 890000,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 685.4,
+        "throughput_tps": 72.1880602025504,
+        "hf_provider": "nscale",
+        "supports_tools": true,
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "deepinfra",
+      "model_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+      "input_per_m": 100000.0,
+      "output_per_m": 300000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 327680,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 858,
+        "throughput_tps": 28.882454264480124,
+        "hf_provider": "deepinfra",
+        "supports_tools": true,
+        "supports_structured_output": true
       }
     },
     {
@@ -4601,20 +4696,58 @@
     },
     {
       "provider_id": "novita",
-      "model_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
-      "input_per_m": 270000.0,
-      "output_per_m": 850000.0,
+      "model_id": "Qwen/Qwen3-VL-30B-A3B-Instruct",
+      "input_per_m": 200000.0,
+      "output_per_m": 700000.0,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
-      "context_tokens": 1048576,
+      "context_tokens": 131072,
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 425.2,
-        "throughput_tps": 93.98649062750741,
+        "latency_ms": 1188.8,
+        "throughput_tps": 88.18327180034927,
         "hf_provider": "novita",
-        "supports_tools": false,
+        "supports_tools": true,
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "featherless-ai",
+      "model_id": "Qwen/Qwen3-VL-30B-A3B-Instruct",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": null,
+        "throughput_tps": null,
+        "hf_provider": "featherless-ai",
+        "supports_tools": null,
+        "supports_structured_output": null
+      }
+    },
+    {
+      "provider_id": "deepinfra",
+      "model_id": "Qwen/Qwen3-VL-30B-A3B-Instruct",
+      "input_per_m": 150000.0,
+      "output_per_m": 600000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 262144,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 289.6,
+        "throughput_tps": 33.03598968356958,
+        "hf_provider": "deepinfra",
+        "supports_tools": true,
         "supports_structured_output": true
       }
     },
@@ -4638,177 +4771,6 @@
       }
     },
     {
-      "provider_id": "zai-org",
-      "model_id": "zai-org/GLM-4.6-FP8",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 4262.8,
-        "throughput_tps": 26.322908194862087,
-        "hf_provider": "zai-org",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "zai-org",
-      "model_id": "zai-org/GLM-4.5V-FP8",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 3532,
-        "throughput_tps": 20.862199000643844,
-        "hf_provider": "zai-org",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "novita",
-      "model_id": "baidu/ERNIE-4.5-VL-424B-A47B-Base-PT",
-      "input_per_m": 420000.0,
-      "output_per_m": 1.25,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 123000,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1367.4,
-        "throughput_tps": 26.150266287076228,
-        "hf_provider": "novita",
-        "supports_tools": false,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "cohere",
-      "model_id": "CohereLabs/c4ai-command-r7b-12-2024",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 239.8,
-        "throughput_tps": 76.58713097350717,
-        "hf_provider": "cohere",
-        "supports_tools": true,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "zai-org",
-      "model_id": "zai-org/GLM-4.7-FP8",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 2338,
-        "throughput_tps": 53.14908317831517,
-        "hf_provider": "zai-org",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "zai-org",
-      "model_id": "zai-org/GLM-4.6V-FP8",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 3635.4,
-        "throughput_tps": 34.6322986470428,
-        "hf_provider": "zai-org",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "novita",
-      "model_id": "Qwen/Qwen3-VL-235B-A22B-Thinking",
-      "input_per_m": 980000.0,
-      "output_per_m": 3.95,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 131072,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 880.8,
-        "throughput_tps": 29.30092041496174,
-        "hf_provider": "novita",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "featherless-ai",
-      "model_id": "Qwen/Qwen3-VL-235B-A22B-Thinking",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": null,
-        "throughput_tps": null,
-        "hf_provider": "featherless-ai",
-        "supports_tools": null,
-        "supports_structured_output": null
-      }
-    },
-    {
-      "provider_id": "cohere",
-      "model_id": "CohereLabs/c4ai-command-r7b-arabic-02-2025",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 248.2,
-        "throughput_tps": 58.42452374218872,
-        "hf_provider": "cohere",
-        "supports_tools": true,
-        "supports_structured_output": false
-      }
-    },
-    {
       "provider_id": "together",
       "model_id": "google/gemma-3n-E4B-it",
       "input_per_m": 60000.00000000001,
@@ -4828,8 +4790,8 @@
       }
     },
     {
-      "provider_id": "featherless-ai",
-      "model_id": "aisingapore/Gemma-SEA-LION-v4-27B-IT",
+      "provider_id": "zai-org",
+      "model_id": "zai-org/GLM-4.5",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
       "cache_read_per_m": null,
@@ -4839,106 +4801,11 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": null,
-        "throughput_tps": null,
-        "hf_provider": "featherless-ai",
-        "supports_tools": null,
-        "supports_structured_output": null
-      }
-    },
-    {
-      "provider_id": "publicai",
-      "model_id": "aisingapore/Gemma-SEA-LION-v4-27B-IT",
-      "input_per_m": 200000.0,
-      "output_per_m": 400000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1555.2,
-        "throughput_tps": 47.2918573317566,
-        "hf_provider": "publicai",
-        "supports_tools": false,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "novita",
-      "model_id": "zai-org/AutoGLM-Phone-9B-Multilingual",
-      "input_per_m": 35000.0,
-      "output_per_m": 138000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 65536,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 440,
-        "throughput_tps": 115.30270167609804,
-        "hf_provider": "novita",
-        "supports_tools": false,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "cohere",
-      "model_id": "CohereLabs/c4ai-command-a-03-2025",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 272.6,
-        "throughput_tps": 48.305654251614094,
-        "hf_provider": "cohere",
-        "supports_tools": true,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "together",
-      "model_id": "pearl-ai/Gemma-4-31B-it-pearl",
-      "input_per_m": 280000.0,
-      "output_per_m": 860000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 262144,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 224.4,
-        "throughput_tps": 46.839568334011915,
-        "hf_provider": "together",
+        "latency_ms": 2414,
+        "throughput_tps": 53.36206923483535,
+        "hf_provider": "zai-org",
         "supports_tools": true,
         "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "publicai",
-      "model_id": "swiss-ai/Apertus-8B-Instruct-2509",
-      "input_per_m": 100000.0,
-      "output_per_m": 200000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1148,
-        "throughput_tps": 132.05554951602213,
-        "hf_provider": "publicai",
-        "supports_tools": false,
-        "supports_structured_output": true
       }
     },
     {
@@ -5000,7 +4867,7 @@
     },
     {
       "provider_id": "cohere",
-      "model_id": "CohereLabs/command-a-reasoning-08-2025",
+      "model_id": "CohereLabs/c4ai-command-r7b-12-2024",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
       "cache_read_per_m": null,
@@ -5010,11 +4877,106 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 170.4,
-        "throughput_tps": 102.51830581423035,
+        "latency_ms": 239.8,
+        "throughput_tps": 76.58713097350717,
         "hf_provider": "cohere",
         "supports_tools": true,
         "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "together",
+      "model_id": "pearl-ai/Gemma-4-31B-it-pearl",
+      "input_per_m": 280000.0,
+      "output_per_m": 860000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 262144,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 224.4,
+        "throughput_tps": 46.839568334011915,
+        "hf_provider": "together",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "zai-org",
+      "model_id": "zai-org/GLM-4.6-FP8",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 4262.8,
+        "throughput_tps": 26.322908194862087,
+        "hf_provider": "zai-org",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "featherless-ai",
+      "model_id": "aisingapore/Gemma-SEA-LION-v4-27B-IT",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": null,
+        "throughput_tps": null,
+        "hf_provider": "featherless-ai",
+        "supports_tools": null,
+        "supports_structured_output": null
+      }
+    },
+    {
+      "provider_id": "publicai",
+      "model_id": "aisingapore/Gemma-SEA-LION-v4-27B-IT",
+      "input_per_m": 200000.0,
+      "output_per_m": 400000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 1259.2,
+        "throughput_tps": 48.08334701708647,
+        "hf_provider": "publicai",
+        "supports_tools": false,
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "cohere",
+      "model_id": "CohereLabs/c4ai-command-r7b-arabic-02-2025",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 248.2,
+        "throughput_tps": 58.42452374218872,
+        "hf_provider": "cohere",
+        "supports_tools": true,
+        "supports_structured_output": false
       }
     },
     {
@@ -5029,18 +4991,18 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 327,
-        "throughput_tps": 94.10871022184583,
+        "latency_ms": 311.4,
+        "throughput_tps": 94.04965031163309,
         "hf_provider": "together",
         "supports_tools": true,
         "supports_structured_output": false
       }
     },
     {
-      "provider_id": "publicai",
-      "model_id": "swiss-ai/Apertus-70B-Instruct-2509",
-      "input_per_m": 820000.0,
-      "output_per_m": 2.92,
+      "provider_id": "zai-org",
+      "model_id": "zai-org/GLM-4.7-FP8",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
@@ -5048,10 +5010,48 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1122.2,
-        "throughput_tps": 55.98781795431756,
+        "latency_ms": 2338,
+        "throughput_tps": 53.14908317831517,
+        "hf_provider": "zai-org",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "publicai",
+      "model_id": "swiss-ai/Apertus-8B-Instruct-2509",
+      "input_per_m": 100000.0,
+      "output_per_m": 200000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 1148,
+        "throughput_tps": 132.05554951602213,
         "hf_provider": "publicai",
         "supports_tools": false,
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "cohere",
+      "model_id": "CohereLabs/c4ai-command-a-03-2025",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 272.6,
+        "throughput_tps": 48.305654251614094,
+        "hf_provider": "cohere",
+        "supports_tools": true,
         "supports_structured_output": true
       }
     },
@@ -5075,8 +5075,8 @@
       }
     },
     {
-      "provider_id": "cohere",
-      "model_id": "CohereLabs/command-a-translate-08-2025",
+      "provider_id": "zai-org",
+      "model_id": "zai-org/GLM-4.5V-FP8",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
       "cache_read_per_m": null,
@@ -5086,73 +5086,35 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 224.2,
-        "throughput_tps": 69.78144618371985,
-        "hf_provider": "cohere",
+        "latency_ms": 3532,
+        "throughput_tps": 20.862199000643844,
+        "hf_provider": "zai-org",
         "supports_tools": true,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "novita",
-      "model_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
-      "input_per_m": 180000.0,
-      "output_per_m": 590000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 131072,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 821.4,
-        "throughput_tps": 59.985921921002685,
-        "hf_provider": "novita",
-        "supports_tools": false,
         "supports_structured_output": false
       }
     },
     {
-      "provider_id": "nscale",
-      "model_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
-      "input_per_m": 90000.0,
-      "output_per_m": 290000.0,
+      "provider_id": "publicai",
+      "model_id": "swiss-ai/Apertus-70B-Instruct-2509",
+      "input_per_m": 820000.0,
+      "output_per_m": 2.92,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
-      "context_tokens": 890000,
+      "context_tokens": null,
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 685.4,
-        "throughput_tps": 72.1880602025504,
-        "hf_provider": "nscale",
-        "supports_tools": true,
+        "latency_ms": 820.4,
+        "throughput_tps": 60.69847583101115,
+        "hf_provider": "publicai",
+        "supports_tools": false,
         "supports_structured_output": true
       }
     },
     {
-      "provider_id": "deepinfra",
-      "model_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
-      "input_per_m": 100000.0,
-      "output_per_m": 300000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 327680,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 858,
-        "throughput_tps": 28.882454264480124,
-        "hf_provider": "deepinfra",
-        "supports_tools": true,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "featherless-ai",
-      "model_id": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "provider_id": "cohere",
+      "model_id": "CohereLabs/command-a-reasoning-08-2025",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
       "cache_read_per_m": null,
@@ -5162,28 +5124,9 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": null,
-        "throughput_tps": null,
-        "hf_provider": "featherless-ai",
-        "supports_tools": null,
-        "supports_structured_output": null
-      }
-    },
-    {
-      "provider_id": "publicai",
-      "model_id": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
-      "input_per_m": 250000.0,
-      "output_per_m": 500000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1063.3333333333333,
-        "throughput_tps": 48.06659384608539,
-        "hf_provider": "publicai",
+        "latency_ms": 170.4,
+        "throughput_tps": 102.51830581423035,
+        "hf_provider": "cohere",
         "supports_tools": true,
         "supports_structured_output": true
       }
@@ -5227,6 +5170,82 @@
       }
     },
     {
+      "provider_id": "zai-org",
+      "model_id": "zai-org/GLM-4.6V-FP8",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 3635.4,
+        "throughput_tps": 34.6322986470428,
+        "hf_provider": "zai-org",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "featherless-ai",
+      "model_id": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": null,
+        "throughput_tps": null,
+        "hf_provider": "featherless-ai",
+        "supports_tools": null,
+        "supports_structured_output": null
+      }
+    },
+    {
+      "provider_id": "publicai",
+      "model_id": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "input_per_m": 250000.0,
+      "output_per_m": 500000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 1063.3333333333333,
+        "throughput_tps": 48.06659384608539,
+        "hf_provider": "publicai",
+        "supports_tools": true,
+        "supports_structured_output": true
+      }
+    },
+    {
+      "provider_id": "cohere",
+      "model_id": "CohereLabs/command-a-translate-08-2025",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 224.2,
+        "throughput_tps": 69.78144618371985,
+        "hf_provider": "cohere",
+        "supports_tools": true,
+        "supports_structured_output": true
+      }
+    },
+    {
       "provider_id": "cohere",
       "model_id": "CohereLabs/aya-vision-32b",
       "input_per_m": 0.0,
@@ -5240,25 +5259,6 @@
         "source_url": "https://router.huggingface.co/v1/models",
         "latency_ms": 199.2,
         "throughput_tps": 41.94688359810632,
-        "hf_provider": "cohere",
-        "supports_tools": false,
-        "supports_structured_output": false
-      }
-    },
-    {
-      "provider_id": "cohere",
-      "model_id": "CohereLabs/tiny-aya-global",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 163.4,
-        "throughput_tps": 131.0816670422276,
         "hf_provider": "cohere",
         "supports_tools": false,
         "supports_structured_output": false
@@ -5304,6 +5304,25 @@
     },
     {
       "provider_id": "cohere",
+      "model_id": "CohereLabs/tiny-aya-global",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 163.4,
+        "throughput_tps": 131.0816670422276,
+        "hf_provider": "cohere",
+        "supports_tools": false,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "cohere",
       "model_id": "CohereLabs/command-a-vision-07-2025",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
@@ -5319,25 +5338,6 @@
         "hf_provider": "cohere",
         "supports_tools": false,
         "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "cohere",
-      "model_id": "CohereLabs/tiny-aya-water",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 213,
-        "throughput_tps": 133.4215688549719,
-        "hf_provider": "cohere",
-        "supports_tools": false,
-        "supports_structured_output": false
       }
     },
     {
@@ -5380,6 +5380,25 @@
     },
     {
       "provider_id": "cohere",
+      "model_id": "CohereLabs/tiny-aya-water",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 213,
+        "throughput_tps": 133.4215688549719,
+        "hf_provider": "cohere",
+        "supports_tools": false,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "cohere",
       "model_id": "CohereLabs/command-a-plus-05-2026-bf16",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
@@ -5395,25 +5414,6 @@
         "hf_provider": "cohere",
         "supports_tools": true,
         "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "cohere",
-      "model_id": "CohereLabs/tiny-aya-earth",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 227,
-        "throughput_tps": 132.52077888733254,
-        "hf_provider": "cohere",
-        "supports_tools": false,
-        "supports_structured_output": false
       }
     },
     {
@@ -5475,6 +5475,25 @@
     },
     {
       "provider_id": "cohere",
+      "model_id": "CohereLabs/tiny-aya-earth",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 227,
+        "throughput_tps": 132.52077888733254,
+        "hf_provider": "cohere",
+        "supports_tools": false,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "cohere",
       "model_id": "CohereLabs/command-a-plus-05-2026-fp8",
       "input_per_m": 0.0,
       "output_per_m": 0.0,
@@ -5490,25 +5509,6 @@
         "hf_provider": "cohere",
         "supports_tools": true,
         "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "cohere",
-      "model_id": "CohereLabs/tiny-aya-fire",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 186.6,
-        "throughput_tps": 133.44649656893245,
-        "hf_provider": "cohere",
-        "supports_tools": false,
-        "supports_structured_output": false
       }
     },
     {
@@ -5569,6 +5569,25 @@
       }
     },
     {
+      "provider_id": "cohere",
+      "model_id": "CohereLabs/tiny-aya-fire",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 186.6,
+        "throughput_tps": 133.44649656893245,
+        "hf_provider": "cohere",
+        "supports_tools": false,
+        "supports_structured_output": false
+      }
+    },
+    {
       "provider_id": "featherless-ai",
       "model_id": "NousResearch/Hermes-3-Llama-3.1-70B",
       "input_per_m": 0.0,
@@ -5608,63 +5627,6 @@
     },
     {
       "provider_id": "novita",
-      "model_id": "Qwen/Qwen3-VL-30B-A3B-Instruct",
-      "input_per_m": 200000.0,
-      "output_per_m": 700000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 131072,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1188.8,
-        "throughput_tps": 88.18327180034927,
-        "hf_provider": "novita",
-        "supports_tools": true,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "featherless-ai",
-      "model_id": "Qwen/Qwen3-VL-30B-A3B-Instruct",
-      "input_per_m": 0.0,
-      "output_per_m": 0.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": null,
-        "throughput_tps": null,
-        "hf_provider": "featherless-ai",
-        "supports_tools": null,
-        "supports_structured_output": null
-      }
-    },
-    {
-      "provider_id": "deepinfra",
-      "model_id": "Qwen/Qwen3-VL-30B-A3B-Instruct",
-      "input_per_m": 150000.0,
-      "output_per_m": 600000.0,
-      "cache_read_per_m": null,
-      "free": false,
-      "offer_kind": "provider_route",
-      "context_tokens": 262144,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 289.6,
-        "throughput_tps": 33.03598968356958,
-        "hf_provider": "deepinfra",
-        "supports_tools": true,
-        "supports_structured_output": true
-      }
-    },
-    {
-      "provider_id": "novita",
       "model_id": "MiniMaxAI/MiniMax-M1-80k",
       "input_per_m": 550000.0,
       "output_per_m": 2.2,
@@ -5675,30 +5637,30 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 1032.8,
-        "throughput_tps": 71.17088013645855,
+        "latency_ms": 1476.4,
+        "throughput_tps": 50.03926769080199,
         "hf_provider": "novita",
         "supports_tools": true,
         "supports_structured_output": false
       }
     },
     {
-      "provider_id": "together",
-      "model_id": "deepcogito/cogito-671b-v2.1",
-      "input_per_m": 1.25,
-      "output_per_m": 1.25,
+      "provider_id": "novita",
+      "model_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
+      "input_per_m": 270000.0,
+      "output_per_m": 850000.0,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
-      "context_tokens": 163840,
+      "context_tokens": 1048576,
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 508.4,
-        "throughput_tps": 66.42895670561808,
-        "hf_provider": "together",
+        "latency_ms": 425.2,
+        "throughput_tps": 93.98649062750741,
+        "hf_provider": "novita",
         "supports_tools": false,
-        "supports_structured_output": false
+        "supports_structured_output": true
       }
     },
     {
@@ -5751,8 +5713,8 @@
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 218.6,
-        "throughput_tps": 52.90191933327517,
+        "latency_ms": 302,
+        "throughput_tps": 39.780824089670965,
         "hf_provider": "deepinfra",
         "supports_tools": true,
         "supports_structured_output": false
@@ -5778,20 +5740,20 @@
       }
     },
     {
-      "provider_id": "together",
-      "model_id": "deepcogito/cogito-671b-v2.1-FP8",
-      "input_per_m": 1.25,
+      "provider_id": "novita",
+      "model_id": "baidu/ERNIE-4.5-VL-424B-A47B-Base-PT",
+      "input_per_m": 420000.0,
       "output_per_m": 1.25,
       "cache_read_per_m": null,
       "free": false,
       "offer_kind": "provider_route",
-      "context_tokens": 163840,
+      "context_tokens": 123000,
       "requests_day": null,
       "metadata": {
         "source_url": "https://router.huggingface.co/v1/models",
-        "latency_ms": 261.8,
-        "throughput_tps": 67.7252749062317,
-        "hf_provider": "together",
+        "latency_ms": 1367.4,
+        "throughput_tps": 26.150266287076228,
+        "hf_provider": "novita",
         "supports_tools": false,
         "supports_structured_output": false
       }
@@ -5871,7 +5833,102 @@
         "supports_tools": true,
         "supports_structured_output": true
       }
+    },
+    {
+      "provider_id": "together",
+      "model_id": "deepcogito/cogito-671b-v2.1",
+      "input_per_m": 1.25,
+      "output_per_m": 1.25,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 163840,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 508.4,
+        "throughput_tps": 66.42895670561808,
+        "hf_provider": "together",
+        "supports_tools": false,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "Qwen/Qwen3-VL-235B-A22B-Thinking",
+      "input_per_m": 980000.0,
+      "output_per_m": 3.95,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 131072,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 880.8,
+        "throughput_tps": 29.30092041496174,
+        "hf_provider": "novita",
+        "supports_tools": true,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "featherless-ai",
+      "model_id": "Qwen/Qwen3-VL-235B-A22B-Thinking",
+      "input_per_m": 0.0,
+      "output_per_m": 0.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": null,
+        "throughput_tps": null,
+        "hf_provider": "featherless-ai",
+        "supports_tools": null,
+        "supports_structured_output": null
+      }
+    },
+    {
+      "provider_id": "together",
+      "model_id": "deepcogito/cogito-671b-v2.1-FP8",
+      "input_per_m": 1.25,
+      "output_per_m": 1.25,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 163840,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 261.8,
+        "throughput_tps": 67.7252749062317,
+        "hf_provider": "together",
+        "supports_tools": false,
+        "supports_structured_output": false
+      }
+    },
+    {
+      "provider_id": "novita",
+      "model_id": "zai-org/AutoGLM-Phone-9B-Multilingual",
+      "input_per_m": 35000.0,
+      "output_per_m": 138000.0,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "provider_route",
+      "context_tokens": 65536,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://router.huggingface.co/v1/models",
+        "latency_ms": 440,
+        "throughput_tps": 115.30270167609804,
+        "hf_provider": "novita",
+        "supports_tools": false,
+        "supports_structured_output": false
+      }
     }
   ],
-  "timestamp": 1786963827.6941924
+  "timestamp": 1786965097.2049527
 }

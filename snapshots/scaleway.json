@@ -1,5 +1,5 @@
 {
-  "content_hash": "ca7118ec48e2898e34dd156607e5122cbdfe627a2da8be42f1c625add545fce8",
+  "content_hash": "fc1454db6ff0a28a6f5b8a1243e805a10e5a3632348b4c19ea5a1745b8f704ec",
   "offers": [
     {
       "provider_id": "scaleway",
@@ -20,5 +20,5 @@
       }
     }
   ],
-  "timestamp": 1786963791.6533983
+  "timestamp": 1786965052.7901964
 }

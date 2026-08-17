@@ -1,1 +1,21 @@
-{"content_hash": "a25db5548c11e10453dd9486c8de57ad552c5cfba6e61a1606cdddec75815af5", "offers": [{"provider_id": "zai", "model_id": "zai/coding-plan", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "subscription_allowance", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.z.ai/guides/overview/pricing", "plan": "coding"}}], "timestamp": 1786961866.3083897}
+{
+  "content_hash": "a25db5548c11e10453dd9486c8de57ad552c5cfba6e61a1606cdddec75815af5",
+  "offers": [
+    {
+      "provider_id": "zai",
+      "model_id": "zai/coding-plan",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "subscription_allowance",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.z.ai/guides/overview/pricing",
+        "plan": "coding"
+      }
+    }
+  ],
+  "timestamp": 1786965021.4187841
+}

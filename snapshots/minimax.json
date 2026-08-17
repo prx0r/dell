@@ -1,1 +1,113 @@
-{"content_hash": "4e755212dc030447c2f356ae4ac587615e1eb53a1f637e637f75634c7381aa23", "offers": [{"provider_id": "minimax", "model_id": "minimax/minimax", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://platform.minimax.io/subscribe/token-plan", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 79.9, "metric": "resolved", "harness": "Claude Code", "source": "https://www.minimax.io/blog/minimax-m3", "date": "2026-06-01"}, {"name": "SWE-Bench Pro", "score": 56.2, "metric": "resolve rate", "harness": "Claude Code", "source": "https://www.minimax.io/blog/minimax-m3", "date": "2026-06-01"}, {"name": "Terminal-Bench", "score": 51.1, "metric": "success rate", "version": "2.1", "source": "https://www.minimax.io/blog/minimax-m3", "date": "2026-06-01"}]}}, {"provider_id": "minimax", "model_id": "minimax/minimax.io", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://platform.minimax.io/subscribe/token-plan", "openai_compatible": true}}, {"provider_id": "minimax", "model_id": "minimax/minimaxi.com", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://platform.minimax.io/subscribe/token-plan", "openai_compatible": true}}, {"provider_id": "minimax", "model_id": "minimax/minimax-cli", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://platform.minimax.io/subscribe/token-plan", "openai_compatible": true}}, {"provider_id": "minimax", "model_id": "minimax/minimax.chat", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://platform.minimax.io/subscribe/token-plan", "openai_compatible": true}}, {"provider_id": "minimax", "model_id": "minimax/minimax-m2.5-highspeed", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://platform.minimax.io/subscribe/token-plan", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "minimax", "model_id": "minimax/free-tier", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": true, "offer_kind": "free_tier", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://platform.minimax.io/subscribe/token-plan", "deal_type": "free_tier", "openai_compatible": true, "difficulty": 1}}], "timestamp": 1786961911.0598419}
+{
+  "content_hash": "4e755212dc030447c2f356ae4ac587615e1eb53a1f637e637f75634c7381aa23",
+  "offers": [
+    {
+      "provider_id": "minimax",
+      "model_id": "minimax/minimax.chat",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://platform.minimax.io/subscribe/token-plan",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "minimax",
+      "model_id": "minimax/minimax-cli",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://platform.minimax.io/subscribe/token-plan",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "minimax",
+      "model_id": "minimax/minimax-m2.5-highspeed",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://platform.minimax.io/subscribe/token-plan",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "minimax",
+      "model_id": "minimax/minimax",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://platform.minimax.io/subscribe/token-plan",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "minimax",
+      "model_id": "minimax/minimax.io",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://platform.minimax.io/subscribe/token-plan",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "minimax",
+      "model_id": "minimax/minimaxi.com",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://platform.minimax.io/subscribe/token-plan",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "minimax",
+      "model_id": "minimax/free-tier",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "free_tier",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://platform.minimax.io/subscribe/token-plan",
+        "deal_type": "free_tier",
+        "openai_compatible": true,
+        "difficulty": 1
+      }
+    }
+  ],
+  "timestamp": 1786965069.7006798
+}

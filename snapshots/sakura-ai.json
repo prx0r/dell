@@ -1,1 +1,26 @@
-{"content_hash": "d619e77b88c7e8606fd9b4ee600792347bf7f42d8df234550d4c9bffd435c8ca", "offers": [{"provider_id": "sakura-ai", "model_id": "sakura-ai/free-tier", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": true, "offer_kind": "renewable_free_quota", "context_tokens": null, "requests_day": 100, "metadata": {"source_url": "https://cloud.sakura.ad.jp/", "quota_monthly": 3000, "reset": "monthly", "phone_verification": "required", "international_eligibility": "unverified", "openai_compat": true, "auto_charge": false}}], "timestamp": 1786961894.0200312}
+{
+  "content_hash": "d619e77b88c7e8606fd9b4ee600792347bf7f42d8df234550d4c9bffd435c8ca",
+  "offers": [
+    {
+      "provider_id": "sakura-ai",
+      "model_id": "sakura-ai/free-tier",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "renewable_free_quota",
+      "context_tokens": null,
+      "requests_day": 100,
+      "metadata": {
+        "source_url": "https://cloud.sakura.ad.jp/",
+        "quota_monthly": 3000,
+        "reset": "monthly",
+        "phone_verification": "required",
+        "international_eligibility": "unverified",
+        "openai_compat": true,
+        "auto_charge": false
+      }
+    }
+  ],
+  "timestamp": 1786965050.882448
+}

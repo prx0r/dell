@@ -1,1 +1,41 @@
-{"content_hash": "0738e1d53e03cdde4e379859b024fb665340ccc62ac4ed215101772e5d81327b", "offers": [{"provider_id": "nebius", "model_id": "nebius/token-factory", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": true, "offer_kind": "signup_credits", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://nebius.com", "deal_type": "token_factory_credits", "openai_compatible": true, "difficulty": 1, "note": "Token Factory credits for new users"}}, {"provider_id": "nebius", "model_id": "nebius/free-tier", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": true, "offer_kind": "free_tier", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://nebius.com", "deal_type": "free_tier", "openai_compatible": true, "difficulty": 1}}], "timestamp": 1786961942.0479188}
+{
+  "content_hash": "0738e1d53e03cdde4e379859b024fb665340ccc62ac4ed215101772e5d81327b",
+  "offers": [
+    {
+      "provider_id": "nebius",
+      "model_id": "nebius/token-factory",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "signup_credits",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://nebius.com",
+        "deal_type": "token_factory_credits",
+        "openai_compatible": true,
+        "difficulty": 1,
+        "note": "Token Factory credits for new users"
+      }
+    },
+    {
+      "provider_id": "nebius",
+      "model_id": "nebius/free-tier",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "free_tier",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://nebius.com",
+        "deal_type": "free_tier",
+        "openai_compatible": true,
+        "difficulty": 1
+      }
+    }
+  ],
+  "timestamp": 1786965106.2661943
+}

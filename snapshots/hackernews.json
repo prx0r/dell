@@ -1,5 +1,5 @@
 {
-  "content_hash": "bf25e8e52d5074262bffe291cb124d5ee0ef0d671e9839ac201acd782825696b",
+  "content_hash": "013c823e06d25717076d4592ab976b70ef4733e586b1ca68e81b50fb01cdbd8d",
   "offers": [
     {
       "provider_id": "community",
@@ -14,11 +14,11 @@
       "metadata": {
         "source_url": "https://news.ycombinator.com/item?id=49322107",
         "title": "Tell HN: Cloudflare silently injects its analytics when you switch nameservers",
-        "score": 522,
+        "score": 526,
         "author": "stagas",
         "hn_type": "story"
       }
     }
   ],
-  "timestamp": 1786963785.7231028
+  "timestamp": 1786965046.0762203
 }

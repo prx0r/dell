@@ -1,6 +1,21 @@
 {
-  "content_hash": "a2c2a9747740c5df278b244ebf1b251103f4cc35637dc27831b363a3981450a5",
+  "content_hash": "2d94897fe4dc0ae20c1fe3d9037c0d6d39356a31dc4de63c9fd31d6df7a87e00",
   "offers": [
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-vl-max-latest",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/new-free-quota",
+        "note": "independent per-model quota"
+      }
+    },
     {
       "provider_id": "alibaba",
       "model_id": "alibaba/qwen-max-2026-05-17",
@@ -48,817 +63,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-vl-max-latest",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/new-free-quota",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-asr-flash-realtime-2026-02-10",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.6-max-preview",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-asr-flash-realtime-2025-10-27",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-2025-07-28",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio-3.0-tts-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.7-text-embedding",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-8b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.7-max-2026-06-08",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio-turbo",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-coder-flash-2025-07-28",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-character",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-vl-ocr-2025-08-28",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-vc-realtime-2025-11-27",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-mt-plus",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-edit",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-14b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-2025-12-01",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-plus-2026-02-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio-3.0-asr-flash-streaming",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-omni-flash-realtime",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-35b-a3b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-long-2025-01-25",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-edit-max",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-omni-turbo-2025-01-19",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-flash-character-2026-02-26",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-tts-realtime",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-2.0",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-vd-realtime-2026-01-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-mt-lite-us",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio-3.0-realtime-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.8",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-flash-realtime-2025-09-18",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-asr-flash-us",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-max-preview",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-max-2025-12-30",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-next-80b-a3b-instruct",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-embedding",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-us",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-omni-turbo-realtime-2025-05-08",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-122b-a10b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-rerank",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-tts-2025-05-22",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-vl-ocr-2025-04-13",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-2025-09-11",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-omni-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-omni-flash-realtime",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.6-flash-us",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-flash-2025-10-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.8-2.4t-a95b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-2.0-pro-2026-06-22",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen2.5-vl-embedding",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-coder-plus-2025-07-22",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-235b-a22b-instruct",
+      "model_id": "alibaba/qwen3-vl-32b-thinking",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -888,67 +93,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-flash-2025-07-28",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-character-ja",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-2025-01-12",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-omni-turbo-2025-03-26",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-math-plus",
+      "model_id": "alibaba/qwen3-coder-next",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -978,7 +123,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-omni-flash-2025-09-15",
+      "model_id": "alibaba/qwen3.5-plus-2026-04-20",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -993,7 +138,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-2.0-pro-2026-03-03",
+      "model_id": "alibaba/qwen3.7-plus-2026-05-26",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1008,7 +153,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-vl-plus",
+      "model_id": "alibaba/qwen3-vl-8b-thinking",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1023,7 +168,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-omni-turbo-latest",
+      "model_id": "alibaba/qwen3.6-plus-2026-04-02",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1038,7 +183,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-ocr",
+      "model_id": "alibaba/qwen3-livetranslate-flash-realtime",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1053,7 +198,517 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-edit-plus-2025-10-30",
+      "model_id": "alibaba/qwen-image-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-coder-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-235b-a22b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-plus-2025-07-14",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.8",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-plus-2025-01-25",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.6-35b-a3b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-audio-3.0-asr-flash-streaming",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-omni-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-flash-2025-11-27",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-max",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-max-preview",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-omni-flash-realtime-2025-09-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen2.5-vl-embedding",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-audio-3.0-asr-flash-filetrans",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.7-max-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-long-2025-01-25",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-235b-a22b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-audio-3.0-tts-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-coder-480b-a35b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-mt-turbo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-omni-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-omni-plus-realtime-2026-03-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-vl-ocr-2025-04-13",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-max-2026-01-23",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-plus-character-ja",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-mt-image",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-tts-realtime-2025-07-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-asr-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-audio-chat",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-instruct-flash-2026-01-26",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.7-max",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1083,7 +738,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-omni-30b-a3b-captioner",
+      "model_id": "alibaba/qwen3-tts-instruct-flash",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1098,7 +753,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio-turbo-latest",
+      "model_id": "alibaba/qwen3-tts-vd-realtime-2026-01-15",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1113,7 +768,337 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-vc-realtime-2026-01-15",
+      "model_id": "alibaba/qwen-plus-latest",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-rerank",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-livetranslate-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-plus-2026-01-09",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.7-max-preview",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-32b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen2.5-omni-7b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-2.0",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-omni-captioner",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-edit-guide",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-tts-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-122b-a10b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-coder-plus-2025-09-23",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-397b-a17b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-edit-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-livetranslate-flash-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-plus-character",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-vl-ocr",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.6-flash-2026-04-16",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-30b-a3b-instruct-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-7b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-livetranslate-flash-realtime-2025-09-22",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-asr-flash-2025-09-08",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1143,7 +1128,1027 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-2025-12-01-us",
+      "model_id": "alibaba/qwen-vl-ocr-2025-08-28",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.7-max-2026-06-08",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-vl-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-max-2025-09-23",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-asr-flash-filetrans-2025-11-17",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.7-text-embedding",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-math-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-27b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-2.0-pro",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-2.0-pro-2026-04-22",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-flash-2026-02-23",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-flash-2025-10-15-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.6-27b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-deep-research",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-3.0-pro",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-coder-30b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-30b-a3b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-omni-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-omni-flash-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-plus-2025-01-12",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-coder",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-edit-max-2026-01-16",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-vc-realtime-2026-01-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-long",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-coder-turbo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-vc-realtime-2025-11-27",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-audio-3.0-realtime-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-plus-2024-12-20",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-omni-flash-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-14b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.7-plus-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-livetranslate-flash-realtime-2026-05-19",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-tts-realtime-latest",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-edit-plus-2025-12-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-asr-flash-2025-09-08-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-omni-turbo-realtime-latest",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-vl-ocr-2025-11-20",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-asr-flash-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-plus-2026-02-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-flash-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-omni-30b-a3b-captioner",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-omni-plus-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.6-flash-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-embedding",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-235b-a22b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-max-2025-12-30",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-tts-2025-05-22",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-2.0-2026-03-03",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-audio-3.0-tts-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-livetranslate-flash-2025-12-01",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-flash-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-flash-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.7-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-omni-flash-2025-09-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-14b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-5-livetranslate-flash-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.7-max-2026-05-20",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-tts-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-audio-3.0-realtime-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.6-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-voice-design",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-flash-2025-07-28",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-omni-flash-2026-03-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-30b-a3b-instruct",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1188,7 +2193,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-coder",
+      "model_id": "alibaba/qwen-plus-2025-12-01",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1203,7 +2208,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-235b-a22b",
+      "model_id": "alibaba/qwen3-vl-flash-2025-10-15",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1218,7 +2223,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-8b-thinking",
+      "model_id": "alibaba/qwen-mt-lite-us",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1233,187 +2238,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-latest",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-7b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio-3.0-tts-plus",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-voice-design",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-2.0-pro",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-30b-a3b-thinking-2507",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-30b-a3b-instruct",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-flash-2026-02-23",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-plus-2025-12-19",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-omni-plus-2026-03-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-long",
+      "model_id": "alibaba/qwen-coder-plus",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1443,7 +2268,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.8-max",
+      "model_id": "alibaba/qwen-1.5b",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1458,7 +2283,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.7-max-us",
+      "model_id": "alibaba/qwen-omni",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1473,7 +2298,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-tts",
+      "model_id": "alibaba/qwen3.5-omni-plus-2026-03-15",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1488,7 +2313,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.7-max",
+      "model_id": "alibaba/qwen3-coder-plus-2025-07-22",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1503,7 +2328,637 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-flash-2025-09-18",
+      "model_id": "alibaba/qwen-audio-tts",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-flash-2026-01-22",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-2.0-pro-2026-03-03",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-plus-2025-07-28",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-next-80b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-edit-plus-2025-10-30",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-ocr",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-audio-turbo-latest",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-doc-turbo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-omni-turbo-2025-03-26",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-vc-2026-01-22",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-deep-research-2025-12-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-mt-lite",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-max",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-omni-turbo-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-vd-realtime-2025-12-16",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-omni-turbo-2025-01-19",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-32b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-2.0-pro-2026-06-22",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-mt-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-35b-a3b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-mt-plus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-asr-flash-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-plus-2025-09-23",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.5-omni-flash-realtime-2026-03-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-flash-realtime-2025-11-27",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-vl-ocr-latest",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-asr-flash-filetrans",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-instruct-flash-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-omni-turbo",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-asr-flash-realtime-2025-10-27",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-flash-realtime-2025-09-18",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3.7-flash-2026-07-15",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-8b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-plus-2025-12-01-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-tts-latest",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-omni-flash-2025-12-01",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-plus-2025-12-19",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-plus-2025-09-11",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-vl-flash-2026-01-22-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-235b-a22b-thinking-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-tts-vd-2026-01-26",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1519,6 +2974,81 @@
     {
       "provider_id": "alibaba",
       "model_id": "alibaba/qwen-voice-enrollment",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-flash-character",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-long-latest",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-30b-a3b-thinking-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-flash-2025-07-28-us",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-image-3.0",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1563,7 +3093,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-235b-a22b-thinking-2507",
+      "model_id": "alibaba/qwen-tts-2025-04-10",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1578,7 +3108,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio-3.0-asr-flash-filetrans",
+      "model_id": "alibaba/qwen2.5",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1593,7 +3123,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-asr-flash-filetrans-2025-11-17",
+      "model_id": "alibaba/qwen-vl",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1608,7 +3138,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.7-flash",
+      "model_id": "alibaba/qwen-tts",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1623,7 +3153,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-32b",
+      "model_id": "alibaba/qwen-image",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1638,7 +3168,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-omni-captioner",
+      "model_id": "alibaba/qwen3.6-plus",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1653,7 +3183,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-tts-realtime-latest",
+      "model_id": "alibaba/qwen3-omni-flash-realtime-2025-12-01",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1668,7 +3198,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-flash-character",
+      "model_id": "alibaba/qwen-vl-ocr-2024-10-28",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1683,7 +3213,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-coder-flash",
+      "model_id": "alibaba/qwen3.8-2.4t-a95b",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1698,7 +3228,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-livetranslate-flash-2025-12-01",
+      "model_id": "alibaba/qwen-omni-turbo-realtime-2025-05-08",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1713,7 +3243,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-omni-flash-2026-03-15",
+      "model_id": "alibaba/qwen3-tts-flash-2025-09-18",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1728,7 +3258,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-livetranslate-flash",
+      "model_id": "alibaba/qwen3-rerank",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1743,7 +3273,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-flash-2026-01-22-us",
+      "model_id": "alibaba/qwen-image-edit",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1758,7 +3288,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-flash-2025-10-15-us",
+      "model_id": "alibaba/qwen-flash-character-2026-02-26",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1773,7 +3303,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-livetranslate-flash-realtime",
+      "model_id": "alibaba/qwen3-coder-flash-2025-07-28",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1788,7 +3318,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-coder-plus",
+      "model_id": "alibaba/qwen3-tts-flash",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1803,7 +3333,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-2025-01-25",
+      "model_id": "alibaba/qwen3.6-max-preview",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1818,7 +3348,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-2025-04-28",
+      "model_id": "alibaba/qwen-audio",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1833,7 +3363,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-235b-a22b-thinking",
+      "model_id": "alibaba/qwen3.5-plus",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1848,7 +3378,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-mt-image",
+      "model_id": "alibaba/qwen-plus-us",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1863,7 +3393,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-asr-flash-2025-09-08-us",
+      "model_id": "alibaba/qwen-omni-turbo-latest",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1878,7 +3408,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen",
+      "model_id": "alibaba/qwen3-next-80b-a3b-thinking",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1893,7 +3423,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-30b-a3b",
+      "model_id": "alibaba/qwen3-vl-30b-a3b-thinking",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1908,7 +3438,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-omni-plus",
+      "model_id": "alibaba/qwen3.8-max",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1923,7 +3453,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.7-max-preview",
+      "model_id": "alibaba/qwen-image-edit-max",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1938,7 +3468,37 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-plus",
+      "model_id": "alibaba/qwen3-tts-instruct-flash-realtime-2026-01-22",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen3-asr-flash-realtime-2026-02-10",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "per_model_free_quota",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+        "note": "independent per-model quota"
+      }
+    },
+    {
+      "provider_id": "alibaba",
+      "model_id": "alibaba/qwen-audio-turbo",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -1983,1567 +3543,7 @@
     },
     {
       "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-32b-thinking",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio-chat",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-3.0-pro",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-livetranslate-flash-realtime-2025-09-22",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-omni-turbo-realtime-latest",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-mt-lite",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.7-plus-us",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-omni-flash-2025-12-01",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-3.0",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-vd-2026-01-26",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-5-livetranslate-flash-realtime",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-omni-plus-realtime",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-asr-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-rerank",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-tts-latest",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-coder-plus-2025-09-23",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-mt-turbo",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-deep-research-2025-12-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.7-flash-2026-07-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.6-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-flash-realtime",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-omni",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-flash-2025-07-28-us",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-vl-ocr-latest",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.6-plus-2026-04-02",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-edit-plus",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-asr-flash-realtime",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-max",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-coder-480b-a35b-instruct",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-14b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio-3.0-realtime-plus",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-plus-2026-04-20",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-vl-ocr-2024-10-28",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-flash-2025-11-27",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-max-2025-09-23",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-1.5b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-30b-a3b-thinking",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-vc-2026-01-22",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-omni-plus-realtime-2026-03-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-plus-2025-09-23",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-mt-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-vl-ocr",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-tts-2025-04-10",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-vl-ocr-2025-11-20",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-next-80b-a3b-thinking",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-tts-realtime-2025-07-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-edit-plus-2025-12-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-2.0-2026-03-03",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-livetranslate-flash-realtime-2026-05-19",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-2.0-pro-2026-04-22",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-flash-2026-01-22",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-2024-12-20",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-8b-instruct",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.7-max-2026-05-20",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-omni-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-27b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-edit-max-2026-01-16",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-omni-flash-realtime-2025-12-01",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-asr-flash-2025-09-08",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio-tts",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.6-flash-2026-04-16",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-vd-realtime-2025-12-16",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-flash-realtime-2025-11-27",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-doc-turbo",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-30b-a3b-instruct-2507",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-32b-instruct",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen2.5-omni-7b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-livetranslate-flash-realtime",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.7-plus-2026-05-26",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-instruct-flash-2026-01-26",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.6-27b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-instruct-flash-realtime-2026-01-22",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-instruct-flash-realtime",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.6-plus",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-flash-us",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-omni-turbo",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-omni-turbo-realtime",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-plus",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-long-latest",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-coder-next",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-vl-flash-us",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-omni-flash-realtime-2026-03-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-omni-flash-realtime-2025-09-15",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-vl",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-deep-research",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-max-2026-01-23",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-coder-turbo",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-397b-a17b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.6-35b-a3b",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-plus-2026-01-09",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-plus-2025-07-14",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-audio",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-coder-30b-a3b-instruct",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-tts-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-asr-flash-filetrans",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3.5-plus",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-tts-instruct-flash",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen2.5",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen3-max",
-      "input_per_m": null,
-      "output_per_m": null,
-      "cache_read_per_m": null,
-      "free": true,
-      "offer_kind": "per_model_free_quota",
-      "context_tokens": null,
-      "requests_day": null,
-      "metadata": {
-        "source_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
-        "note": "independent per-model quota"
-      }
-    },
-    {
-      "provider_id": "alibaba",
-      "model_id": "alibaba/qwen-image-edit-guide",
+      "model_id": "alibaba/qwen-plus-2025-04-28",
       "input_per_m": null,
       "output_per_m": null,
       "cache_read_per_m": null,
@@ -3557,5 +3557,5 @@
       }
     }
   ],
-  "timestamp": 1786963797.5416338
+  "timestamp": 1786965058.190174
 }

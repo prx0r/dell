@@ -1,1 +1,87 @@
-{"content_hash": "ea55802c9ca9860f6440187e4219ff23716a2e4278585bdac732e0eb1faa5380", "offers": [{"provider_id": "maritaca", "model_id": "maritaca/batch-discount", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "batch_discount", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://www.maritaca.ai/planos", "deal_type": "overnight_discount", "discount_percent": null, "openai_compatible": true, "difficulty": 1, "region": "br"}}, {"provider_id": "maritaca", "model_id": "maritaca/free-tier", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": true, "offer_kind": "free_tier", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://www.maritaca.ai/planos", "deal_type": "free_tier", "openai_compatible": true, "difficulty": 1}}, {"provider_id": "maritaca", "model_id": "maritaca/maritaca", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://www.maritaca.ai/planos", "openai_compatible": true}}, {"provider_id": "maritaca", "model_id": "maritaca/maritaca.", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://www.maritaca.ai/planos", "openai_compatible": true}}, {"provider_id": "maritaca", "model_id": "maritaca/maritaca.ai", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://www.maritaca.ai/planos", "openai_compatible": true}}], "timestamp": 1786961925.6803849}
+{
+  "content_hash": "ea55802c9ca9860f6440187e4219ff23716a2e4278585bdac732e0eb1faa5380",
+  "offers": [
+    {
+      "provider_id": "maritaca",
+      "model_id": "maritaca/batch-discount",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "batch_discount",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://www.maritaca.ai/planos",
+        "deal_type": "overnight_discount",
+        "discount_percent": null,
+        "openai_compatible": true,
+        "difficulty": 1,
+        "region": "br"
+      }
+    },
+    {
+      "provider_id": "maritaca",
+      "model_id": "maritaca/free-tier",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "free_tier",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://www.maritaca.ai/planos",
+        "deal_type": "free_tier",
+        "openai_compatible": true,
+        "difficulty": 1
+      }
+    },
+    {
+      "provider_id": "maritaca",
+      "model_id": "maritaca/maritaca",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://www.maritaca.ai/planos",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "maritaca",
+      "model_id": "maritaca/maritaca.",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://www.maritaca.ai/planos",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "maritaca",
+      "model_id": "maritaca/maritaca.ai",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://www.maritaca.ai/planos",
+        "openai_compatible": true
+      }
+    }
+  ],
+  "timestamp": 1786965088.1039846
+}

@@ -1,1 +1,1750 @@
-{"content_hash": "cf86f898658f2f320f462701628b0add47e2c36c00d1a217fbc099147ba4c515", "offers": [{"provider_id": "siliconflow", "model_id": "siliconflow/free-quota", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": true, "offer_kind": "free_tier", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "deal_type": "free_quota", "openai_compatible": true, "region": "cn", "difficulty": 1, "new_user_bonus": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-r1-distill-qwen-1.5b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-coder-480b-a35b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Pro", "score": 38.7, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v3\u6a21\u578b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwenlong-l1-32b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v3.1-terminus", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-235b-a22b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-next-80b-a3b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-math-72b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/llama-3.1-405b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-r1-distill-qwen-32b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-vl-32b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v3-1226", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-r1\u548cdeepseek-ai", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2-vl-7b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-30b-a3b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v3.2", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-30b-a3b-thinking-2507", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-vl-7b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-coder-v2-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-235b-a22b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3.5-397b-a17b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 76.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-vl-72b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/llama-3.1-8b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-r1", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/yi-1.5-34b-chat-16k", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2-vl-72b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-r1-distill-qwen-7b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-235b-a22b-thinking-2507", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 59.6, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-09"}, {"name": "SWE-Bench Pro", "score": 21.41, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v2.5", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2-72b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/llama-3.1-70b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-next-80b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-coder-7b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v3.2-exp", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-235b-a22b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 59.6, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-09"}, {"name": "SWE-Bench Pro", "score": 21.41, "metric": "resolve rate", "dataset": "public", "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2-1.5b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/llama-3.3-70b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "Artificial Analysis Coding Index", "score": 10.7, "metric": "index", "source": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 26, "metric": "percent correct", "source": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 3, "metric": "success rate", "source": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-coder-32b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v3", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/yi-1.5-6b-chat", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/yi-1.5-9b-chat-16k", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2-57b-a14b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-235b-a22b-instruct-2507", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v3.1", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-r1-0120", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v2-chat", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 70.2, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-10-03"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/llama3-76b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2-7b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-r1-distill-qwen-14b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://docs.siliconflow.cn/cn/release-notes/overview", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-vl", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-8b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3.5-4b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-omni-30b-a3b-captioner", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v4-flash", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 79, "metric": "resolved", "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3.5-27b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 72.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-27B"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-omni-30b-a3b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-32b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 40, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-05-08"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-reranker-4b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen-image-edit", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-r1-0528", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-30b-a3b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-reranker", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-omni-30b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-embedding-4b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-14b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3.5-9b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-30b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-embedding-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-32b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-30b-a3b-instruct-2507", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-r1-0528-qwen3-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": [{"name": "Aider Polyglot", "score": 56.9, "metric": "percent correct", "source": "https://aider.chat/docs/leaderboards/", "date": "2025-01-20"}, {"name": "Artificial Analysis Coding Index", "score": 15.9, "metric": "index", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "SciCode", "score": 35.7, "metric": "percent correct", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}, {"name": "Terminal-Bench Hard", "score": 6.1, "metric": "success rate", "source": "https://openrouter.ai/deepseek/deepseek-r1/benchmarks", "date": "2026-03-11"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/yiyan-20230821", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-14b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3.5", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-embedding-0.6b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-ocr", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/yiwanxiang-202410090024", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-coder-30b-a3b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": [{"name": "Artificial Analysis Coding Index", "score": 19.4, "metric": "index", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}, {"name": "SciCode", "score": 27.8, "metric": "percent correct", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}, {"name": "Terminal-Bench Hard", "score": 15.2, "metric": "success rate", "source": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct/benchmarks", "date": "2026-06-02"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-72b-instruct-128k", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/yi2l", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v3-0324", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-235b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v4", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-8b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen-image", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/chatglm", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v4-pro", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 80.6, "metric": "resolved", "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"}, {"name": "Artificial Analysis Coding Agent Index", "score": 50.1, "metric": "average pass@1", "harness": "Claude Code", "variant": "high", "source": "https://artificialanalysis.ai/agents/coding-agents"}, {"name": "SWE-Atlas Codebase QnA", "score": 67.8, "metric": "pass@1", "harness": "Claude Code", "variant": "high", "source": "https://artificialanalysis.ai/agents/coding-agents"}, {"name": "SWE-Bench Pro", "score": 18, "metric": "pass@1", "harness": "Claude Code", "variant": "high", "dataset": "hard-aa", "source": "https://artificialanalysis.ai/agents/coding-agents"}, {"name": "Terminal-Bench", "score": 64.7, "metric": "pass@1", "harness": "Claude Code", "variant": "high", "version": "2.1", "source": "https://artificialanalysis.ai/agents/coding-agents"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/yispq5aay62pcyitmigo0tbculkexen77", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-embedding-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-omni", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek.svg", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-32b-thinking", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/chatglm-20230821", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/yiqianwen-20230901", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3.6", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/deepseek-v4-pro-max", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-7b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3.5-35b-a3b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-reranker-0.6b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen-image-edit-2509", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3.6-35b-a3b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 73.4, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-reranker-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-reranker-8b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-8b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": []}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-72b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3.6-27b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 77.2, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.6-27B"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen2.5-32b-instruct", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3.5-122b-a10b", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true, "benchmarks": [{"name": "SWE-Bench Verified", "score": 72, "metric": "resolved", "source": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B"}]}}, {"provider_id": "siliconflow", "model_id": "siliconflow/qwen3-vl-embedding", "input_per_m": null, "output_per_m": null, "cache_read_per_m": null, "free": false, "offer_kind": "metered_api", "context_tokens": null, "requests_day": null, "metadata": {"source_url": "https://siliconflow.cn/pricing", "openai_compatible": true}}], "timestamp": 1786961907.3286023}
+{
+  "content_hash": "cf86f898658f2f320f462701628b0add47e2c36c00d1a217fbc099147ba4c515",
+  "offers": [
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/free-quota",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "free_tier",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "deal_type": "free_quota",
+        "openai_compatible": true,
+        "region": "cn",
+        "difficulty": 1,
+        "new_user_bonus": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-r1-distill-qwen-32b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-r1-0120",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-235b-a22b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-next-80b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2-vl-7b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-r1",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v2-chat",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2-57b-a14b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3.5-397b-a17b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-r1-distill-qwen-14b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-235b-a22b-instruct-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-r1-distill-qwen-1.5b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-math-72b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-coder-32b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/llama3-76b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-coder-v2-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/llama-3.1-8b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-30b-a3b-thinking-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-next-80b-a3b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-235b-a22b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v3\u6a21\u578b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v3-1226",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v3.2-exp",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/yi-1.5-6b-chat",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-235b-a22b-thinking-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v3.1",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/yi-1.5-9b-chat-16k",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-coder-480b-a35b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-r1\u548cdeepseek-ai",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v3.1-terminus",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwenlong-l1-32b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/llama-3.3-70b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-vl-32b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v2.5",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-coder-7b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-vl-7b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v3",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-r1-distill-qwen-7b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/llama-3.1-70b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2-7b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/llama-3.1-405b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/yi-1.5-34b-chat-16k",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2-1.5b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v3.2",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-vl-72b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2-72b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2-vl-72b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-30b-a3b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-235b-a22b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-omni-30b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-coder-30b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v4-pro",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-omni-30b-a3b-captioner",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-omni-30b-a3b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-r1-0528",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-235b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-14b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3.5-9b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-32b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3.6-27b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-32b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3.5-35b-a3b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/yiqianwen-20230901",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-embedding-4b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-8b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v4-flash",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-8b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-embedding-0.6b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v3-0324",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/yiwanxiang-202410090024",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-32b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-reranker-4b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/yiyan-20230821",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/yi2l",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen-image-edit",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-embedding",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-32b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-omni",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-reranker-0.6b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/chatglm",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-8b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-30b-a3b-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3.6",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-r1-0528-qwen3-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-14b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/yispq5aay62pcyitmigo0tbculkexen77",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-embedding-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-reranker",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v4",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-72b-instruct-128k",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen-image",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-reranker-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-72b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3.6-35b-a3b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3.5-4b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3.5-122b-a10b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek.svg",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3.5-27b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3.5",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-reranker-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-30b-a3b-instruct-2507",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-v4-pro-max",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-30b-a3b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen3-vl-embedding-8b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen-image-edit-2509",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/chatglm-20230821",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-7b-instruct",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/qwen2.5-vl",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    },
+    {
+      "provider_id": "siliconflow",
+      "model_id": "siliconflow/deepseek-ocr",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://siliconflow.cn/pricing",
+        "openai_compatible": true
+      }
+    }
+  ],
+  "timestamp": 1786965066.1819253
+}
