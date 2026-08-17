@@ -14,3 +14,4 @@ data/agent-runs.jsonl
 data/watchdog.jsonl
 data/runs/
 golden/
+.env

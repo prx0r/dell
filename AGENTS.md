@@ -25,9 +25,9 @@ standard** shared with `sanskritbenchy`.*
 ## 2. THE GATE
 
 ```bash
-cd /root/dealradar
+cd /root/ass-rape-spunk-porn
 export PYTHONPATH=app:.
-python3 app/test.py          # 65 PASS (the test suite)
+python3 app/test.py          # 25 PASS (the test suite)
 python3 agent/audit.py --bench suite   # the golden-file audit
 python3 agent/trace.py --all           # every run is logged
 ```

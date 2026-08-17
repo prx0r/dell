@@ -7,7 +7,7 @@ agent orchestrator. A hermes agent calls dealradar to pick the best model for a 
 
 ## 1. THE MCP SERVER (`mcp/server.py`) — the primary interface
 
-6 goal-oriented tools (fewer tools work better for agents):
+11 goal-oriented tools (fewer tools work better for agents):
 ```
 pick_model(task, min_quality, prefer_free)   → best model for THIS task
 check_live_prices()                          → price-health (canary + validation)
@@ -15,6 +15,11 @@ get_model_details(model, task)               → granular detail + measured benc
 get_free_sources()                           → free-pool + rate limits
 recommend_for_query(query)                   → analyze a natural-language query → profile → pick + reason
 recommend_model_for_layer(layer)             → per translation-layer model (T1/ARGMAP/L2/L200/C1)
+get_capability_health()                      → capability coverage across providers
+find_inference_deals(task, max_cost)         → find deals matching task + budget
+compare_inference_offers(model, task)        → compare providers for a specific model
+get_deal_changes(since_hours)                → recent price/promo changes
+explain_deal(model, provider)                → full reasoning for a model+provider pick
 ```
 Uses MCP SDK v2. To wire into hermes: `hermes mcp add dealradar` (point at the MCP server).
 
@@ -42,14 +47,14 @@ Agent-optimized: `format=compact` (54% smaller), `ETag` + stale-while-revalidate
 
 ### Recipe A — "pick the best model for a task"
 ```bash
-cd /root/dealradar
+cd /root/ass-rape-spunk-porn
 python3 agent/run.py --step recommend --task coding --min-quality 0.5
 # or via MCP: pick_model(task="coding", min_quality=0.5)
 ```
 
 ### Recipe B — "check the service is healthy"
 ```bash
-cd /root/dealradar
+cd /root/ass-rape-spunk-porn
 python3 agent/run.py --step report     # canonical model count + free-tier count
 python3 agent/run.py --step canary     # are the free providers actually live?
 python3 agent/audit.py --bench suite   # does the test suite reproduce on fixed data?
@@ -57,7 +62,7 @@ python3 agent/audit.py --bench suite   # does the test suite reproduce on fixed 
 
 ### Recipe C — "finish P1 (add Tier-1 providers)"
 ```bash
-cd /root/dealradar
+cd /root/ass-rape-spunk-porn
 hermes kanban claim t_27d57d9f          # claim P1
 # ... extend normalize.py with _from_hf_router() ...
 python3 agent/run.py --step normalize   # count grows
@@ -68,7 +73,7 @@ hermes kanban complete t_27d57d9f
 
 ### Recipe D — "audit for theater"
 ```bash
-cd /root/dealradar
+cd /root/ass-rape-spunk-porn
 python3 agent/audit.py --list                    # every result has a content-addressed run
 python3 agent/audit.py --bench suite             # recompute on fixed data; must match golden
 ```
@@ -84,7 +89,7 @@ python3 agent/audit.py --bench suite             # recompute on fixed data; must
 
 ---
 
-## 6. THE MECHANISMS (from `research/AGENTIC-SCIENCE-MECHANISMS.md`)
+## 6. THE MECHANISMS
 
 | Mechanism | In dealradar |
 |---|---|

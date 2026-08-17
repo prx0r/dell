@@ -23,7 +23,7 @@ A **live, self-updating, agent-facing LLM model DB** for OpenPāṭala:
   routing** (Phase-1 argmax / Phase-2 LinUCB) + **rate-limit awareness** (free ≠ good if too limited).
 - **Per-layer translation config** — maps OpenPāṭala's Translation Factory layers (T1/L0/ARGMAP/L2/L200/C1)
   → recommended model, so the Factory auto-selects the right model per pipeline stage.
-- **The three surfaces** — MCP (5 goal-oriented tools + layer-config), HTTP API (17 endpoints, compact+ETag+provenance),
+- **The three surfaces** — MCP (11 goal-oriented tools + layer-config), HTTP API (19 endpoints, compact+ETag+provenance),
   lean Astro site (0-JS, JSON-LD).
 
 ## 3. THE MOAT (what makes it better than "just a price list")
@@ -39,7 +39,7 @@ A **live, self-updating, agent-facing LLM model DB** for OpenPāṭala:
 
 ## 4. THE CHECKPOINTED ROADMAP (from DEV-PLAN; each = a falsifiable gate)
 
-### ✅ DONE (65 tests pass)
+### ✅ DONE (25 tests pass)
 - [x] Canonical model DB (1,985+ models) — `normalize.py`
 - [x] Live prices + drift validation — `refresh.py`
 - [x] Provider canary — `canary.py`
@@ -48,7 +48,7 @@ A **live, self-updating, agent-facing LLM model DB** for OpenPāṭala:
 - [x] Rate-limit-aware routing — `routing.py` + `free_limits.py`
 - [x] arXiv algorithms (argmax + LinUCB) — `routing.py`
 - [x] Per-layer recommendation — `layer_recommend.py`
-- [x] API (16 endpoints) + MCP (6 tools) + lean site — `app/api.py`, `mcp/server.py`, `web/`
+- [x] API (19 endpoints) + MCP (11 tools) + lean site — `app/api.py`, `mcp/server.py`, `web/`
 
 ### ⬜ P1 — ingest the Tier-1 providers (the biggest gap)
 - [ ] `_from_hf_router()` in `normalize.py` (HF Inference Providers: free tier + per-provider pricing)

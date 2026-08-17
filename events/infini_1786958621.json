@@ -1,0 +1,146 @@
+[
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 1.0
+    },
+    "source_id": "novita",
+    "matched_text": "$1 mo"
+  }
+]

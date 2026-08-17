@@ -1,0 +1,20 @@
+[
+  {
+    "event_type": "off_peak",
+    "confidence": 0.9,
+    "details": {
+      "note": "off-peak pricing"
+    },
+    "source_id": "zai",
+    "matched_text": "off-peak"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 18.0
+    },
+    "source_id": "zai",
+    "matched_text": "$18/month"
+  }
+]

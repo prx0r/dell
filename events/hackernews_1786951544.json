@@ -1,0 +1,20 @@
+[
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 50.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$50/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$10/month"
+  }
+]

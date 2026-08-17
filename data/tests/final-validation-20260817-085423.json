@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-08-17T08:54:23Z",
+  "project": "LLM Deals",
+  "version": "1.0",
+  "status": "OPERATIONAL",
+  "apis": {
+    "v1": {
+      "port": 8799,
+      "endpoints": 19,
+      "status": "operational"
+    },
+    "v2": {
+      "port": 8800,
+      "endpoints": 16,
+      "status": "operational"
+    },
+    "v3": {
+      "port": 8801,
+      "endpoints": 9,
+      "status": "operational"
+    },
+    "hot": {
+      "port": 8802,
+      "endpoints": 3,
+      "status": "operational"
+    },
+    "canonical": {
+      "port": 8803,
+      "endpoints": 14,
+      "status": "operational"
+    }
+  },
+  "mcp": {
+    "server": "llm-deals (Node.js stdio)",
+    "tools": 9,
+    "status": "registered and connected"
+  },
+  "sources": {
+    "total": 17,
+    "url_validation": "21/23 OK (AA needs header key, Nous rate limited)",
+    "adapters": [
+      "opencode-go",
+      "opencode-zen",
+      "nous-portal",
+      "openrouter",
+      "models-dev",
+      "artificial-analysis",
+      "hf-router",
+      "vercel",
+      "hackernews",
+      "rss",
+      "sensenova",
+      "sakura",
+      "scaleway",
+      "ovhcloud",
+      "zai",
+      "alibaba",
+      "akashml"
+    ]
+  },
+  "data": {
+    "total_offers": 2103,
+    "free_offers": 666,
+    "providers": 91,
+    "badges": 21,
+    "scoring_dimensions": 10,
+    "workload_presets": 6
+  },
+  "kanban": {
+    "boards": [
+      "library-production",
+      "library-scout",
+      "library-verify",
+      "library-curate"
+    ],
+    "cards": {
+      "production": 474,
+      "scout": 1,
+      "verify": 0,
+      "curate": 0
+    }
+  },
+  "cron": {
+    "jobs": 1,
+    "schedule": "every 6h",
+    "next_run": "2026-08-17T14:53:29Z"
+  },
+  "red_team_test": {
+    "total": 54,
+    "passed": 52,
+    "warned": 2,
+    "failed": 0,
+    "pass_rate": "96.3%"
+  },
+  "docs": {
+    "agent_guide": "docs/AGENT-GUIDE.md",
+    "api_docs": "docs/API.md",
+    "external_apis": "docs/EXTERNAL-APIS.md",
+    "specs": [
+      "data/llmdeals.md",
+      "data/apiuse.md",
+      "data/llmrouting.md",
+      "data/moreproviders.md",
+      "data/internationalprovider.md",
+      "data/concetratedvision.md"
+    ]
+  }
+}

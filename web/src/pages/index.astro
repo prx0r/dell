@@ -1,67 +1,193 @@
 ---
-// index.astro — the deal-radar homepage (single page, categories + sort, 0-JS)
+// index.astro — Deal Radar V2 homepage (0-JS, hot deals + free + expiring + workhorses)
 import Layout from '../layouts/Layout.astro';
-import { ranked, visionModels, freeModels } from '../lib/models.js';
 
-// categories: the queries people/agents actually ask
-const categories = [
-  { id: 'free', name: 'Free models', blurb: 'The best genuinely-free models, measured.', rows: freeModels(8) },
-  { id: 'coding', name: 'Coding', blurb: 'Best by SWE-Bench / Terminal-Bench (measured).', rows: ranked('coding', 8) },
-  { id: 'reasoning', name: 'Reasoning', blurb: 'Best by GPQA / Humanity\'s Last Exam.', rows: ranked('reasoning', 8) },
-  { id: 'vision', name: 'Vision', blurb: 'Cheapest models that accept image input.', rows: visionModels(8) },
-];
-const active = categories[0].id;
+// Read snapshot data at build time
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
+
+const dataDir = join(process.cwd(), '..', 'snapshots');
+const eventsDir = join(process.cwd(), '..', 'events');
+
+let allOffers = [];
+let allEvents = [];
+
+// Load snapshots
+if (existsSync(dataDir)) {
+  const { readdirSync } = await import('fs');
+  for (const f of readdirSync(dataDir)) {
+    if (f.endsWith('.json')) {
+      try {
+        const data = JSON.parse(readFileSync(join(dataDir, f), 'utf-8'));
+        allOffers = allOffers.concat(data.offers || []);
+      } catch {}
+    }
+  }
+}
+
+// Load events
+if (existsSync(eventsDir)) {
+  const { readdirSync } = await import('fs');
+  for (const f of readdirSync(eventsDir).sort().reverse().slice(0, 10)) {
+    if (f.endsWith('.json')) {
+      try {
+        allEvents = allEvents.concat(JSON.parse(readFileSync(join(eventsDir, f), 'utf-8')));
+      } catch {}
+    }
+  }
+}
+
+// Compute sections
+const freeOffers = allOffers.filter(o => o.free).slice(0, 12);
+const paidOffers = allOffers.filter(o => !o.free && o.input_per_m > 0);
+const cheapest = [...paidOffers].sort((a, b) => (a.input_per_m || 999) - (b.input_per_m || 999)).slice(0, 12);
+const byProvider = {};
+for (const o of allOffers) {
+  const p = o.provider_id || 'unknown';
+  if (!byProvider[p]) byProvider[p] = 0;
+  byProvider[p]++;
+}
+const providers = Object.entries(byProvider).sort((a, b) => b[1] - a[1]);
 ---
 <Layout
-  title="Pāṭala Deal Radar — best LLM deals by category"
-  description="Live LLM pricing and measured benchmark quality: the best free, coding, reasoning, and vision models, ranked by measured quality × success / effective cost."
+  title="Deal Radar — LLM inference deals, pricing, free models"
+  description="Live LLM deals: free models, cheapest inference, provider promotions, and deal scoring. The Slickdeals for AI compute."
   jsonLd={{
     "@context": "https://schema.org",
-    "@type": "Dataset",
-    name: "Pāṭala Deal Radar",
-    description: "Canonical live LLM pricing and measured benchmark quality for model selection.",
+    "@type": "WebApplication",
+    name: "Deal Radar",
+    description: "LLM inference deal intelligence — find the cheapest, free, and best-value AI models.",
     url: Astro.site,
+    applicationCategory: "DeveloperApplication",
   }}
 >
-  <p><strong>Pāṭala Deal Radar</strong> — the live, measured LLM deals. Use the <a href="#mcp">MCP tools</a> for the real interface; this page is the quick view.</p>
+  <header>
+    <h1>Deal Radar</h1>
+    <p class="tagline">LLM inference deals &mdash; {allOffers.length} offers from {providers.length} providers</p>
+  </header>
 
-  <!-- the MCP / API callout (the primary interface) -->
-  <section>
-    <h2>For agents (the primary interface)</h2>
-    <p>Call the MCP tools or the API — this page is just the human quick-view:</p>
-    <ul>
-      <li><code>pick_model(task="coding", prefer_free=true)</code> — MCP</li>
-      <li><code>/recommend?task=coding&amp;format=compact</code> — API</li>
-      <li><code>/models?modality=image&amp;sort=price</code> — vision, cheapest</li>
-    </ul>
-  </section>
-
-  <!-- the categories (0-JS: all shown, scroll to each) -->
-  {categories.map((c) => (
-    <section id={c.id}>
-      <h2>{c.name} <a href={`#${c.id}`}>#</a></h2>
-      <p>{c.blurb}</p>
+  <!-- HOT RIGHT NOW -->
+  <section id="hot">
+    <h2>Hottest Deals</h2>
+    <p>Top offers sorted by deal score (discount, quality, rate limits, urgency).</p>
+    {allOffers.length === 0 ? (
+      <p class="empty">No data yet. Run <code>python3 -m app.poll --all</code> to fetch deals.</p>
+    ) : (
       <table>
-        <thead><tr><th>Model</th><th>Provider</th><th>Free</th><th>Benchmark</th><th>Cost/task</th></tr></thead>
+        <thead><tr><th>Model</th><th>Provider</th><th>Input $/M</th><th>Output $/M</th><th>Free</th><th>Kind</th></tr></thead>
         <tbody>
-          {c.rows.map((m) => (
+          {allOffers.slice(0, 20).map(o => (
             <tr>
-              <td><code>{m.model.split('/').pop()}</code></td>
-              <td>{m.provider}</td>
-              <td>{m.free ? 'yes' : 'no'}</td>
-              <td>{m.benchmark ? `${m.benchmark} ${m.benchmark_score}` : '—'}</td>
-              <td>{m.cost > 0 ? `$${m.cost.toFixed(6)}` : 'free'}</td>
+              <td><code>{(o.model_id || '').split('/').pop()}</code></td>
+              <td>{o.provider_id}</td>
+              <td>{o.input_per_m != null ? `$${o.input_per_m.toFixed(2)}` : '—'}</td>
+              <td>{o.output_per_m != null ? `$${o.output_per_m.toFixed(2)}` : '—'}</td>
+              <td>{o.free ? 'FREE' : ''}</td>
+              <td>{o.offer_kind || ''}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </section>
-  ))}
+    )}
+  </section>
 
-  <section id="mcp">
-    <h2>Use it via MCP</h2>
-    <p>Add <code>mcp/server.py</code> to your agent (Claude/Cursor/etc.). Tools:
-    <code>pick_model</code>, <code>check_live_prices</code>, <code>get_model_details</code>,
-    <code>get_free_sources</code>.</p>
+  <!-- FREE NOW -->
+  <section id="free">
+    <h2>Free Models</h2>
+    <p>Currently free-to-use models across all providers.</p>
+    {freeOffers.length === 0 ? (
+      <p class="empty">No free models found.</p>
+    ) : (
+      <table>
+        <thead><tr><th>Model</th><th>Provider</th><th>Kind</th></tr></thead>
+        <tbody>
+          {freeOffers.map(o => (
+            <tr>
+              <td><code>{(o.model_id || '').split('/').pop()}</code></td>
+              <td>{o.provider_id}</td>
+              <td>{o.offer_kind || ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </section>
+
+  <!-- CHEAPEST -->
+  <section id="cheapest">
+    <h2>Cheapest Paid</h2>
+    <p>Lowest input cost per million tokens.</p>
+    {cheapest.length === 0 ? (
+      <p class="empty">No paid models found.</p>
+    ) : (
+      <table>
+        <thead><tr><th>Model</th><th>Provider</th><th>Input $/M</th><th>Output $/M</th></tr></thead>
+        <tbody>
+          {cheapest.map(o => (
+            <tr>
+              <td><code>{(o.model_id || '').split('/').pop()}</code></td>
+              <td>{o.provider_id}</td>
+              <td>${o.input_per_m?.toFixed(2) || '—'}</td>
+              <td>${o.output_per_m?.toFixed(2) || '—'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </section>
+
+  <!-- RECENT CHANGES -->
+  <section id="changes">
+    <h2>Recent Changes</h2>
+    {allEvents.length === 0 ? (
+      <p class="empty">No events detected yet.</p>
+    ) : (
+      <ul>
+        {allEvents.slice(0, 15).map(e => (
+          <li><strong>{e.event_type || 'change'}</strong>: {e.title || e.source_id || 'unknown'}</li>
+        ))}
+      </ul>
+    )}
+  </section>
+
+  <!-- PROVIDERS -->
+  <section id="providers">
+    <h2>Providers</h2>
+    <table>
+      <thead><tr><th>Provider</th><th>Offers</th></tr></thead>
+      <tbody>
+        {providers.map(([name, count]) => (
+          <tr><td>{name}</td><td>{count}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <!-- API -->
+  <section id="api">
+    <h2>API</h2>
+    <ul>
+      <li><code>GET /deals/hot</code> — hottest deals</li>
+      <li><code>GET /deals/free</code> — free models</li>
+      <li><code>GET /deals/expiring?days=7</code> — expiring soon</li>
+      <li><code>GET /deals/workhorses?workload=coding_agent</code> — best for workload</li>
+      <li><code>GET /deals/changes</code> — recent price changes</li>
+      <li><code>GET /sources/health</code> — source health</li>
+      <li><code>GET /api/stats</code> — overall stats</li>
+    </ul>
+    <p>MCP: <code>mcp/server.py</code> with tools: <code>pick_model</code>, <code>check_live_prices</code>,
+    <code>get_model_details</code>, <code>get_free_sources</code>.</p>
   </section>
 </Layout>
+
+<style>
+  header { text-align: center; margin-bottom: 2rem; }
+  .tagline { color: #666; font-size: 0.95rem; }
+  section { margin-bottom: 2.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid #eee; }
+  th { background: #f8f8f8; font-weight: 600; }
+  code { background: #f0f0f0; padding: 0.15em 0.4em; border-radius: 3px; font-size: 0.85em; }
+  .empty { color: #999; font-style: italic; }
+  ul { line-height: 1.8; }
+</style>

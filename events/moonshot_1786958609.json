@@ -1,0 +1,236 @@
+[
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 18.0
+    },
+    "source_id": "zai",
+    "matched_text": "$18/month"
+  },
+  {
+    "event_type": "off_peak",
+    "confidence": 0.9,
+    "details": {
+      "note": "off-peak pricing"
+    },
+    "source_id": "zai",
+    "matched_text": "off-peak"
+  },
+  {
+    "event_type": "off_peak",
+    "confidence": 0.9,
+    "details": {
+      "note": "off-peak pricing"
+    },
+    "source_id": "zai",
+    "matched_text": "off-peak"
+  },
+  {
+    "event_type": "off_peak",
+    "confidence": 0.9,
+    "details": {
+      "note": "off-peak pricing"
+    },
+    "source_id": "zai",
+    "matched_text": "off-peak"
+  },
+  {
+    "event_type": "off_peak",
+    "confidence": 0.9,
+    "details": {
+      "note": "off-peak pricing"
+    },
+    "source_id": "zai",
+    "matched_text": "off-peak"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 18.0
+    },
+    "source_id": "zai",
+    "matched_text": "$18/month"
+  },
+  {
+    "event_type": "launch_pricing",
+    "confidence": 0.85,
+    "details": {
+      "note": "launch pricing"
+    },
+    "source_id": "vercel-changelog",
+    "matched_text": "launch pricing"
+  },
+  {
+    "event_type": "launch_pricing",
+    "confidence": 0.85,
+    "details": {
+      "note": "launch pricing"
+    },
+    "source_id": "vercel-changelog",
+    "matched_text": "launch pricing"
+  },
+  {
+    "event_type": "launch_pricing",
+    "confidence": 0.85,
+    "details": {
+      "note": "launch pricing"
+    },
+    "source_id": "vercel-changelog",
+    "matched_text": "launch pricing"
+  },
+  {
+    "event_type": "credit_amount",
+    "confidence": 0.85,
+    "details": {
+      "credit_usd": 100.0
+    },
+    "source_id": "akashml",
+    "matched_text": "$100 free credit"
+  },
+  {
+    "event_type": "credit_amount",
+    "confidence": 0.85,
+    "details": {
+      "credit_usd": 100.0
+    },
+    "source_id": "akashml",
+    "matched_text": "$100 free credit"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 90.0
+    },
+    "source_id": "upstage",
+    "matched_text": "90% off"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 360.0
+    },
+    "source_id": "upstage",
+    "matched_text": "$360 year"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 10.0
+    },
+    "source_id": "minimax",
+    "matched_text": "10% off"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 10.0
+    },
+    "source_id": "minimax",
+    "matched_text": "10% off"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 10.0
+    },
+    "source_id": "minimax",
+    "matched_text": "10% off"
+  },
+  {
+    "event_type": "limited_time",
+    "confidence": 0.7,
+    "details": {
+      "note": "limited time offer"
+    },
+    "source_id": "minimax",
+    "matched_text": "limited time"
+  },
+  {
+    "event_type": "multiplier",
+    "confidence": 0.9,
+    "details": {
+      "multiplier": 2
+    },
+    "source_id": "minimax",
+    "matched_text": "2x tokens"
+  }
+]

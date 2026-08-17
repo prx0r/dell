@@ -1,0 +1,240 @@
+{
+  "timestamp": "2026-08-17T08:52:13Z",
+  "tests": [
+    {
+      "tool": "find_inference_deals",
+      "status": "PASS",
+      "detail": "free=666 cheap=820"
+    },
+    {
+      "tool": "get_free_models",
+      "status": "PASS",
+      "detail": "666 free models"
+    },
+    {
+      "tool": "get_providers",
+      "status": "PASS",
+      "detail": "15 providers"
+    },
+    {
+      "tool": "get_provider_setup",
+      "status": "PASS",
+      "detail": "openrouter: 4 steps"
+    },
+    {
+      "tool": "get_best_by_badge(workhorse)",
+      "status": "WARN",
+      "detail": "0 matches"
+    },
+    {
+      "tool": "get_best_by_badge(coder)",
+      "status": "PASS",
+      "detail": "12 matches"
+    },
+    {
+      "tool": "get_best_by_badge(agentic)",
+      "status": "WARN",
+      "detail": "0 matches"
+    },
+    {
+      "tool": "get_best_by_badge(worker)",
+      "status": "PASS",
+      "detail": "1018 matches"
+    },
+    {
+      "tool": "get_best_by_badge(free)",
+      "status": "PASS",
+      "detail": "666 matches"
+    },
+    {
+      "tool": "get_best_by_badge(fast)",
+      "status": "PASS",
+      "detail": "8 matches"
+    },
+    {
+      "tool": "recommend_model",
+      "status": "PASS",
+      "detail": "pick=zai-org/GLM-4.7"
+    },
+    {
+      "tool": "explain_deal",
+      "status": "PASS",
+      "detail": "4 offerings for alibaba/qwen-max"
+    },
+    {
+      "tool": "get_dataset_stats",
+      "status": "PASS",
+      "detail": "total=2103 free=666 providers=91"
+    },
+    {
+      "endpoint": "V2 /health",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /deals/hot?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /deals/free?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /deals/expiring?hours=24",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /deals/changes",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /deals/workhorses?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /categories",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /providers",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /providers/openrouter/setup",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /workload/coding_agent?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /api/stats",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /sources/health",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V2 /events?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /best/workhorse?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /v1/best/coder?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /v1/best/free?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /v1/best/agentic?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /v1/badges",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /v1/tasks",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /v1/recommend?task=coding_task",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /v1/costs?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /v1/stacks?task=coding_agent&budget=1",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "V3 /v1/score/google/gemini-3-7-flash",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Hot /health",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Hot /v1/models",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Hot POST /v1/chat/completions",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /health",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/stats",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/models?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/providers",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/offerings?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/deals?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/deals/free?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/prices?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/cheapest?task=coding_agent",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/best-value?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/free?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/promotions?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/economics?limit=2",
+      "status": "PASS"
+    },
+    {
+      "endpoint": "Canonical /v1/history?limit=2",
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "total": 54,
+    "passed": 52,
+    "warned": 2,
+    "failed": 0
+  }
+}

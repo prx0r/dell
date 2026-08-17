@@ -1,0 +1,11 @@
+[
+  {
+    "event_type": "multiplier",
+    "confidence": 0.9,
+    "details": {
+      "multiplier": 2
+    },
+    "source_id": "minimax",
+    "matched_text": "2x tokens"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 6.0
+    },
+    "source_id": "chutes",
+    "matched_text": "6% off"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 10.0
+    },
+    "source_id": "chutes",
+    "matched_text": "10% off"
+  }
+]

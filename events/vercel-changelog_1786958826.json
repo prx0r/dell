@@ -1,0 +1,29 @@
+[
+  {
+    "event_type": "launch_pricing",
+    "confidence": 0.85,
+    "details": {
+      "note": "launch pricing"
+    },
+    "source_id": "vercel-changelog",
+    "matched_text": "launch pricing"
+  },
+  {
+    "event_type": "launch_pricing",
+    "confidence": 0.85,
+    "details": {
+      "note": "launch pricing"
+    },
+    "source_id": "vercel-changelog",
+    "matched_text": "launch pricing"
+  },
+  {
+    "event_type": "launch_pricing",
+    "confidence": 0.85,
+    "details": {
+      "note": "launch pricing"
+    },
+    "source_id": "vercel-changelog",
+    "matched_text": "launch pricing"
+  }
+]

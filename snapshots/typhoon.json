@@ -1,0 +1,326 @@
+{
+  "content_hash": "a100b114a32f501ff406cb6884fd0ec380082d30ecd1834c930cea52ece6dc51",
+  "offers": [
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-si-med-thinking-4b",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-blog-assets",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon_s.jpg",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-ocr",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoonsi-med-thinking_kv.png",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/opentyphoon",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-ocr-kv.jpg",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-si-med-thinking",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-isan-asr-realtime.png",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-s",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/opentyphoon.ai",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-translate",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-isan-asr-realtime",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-translate-cover.png",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-isan-asr-whisper.png",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-s",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/typhoon-isan-asr-whisper",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    },
+    {
+      "provider_id": "opentyphoon",
+      "model_id": "opentyphoon/opentyphoon",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "metered_api",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://opentyphoon.ai",
+        "openai_compatible": true,
+        "focus": "thai_language"
+      }
+    }
+  ],
+  "timestamp": 1786958622.8668334
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "event_type": "credit_amount",
+    "confidence": 0.85,
+    "details": {
+      "credit_usd": 100.0
+    },
+    "source_id": "akashml",
+    "matched_text": "$100 free credit"
+  }
+]

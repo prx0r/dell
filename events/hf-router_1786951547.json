@@ -1,0 +1,227 @@
+[
+  {
+    "event_type": "multiplier",
+    "confidence": 0.9,
+    "details": {
+      "multiplier": 2
+    },
+    "source_id": "opencode-go",
+    "matched_text": "2x usage"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "opencode-go",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 50.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "50% off"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 50.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "50% off"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 90.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "90% off"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 90.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "90% off"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 35.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "35% off"
+  },
+  {
+    "event_type": "discount_percent",
+    "confidence": 0.95,
+    "details": {
+      "discount_percent": 35.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "35% off"
+  },
+  {
+    "event_type": "launch_pricing",
+    "confidence": 0.85,
+    "details": {
+      "note": "launch pricing"
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "launch pricing"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 50.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$50/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 50.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$50/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 50.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$50/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 500.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$500/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 50.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$50/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 50.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$50/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$10/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 50.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$50/month"
+  },
+  {
+    "event_type": "price_mention",
+    "confidence": 0.9,
+    "details": {
+      "price_usd": 10.0
+    },
+    "source_id": "rss-feeds",
+    "matched_text": "$10/month"
+  }
+]

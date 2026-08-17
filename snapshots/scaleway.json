@@ -1,0 +1,24 @@
+{
+  "content_hash": "4218a2075a190c52cacf9df9db576848f2927f1afb9e72bdb3678d27ea7bc8d1",
+  "offers": [
+    {
+      "provider_id": "scaleway",
+      "model_id": "scaleway/free-tokens",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "signup_credit",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://www.scaleway.com/en/generative-apis/",
+        "credit_type": "signup",
+        "tokens": 1000000,
+        "applies_to": "most_expensive_first",
+        "automation_allowed": true
+      }
+    }
+  ],
+  "timestamp": 1786958856.0191085
+}

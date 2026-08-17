@@ -1,0 +1,42 @@
+{
+  "content_hash": "141bf9dd978411fa6d10dda3a3dddbf20f7b68fd08e57d2ab0aa5da98a5ae6a9",
+  "offers": [
+    {
+      "provider_id": "community",
+      "model_id": null,
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "community_lead",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://news.ycombinator.com/item?id=49322107",
+        "title": "Tell HN: Cloudflare silently injects its analytics when you switch nameservers",
+        "score": 494,
+        "author": "stagas",
+        "hn_type": "story"
+      }
+    },
+    {
+      "provider_id": "community",
+      "model_id": null,
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": false,
+      "offer_kind": "community_lead",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://news.ycombinator.com/item?id=49322695",
+        "title": "Models Are Getting Dumber on Purpose",
+        "score": 312,
+        "author": "hruvhwe",
+        "hn_type": "story"
+      }
+    }
+  ],
+  "timestamp": 1786958849.3461673
+}

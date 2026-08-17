@@ -46,14 +46,14 @@ MAINTENANCE (cron daily)
 ## 3. HOW TO TEST IT YOURSELF (the reproducible gates)
 
 ```bash
-cd /root/dealradar
+cd /root/ass-rape-spunk-porn
 python3 app/test.py                 # 7/7  — normalize + frontiers + deals + value math
 python3 app/test_compute_sources.py # 8/8  — free-pool classes + router tiers
 python3 app/test_task_ranking.py    # 10/10 — task sorting + rate limits
 python3 app/normalize.py            # re-pull ALL sources → canonical DB
 python3 app/refresh.py --validate-only  # cross-check prices vs live OpenRouter, flag drift
 python3 app/canary.py               # real probe: is each free endpoint alive?
-PYTHONPATH=. python3 -m uvicorn app.api:app --port 8799 --app-dir /root/dealradar
+PYTHONPATH=. python3 -m uvicorn app.api:app --port 8799 --app-dir .
 curl localhost:8799/health
 curl "localhost:8799/recommend?task=reasoning&prefer_free=true"
 ```
@@ -92,8 +92,8 @@ curl "localhost:8799/recommend?task=reasoning&prefer_free=true"
 
 ```bash
 # daily (per the box axioms: document the command, coordinate the cron on the shared box)
-0 6 * * * cd /root/dealradar && python3 app/refresh.py >> data/refresh.log 2>&1
-30 6 * * * cd /root/dealradar && python3 app/canary.py >> data/canary.log 2>&1
+0 6 * * * cd /root/ass-rape-spunk-porn && python3 app/refresh.py >> data/refresh.log 2>&1
+30 6 * * * cd /root/ass-rape-spunk-porn && python3 app/canary.py >> data/canary.log 2>&1
 ```
 - `refresh.py` re-pulls prices + validates (exit 1 on drift → alert).
 - `canary.py` probes free providers, writes `canary-report.json` ("live since X").

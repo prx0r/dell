@@ -24,13 +24,19 @@ Garglecum is now fully agent-runnable, like sanskritbenchy:
 ## The three surfaces (agents are the primary users)
 
 ### 1. MCP server (the primary interface) — `mcp/server.py`
-5 goal-oriented tools (perf doctrine: fewer tools work better for agents):
+11 goal-oriented tools (perf doctrine: fewer tools work better for agents):
 ```
 pick_model(task, min_quality, prefer_free)  → best model for THIS task (coding/research/extraction/long-context/reasoning)
 check_live_prices()                          → price-health (canary + validation)
 get_model_details(model, task)               → granular detail + measured benchmark quality
 get_free_sources()                           → free-pool + rate limits
-get_patala_layer_config(layer)              ← OpenPāṭala: best model for translation layer (T1/L0/ARGMAP/L2/C1)
+recommend_for_query(query)                   → analyze a natural-language query → profile → pick + reason
+recommend_model_for_layer(layer)             → per translation-layer model (T1/ARGMAP/L2/L200/C1)
+get_capability_health()                      → capability coverage across providers
+find_inference_deals(task, max_cost)         → find deals matching task + budget
+compare_inference_offers(model, task)        → compare providers for a specific model
+get_deal_changes(since_hours)                → recent price/promo changes
+explain_deal(model, provider)                → full reasoning for a model+provider pick
 ```
 Uses the MCP SDK v2 (MCPServer). Compact (token-minimal) by design.
 
@@ -38,8 +44,10 @@ Uses the MCP SDK v2 (MCPServer). Compact (token-minimal) by design.
 ```
 /health /models /frontiers /deals /route
 /recommend /tasks /benchmarks /rate-limits /canary /validation
-/compute-sources /free-pool
+/compute-sources /free-pool /capabilities
+/recommend-layer /layer-config /ask
 /patala/layer-config  ← OpenPāṭala Factory integration
+POST /refresh
 ```
 Agent-optimized: `format=compact` (54% smaller payloads), `ETag` + `Cache-Control: stale-while-revalidate`,
 provenance envelope on every response.
@@ -57,15 +65,15 @@ agents: JSON-LD structured data, canonical, robots. Build: `cd web && npx astro 
 ## The legitimacy (anti-theatre)
 Prices pulled live + validated against the API (drift-catching). Quality labeled `measured` vs
 `estimated` (never overclaimed). Providers canary-checked (live since X). All gates reproducible:
-`app/test*.py` → 32 PASS.
+`app/test*.py` → 25 PASS.
 
 ## Run it
 ```bash
-cd /root/dealradar
+cd /root/ass-rape-spunk-porn
 python3 app/normalize.py          # re-pull + merge all sources → canonical DB
 python3 app/refresh.py            # daily: refresh + validate prices (exit 1 on drift)
 python3 app/canary.py             # daily: verify free providers are alive
-PYTHONPATH=. python3 -m uvicorn app.api:app --port 8799 --app-dir /root/dealradar   # API
+PYTHONPATH=. python3 -m uvicorn app.api:app --port 8799 --app-dir .   # API
 PYTHONPATH=mcp:app python3 mcp/server.py                                             # MCP (stdio)
 cd web && npx astro build         # the lean homepage
 ```

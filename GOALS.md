@@ -5,7 +5,7 @@ logged, tested artifact exists. Order: **P1 → P2 → P3 → P4 → P5**.*
 
 ---
 
-## ✅ DONE (65 tests pass — verified)
+## ✅ DONE (25 tests pass — verified)
 
 - [x] Canonical model DB (1,985+ models) — `normalize.py`
 - [x] Live prices + drift validation — `refresh.py`
@@ -15,7 +15,7 @@ logged, tested artifact exists. Order: **P1 → P2 → P3 → P4 → P5**.*
 - [x] Rate-limit-aware routing — `routing.py` + `free_limits.py`
 - [x] arXiv algorithms (Phase-1 argmax + Phase-2 LinUCB) — `routing.py`
 - [x] Per-layer recommendation — `layer_recommend.py`
-- [x] API (16 endpoints) + MCP (6 tools) + lean Astro site
+- [x] API (19 endpoints) + MCP (11 tools) + lean Astro site
 - [x] The agent-run orchestration layer (`agent/run.py`, `agent/watchdog.py`, `agent/audit.py`)
 
 ## PHASE P1 — ingest the Tier-1 providers (the biggest gap)

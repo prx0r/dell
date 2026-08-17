@@ -1,0 +1,47 @@
+[
+  {
+    "event_type": "launch_pricing",
+    "confidence": 0.85,
+    "details": {
+      "note": "launch pricing"
+    },
+    "source_id": "vercel-changelog",
+    "matched_text": "launch pricing"
+  },
+  {
+    "event_type": "launch_pricing",
+    "confidence": 0.85,
+    "details": {
+      "note": "launch pricing"
+    },
+    "source_id": "vercel-changelog",
+    "matched_text": "launch pricing"
+  },
+  {
+    "event_type": "launch_pricing",
+    "confidence": 0.85,
+    "details": {
+      "note": "launch pricing"
+    },
+    "source_id": "vercel-changelog",
+    "matched_text": "launch pricing"
+  },
+  {
+    "event_type": "credit_amount",
+    "confidence": 0.85,
+    "details": {
+      "credit_usd": 100.0
+    },
+    "source_id": "akashml",
+    "matched_text": "$100 free credit"
+  },
+  {
+    "event_type": "credit_amount",
+    "confidence": 0.85,
+    "details": {
+      "credit_usd": 100.0
+    },
+    "source_id": "akashml",
+    "matched_text": "$100 free credit"
+  }
+]

@@ -20,8 +20,8 @@ model intelligence layer for OpenPāṭala's Translation Factory.*
 | Per-layer recommendation | layer_recommend.py | ✅ maps translation layers → task → model |
 | LLM-facing data structure | model_data.py | ✅ full records for LLM reasoning |
 | Advanced NL query | advanced_query.py | ✅ profile inference (batch/interactive/daily-calls) |
-| API (16 endpoints) | api.py | ✅ compact format, ETag, provenance |
-| MCP server (6 tools) | mcp/server.py | ✅ goal-oriented tools |
+| API (19 endpoints) | api.py | ✅ compact format, ETag, provenance |
+| MCP server (11 tools) | mcp/server.py | ✅ goal-oriented tools |
 | Lean Astro homepage | web/ | ✅ 0-JS, JSON-LD |
 
 ---

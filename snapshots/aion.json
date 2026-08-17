@@ -1,0 +1,24 @@
+{
+  "content_hash": "dab4d10673f0702043e1f285de3e07684a6340044333b7a41236a326a03a77f5",
+  "offers": [
+    {
+      "provider_id": "aion",
+      "model_id": "aion/daily-free",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "free_tier",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://www.aionlabs.ai/pricing",
+        "deal_type": "daily_credits",
+        "openai_compatible": false,
+        "difficulty": 1,
+        "region": "global"
+      }
+    }
+  ],
+  "timestamp": 1786958887.0225916
+}

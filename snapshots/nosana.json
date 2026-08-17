@@ -1,0 +1,40 @@
+{
+  "content_hash": "c65c76a0901205d04d569450a3428611c4386f213437f07c0d836da93d6395e6",
+  "offers": [
+    {
+      "provider_id": "nosana",
+      "model_id": "nosana/free-gpu",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "free_tier",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://nosana.com",
+        "deal_type": "free_gpu_credits",
+        "openai_compatible": false,
+        "difficulty": 2,
+        "blockchain": "solana",
+        "note": "Free GPU credits for inference workloads"
+      }
+    },
+    {
+      "provider_id": "nosana",
+      "model_id": "nosana/free-tier",
+      "input_per_m": null,
+      "output_per_m": null,
+      "cache_read_per_m": null,
+      "free": true,
+      "offer_kind": "free_tier",
+      "context_tokens": null,
+      "requests_day": null,
+      "metadata": {
+        "source_url": "https://nosana.com",
+        "deal_type": "free_tier"
+      }
+    }
+  ],
+  "timestamp": 1786958626.2976859
+}

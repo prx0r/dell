@@ -1,0 +1,11 @@
+[
+  {
+    "event_type": "off_peak",
+    "confidence": 0.9,
+    "details": {
+      "note": "off-peak pricing"
+    },
+    "source_id": "opencode-zen",
+    "matched_text": "off-peak"
+  }
+]

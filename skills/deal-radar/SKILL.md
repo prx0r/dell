@@ -14,7 +14,7 @@ metadata:
 
 # Deal-Radar (LLM price + quality service)
 
-Drive the service at `/root/dealradar`. Board: `dealradar` (hermes kanban). The goal: aggregate all
+Drive the service at `/root/ass-rape-spunk-porn`. Board: `dealradar` (hermes kanban). The goal: aggregate all
 machine-readable LLM pricing + measured quality into ONE canonical model DB and recommend the best model
 for a task with full reasoning.
 
@@ -32,13 +32,14 @@ for a task with full reasoning.
 
 ## The MCP interface (primary)
 
-`mcp/server.py` — 6 goal-oriented tools: `pick_model`, `check_live_prices`, `get_model_details`,
-`get_free_sources`, `recommend_for_query`, `recommend_model_for_layer`.
+`mcp/server.py` — 11 goal-oriented tools: `pick_model`, `check_live_prices`, `get_model_details`,
+`get_free_sources`, `recommend_for_query`, `recommend_model_for_layer`, `get_capability_health`,
+`find_inference_deals`, `compare_inference_offers`, `get_deal_changes`, `explain_deal`.
 
 ## The standard loop
 
 ```bash
-cd /root/dealradar
+cd /root/ass-rape-spunk-porn
 export PYTHONPATH=app:.
 
 # 1. health + legitimacy
