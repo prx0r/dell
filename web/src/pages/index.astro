@@ -1,103 +1,59 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { readFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join } from 'path';
 
-// Load data from canonical DB at build time
-const dataDir = join(process.cwd(), '..', 'data');
-let offers = [];
-let stats = { total: 0, free: 0, providers: 0 };
-
-if (existsSync(join(dataDir, 'llmdeals.sqlite3'))) {
-  // Try to read snapshot exports
-  const snapshotsDir = join(process.cwd(), '..', 'snapshots');
-  if (existsSync(snapshotsDir)) {
-    const { readdirSync } = await import('fs');
-    for (const f of readdirSync(snapshotsDir)) {
-      if (f.endsWith('.json')) {
-        try {
-          const data = JSON.parse(readFileSync(join(snapshotsDir, f), 'utf-8'));
-          offers = offers.concat(data.offers || []);
-        } catch {}
-      }
+const snapshotsDir = join(process.cwd(), '..', 'snapshots');
+let allOffers = [];
+if (existsSync(snapshotsDir)) {
+  for (const f of readdirSync(snapshotsDir)) {
+    if (f.endsWith('.json')) {
+      try { allOffers = allOffers.concat(JSON.parse(readFileSync(join(snapshotsDir, f), 'utf-8')).offers || []); } catch {}
     }
   }
 }
-
-const freeOffers = offers.filter(o => o.free);
-const providers = [...new Set(offers.map(o => o.provider_id))];
-const megaDeals = offers.filter(o => o.metadata?.capacity_multiplier >= 3 || o.metadata?.multiplier >= 2);
-
-stats = { total: offers.length, free: freeOffers.length, providers: providers.length };
+const free = allOffers.filter(o => o.free);
+const providers = [...new Set(allOffers.map(o => o.provider_id))];
+const mega = allOffers.filter(o => (o.metadata?.capacity_ratio_vs_median || 0) >= 3 || (o.metadata?.multiplier || 0) >= 2);
+const topFree = free.filter(o => o.context_tokens).sort((a,b) => (b.context_tokens||0) - (a.context_tokens||0)).slice(0, 15);
+const topPaid = allOffers.filter(o => !o.free && o.input_per_m > 0).sort((a,b) => (a.input_per_m||999) - (b.input_per_m||999)).slice(0, 15);
 ---
-<Layout title="LLM Deals" description="Canonical LLM inference deal data layer">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-    * { font-family: 'Share Tech Mono', 'Courier New', monospace; margin: 0; padding: 0; }
-    body { background: #000; color: #0f0; padding: 20px; max-width: 1200px; margin: 0 auto; }
-    h1 { font-size: 1.2em; border-bottom: 1px solid #0f0; padding-bottom: 5px; }
-    h2 { font-size: 1em; color: #0a0; margin-top: 20px; }
-    .stat { display: inline-block; margin-right: 20px; }
-    .stat-num { font-size: 1.5em; color: #0f0; }
-    .stat-label { font-size: 0.8em; color: #0a0; }
-    table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85em; }
-    th, td { padding: 4px 8px; text-align: left; border-bottom: 1px solid #111; }
-    th { color: #0a0; }
-    .mega { color: #ff0; }
-    .free { color: #0ff; }
-    .ctx { color: #888; }
-    a { color: #0f0; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .api { background: #111; padding: 10px; margin: 10px 0; font-size: 0.85em; }
-    code { background: #111; padding: 2px 4px; }
-  </style>
+<Layout title="LLM Deals" description="Canonical LLM inference data layer">
+  <h1>LLM Deals</h1>
+  <p>Live, verifiable, machine-readable data about LLM inference opportunities.</p>
 
-  <h1>LLM DEALS // CANONICAL DATA LAYER</h1>
+  <p><strong>{allOffers.length}</strong> models · <strong>{free.length}</strong> free · <strong>{providers.length}</strong> providers · <strong>{mega.length}</strong> mega deals</p>
 
-  <div>
-    <span class="stat"><span class="stat-num">{stats.total}</span> <span class="stat-label">MODELS</span></span>
-    <span class="stat"><span class="stat-num free">{stats.free}</span> <span class="stat-label">FREE</span></span>
-    <span class="stat"><span class="stat-num">{stats.providers}</span> <span class="stat-label">PROVIDERS</span></span>
-    <span class="stat"><span class="stat-num mega">{megaDeals.length}</span> <span class="stat-label">MEGA DEALS</span></span>
-  </div>
-
-  <h2>// MEGA DEALS</h2>
-  {megaDeals.length === 0 ? (
-    <p class="ctx">No mega deals detected.</p>
-  ) : (
-    <table>
-      <tr><th>MODEL</th><th>PROVIDER</th><th>MULTIPLIER</th><th>CTX</th></tr>
-      {megaDeals.slice(0, 10).map(o => (
-        <tr class="mega">
-          <td>{o.model_id?.split('/').pop()}</td>
-          <td>{o.provider_id}</td>
-          <td>{o.metadata?.capacity_multiplier ? `${o.metadata.capacity_multiplier}x CAPACITY` : o.metadata?.multiplier ? `${o.metadata.multiplier}x USAGE` : ''}</td>
-          <td class="ctx">{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '-'}</td>
-        </tr>
-      ))}
-    </table>
+  <h2>Mega Deals</h2>
+  {mega.length === 0 ? <p>No mega deals detected.</p> : (
+    <table><tr><th>MODEL</th><th>PROVIDER</th><th>WHY</th><th>CTX</th></tr>
+    {mega.slice(0, 8).map(o => (
+      <tr><td>{o.model_id?.split('/').pop()}</td><td>{o.provider_id}</td>
+      <td>{o.metadata?.capacity_ratio_vs_median ? `${o.metadata.capacity_ratio_vs_median}x CAPACITY` : o.metadata?.multiplier ? `${o.metadata.multiplier}x USAGE` : ''}</td>
+      <td>{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '-'}</td></tr>
+    ))}</table>
   )}
 
-  <h2>// FREE MODELS (TOP 20)</h2>
-  <table>
-    <tr><th>MODEL</th><th>PROVIDER</th><th>CTX</th><th>RPD</th></tr>
-    {freeOffers.slice(0, 20).map(o => (
-      <tr>
-        <td class="free">{o.model_id?.split('/').pop()}</td>
-        <td>{o.provider_id}</td>
-        <td class="ctx">{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '-'}</td>
-        <td>{o.requests_per_day || '-'}</td>
-      </tr>
-    ))}
-  </table>
+  <h2>Best Free Models</h2>
+  <table><tr><th>MODEL</th><th>PROVIDER</th><th>CTX</th><th>TOOL</th></tr>
+  {topFree.map(o => (
+    <tr><td>{o.model_id?.split('/').pop()}</td><td>{o.provider_id}</td>
+    <td>{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '-'}</td>
+    <td>{o.metadata?.tool_call ? 'Y' : '?'}</td></tr>
+  ))}</table>
 
-  <h2>// ALL PROVIDERS ({providers.length})</h2>
-  <p class="ctx">{providers.join(', ')}</p>
+  <h2>Cheapest Paid</h2>
+  <table><tr><th>MODEL</th><th>PROVIDER</th><th>$/M</th><th>CTX</th></tr>
+  {topPaid.map(o => (
+    <tr><td>{o.model_id?.split('/').pop()}</td><td>{o.provider_id}</td>
+    <td>${o.input_per_m?.toFixed(3)}</td>
+    <td>{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '-'}</td></tr>
+  ))}</table>
 
-  <div class="api">
-    <h2>// API</h2>
-    <p><code>GET /v1/deals</code> <code>GET /v1/deals/free</code> <code>GET /v1/mega-deals</code></p>
-    <p><code>GET /v1/models</code> <code>GET /v1/providers</code> <code>GET /v1/recommend</code></p>
-    <p><code>GET /v1/glossary</code> <code>GET /v1/probe</code> <code>GET /v1/history</code></p>
-  </div>
+  <h2>Providers</h2>
+  <p>{providers.join(', ')}</p>
+
+  <h2>API</h2>
+  <p><code>/v1/models</code> <code>/v1/deals</code> <code>/v1/deals/hot</code> <code>/v1/free</code> <code>/v1/recommend</code> <code>/v1/mega-deals</code> <code>/v1/glossary</code> <code>/v1/stats</code></p>
+  <p>MCP: find_inference_deals · get_free_models · get_providers · get_provider_setup · get_best_by_badge · recommend_model · get_deal_changes · explain_deal · get_dataset_stats</p>
 </Layout>
