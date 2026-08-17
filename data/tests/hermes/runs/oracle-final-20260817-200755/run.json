@@ -1,0 +1,116 @@
+{
+  "run_id": "oracle-final-20260817-200755",
+  "board": "dell-production",
+  "git_sha": "30a7a672",
+  "started_at": "2026-08-17T20:07:55Z",
+  "completed_at": "2026-08-17T20:07:57Z",
+  "duration_seconds": 1.3047816753387451,
+  "tests": [
+    {
+      "test": "health",
+      "status": "PASS",
+      "detail": {
+        "status": "ok",
+        "version": "1.0"
+      }
+    },
+    {
+      "test": "stats",
+      "status": "PASS",
+      "detail": {
+        "total_offers": 1861,
+        "free_offers": 634,
+        "providers": 65,
+        "events": 0
+      }
+    },
+    {
+      "test": "models",
+      "status": "PASS",
+      "detail": {
+        "count": 1527
+      }
+    },
+    {
+      "test": "deals",
+      "status": "PASS",
+      "detail": {
+        "count": 1338
+      }
+    },
+    {
+      "test": "free_deals",
+      "status": "PASS",
+      "detail": {
+        "count": 634
+      }
+    },
+    {
+      "test": "mega_deals",
+      "status": "PASS",
+      "detail": {
+        "count": 2
+      }
+    },
+    {
+      "test": "recommend",
+      "status": "FAIL",
+      "detail": "'str' object has no attribute 'get'"
+    },
+    {
+      "test": "providers_browse",
+      "status": "PASS",
+      "detail": {
+        "count": 48
+      }
+    },
+    {
+      "test": "provider_deals",
+      "status": "PASS",
+      "detail": {
+        "count": 11
+      }
+    },
+    {
+      "test": "free_plan",
+      "status": "PASS",
+      "detail": {
+        "can_complete_free": null
+      }
+    },
+    {
+      "test": "verification_runs",
+      "status": "PASS",
+      "detail": {
+        "count": 3
+      }
+    },
+    {
+      "test": "history",
+      "status": "PASS",
+      "detail": {
+        "count": 0
+      }
+    },
+    {
+      "test": "glossary",
+      "status": "PASS",
+      "detail": "glossary loaded"
+    },
+    {
+      "test": "edge_case_bad_input",
+      "status": "PASS",
+      "detail": "graceful handling"
+    },
+    {
+      "test": "edge_case_nonexistent",
+      "status": "PASS",
+      "detail": "status 200"
+    }
+  ],
+  "summary": {
+    "passed": 14,
+    "failed": 1,
+    "warned": 0
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "model": "mimo-v2.5",
+  "test_type": "MCP",
+  "results": [
+    {
+      "tool": "get_dataset_stats",
+      "status": "PASS",
+      "result": {
+        "total_offers": 1861,
+        "free_offers": 634,
+        "providers": 65,
+        "events": 0
+      }
+    },
+    {
+      "tool": "list_models",
+      "status": "PASS",
+      "result": {
+        "count": 1527
+      }
+    },
+    {
+      "tool": "list_providers",
+      "status": "PASS",
+      "result": {
+        "count": 15
+      }
+    },
+    {
+      "tool": "get_provider_setup",
+      "status": "PASS",
+      "result": {
+        "provider": "OpenCode Go"
+      }
+    },
+    {
+      "tool": "find_inference_deals",
+      "status": "PASS",
+      "result": {
+        "count": 1338
+      }
+    },
+    {
+      "tool": "recommend_model",
+      "status": "PASS",
+      "result": {
+        "pick": "anthropic/claude-opus-5"
+      }
+    },
+    {
+      "tool": "explain_deal",
+      "status": "PASS",
+      "result": {
+        "level": "SOURCE_FETCHED"
+      }
+    },
+    {
+      "tool": "get_deal_changes",
+      "status": "PASS",
+      "result": {
+        "count": 0
+      }
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 0
+  }
+}
