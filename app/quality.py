@@ -169,3 +169,4 @@ def deals() -> dict:
 if __name__ == "__main__":
     print(json.dumps({"frontiers": frontiers(), "deals_count": len(deals()["recurring_free_models"])},
                      indent=1, default=str)[:1200])
+# LEGACY: V1 pipeline. Use scoring.py instead

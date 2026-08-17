@@ -127,3 +127,4 @@ if __name__ == "__main__":
     for m in task_summary(task)["ranking"][:5]:
         print(f"  {m['model'][:44]:<46} task_q={m['task_quality']} score={m['score']} "
               f"cost/task=${m['cost_per_task']:.6f} ctx={m['context']}")
+# LEGACY: V1 pipeline. Use scoring.py instead

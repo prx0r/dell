@@ -287,3 +287,4 @@ def workload_picks(workload: str, limit: int = Query(10, le=25)):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("DEALRADAR_V2_PORT", "8800")))
+# DEPRECATED: Use api_canonical.py (port 8803) instead

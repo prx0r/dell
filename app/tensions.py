@@ -155,3 +155,4 @@ if __name__ == "__main__":
         t = p["tensions"]
         print(f"  {p['model'][:32]:<34} score={p['score']} free={p['free']} "
               f"[cost={t['cost']} q={t['quality']} rate={t['rate_limit']} ctx={t['context']} open={t['open_weights']}]")
+# LEGACY: V1 pipeline. Use scoring.py instead

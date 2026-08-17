@@ -315,3 +315,4 @@ def patala_layer_config(layer: str | None = None):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=int(os.environ.get("DEALRADAR_PORT", "8799")))
+# DEPRECATED: Use api_canonical.py (port 8803) instead

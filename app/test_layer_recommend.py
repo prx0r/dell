@@ -54,3 +54,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+# OLD_TEST: Use invariant_tests.py instead

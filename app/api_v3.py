@@ -246,3 +246,4 @@ def compare_costs(
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("LLMDEALS_PORT", "8801")))
+# DEPRECATED: Use api_canonical.py (port 8803) instead

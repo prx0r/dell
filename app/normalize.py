@@ -269,3 +269,4 @@ def normalize() -> dict:
 if __name__ == "__main__":
     m = normalize()
     print(f"canonical models: {len(m)}")
+# LEGACY: V1 pipeline. Use scoring.py instead

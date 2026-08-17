@@ -298,3 +298,4 @@ if __name__ == "__main__":
     print("PHASE 2 (LinUCB + surrogate + exploration):")
     for p in linucb("reasoning", limit=3)["picks"][:3]:
         print(f"  {p['model'][:40]:<42} q={p['q']} explored={p['explored']} free={p['free']}")
+# LEGACY: V1 pipeline. Use scoring.py instead
