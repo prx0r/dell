@@ -79,29 +79,26 @@ def _enrich_with_freshness(offers: list[dict]) -> list[dict]:
 
 
 def _load_all() -> dict:
-    """Load all snapshot data into memory."""
+    """Load from canonical SQLite DB (preferred) or JSON snapshots (fallback)."""
+    try:
+        conn = canonical_db.connect()
+        canonical_db.migrate(conn)
+        offers = canonical_db.get_all_offers(conn)
+        conn.close()
+        if offers:
+            return {"offers": offers, "events": []}
+    except Exception:
+        pass
+    # Fallback to JSON snapshots
     snapshots_dir = ROOT / "snapshots"
     all_offers = []
-    all_events = []
     if snapshots_dir.exists():
         for f in snapshots_dir.glob("*.json"):
             try:
-                data = json.loads(f.read_text())
-                all_offers.extend(data.get("offers", []))
+                all_offers.extend(json.loads(f.read_text()).get("offers", []))
             except Exception:
                 continue
-    events_dir = ROOT / "events"
-    if events_dir.exists():
-        for f in events_dir.glob("*.json"):
-            try:
-                ev = json.loads(f.read_text())
-                if isinstance(ev, list):
-                    all_events.extend(ev)
-                else:
-                    all_events.append(ev)
-            except Exception:
-                continue
-    return {"offers": all_offers, "events": all_events}
+    return {"offers": all_offers, "events": []}
 
 
 # --- Core Endpoints ---
