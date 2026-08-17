@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-"""mcp/server.py — the deal-radar MCP server (goal-oriented tools, MCP SDK v2 high-level MCPServer).
+"""mcp/server.py — the garglecum MCP server (goal-oriented tools, MCP SDK v2 high-level MCPServer).
 
 Per the perf doctrine: "fewer, goal-oriented tools work better for agents." Instead of exposing 14 raw
-HTTP endpoints, this MCP server exposes 4 goal-oriented tools:
+HTTP endpoints, this MCP server exposes goal-oriented tools:
 
   pick_model(task, min_quality, prefer_free)   → best model for THIS task
   check_live_prices()                          → price-health (canary + validation)
   get_model_details(model, task)               → granular detail + measured benchmark quality
   get_free_sources()                           → free-pool + rate limits
+  recommend_model_for_layer(layer)             → OpenPāṭala Factory: best model per translation layer
+  get_capability_health()                      → NEW: provider health + hotswap status
+
+"Tools don't become truth. Their outputs become observations." — newbuild
 
 Tools call the API modules directly (no HTTP round-trip). Compact (token-minimal).
 The input schema is derived from the typed function signatures (MCP SDK v2 tool decorator).
@@ -34,7 +38,7 @@ import canary
 import layer_recommend
 import advanced_query
 
-server = MCPServer(name="deal-radar")
+server = MCPServer(name="garglecum")
 
 
 def _db():
@@ -112,6 +116,18 @@ def recommend_for_query(query: str, limit: int = 5) -> dict:
     per-model utility/value/reason, so the LLM gets the granular reasoning AND can dig into the data.
     Ordering: free-first, then value (quality/cost)."""
     return advanced_query.analyze(query, limit=limit)
+
+
+@server.tool()
+def get_capability_health() -> dict:
+    """Provider health + hotswap status. Shows which data sources are healthy, which failed,
+    and which models were skipped due to provider failure. "Tools don't become truth." """
+    from capability_registry import get_registry
+    reg = get_registry()
+    return {
+        "capabilities": reg.capability_summary(),
+        "health": reg.health_status(),
+    }
 
 
 def main():

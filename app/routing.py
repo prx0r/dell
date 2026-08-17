@@ -17,6 +17,8 @@ Implements the recommended two-phase design from the research:
           Q̂ = w·Q̂_bandit + (1−w)·Q̂_benchmark,  w→1 as feedback accumulates
       m* = argmax [ Q̂(m) + α·√(xᵀA⁻¹x) − λ·Cost(m) ]   ← the exploration bonus makes it advanced
       (actively probes under-tested models instead of trusting benchmarks forever)
+
+"Tools don't become truth. Their outputs become observations." — newbuild
 """
 from __future__ import annotations
 
@@ -155,10 +157,32 @@ def recommend(task="coding", lambda_=DEFAULT_LAMBDA, mu=DEFAULT_MU, limit=5,
     'free is best' holds ONLY when the free quota actually serves the workload.
 
     utility = Q − λ·cost − ρ·quota_penalty(daily_calls)
-    where quota_penalty is large when the model's free rpd < daily_calls (can't serve the job)."""
+    where quota_penalty is large when the model's free rpd < daily_calls (can't serve the job).
+
+    HOTSWAP: uses capability registry to filter out models from failed providers.
+    "Tools don't become truth. Their outputs become observations." — newbuild
+    """
+    from capability_registry import get_registry
+    reg = get_registry()
+
     db = _db().get("models", {})
+
+    # Get healthy providers for model_db capability
+    healthy_providers = set(reg.get_all_providers("model_db"))
+    failed_providers = set()
+    for p in reg.get_all_providers("model_db"):
+        if not reg._health.get("model_db", {}).get(p, type('', (), {'is_usable': True})()).is_usable:
+            failed_providers.add(p)
+
     scored = []
+    skipped_failed = 0
     for mid, rec in db.items():
+        # Hotswap: skip models from failed providers
+        prov = rec.get("source", "")
+        if prov in failed_providers:
+            skipped_failed += 1
+            continue
+
         if not _feasible(mid, rec, task, min_ctx, require_modality):
             continue
         qv = _quality_vector(rec, task)
@@ -191,16 +215,23 @@ def recommend(task="coding", lambda_=DEFAULT_LAMBDA, mu=DEFAULT_MU, limit=5,
                 elif cap_calls < daily_calls:
                     penalty = ((daily_calls - cap_calls) / daily_calls) * 30.0 * volume_importance
         utility = q - lambda_ * (eff_cost * 1e6) - penalty
+
+        # Record provenance: this model's data came from this source
+        provenance = rec.get("provenance", {})
         scored.append({"model": mid, "provider": rec.get("provider"), "free": free,
                        "q": q, "benchmark": qv["benchmark"], "cost": cost,
                        "utility": round(utility, 2), "rpm": rl.get("rpm"), "rpd": rpd,
-                       "quota_penalty": round(penalty, 2)})
+                       "quota_penalty": round(penalty, 2),
+                       "source": provenance.get("source", rec.get("source", "unknown")),
+                       "observed_at": provenance.get("observed_at")})
     # cost-first: free (eff_cost 0) rises to top via the utility (large lambda makes free win),
     # then by quality within a cost tier.
     scored.sort(key=lambda m: (-m["free"], m["cost"], -m["q"]))
     return {"task": task, "lambda": lambda_, "picks": scored[:limit],
             "algorithm": "phase1-utility-argmax (RouteProfile/BELLA)",
-            "note": "U(m|q)=Q−λ·cost−μ·latency over feasible set; λ large → free wins"}
+            "note": "U(m|q)=Q−λ·cost−μ·latency over feasible set; λ large → free wins",
+            "hotswap": {"skipped_failed_providers": list(failed_providers),
+                        "skipped_models": skipped_failed}}
 
 
 # ---- Phase 2: LinUCB with benchmark surrogate + exploration ----

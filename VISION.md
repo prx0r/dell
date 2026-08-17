@@ -1,26 +1,29 @@
-# DEAL-RADAR — VISION + CHECKPOINTED ROADMAP + LEGITIMACY
+# GARGLECUM — VISION + CHECKPOINTED ROADMAP + LEGITIMACY
 
-*2026-08-16 · The single north-star for `dealradar`: the live LLM price + quality + recommendation service,
-built for agents. Read this first. It ties together the canonical model DB, the tension/routing recommender,
-the MCP/API/site surfaces, and the anti-theatre gate. Every checkpoint is falsifiable: DONE only when a
-logged, tested artifact exists.*
+*2026-08-16 · The single north-star for `garglecum` (fka dealradar): the model intelligence layer for
+OpenPāṭala's Translation Factory and agentic system. Read this first. It ties together the canonical model
+DB, the tension/routing recommender, the MCP/API/site surfaces, the per-layer translation integration,
+and the anti-theatre gate. Every checkpoint is falsifiable: DONE only when a logged, tested artifact exists.*
 
 ---
 
 ## 1. THE GOAL (one sentence)
 
 > **Aggregate all machine-readable LLM pricing + measured quality into ONE live, canonical model DB, and
-> recommend the best model for a task with full reasoning — via MCP, API, and a lean site — so any agent
-> can pick the right model for the right job, provably.**
+> recommend the best model for OpenPāṭala's Translation Factory layers (T1/L0/ARGMAP/L2/L200/C1) with
+> full reasoning — via MCP, API, and a lean site — so any agent can pick the right model for the right
+> job, provably.**
 
-## 2. THE CORE (what "the deal radar" is)
+## 2. THE CORE (what "garglecum" is)
 
-A **live, self-updating, agent-facing LLM model DB**:
+A **live, self-updating, agent-facing LLM model DB** for OpenPāṭala:
 - **Canonical model DB** (1,985+ models) — prices (live), free tiers, context, capabilities, benchmarks,
   rate limits — from litellm + models.dev + OpenRouter + llm-prices + free-apis.
 - **The recommender** — a multi-dimensional **tension engine** (9 tensions × 6 profiles) + **arXiv utility
   routing** (Phase-1 argmax / Phase-2 LinUCB) + **rate-limit awareness** (free ≠ good if too limited).
-- **The three surfaces** — MCP (6 goal-oriented tools), HTTP API (16 endpoints, compact+ETag+provenance),
+- **Per-layer translation config** — maps OpenPāṭala's Translation Factory layers (T1/L0/ARGMAP/L2/L200/C1)
+  → recommended model, so the Factory auto-selects the right model per pipeline stage.
+- **The three surfaces** — MCP (5 goal-oriented tools + layer-config), HTTP API (17 endpoints, compact+ETag+provenance),
   lean Astro site (0-JS, JSON-LD).
 
 ## 3. THE MOAT (what makes it better than "just a price list")
@@ -31,7 +34,8 @@ A **live, self-updating, agent-facing LLM model DB**:
 3. **Rate-limit-aware** — a rate-limited free model ranks below a paid model that handles batch volume.
 4. **LLM-reasoning** — the MCP returns the algorithm's FULL reasoning (tension scores + profile + utility +
    value + reason), so an agent gets decision-ready intelligence, not a black-box pick.
-5. **Per-layer recommendation** — maps translation layers (T1/ARGMAP/L2/L200/C1) → task → model.
+5. **Per-layer translation integration** — maps OpenPāṭala Translation Factory layers (T1/L0/ARGMAP/L2/L200/C1)
+   → task → model, so the Factory auto-picks the right model per pipeline stage.
 
 ## 4. THE CHECKPOINTED ROADMAP (from DEV-PLAN; each = a falsifiable gate)
 
@@ -85,6 +89,7 @@ A **live, self-updating, agent-facing LLM model DB**:
 - Don't add Bittensor/Kaito/io.net/Vast/Salad (raw compute, not inference APIs).
 - Don't over-build the web (one homepage is enough; MCP/API are the real interface).
 - Don't fight the smellycock MANIFEST (the other agent's coordination file).
+- Don't duplicate OpenPāṭala's scholarly graph — Garglecum provides model intelligence, not manuscript data.
 
 ---
 

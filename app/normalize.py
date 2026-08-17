@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """app/normalize.py — normalize all LLM-pricing sources into ONE canonical schema.
 
-Ingests:
+Ingests (via capability registry — providers are replaceable, their outputs are observations):
   litellm  (model_prices_and_context_window.json, 3,040 models, local clone)
   llm-prices (simonw, per-provider price files, local clone)
   awesome-free-llm-apis (data.json, free tiers + rate limits, local clone)
@@ -11,7 +11,10 @@ Ingests:
 
 Canonical output record (the deal-radar DB row):
   {provider, model, prompt_per_token, completion_per_token, cache_read_per_token,
-   context, quality_scores:{coding,agentic,intelligence}, free, rpm, rpd, source, updated}
+   context, quality_scores:{coding,agentic,intelligence}, free, rpm, rpd, source, updated,
+   provenance: {source, observed_at, confidence}}  ← NEW: every observation carries provenance
+
+"Tools don't become truth. Their outputs become observations." — newbuild
 """
 from __future__ import annotations
 
@@ -213,21 +216,53 @@ def _enrich_from_modelsdev(models: dict, md: dict) -> dict:
 
 def normalize() -> dict:
     """Merge all sources into one canonical model DB. Later sources override same keys' details,
-    but the models.dev tagging (modalities/capabilities/benchmarks) is preserved via _enrich_from_modelsdev."""
+    but the models.dev tagging (modalities/capabilities/benchmarks) is preserved via _enrich_from_modelsdev.
+
+    Uses capability registry for hotswap: if a source fails, we skip it and continue with the next.
+    Every observation carries provenance (which source, when, confidence)."""
+    from capability_registry import get_registry
+    reg = get_registry()
+
     merged = {}
     md = {}
+    source_stats = {}
+    now = time.time()
+
     for fn in (_from_litellm, _from_llm_prices, _from_free_apis, _from_models_dev, _from_openrouter, _from_hf_router):
+        source_name = fn.__name__.replace("_from_", "")
         try:
             data = fn() or {}
             if fn == _from_models_dev:
                 md = data  # keep for enrichment
+
+            # Add provenance to each observation
+            for mid, rec in data.items():
+                rec["provenance"] = {
+                    "source": source_name,
+                    "observed_at": now,
+                    "confidence": 1.0,  # we trust our own ingestion
+                }
+
             merged.update(data)
+            reg.record_success("model_db", source_name)
+            source_stats[source_name] = {"status": "ok", "count": len(data)}
         except Exception as e:
-            print(f"  [normalize] source {fn.__name__}: {e}")
+            reg.record_failure("model_db", source_name)
+            source_stats[source_name] = {"status": "error", "error": str(e)}
+            print(f"  [normalize] source {source_name}: {e} (hotswap: skipping)")
+
     merged = _enrich_from_modelsdev(merged, md)
     DATA.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({"schema": "patala.dealradar.v1", "fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-                               "count": len(merged), "models": merged}, indent=1, ensure_ascii=False), encoding="utf-8")
+    OUT.write_text(json.dumps({
+        "schema": "patala.dealradar.v1",
+        "fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "count": len(merged),
+        "models": merged,
+        "provenance": {
+            "sources": source_stats,
+            "capability_health": reg.health_status().get("model_db", {}),
+        },
+    }, indent=1, ensure_ascii=False), encoding="utf-8")
     return merged
 
 

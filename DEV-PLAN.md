@@ -1,7 +1,8 @@
-# DEAL-RADAR DEV PLAN — finish it (verified state + the remaining build)
+# GARGLECUM DEV PLAN — finish it (verified state + the remaining build)
 
-*2026-08-15 · the honest finish-the-project plan for the deal-radar. What's DONE + verified, what's
-left, in priority order. Every item is gated (test) + tied to the provider reference.*
+*2026-08-15 · the honest finish-the-project plan for garglecum (fka dealradar). What's DONE + verified, what's
+left, in priority order. Every item is gated (test) + tied to the provider reference. Garglecum is the
+model intelligence layer for OpenPāṭala's Translation Factory.*
 
 ---
 
@@ -52,10 +53,12 @@ profiles feed the routing directly.
 **Gate:** batch profile → rate-limit/cost-heavy; interactive → quality/latency-heavy; self-host →
 open-weights.
 
-### P4 — The per-layer translation integration (document for the other agent)
-**Do:** smellycock per-layer translation stack consumes `/layer-config` (HERMES_MODEL per layer). Write
-the integration doc in smellycock so the workers auto-load the recommended model per layer.
-**Gate:** the doc is registered + the layer-config is correct.
+### P4 — The per-layer translation integration (OpenPāṭala Factory)
+**Do:** OpenPāṭala's Translation Factory consumes `/patala/layer-config` (HERMES_MODEL per layer).
+Write the integration so the Factory workers auto-load the recommended model per layer (T1/L0/ARGMAP/L2/L200/C1).
+**How:** expose `get_patala_layer_config` MCP tool + `/patala/layer-config` API endpoint. Document the
+integration in `HERMES-MCP-API.md` so the Factory agent can call it.
+**Gate:** the MCP tool returns correct model per layer; the Factory agent can fetch layer config.
 
 ### P5 — Hardening + deployment
 **Do:** (a) the cron (refresh + canary daily), (b) deploy the API + Astro site (Cloudflare Worker/pages),

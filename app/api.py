@@ -288,6 +288,30 @@ def refresh():
     return {"models": len(n), "note": "re-pulled all sources"}
 
 
+@app.get("/capabilities")
+def capabilities():
+    """Provider health + hotswap status. Shows which data sources are healthy, which failed.
+    "Tools don't become truth. Their outputs become observations." — newbuild"""
+    from capability_registry import get_registry
+    reg = get_registry()
+    return {
+        "capabilities": reg.capability_summary(),
+        "health": reg.health_status(),
+        "provenance": _env(),
+    }
+
+
+@app.get("/patala/layer-config")
+def patala_layer_config(layer: str | None = None):
+    """OpenPāṭala Factory integration: best model per translation layer (T1/L0/ARGMAP/L2/L200/C1).
+    Set HERMES_MODEL per layer in the translation stack."""
+    import layer_recommend
+    if layer:
+        return {"layer": layer, **layer_recommend.recommend_layer(layer, limit=3),
+                "provenance": _env()}
+    return {"config": layer_recommend.layer_config(), "provenance": _env()}
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=int(os.environ.get("DEALRADAR_PORT", "8799")))
