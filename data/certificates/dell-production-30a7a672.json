@@ -1,0 +1,71 @@
+{
+  "product": "dell",
+  "git_sha": "30a7a6726d2081ec4f1fe50c9a7f758158998555",
+  "certified_at": "2026-08-17T20:05:35Z",
+  "results": [
+    {
+      "test": "migrations",
+      "status": "PASS",
+      "detail": "7 applied"
+    },
+    {
+      "test": "schema",
+      "status": "PASS",
+      "detail": "29 tables, 34 indexes"
+    },
+    {
+      "test": "unit",
+      "status": "PASS",
+      "detail": "basic tests passed"
+    },
+    {
+      "test": "adapters",
+      "status": "PASS",
+      "detail": "41 adapters"
+    },
+    {
+      "test": "provenance",
+      "status": "PASS",
+      "detail": "0 claims without assertions"
+    },
+    {
+      "test": "temporal",
+      "status": "PASS",
+      "detail": "freshness detection works"
+    },
+    {
+      "test": "identity",
+      "status": "PASS",
+      "detail": "identities distinct"
+    },
+    {
+      "test": "api",
+      "status": "PASS",
+      "detail": "41 routes"
+    },
+    {
+      "test": "red_team",
+      "status": "PASS",
+      "detail": "30/30 passed"
+    },
+    {
+      "test": "mutation",
+      "status": "PASS",
+      "detail": "30/30"
+    },
+    {
+      "test": "backup",
+      "status": "PASS",
+      "detail": "8/8"
+    },
+    {
+      "test": "load",
+      "status": "PASS",
+      "detail": "12/12"
+    }
+  ],
+  "summary": {
+    "passed": 12,
+    "failed": 0
+  }
+}
