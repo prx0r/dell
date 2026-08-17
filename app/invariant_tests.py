@@ -172,43 +172,57 @@ def test_PK05():
 
 
 def test_PK06():
-    """PK-06: Evidence records created with claims"""
+    """PK-06: Every claim has evidence (1:1 cardinality)"""
     print("\nPK-06: EVIDENCE_CREATED_WITH_CLAIMS")
     import canonical_db
     conn = canonical_db.connect()
     canonical_db.migrate(conn)
     
-    claims = conn.execute("SELECT COUNT(*) FROM claims").fetchone()[0]
-    evidence = conn.execute("SELECT COUNT(*) FROM evidence_v2").fetchone()[0]
+    # Every claim must have at least one evidence record
+    claims_without_evidence = conn.execute("""
+        SELECT COUNT(*) FROM claims c
+        WHERE NOT EXISTS (
+            SELECT 1 FROM evidence_v2 e WHERE e.claim_id = c.claim_id
+        )
+    """).fetchone()[0]
+    
+    total_claims = conn.execute("SELECT COUNT(*) FROM claims").fetchone()[0]
     
     conn.close()
     
-    # Every claim should have evidence (or we should have 0 claims)
-    ok = claims == 0 or evidence > 0
+    # FAIL if any claim lacks evidence
+    ok = claims_without_evidence == 0
     
-    return gate("evidence exists with claims", ok,
-                "claims=%d evidence=%d" % (claims, evidence))
+    return gate("every claim has evidence", ok,
+                "%d/%d claims without evidence" % (claims_without_evidence, total_claims))
 
 
 def test_PK07():
-    """PK-07: Artifacts connected to observations"""
+    """PK-07: Evidence links to valid observations"""
     print("\nPK-07: ARTIFACTS_CONNECTED_TO_OBSERVATIONS")
     import canonical_db
     conn = canonical_db.connect()
     canonical_db.migrate(conn)
     
-    observations = conn.execute("SELECT COUNT(*) FROM source_observations").fetchone()[0]
-    evidence = conn.execute(
-        "SELECT COUNT(*) FROM evidence_v2 WHERE artifact_id IS NOT NULL"
-    ).fetchone()[0]
+    # Evidence must link to valid observations
+    orphan_evidence = conn.execute("""
+        SELECT COUNT(*) FROM evidence_v2 e
+        WHERE e.claim_id IN (SELECT claim_id FROM claims)
+        AND NOT EXISTS (
+            SELECT 1 FROM source_observations o
+            WHERE o.observation_id = (
+                SELECT c.source_observation_id FROM claims c WHERE c.claim_id = e.claim_id
+            )
+        )
+    """).fetchone()[0]
     
     conn.close()
     
-    # Evidence should reference artifacts
-    ok = evidence == 0 or observations > 0
+    # FAIL if evidence links to non-existent observations
+    ok = orphan_evidence == 0
     
-    return gate("artifacts connected", ok,
-                "observations=%d evidence_with_artifacts=%d" % (observations, evidence))
+    return gate("evidence links to valid observations", ok,
+                "%d orphan evidence records" % orphan_evidence)
 
 
 def test_PK08():
@@ -343,19 +357,26 @@ def test_PK13():
 
 
 def test_PK14():
-    """PK-14: Activation recipes scoped to deals"""
+    """PK-14: Activation recipes have required fields"""
     print("\nPK-14: ACTIVATION_RECIPES_SCOPED_TO_DEALS")
     import canonical_db
     conn = canonical_db.connect()
     canonical_db.migrate(conn)
     
-    recipes = conn.execute("SELECT COUNT(*) FROM activation_recipes").fetchone()[0]
+    # Recipes must have provider_id and steps_json
+    invalid_recipes = conn.execute("""
+        SELECT COUNT(*) FROM activation_recipes
+        WHERE provider_id IS NULL OR steps_json IS NULL OR steps_json = ''
+    """).fetchone()[0]
+    
+    total = conn.execute("SELECT COUNT(*) FROM activation_recipes").fetchone()[0]
     conn.close()
     
-    # Recipes should exist
-    ok = recipes >= 0
+    # FAIL if any recipe lacks required fields
+    ok = invalid_recipes == 0
     
-    return gate("activation recipes exist", ok, "%d recipes" % recipes)
+    return gate("activation recipes have required fields", ok,
+                "%d/%d invalid recipes" % (invalid_recipes, total))
 
 
 def main():

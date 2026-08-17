@@ -95,15 +95,15 @@ def run_discovery(sources: list[str] | None = None) -> dict:
             # Extract offers from ALL observations (not just first)
             source_offers = []
             all_claims = []
-            for obs in observations:
+            for i, obs in enumerate(observations):
                 if obs.status is not None and not obs.text.startswith("FETCH_ERROR"):
                     offers = adapter.extract(obs)
                     source_offers.extend(offers)
 
-                    # Extract claims from this observation (P0.4)
-                    if obs_ids:
+                    # Extract claims from THIS observation (P0-2 fix: carry obs_id with obs)
+                    if i < len(obs_ids):
                         claims = discovery_claims.extract_claims_from_adapter(adapter, obs)
-                        discovery_claims.commit_claims(conn, claims, obs_ids[-1])
+                        discovery_claims.commit_claims(conn, claims, obs_ids[i])
                         all_claims.extend(claims)
 
             # Deduplicate by offer_id
