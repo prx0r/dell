@@ -4,8 +4,8 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const web = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-// the canonical DB is at /root/dealradar/data/canonical-models.json (absolute — robust to build dir)
-const DB = '/root/dealradar/data/canonical-models.json';
+// Read from snapshots directory (canonical DB exports)
+const SNAPSHOT_DIR = path.resolve(web, '..', 'snapshots');
 
 const TASK_BENCHMARKS = {
   coding: ['SWE-Bench Verified', 'SWE-Bench Pro', 'Terminal-Bench', 'Aider Polyglot', 'Artificial Analysis Coding Index'],
@@ -49,20 +49,50 @@ function isJunk(mid, rec) {
   return false;
 }
 
+function loadAllOffers() {
+  const offers = [];
+  if (!fs.existsSync(SNAPSHOT_DIR)) return offers;
+  for (const f of fs.readdirSync(SNAPSHOT_DIR)) {
+    if (!f.endsWith('.json')) continue;
+    try {
+      const data = JSON.parse(fs.readFileSync(path.join(SNAPSHOT_DIR, f), 'utf8'));
+      for (const o of (data.offers || [])) {
+        offers.push({
+          id: o.offer_id || o.model_id,
+          model: o.model_id,
+          provider: o.provider_id,
+          prompt_per_token: o.input_per_m ? o.input_per_m / 1e6 : 0,
+          completion_per_token: o.output_per_m ? o.output_per_m / 1e6 : 0,
+          free: !!o.free,
+          context: o.context_tokens || null,
+          benchmarks: o.metadata?.benchmarks || [],
+          input_modalities: o.metadata?.modalities?.input || [],
+          provider_data: o.provider_id,
+        });
+      }
+    } catch {}
+  }
+  return offers;
+}
+
+function isJunk(mid, rec) {
+  const low = (mid || '').toLowerCase();
+  const junk = ['embedding', 'audio', 'tts', 'stt', 'whisper', 'stable-diffusion', 'flux', 'dall-e',
+                'sdxl', 'rerank', 'colbert', 'ollama/', 'sample_spec', 'bedrock/', 'img', 'video'];
+  return junk.some((x) => low.includes(x));
+}
+
 export function ranked(task = 'coding', limit = 10, prefer_free = false) {
-  const db = JSON.parse(readFileSync(DB, 'utf8'));
+  const offers = loadAllOffers();
   const out = [];
-  for (const [mid, rec] of Object.entries(db.models || {})) {
-    if (isJunk(mid, rec)) continue;
-    const free = rec.free || (rec.prompt_per_token === 0 && rec.completion_per_token === 0);
-    if (prefer_free && !free) continue;
-    const bq = benchmarkQuality(mid, rec, task);
-    // cost per task (20k in / 4k out)
+  for (const rec of offers) {
+    if (isJunk(rec.model, rec)) continue;
+    if (prefer_free && !rec.free) continue;
+    const bq = benchmarkQuality(rec.model, rec, task);
     const cost = (rec.prompt_per_token || 0) * 20000 + (rec.completion_per_token || 0) * 4000;
-    // score: measured benchmark if available, else a quality estimate; prefer cheap+free
     const quality = bq.score ?? 40;
-    const score = free ? quality * 10 : (quality * 10) / (cost > 0 ? cost : 1);
-    out.push({ model: mid, provider: rec.provider, free, benchmark: bq.benchmark,
+    const score = rec.free ? quality * 10 : (quality * 10) / (cost > 0 ? cost : 1);
+    out.push({ model: rec.model, provider: rec.provider, free: rec.free, benchmark: bq.benchmark,
                benchmark_score: bq.score, cost, score: Math.round(score) });
   }
   out.sort((a, b) => b.score - a.score);
@@ -70,13 +100,13 @@ export function ranked(task = 'coding', limit = 10, prefer_free = false) {
 }
 
 export function visionModels(limit = 8) {
-  const db = JSON.parse(readFileSync(DB, 'utf8'));
+  const offers = loadAllOffers();
   const out = [];
-  for (const [mid, rec] of Object.entries(db.models || {})) {
-    if (isJunk(mid, rec)) continue;
+  for (const rec of offers) {
+    if (isJunk(rec.model, rec)) continue;
     if (!(rec.input_modalities || []).includes('image')) continue;
     const cost = (rec.prompt_per_token || 0) * 20000 + (rec.completion_per_token || 0) * 4000;
-    out.push({ model: mid, provider: rec.provider, free: rec.free, cost,
+    out.push({ model: rec.model, provider: rec.provider, free: rec.free, cost,
                modalities: rec.input_modalities });
   }
   out.sort((a, b) => (a.cost || 0) - (b.cost || 0));
