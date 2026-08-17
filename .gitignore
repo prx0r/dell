@@ -19,3 +19,15 @@ snapshots/
 events/
 .env
 app/data/
+
+# Runtime state — not for git
+data/*.sqlite3
+data/*.sqlite3-*
+data/cron.log
+data/poll-report.json
+data/probe-log.json
+data/history/
+snapshots/
+events/
+data/tests/
+data/llmdealsintegration

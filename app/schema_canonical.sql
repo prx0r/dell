@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS offers (
     cache_write_per_m REAL,
     -- Free tier
     free INTEGER NOT NULL DEFAULT 0,
+    price_state TEXT DEFAULT 'unknown',
     -- Quota (preserved, not collapsed)
     requests_per_day INTEGER,
     requests_per_5h INTEGER,
