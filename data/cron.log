@@ -137,3 +137,138 @@
 2026-08-17 12:01:38,686 INFO io-net: 0 offers
 2026-08-17 12:01:38,838 INFO Pipeline done: 1 sources, 2471 offers in 97.45s
 2026-08-17 12:01:38,839 INFO Poll complete: 1 sources, 2471 offers, 131 events in 97.5s
+2026-08-17 18:00:01,160 INFO Processing opencode-go
+2026-08-17 18:00:09,568 INFO Extracted 9 promotion events from source opencode-go
+2026-08-17 18:00:09,835 INFO Extracted 0 promotion events from source opencode-go
+2026-08-17 18:00:09,853 INFO Extracted 0 promotion events from source opencode-go
+2026-08-17 18:00:09,853 INFO opencode-go: 11 offers, 0 claims
+2026-08-17 18:00:09,854 INFO Processing opencode-zen
+2026-08-17 18:00:11,604 INFO Extracted 10 promotion events from source opencode-zen
+2026-08-17 18:00:11,604 INFO opencode-zen: 6 offers, 1 claims
+2026-08-17 18:00:11,605 INFO Processing nous-portal
+2026-08-17 18:00:11,841 INFO Extracted 0 promotion events from source nous-portal
+2026-08-17 18:00:11,842 INFO nous-portal: 0 offers, 0 claims
+2026-08-17 18:00:11,842 INFO Processing sensenova
+2026-08-17 18:00:14,080 INFO Extracted 0 promotion events from source sensenova
+2026-08-17 18:00:14,080 INFO sensenova: 1 offers, 1 claims
+2026-08-17 18:00:14,081 INFO Processing zai
+2026-08-17 18:00:14,887 INFO Extracted 1 promotion events from source zai
+2026-08-17 18:00:14,913 INFO Extracted 5 promotion events from source zai
+2026-08-17 18:00:14,913 INFO zai: 1 offers, 0 claims
+2026-08-17 18:00:14,913 INFO Processing openrouter-models
+2026-08-17 18:00:15,208 INFO Extracted 0 promotion events from source openrouter-models
+2026-08-17 18:00:15,208 INFO openrouter-models: 414 offers, 3 claims
+2026-08-17 18:00:15,209 INFO Processing vercel-changelog
+2026-08-17 18:00:16,472 INFO Extracted 3 promotion events from source vercel-changelog
+2026-08-17 18:00:16,473 INFO vercel-changelog: 1 offers, 0 claims
+2026-08-17 18:00:16,476 INFO Processing rss-feeds
+2026-08-17 18:00:18,565 INFO Extracted 0 promotion events from source rss-feeds
+2026-08-17 18:00:18,582 INFO Extracted 0 promotion events from source rss-feeds
+2026-08-17 18:00:18,815 INFO Extracted 19 promotion events from source rss-feeds
+2026-08-17 18:00:18,841 INFO Extracted 0 promotion events from source rss-feeds
+2026-08-17 18:00:18,841 INFO Extracted 0 promotion events from source rss-feeds
+2026-08-17 18:00:18,848 INFO Extracted 0 promotion events from source rss-feeds
+2026-08-17 18:00:18,848 INFO rss-feeds: 1 offers, 0 claims
+2026-08-17 18:00:18,849 INFO Processing hackernews
+2026-08-17 18:00:39,787 INFO Extracted 0 promotion events from source hackernews
+2026-08-17 18:00:39,787 INFO Extracted 0 promotion events from source hackernews
+2026-08-17 18:00:39,793 INFO Extracted 0 promotion events from source hackernews
+2026-08-17 18:00:39,793 INFO hackernews: 1 offers, 0 claims
+2026-08-17 18:00:39,794 INFO Processing sakura-ai
+2026-08-17 18:00:44,889 INFO Extracted 0 promotion events from source sakura-ai
+2026-08-17 18:00:44,896 INFO Extracted 0 promotion events from source sakura-ai
+2026-08-17 18:00:44,896 INFO sakura-ai: 1 offers, 2 claims
+2026-08-17 18:00:44,897 INFO Processing scaleway
+2026-08-17 18:00:46,995 INFO Extracted 0 promotion events from source scaleway
+2026-08-17 18:00:46,995 INFO scaleway: 1 offers, 1 claims
+2026-08-17 18:00:46,996 INFO Processing ovhcloud
+2026-08-17 18:00:47,544 INFO Extracted 0 promotion events from source ovhcloud
+2026-08-17 18:00:47,642 INFO Extracted 0 promotion events from source ovhcloud
+2026-08-17 18:00:47,642 INFO ovhcloud: 0 offers, 0 claims
+2026-08-17 18:00:47,643 INFO Processing alibaba
+2026-08-17 18:00:52,770 INFO Extracted 0 promotion events from source alibaba
+2026-08-17 18:00:53,107 INFO Extracted 0 promotion events from source alibaba
+2026-08-17 18:00:53,107 INFO alibaba: 237 offers, 2 claims
+2026-08-17 18:00:53,107 INFO Processing akashml
+2026-08-17 18:00:53,725 INFO Extracted 2 promotion events from source akashml
+2026-08-17 18:00:53,725 INFO akashml: 0 offers, 0 claims
+2026-08-17 18:00:53,726 INFO Processing perplexity
+2026-08-17 18:00:54,690 INFO Extracted 0 promotion events from source perplexity
+2026-08-17 18:00:54,690 INFO perplexity: 37 offers, 0 claims
+2026-08-17 18:00:54,690 INFO Processing upstage
+2026-08-17 18:00:55,000 INFO Extracted 2 promotion events from source upstage
+2026-08-17 18:00:55,000 INFO upstage: 13 offers, 0 claims
+2026-08-17 18:00:55,001 INFO Processing siliconflow
+2026-08-17 18:00:58,405 INFO Extracted 0 promotion events from source siliconflow
+2026-08-17 18:00:58,474 INFO Extracted 0 promotion events from source siliconflow
+2026-08-17 18:00:58,474 INFO siliconflow: 116 offers, 2 claims
+2026-08-17 18:00:58,474 INFO Processing xiaomi
+2026-08-17 18:01:00,771 INFO Extracted 0 promotion events from source xiaomi
+2026-08-17 18:01:00,771 INFO xiaomi: 5 offers, 0 claims
+2026-08-17 18:01:00,772 INFO Processing minimax
+2026-08-17 18:01:01,688 INFO Extracted 5 promotion events from source minimax
+2026-08-17 18:01:01,689 INFO minimax: 7 offers, 0 claims
+2026-08-17 18:01:01,689 INFO Processing baidu
+2026-08-17 18:01:08,680 INFO Extracted 0 promotion events from source baidu
+2026-08-17 18:01:08,709 INFO Extracted 0 promotion events from source baidu
+2026-08-17 18:01:08,709 INFO baidu: 3 offers, 2 claims
+2026-08-17 18:01:08,709 INFO Processing tencent
+2026-08-17 18:01:10,958 INFO Extracted 0 promotion events from source tencent
+2026-08-17 18:01:10,960 INFO Extracted 0 promotion events from source tencent
+2026-08-17 18:01:10,961 INFO tencent: 0 offers, 0 claims
+2026-08-17 18:01:10,961 INFO Processing moonshot
+2026-08-17 18:01:15,481 INFO Extracted 0 promotion events from source moonshot
+2026-08-17 18:01:15,509 INFO Extracted 0 promotion events from source moonshot
+2026-08-17 18:01:15,509 INFO moonshot: 19 offers, 0 claims
+2026-08-17 18:01:15,509 INFO Processing aion
+2026-08-17 18:01:16,887 INFO Extracted 0 promotion events from source aion
+2026-08-17 18:01:16,887 INFO aion: 1 offers, 1 claims
+2026-08-17 18:01:16,888 INFO Processing maritaca
+2026-08-17 18:01:17,212 INFO Extracted 0 promotion events from source maritaca
+2026-08-17 18:01:17,213 INFO maritaca: 5 offers, 0 claims
+2026-08-17 18:01:17,213 INFO Processing nvidia
+2026-08-17 18:01:18,068 INFO Extracted 0 promotion events from source nvidia
+2026-08-17 18:01:18,092 INFO Extracted 0 promotion events from source nvidia
+2026-08-17 18:01:18,092 INFO nvidia: 116 offers, 2 claims
+2026-08-17 18:01:18,093 INFO Processing kilo
+2026-08-17 18:01:19,157 INFO Extracted 12 promotion events from source kilo
+2026-08-17 18:01:19,225 INFO Extracted 0 promotion events from source kilo
+2026-08-17 18:01:19,225 INFO kilo: 2 offers, 2 claims
+2026-08-17 18:01:19,226 INFO Processing novita
+2026-08-17 18:01:23,776 INFO Extracted 50 promotion events from source novita
+2026-08-17 18:01:23,973 INFO Extracted 12 promotion events from source novita
+2026-08-17 18:01:23,974 INFO novita: 168 offers, 2 claims
+2026-08-17 18:01:23,974 INFO Processing models-dev
+2026-08-17 18:01:24,207 INFO Extracted 0 promotion events from source models-dev
+2026-08-17 18:01:24,207 INFO models-dev: 351 offers, 4 claims
+2026-08-17 18:01:24,208 INFO Processing artificial-analysis
+2026-08-17 18:01:24,908 INFO Processing hf-router
+2026-08-17 18:01:25,202 INFO Extracted 0 promotion events from source hf-router
+2026-08-17 18:01:25,202 INFO hf-router: 314 offers, 3 claims
+2026-08-17 18:01:25,203 INFO Processing infini
+2026-08-17 18:01:28,052 INFO Extracted 0 promotion events from source infini
+2026-08-17 18:01:28,052 INFO Extracted 0 promotion events from source infini
+2026-08-17 18:01:28,052 INFO infini: 15 offers, 0 claims
+2026-08-17 18:01:28,053 INFO Processing sarvam
+2026-08-17 18:01:28,736 INFO Extracted 0 promotion events from source sarvam
+2026-08-17 18:01:28,736 INFO sarvam: 14 offers, 1 claims
+2026-08-17 18:01:28,737 INFO Processing typhoon
+2026-08-17 18:01:29,158 INFO Extracted 0 promotion events from source typhoon
+2026-08-17 18:01:29,159 INFO typhoon: 1 offers, 0 claims
+2026-08-17 18:01:29,160 INFO Processing chutes
+2026-08-17 18:01:29,924 INFO Extracted 2 promotion events from source chutes
+2026-08-17 18:01:29,949 INFO Extracted 2 promotion events from source chutes
+2026-08-17 18:01:29,949 INFO chutes: 1 offers, 2 claims
+2026-08-17 18:01:29,950 INFO Processing aethir
+2026-08-17 18:01:32,369 INFO Processing nosana
+2026-08-17 18:01:33,967 INFO Extracted 0 promotion events from source nosana
+2026-08-17 18:01:33,967 INFO nosana: 2 offers, 1 claims
+2026-08-17 18:01:33,967 INFO Processing nebius
+2026-08-17 18:01:34,949 INFO Extracted 0 promotion events from source nebius
+2026-08-17 18:01:34,949 INFO nebius: 2 offers, 1 claims
+2026-08-17 18:01:34,949 INFO Processing io-net
+2026-08-17 18:01:35,288 INFO Extracted 0 promotion events from source io-net
+2026-08-17 18:01:35,288 INFO io-net: 0 offers, 0 claims
+2026-08-17 18:01:35,423 INFO Pipeline done: 2 sources, 1867 offers in 94.28s
+2026-08-17 18:01:35,425 INFO Poll complete: 2 sources, 1867 offers, 0 events in 94.3s
+  [AA] Rate limited (429). Retry-After: 46899s

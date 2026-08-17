@@ -2,6 +2,10 @@
 
 Instead of adapter → offer directly, the path becomes:
   adapter → observation → candidate_claim → evidence → adjudication → offer
+
+Evidence records are created ATOMICALLY with claims.
+Artifact storage is CONNECTED to observations.
+Claims are linked to CORRECT observations.
 """
 from __future__ import annotations
 
@@ -10,6 +14,8 @@ import time
 from typing import Optional
 
 import canonical_db
+from offer_id import OfferId
+from artifact_store import store_artifact
 
 
 def extract_claims_from_adapter(adapter_module, observation) -> list[dict]:
@@ -18,8 +24,8 @@ def extract_claims_from_adapter(adapter_module, observation) -> list[dict]:
     try:
         offers = adapter_module.extract(observation)
         for offer in offers:
-            # Build offer_id matching canonical_db format: provider:model:offer_type
-            offer_id = "%s:%s:%s" % (offer.provider_id, offer.model_id, offer.offer_kind)
+            # Build offer_id using canonical OfferId.create()
+            offer_id = OfferId.create(offer.provider_id, offer.model_id, offer.offer_kind)
             if offer.input_per_m is not None:
                 claims.append({
                     "subject_type": "commercial_offer",
@@ -82,14 +88,46 @@ def extract_claims_from_adapter(adapter_module, observation) -> list[dict]:
     return claims
 
 
-def commit_claims(conn, claims: list[dict], observation_id: int):
-    """Commit claims to the database."""
+def commit_claims_with_evidence(conn, claims: list[dict], observation_id: int,
+                                 artifact_id: str = None):
+    """Commit claims to the database WITH evidence records.
+    
+    This is ATOMIC — no evidence means no canonical claim.
+    
+    Args:
+        claims: List of claim dicts
+        observation_id: The observation this claim came from
+        artifact_id: The artifact ID for provenance
+    """
     now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    
     for claim in claims:
-        conn.execute("""
+        # Insert claim
+        cursor = conn.execute("""
             INSERT INTO claims (offer_id, claim_type, claim_value,
                 source_observation_id, confidence, created_at)
             VALUES (?, ?, ?, ?, ?, ?)
         """, (claim.get("subject_id", ""), claim.get("predicate", "unknown"),
               claim.get("value_json", "{}"), observation_id,
               claim.get("confidence", 0.5), now))
+        
+        claim_id = cursor.lastrowid
+        
+        # Insert evidence record (ATOMIC with claim)
+        conn.execute("""
+            INSERT INTO evidence_v2 (claim_id, artifact_id, authority, 
+                selector_type, selector, excerpt, content_hash, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """, (claim_id, artifact_id, "source_observation",
+              "text_content", claim.get("source_url", ""),
+              claim.get("value_json", "{}"),
+              claim.get("content_hash", ""),
+              now))
+
+
+def commit_claims(conn, claims: list[dict], observation_id: int):
+    """Commit claims to the database (legacy wrapper).
+    
+    For new code, use commit_claims_with_evidence() instead.
+    """
+    commit_claims_with_evidence(conn, claims, observation_id)

@@ -2,6 +2,24 @@
 
 When Hermes finds a new deal, it doesn't just record it — it investigates.
 
+## Termination Condition
+
+**The investigation terminates when:**
+1. At least 1 primary official source is found AND
+2. The verification policy is satisfied for this deal type
+3. Optionally: 1 corroborator is preferred for hot deals
+
+**Do NOT:**
+- Search indefinitely for "ALL sources" (unbounded, impossible to prove)
+- Keep searching once termination condition is met
+- Spend more than 3 rounds on any single deal
+
+**Example:**
+- 1 primary official source = SUFFICIENT
+- 1 primary + 1 community corroboration = GOOD
+- 1 primary + 3 community reports = EXCELLENT
+- 0 primary sources but 5 community reports = INSUFFICIENT (needs official verification)
+
 ## The Investigation Pipeline
 
 ```
@@ -11,13 +29,12 @@ ROUND 1: Identify the deal
   - What model? What provider? What's the offer?
   - Extract: price, quota, multiplier, context
     ↓
-ROUND 2: Find ALL sources
-  - Search web for "[provider] [model] pricing"
-  - Check provider's official pricing page
-  - Check provider's blog/changelog
-  - Check OpenRouter for cross-provider data
-  - Check models.dev for benchmarks
-  - Check HN/Reddit for community reports
+ROUND 2: Find high-authority sources (bounded search)
+  - Required: Check provider's official pricing page
+  - Required: Check provider's official docs/API
+  - Optional: Check OpenRouter for cross-provider data
+  - Optional: Check HN/Reddit for community reports
+  - TERMINATE when: official source found + verification satisfied
     ↓
 ROUND 3: Extract exact details
   - Start date: when was this deal first seen?

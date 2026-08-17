@@ -1,4 +1,7 @@
-"""app/sources/opencode.py — OpenCode Go adapter (uses playwright for JS-rendered pages)."""
+"""app/sources/opencode.py — OpenCode Go adapter (uses playwright for JS-rendered pages).
+
+Uses semantic DOM extraction instead of proximity-based regex.
+"""
 from __future__ import annotations
 
 import json
@@ -58,25 +61,51 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
     text = observation.text
     offers = []
 
-    # Strategy 1: Find data-model attributes with 2x usage (from playwright)
+    # Strategy 1: Semantic DOM extraction (from playwright)
     if observation.source_type == "browser_page":
-        # Find models with data-model attribute
+        # Extract model rows with their promotional badges
+        # Look for semantic containers: data-model attributes with nearby data-bonus
+        model_promos = {}
+        
+        # Find all data-model attributes
         models = re.findall(r'data-model="([^"]+)"', text)
-        # Find which models have 2x usage nearby
-        two_x_models = set()
-        for m in re.finditer(r'2x\s*usage', text, re.IGNORECASE):
-            nearby = text[max(0, m.start()-500):m.start()+500]
-            for model in re.findall(r'data-model="([^"]+)"', nearby):
-                two_x_models.add(model)
-
+        
+        # For each model, check if it has a 2x usage badge in its SEMANTIC container
+        # Not in 500 chars, but in the actual model row/card
+        for model in models:
+            # Find the container for this model (up to next model or 2000 chars)
+            model_pos = text.find('data-model="%s"' % model)
+            if model_pos == -1:
+                continue
+            
+            # Find the end of this model's container (next model or reasonable boundary)
+            next_model_pos = len(text)
+            for other_model in models:
+                if other_model != model:
+                    other_pos = text.find('data-model="%s"' % other_model, model_pos + 1)
+                    if other_pos != -1 and other_pos < next_model_pos:
+                        next_model_pos = other_pos
+            
+            # Extract just this model's container
+            container = text[model_pos:min(next_model_pos, model_pos + 2000)]
+            
+            # Check for 2x usage badge in THIS container only
+            has_2x = bool(re.search(r'2x\s*usage', container, re.IGNORECASE))
+            model_promos[model] = has_2x
+        
         existing = set()
         for model in models:
             if len(model) < 3 or model in existing:
                 continue
             existing.add(model)
             mid = "opencode-go/%s" % model.lower()
-            is_promo = model in two_x_models
-
+            is_promo = model_promos.get(model, False)
+            
+            # Extract the selector for evidence
+            selector = '[data-model="%s"]' % model
+            if is_promo:
+                selector += ' [data-bonus]'
+            
             offers.append(OfferSnapshot(
                 provider_id="opencode-go",
                 model_id=mid,
@@ -87,7 +116,8 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
                     "source_url": observation.url,
                     "extracted_from": "playwright_browser",
                     "multiplier": 2.0 if is_promo else None,
-                    "evidence": "data-model=%s with 2x usage" % model if is_promo else "data-model=%s" % model,
+                    "selector": selector,
+                    "evidence": "data-model=%s container check" % model,
                 }))
 
     # Strategy 2: Find text content with model info

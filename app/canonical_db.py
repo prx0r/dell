@@ -13,6 +13,8 @@ import time
 from contextlib import contextmanager
 from pathlib import Path
 
+from offer_id import OfferId
+
 ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT / "data" / "llmdeals.sqlite3"
 
@@ -46,9 +48,8 @@ def transaction(conn: sqlite3.Connection):
 
 def generate_offer_id(provider_id: str, model_id: str, offer_type: str,
                       region: str = "global") -> str:
-    """Generate stable offer_id: provider:model:offer_type:region"""
-    model_clean = (model_id or "").lower().replace("/", ":")
-    return "%s:%s:%s:%s" % (provider_id, model_clean, offer_type, region)
+    """Generate stable offer_id — use OfferId.create() instead."""
+    return OfferId.create(provider_id, model_id, offer_type, region)
 
 
 def upsert_offer(conn, offer_id: str, provider_id: str, model_id: str = None,

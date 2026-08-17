@@ -28,54 +28,37 @@ from fastapi.middleware.cors import CORSMiddleware
 import models_v2
 import providers as providers_mod
 import canonical_db
+from verification import get_verification_status
 
 app = FastAPI(title="LLM Deals", version="1.0",
               description="The canonical live data layer for LLM inference economics")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
-def _enrich_with_freshness(offers: list[dict]) -> list[dict]:
-    """Add freshness SLA and verification status to each offer."""
-    now = time.time()
+def _enrich_with_verification(offers: list[dict]) -> list[dict]:
+    """Add verification status from actual verification engine.
+    
+    Uses verification_checks, evidence_v2, and verification_runs.
+    NOT URL/domain heuristics.
+    """
+    conn = canonical_db.connect()
+    canonical_db.migrate(conn)
+    
     for o in offers:
-        meta = o.get("metadata", {})
-        # Freshness: when was this data last verified?
-        source_url = meta.get("source_url", "")
-        o["freshness"] = {
-            "last_verified_at": meta.get("observed_at", ""),
-            "source_url": source_url,
-            "source_type": meta.get("source_type", "unknown"),
-            "is_stale": False,  # would need tracking to determine
+        offer_id = o.get("offer_id")
+        if not offer_id:
+            continue
+        
+        status = get_verification_status(conn, offer_id)
+        o["verification"] = {
+            "level": status["verification_level"],
+            "claims_count": status["claims_count"],
+            "evidence_count": status["evidence_count"],
+            "latest_check_at": status["latest_check_at"],
+            "latest_run": status["latest_run"],
         }
-        # Verification: how confident are we?
-        if source_url and "artificialanalysis" in source_url:
-            o["verification"] = {"status": "verified", "confidence": 0.95, "source": "official_api"}
-        elif source_url and ("openrouter.ai" in source_url or "models.dev" in source_url):
-            o["verification"] = {"status": "verified", "confidence": 0.90, "source": "official_api"}
-        elif source_url and "help.aliyun.com" in source_url:
-            o["verification"] = {"status": "verified", "confidence": 0.85, "source": "official_docs"}
-        elif source_url and "reddit.com" in source_url:
-            o["verification"] = {"status": "community_reported", "confidence": 0.40, "source": "community"}
-        else:
-            o["verification"] = {"status": "likely", "confidence": 0.70, "source": "provider_page"}
-        # Rate limit info
-        if o.get("requests_day"):
-            o["rate_limits"] = {
-                "requests_per_day": o["requests_day"],
-                "requests_per_minute": o.get("requests_minute"),
-                "tokens_per_day": o.get("tokens_day"),
-            }
-        # Activation class (simplified)
-        prov = providers_mod.get_provider(o.get("provider_id", ""))
-        if prov:
-            if prov.setup_difficulty == 1 and not o.get("card_required"):
-                o["activation_class"] = "KEY_ONLY"
-            elif prov.setup_difficulty == 1:
-                o["activation_class"] = "SIGNUP"
-            else:
-                o["activation_class"] = "VERIFY"
-        else:
-            o["activation_class"] = "UNKNOWN"
+    
+    conn.close()
     return offers
 
 
@@ -97,8 +80,13 @@ def _load_all() -> dict:
         else:
             o["metadata"] = meta_str or {}
         offers.append(o)
+    
+    # Load events
+    event_rows = conn.execute("SELECT * FROM deal_events ORDER BY created_at DESC LIMIT 1000").fetchall()
+    events = [dict(r) for r in event_rows]
+    
     conn.close()
-    return {"offers": offers, "events": []}
+    return {"offers": offers, "events": events}
 
 
 # --- Core Endpoints ---
@@ -199,27 +187,72 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
             if prov and openai_compatible and not prov.openai_compatible:
                 continue
         result.append({
+            "offer_id": o.get("offer_id"),
             "model_id": o.get("model_id"),
             "provider_id": o.get("provider_id"),
             "input_per_m": o.get("input_per_m"),
             "output_per_m": o.get("output_per_m"),
             "free": o.get("free"),
-            "price_known": o.get("price_known", True),
+            "price_state": o.get("price_state", "unknown"),
             "context_tokens": o.get("context_tokens"),
             "offer_kind": o.get("offer_kind"),
             "metadata": o.get("metadata", {}),
         })
     result.sort(key=lambda x: x.get("input_per_m") if x.get("input_per_m") is not None else 9999)
-    result = _enrich_with_freshness(result)
-    # INVARIANT: exclude offers with unknown prices unless explicitly requested
-    result = [o for o in result if o.get("price_known", True)]
+    result = _enrich_with_verification(result)
+    # Filter by price_state: exclude offers with unknown prices unless explicitly requested
+    result = [o for o in result if o.get("price_state") != "unknown"]
     return {"deals": result[:limit], "count": len(result)}
 
 
 @app.get("/v1/deals/live")
 def deals_live(limit: int = Query(20, le=100)):
-    """Currently active deals."""
-    return list_deals(free=None, limit=limit)
+    """Currently active deals — verified live.
+    
+    Eligibility: latest qualifying verification check
+    AND checked_at >= freshness threshold
+    AND lifecycle state in (active, confirmed)
+    """
+    data = _load_all()
+    from verification import get_verification_status
+    
+    conn = canonical_db.connect()
+    canonical_db.migrate(conn)
+    
+    live_deals = []
+    for o in data["offers"]:
+        offer_id = o.get("offer_id")
+        if not offer_id:
+            continue
+        
+        status = get_verification_status(conn, offer_id)
+        level = status["verification_level"]
+        latest_check = status["latest_check_at"]
+        
+        # Must have at least PRIMARY_EVIDENCE
+        if level not in ["PRIMARY_EVIDENCE", "PRIMARY_CORROBORATED", "ENDPOINT_REACHABLE",
+                         "MODEL_LISTED", "INFERENCE_SUCCEEDED", "DEAL_CONDITION_CONFIRMED"]:
+            continue
+        
+        # Must have recent check (within 7 days)
+        if latest_check:
+            from datetime import datetime, timedelta
+            try:
+                check_time = datetime.fromisoformat(latest_check.replace("Z", "+00:00"))
+                if datetime.now(check_time.tzinfo) - check_time > timedelta(days=7):
+                    continue
+            except:
+                continue
+        
+        o["verification"] = {
+            "level": level,
+            "checked_at": latest_check,
+        }
+        live_deals.append(o)
+    
+    conn.close()
+    
+    return {"deals": live_deals[:limit], "count": len(live_deals)}
 
 
 @app.get("/v1/deals/free")
@@ -262,6 +295,7 @@ def list_prices(model: str = None, provider: str = None, sort: str = "input",
             "input_per_m": o.get("input_per_m"),
             "output_per_m": o.get("output_per_m"),
             "free": o.get("free"),
+            "price_state": o.get("price_state", "unknown"),
         })
     if sort == "input":
         result.sort(key=lambda x: x.get("input_per_m") if x.get("input_per_m") is not None else 9999)
@@ -272,14 +306,14 @@ def list_prices(model: str = None, provider: str = None, sort: str = "input",
 
 @app.get("/v1/history")
 def deal_history(model: str = None, provider: str = None, limit: int = Query(50, le=200)):
-    """Historical deal events."""
+    """Historical deal events from canonical database."""
     data = _load_all()
     events = data["events"]
     if model:
-        events = [e for e in events if model.lower() in str(e.get("model_id", "")).lower()]
+        events = [e for e in events if model.lower() in str(e.get("offer_id", "")).lower()]
     if provider:
-        events = [e for e in events if provider == e.get("provider_id")]
-    events.sort(key=lambda x: x.get("observed_at", ""), reverse=True)
+        events = [e for e in events if provider in e.get("offer_id", "")]
+    events.sort(key=lambda x: x.get("created_at", ""), reverse=True)
     return {"history": events[:limit], "count": len(events)}
 
 
@@ -504,16 +538,6 @@ def probe(provider: str = None):
     return {"probes": results, "count": len(results)}
 
 
-@app.get("/v1/history")
-def history():
-    """Historical snapshot comparison — what changed since last poll."""
-    import history as hist
-    comparison = hist.get_latest_comparison()
-    if comparison is None:
-        return {"message": "No historical data yet. First poll creates baseline."}
-    return comparison
-
-
 @app.get("/v1/verify/{model_id:path}")
 def verify_deal(model_id: str):
     """Verify a specific deal by probing its provider."""
@@ -526,6 +550,13 @@ def verify_deal(model_id: str):
     offer = matches[0]
     provider_id = offer.get("provider_id", "")
     probe_result = live_probe.get_probe_status(provider_id) or {}
+    
+    # Get verification status from engine
+    from verification import get_verification_status
+    conn = canonical_db.connect()
+    canonical_db.migrate(conn)
+    verification = get_verification_status(conn, offer.get("offer_id"))
+    conn.close()
 
     return {
         "model_id": model_id,
@@ -536,9 +567,12 @@ def verify_deal(model_id: str):
                      offer.get("metadata", {}).get("multiplier") is not None,
         "live_probe": probe_result,
         "source_url": offer.get("metadata", {}).get("source_url"),
-        "verification_status": "ENDPOINT_REACHABLE" if probe_result.get("live") else
-                               "SOURCE_LINKED" if offer.get("metadata", {}).get("source_url") or offer.get("source_url") else "UNVERIFIED",
-        "verification_note": "Endpoint reachable (HTTP %s) — does NOT prove deal is active" % probe_result.get("status_code", "?") if probe_result.get("live") else "No live probe available",
+        "verification": verification,
+        "verification_level": verification["verification_level"],
+        "verification_note": "Level %s — requires %s" % (
+            verification["verification_level"],
+            "actual checks" if verification["verification_level"] == "LEAD" else "evidence"
+        ),
     }
 
 
