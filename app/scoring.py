@@ -162,13 +162,18 @@ def score_vector(offer: dict, provider_meta=None) -> dict:
     else:
         workhorse = 0  # No data = no score
 
-    # --- Value: intelligence / cost ---
-    if intelligence is not None and cost_score is not None and cost_score > 0:
-        value = min(100, intelligence / cost_score * 50)
+    # --- Value: intelligence × cost efficiency ---
+    # cost_score: higher = cheaper (inverted scale)
+    # value = intelligence * cost_efficiency
+    # A free model with intelligence=70 gets value=70
+    # A $0.10/M model with intelligence=70 gets value=70*0.9=63
+    # A $10/M model with intelligence=70 gets value=70*0.3=21
+    if intelligence is not None and cost_score is not None:
+        value = intelligence * cost_score / 100
     elif is_free and intelligence is not None:
-        value = min(100, intelligence * 1.2)
+        value = intelligence  # free + intelligent = high value
     elif is_free:
-        value = 60  # free but no intelligence data
+        value = 50  # free but no intelligence data
     else:
         value = None
 

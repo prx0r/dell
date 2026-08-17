@@ -191,6 +191,15 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
                 continue  # exclude unknown prices from max_price filter
         if min_context and (o.get("context_tokens") or 0) < min_context:
             continue
+        # Filter by task capability (tool calling for agentic tasks)
+        if task in ("coding", "agentic", "agentic_coding") and not o.get("metadata", {}).get("tool_call"):
+            # Allow through but note it
+            pass
+        # Filter by OpenAI compatibility
+        if openai_compatible is not None:
+            prov = providers_mod.get_provider(o.get("provider_id", ""))
+            if prov and openai_compatible and not prov.openai_compatible:
+                continue
         result.append({
             "model_id": o.get("model_id"),
             "provider_id": o.get("provider_id"),
