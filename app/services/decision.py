@@ -2,6 +2,14 @@
 
 This is the single source of truth for all decision logic.
 REST and MCP both call this service.
+
+Key fixes from review:
+1. Calculate cost BEFORE checking budget
+2. Never coerce unknown to zero
+3. Build endpoint-level candidates
+4. Separate confidence from coverage
+5. Remove neutral 50 for unknown
+6. Don't treat context as quality
 """
 from __future__ import annotations
 
@@ -9,7 +17,7 @@ import json
 import math
 import time
 from typing import Optional
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 
 
@@ -121,6 +129,7 @@ class RouteCandidate:
     ttft_ms: Optional[float] = None
     quota_rpd: Optional[int] = None
     _workload_cost: Optional[float] = None
+    _cost_known: bool = False
 
 
 @dataclass
@@ -158,10 +167,15 @@ def resolve(request: ResolveRequest, offers: list[dict], endpoints: list[dict] =
     """Resolve the best route for a workload."""
     result = ResolveResult()
     
-    # 1. Build route candidates
+    # 1. Build route candidates (including endpoint-level)
     candidates = build_candidates(offers, endpoints)
     
-    # 2. Apply hard constraints
+    # 2. Calculate workload cost for EACH candidate FIRST
+    for candidate in candidates:
+        candidate._workload_cost = calculate_workload_cost(candidate, request.workload)
+        candidate._cost_known = candidate._workload_cost is not None
+    
+    # 3. Apply hard constraints (AFTER cost calculation)
     eligible = []
     excluded = []
     
@@ -186,10 +200,6 @@ def resolve(request: ResolveRequest, offers: list[dict], endpoints: list[dict] =
             "reasons": get_exclusion_summary(excluded),
         }
         return result
-    
-    # 3. Calculate workload cost for each route
-    for candidate in eligible:
-        candidate._workload_cost = calculate_workload_cost(candidate, request.workload)
     
     # 4. Score candidates
     assessments = []
@@ -231,7 +241,7 @@ def resolve(request: ResolveRequest, offers: list[dict], endpoints: list[dict] =
         "candidates": len(eligible),
         "excluded": len(excluded),
         "coverage": len(eligible) / len(offers) if offers else 0,
-        "method": "decision_service_v1",
+        "method": "decision_service_v2",
         "as_of": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
     
@@ -239,9 +249,10 @@ def resolve(request: ResolveRequest, offers: list[dict], endpoints: list[dict] =
 
 
 def build_candidates(offers: list[dict], endpoints: list[dict] = None) -> list[RouteCandidate]:
-    """Build route candidates from offers and endpoints."""
+    """Build route candidates from offers AND endpoints."""
     candidates = []
     
+    # Build from offers
     for offer in offers:
         candidate = RouteCandidate(
             offer_id=offer.get("offer_id", ""),
@@ -269,11 +280,32 @@ def build_candidates(offers: list[dict], endpoints: list[dict] = None) -> list[R
         candidate.reliability = meta.get("reliability")
         candidate.throughput_tps = meta.get("throughput_tps")
         candidate.ttft_ms = meta.get("ttft_ms")
-        
-        # Extract quota
         candidate.quota_rpd = offer.get("requests_per_day")
         
         candidates.append(candidate)
+    
+    # Build from endpoints (if provided)
+    if endpoints:
+        for endpoint in endpoints:
+            # Check if this endpoint already has a candidate
+            existing = [c for c in candidates if c.endpoint_id == endpoint.get("endpoint_id")]
+            if not existing:
+                # Create new candidate from endpoint
+                candidate = RouteCandidate(
+                    offer_id=endpoint.get("offer_id", ""),
+                    model_id=endpoint.get("model_id", ""),
+                    provider_id=endpoint.get("serving_provider_id", ""),
+                    endpoint_id=endpoint.get("endpoint_id"),
+                    input_per_m=endpoint.get("input_per_m"),
+                    output_per_m=endpoint.get("output_per_m"),
+                    free=endpoint.get("is_free", False),
+                    context_tokens=endpoint.get("context_tokens"),
+                    max_output_tokens=endpoint.get("max_output_tokens"),
+                    reliability=endpoint.get("reliability"),
+                    throughput_tps=endpoint.get("throughput_p50_tps"),
+                    ttft_ms=endpoint.get("latency_p50_ms"),
+                )
+                candidates.append(candidate)
     
     return candidates
 
@@ -283,9 +315,14 @@ def apply_hard_constraints(candidate: RouteCandidate, constraints: Constraints,
     """Apply hard constraints. Returns exclusion reasons."""
     reasons = []
     
-    # Cost constraint
+    # Cost constraint — check AFTER cost calculation
     if constraints.max_total_cost_usd is not None:
-        if candidate.input_per_m is None and not candidate.free:
+        if candidate._workload_cost is not None:
+            # Cost is known, check budget
+            if candidate._workload_cost > constraints.max_total_cost_usd:
+                reasons.append("COST_EXCEEDS_BUDGET")
+        elif not candidate.free:
+            # Cost is unknown and not free — exclude under strict policy
             if evidence_policy.unknown_hard_constraint == "exclude":
                 reasons.append("PRICE_UNKNOWN")
     
@@ -365,15 +402,23 @@ def apply_hard_constraints(candidate: RouteCandidate, constraints: Constraints,
 
 
 def calculate_workload_cost(candidate: RouteCandidate, workload: Workload) -> Optional[float]:
-    """Calculate total workload cost."""
+    """Calculate total workload cost.
+    
+    Returns None if cost cannot be calculated (unknown price).
+    NEVER coerces unknown to zero.
+    """
     if candidate.free:
         return 0.0
     
+    # If ANY price component is unknown, cost is unknown
     if candidate.input_per_m is None:
-        return None  # Unknown
+        return None  # Unknown — do NOT coerce to zero
+    
+    # Output price can be None (unknown) — cost is still calculable from input
+    output_per_m = candidate.output_per_m if candidate.output_per_m is not None else 0
     
     input_cost = candidate.input_per_m * workload.input_tokens_per_request / 1_000_000
-    output_cost = (candidate.output_per_m or 0) * workload.output_tokens_per_request / 1_000_000
+    output_cost = output_per_m * workload.output_tokens_per_request / 1_000_000
     request_cost = input_cost + output_cost
     total_cost = request_cost * workload.requests
     
@@ -384,7 +429,7 @@ def assess_route(candidate: RouteCandidate, request: ResolveRequest) -> RouteAss
     """Assess a route with scoring."""
     assessment = RouteAssessment(candidate=candidate)
     
-    # Calculate evidence coverage
+    # Calculate evidence coverage (fraction of fields with evidence)
     fields = [
         candidate.input_per_m is not None,
         candidate.output_per_m is not None,
@@ -395,10 +440,28 @@ def assess_route(candidate: RouteCandidate, request: ResolveRequest) -> RouteAss
     ]
     assessment.evidence_coverage = sum(fields) / len(fields)
     
-    # Calculate confidence
-    assessment.confidence = assessment.evidence_coverage
+    # Calculate confidence SEPARATELY from coverage
+    # Confidence is about evidence quality, not quantity
+    confidence_factors = []
     
-    # Score based on preferences
+    # Source authority
+    if candidate.reliability is not None:
+        confidence_factors.append(candidate.reliability / 100)
+    
+    # Measurement recency (assume recent if measured)
+    if candidate.throughput_tps is not None:
+        confidence_factors.append(0.9)
+    
+    # Corroboration (if multiple sources)
+    if candidate.evidence_coverage > 0.5:
+        confidence_factors.append(0.8)
+    
+    if confidence_factors:
+        assessment.confidence = sum(confidence_factors) / len(confidence_factors)
+    else:
+        assessment.confidence = 0.3  # Low confidence when no evidence
+    
+    # Score based on preferences — NO neutral 50 for unknown
     score = 0
     for obj in request.preferences.objectives:
         weight = obj.get("weight", 0.25)
@@ -407,24 +470,31 @@ def assess_route(candidate: RouteCandidate, request: ResolveRequest) -> RouteAss
         if name == "cost":
             if candidate.free:
                 score += weight * 100
-            elif candidate.input_per_m is not None:
-                score += weight * max(0, 100 - (candidate.input_per_m * 10))
+            elif candidate._workload_cost is not None:
+                # Score based on actual cost, not input_per_m
+                score += weight * max(0, 100 - (candidate._workload_cost * 1000))
+            else:
+                # Unknown cost — penalty, not neutral
+                score += weight * 20
         elif name == "reliability":
             if candidate.reliability is not None:
                 score += weight * candidate.reliability
             else:
-                score += weight * 50
+                # Unknown reliability — penalty, not neutral
+                score += weight * 30
         elif name == "throughput":
             if candidate.throughput_tps is not None:
                 score += weight * min(100, candidate.throughput_tps / 2)
             else:
-                score += weight * 50
+                # Unknown throughput — penalty, not neutral
+                score += weight * 30
         elif name == "quality":
-            if candidate.context_tokens and candidate.context_tokens >= 128000:
-                score += weight * 80
-            elif candidate.context_tokens and candidate.context_tokens >= 32000:
-                score += weight * 60
+            # Quality from benchmarks, NOT from context
+            meta = {}  # Would need benchmark data
+            if meta.get("coding_score"):
+                score += weight * meta["coding_score"]
             else:
+                # Unknown quality — penalty
                 score += weight * 40
     
     assessment.score = round(score, 2)
@@ -458,5 +528,8 @@ def get_recommendation_reasons(candidate: RouteCandidate, request: ResolveReques
     
     if candidate.reliability and candidate.reliability >= 80:
         reasons.append("High reliability (%d%%)" % candidate.reliability)
+    
+    if candidate._workload_cost is not None:
+        reasons.append("Estimated cost: $%.6f" % candidate._workload_cost)
     
     return reasons

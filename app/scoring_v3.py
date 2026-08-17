@@ -1,11 +1,10 @@
 """Scoring V3 — Final semantic scoring.
 
-Rules:
-1. Rankings are task/workload dependent
-2. Workhorse is route-level
-3. Confidence != coverage
-4. Capability is factual
-5. Missing dimensions never improve score
+Key fixes:
+- Confidence != coverage
+- No neutral 50 for unknown
+- Context is NOT quality
+- Task-specific weighting
 """
 from __future__ import annotations
 
@@ -58,18 +57,7 @@ class ScoringV3:
         self.task_profiles = TASK_PROFILES
     
     def score_route(self, route: dict, task: str = "general") -> dict:
-        """Score a route for a specific task.
-        
-        Returns:
-            {
-                "score": float,
-                "coverage": float,
-                "confidence": float,
-                "dimensions": {...},
-                "badges": [...],
-                "excluded_reasons": [...]
-            }
-        """
+        """Score a route for a specific task."""
         profile = self.task_profiles.get(task, self.task_profiles["general"])
         
         result = {
@@ -90,7 +78,7 @@ class ScoringV3:
         # Score dimensions
         dims = {}
         
-        # Quality (from benchmarks)
+        # Quality (from benchmarks ONLY, not context)
         quality = self._score_quality(route, profile)
         if quality is not None:
             dims["quality"] = quality
@@ -120,16 +108,21 @@ class ScoringV3:
         if capability is not None:
             dims["capability"] = capability
         
-        # Geometric mean with bottleneck awareness
+        # Task-weighted scoring (not geometric mean of present dimensions)
         if dims:
-            values = [max(0.01, v) for v in dims.values()]
-            base = math.exp(sum(math.log(v) for v in values) / len(values))
+            score = 0
+            for dim_name, dim_value in dims.items():
+                weight = self._get_dimension_weight(dim_name, profile)
+                score += weight * dim_value
             
-            # Coverage and confidence
-            coverage = len(dims) / 6
-            confidence = self._compute_confidence(dims)
+            # Coverage: fraction of required dimensions present
+            required_dims = ["quality", "economics", "reliability", "throughput"]
+            coverage = sum(1 for d in required_dims if d in dims) / len(required_dims)
             
-            result["score"] = round(base * coverage * confidence, 2)
+            # Confidence: based on evidence quality, NOT coverage
+            confidence = self._compute_confidence(dims, route)
+            
+            result["score"] = round(score, 2)
             result["coverage"] = round(coverage, 2)
             result["confidence"] = round(confidence, 2)
             result["dimensions"] = dims
@@ -143,7 +136,6 @@ class ScoringV3:
         """Check eligibility before scoring."""
         reasons = []
         
-        # Check required capabilities
         for cap in profile.get("required_capabilities", []):
             if cap == "tools" and route.get("tools_supported") is False:
                 reasons.append("TOOLS_NOT_SUPPORTED")
@@ -152,15 +144,26 @@ class ScoringV3:
         
         return reasons
     
+    def _get_dimension_weight(self, dim_name: str, profile: dict) -> float:
+        """Get weight for a dimension from task profile."""
+        weight_map = {
+            "quality": profile.get("quality_weight", 0.25),
+            "economics": profile.get("cost_weight", 0.35),
+            "reliability": profile.get("reliability_weight", 0.25),
+            "throughput": profile.get("throughput_weight", 0.15),
+            "capacity": 0.10,
+            "capability": 0.10,
+        }
+        return weight_map.get(dim_name, 0.10)
+    
     def _score_quality(self, route: dict, profile: dict) -> Optional[float]:
-        """Score quality from benchmarks."""
+        """Score quality from benchmarks ONLY."""
         meta = route.get("metadata", {})
         benchmarks = meta.get("benchmarks", [])
         
         if not benchmarks:
-            return None
+            return None  # Unknown — do NOT use context as proxy
         
-        # Get domain-specific scores
         domain = profile.get("benchmark_domains", ["general"])[0]
         scores = []
         
@@ -172,7 +175,6 @@ class ScoringV3:
             if score is None:
                 continue
             
-            # Check if benchmark matches domain
             if domain == "coding" and any(cb in name for cb in ["SWE-Bench", "Aider", "LiveCodeBench"]):
                 scores.append(score)
             elif domain == "reasoning" and any(rb in name for rb in ["GPQA", "MMLU-Pro", "FrontierMath"]):
@@ -194,7 +196,7 @@ class ScoringV3:
         
         in_m = route.get("input_per_m")
         if in_m is None:
-            return None
+            return None  # Unknown — do NOT coerce
         
         return max(0, min(100, 100 - (in_m * 10)))
     
@@ -204,7 +206,7 @@ class ScoringV3:
         if reliability is not None:
             return reliability
         
-        return None  # Unknown, don't fake it
+        return None  # Unknown — do NOT use neutral 50
     
     def _score_throughput(self, route: dict) -> Optional[float]:
         """Score throughput from endpoint measurements."""
@@ -212,7 +214,7 @@ class ScoringV3:
         if tps is not None:
             return min(100, tps / 2)
         
-        return None
+        return None  # Unknown — do NOT use neutral 50
     
     def _score_capacity(self, route: dict) -> Optional[float]:
         """Score capacity (quota)."""
@@ -230,7 +232,6 @@ class ScoringV3:
         """Score capability (factual, not weighted)."""
         meta = route.get("metadata", {})
         
-        # Factual capability assessment
         tools = meta.get("tool_call")
         if tools is True:
             return 80
@@ -239,35 +240,52 @@ class ScoringV3:
         else:
             return None  # Unknown
     
-    def _compute_confidence(self, dims: dict) -> float:
-        """Compute confidence based on evidence quality."""
-        total = 6
-        measured = sum(1 for v in dims.values() if v is not None)
-        return measured / total
+    def _compute_confidence(self, dims: dict, route: dict) -> float:
+        """Compute confidence based on evidence QUALITY, not quantity.
+        
+        Confidence is about:
+        - Source authority
+        - Measurement recency
+        - Corroboration
+        - NOT just number of dimensions present
+        """
+        confidence_factors = []
+        
+        # Source authority (from reliability)
+        if route.get("reliability") is not None:
+            confidence_factors.append(route["reliability"] / 100)
+        
+        # Measurement recency (assume recent if measured)
+        if route.get("throughput_tps") is not None:
+            confidence_factors.append(0.9)
+        
+        # Corroboration (if multiple dimensions have data)
+        if len(dims) > 3:
+            confidence_factors.append(0.8)
+        
+        if confidence_factors:
+            return sum(confidence_factors) / len(confidence_factors)
+        else:
+            return 0.3  # Low confidence when no evidence
     
     def _derive_badges(self, result: dict, route: dict, task: str) -> list:
         """Derive badges from scoring result."""
         badges = []
         dims = result.get("dimensions", {})
         
-        # Free badge
         if route.get("free"):
             badges.append("free")
         
-        # Workhorse badge (route-level)
         if result["score"] >= 70 and result["coverage"] >= 0.7:
             badges.append("workhorse")
         
-        # High Value badge
         if result["score"] >= 80:
             badges.append("high_value")
         
-        # Capability badges
         meta = route.get("metadata", {})
         if meta.get("tool_call") is True:
             badges.append("tool_capable")
         
-        # Context badge
         if route.get("context_tokens", 0) >= 128000:
             badges.append("long_context")
         

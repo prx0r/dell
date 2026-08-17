@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-08-17T22:57:41Z",
+  "total": 14,
+  "passed": 14,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "PK-01: Every claim links to a valid offer",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-02: Verification level from actual checks, not claim count",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-03: Tool event hash chain includes parent",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-04: Run root includes all Merkle roots",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-05: Sealed runs cannot be modified",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-06: Every claim has evidence (1:1 cardinality)",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-07: Evidence links to valid observations",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-08: Claims linked to correct observations",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-09: OpenCode extraction uses semantic rows",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-10: Events wired to offers, not sources",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-11: API uses verification engine, not old heuristics",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-12: Price uncertainty uses price_state",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-13: Investigation protocol has terminating condition",
+      "status": "PASS"
+    },
+    {
+      "name": "PK-14: Activation recipes have required fields",
+      "status": "PASS"
+    }
+  ]
+}

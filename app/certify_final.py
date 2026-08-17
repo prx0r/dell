@@ -220,10 +220,10 @@ def run_certification():
     # M1: Critical mutation kill = 100%
     print("  M1: Critical mutation kill")
     try:
-        ret = os.system("python3 -m app.mutation_tests 2>&1 | grep 'Detected: 9/10'")
+        ret = os.system("python3 -m app.mutation_tests 2>&1 | grep 'Detected: 10/'")
         if ret == 0:
-            results.append({"gate": "M1", "status": "PASS", "detail": "9/10 (90%)"})
-            print("    PASS — 9/10 (90%)")
+            results.append({"gate": "M1", "status": "PASS", "detail": "10/10 (100%)"})
+            print("    PASS — 10/10 (100%)")
         else:
             results.append({"gate": "M1", "status": "FAIL", "detail": "mutation tests failed"})
             print("    FAIL")

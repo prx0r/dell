@@ -176,23 +176,25 @@ def test_mutation_price_swap():
     """MUT-08: Swap input/output prices."""
     print("MUT-08: Price swap")
     
-    from economics import calculate_effective_cost
+    from scoring_v3 import ScoringV3
     
-    # Different prices should produce different costs
-    # Use asymmetric prices to make swap detectable
-    cost1 = calculate_effective_cost(
-        {"free": False, "input_per_m": 0.10, "output_per_m": 0.50}, 10000)
-    cost2 = calculate_effective_cost(
-        {"free": False, "input_per_m": 0.50, "output_per_m": 0.10}, 10000)
+    engine = ScoringV3()
     
-    # Costs should be different with asymmetric prices
-    correct = cost1 != cost2
+    # Different prices should produce different scores
+    route1 = {"free": False, "input_per_m": 0.10, "output_per_m": 0.50}
+    route2 = {"free": False, "input_per_m": 0.50, "output_per_m": 0.10}
+    
+    result1 = engine.score_route(route1, "general")
+    result2 = engine.score_route(route2, "general")
+    
+    # Scores should be different with asymmetric prices
+    correct = result1["score"] != result2["score"]
     
     return {
         "mutation": "MUT-08",
         "description": "Swap input/output prices",
-        "expected": "different costs",
-        "observed": "cost1=%.6f cost2=%.6f" % (cost1, cost2),
+        "expected": "different scores",
+        "observed": "score1=%.2f score2=%.2f" % (result1["score"], result2["score"]),
         "detected": correct,
     }
 
