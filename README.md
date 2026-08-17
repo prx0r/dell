@@ -1,101 +1,95 @@
-# GARGLECUM — OpenPāṭala's model recommendation layer (fka deal-radar)
+# LLM Deals
 
-The model intelligence layer for OpenPāṭala's Translation Factory and agentic system. Aggregates all
-machine-readable LLM pricing/quality into ONE canonical, live-updating model DB, and recommends the
-best model for each translation layer (SOURCE→T1→L0→ARGMAP→L2→L200→C1) via **API, MCP, and a lean
-static site** — optimized for agents (token-minimal, cached, measured).
+**The canonical live data layer for LLM inference economics.**
 
-**Part of the OpenPāṭala ecosystem** — see `/root/openpatalaproject` for the main product.
-Garglecum provides the model intelligence; OpenPāṭala provides the scholarly graph.
+> LLM Deals provides live, verifiable, machine-readable data about LLM inference opportunities, with every important claim traceable to evidence and every uncertainty represented honestly.
 
-## The agent-run layer (hermes-orchestrated)
-
-Garglecum is now fully agent-runnable, like sanskritbenchy:
-- **`VISION.md` / `GOALS.md`** — the goal + checkpointed roadmap (P1–P5), each a falsifiable gate.
-- **`agent/run.py`** — the orchestrator (validate/normalize/refresh/canary/recommend/report/watchdog),
-  logs every step to `data/agent-runs.jsonl`.
-- **`agent/watchdog.py`** — the daily health/freshness cycle (cron `garglecum-daily-watchdog`, 04:30 UTC).
-- **`agent/audit.py`** — the golden-file audit (the executable ONE RULE): recompute on fixed data, fail on
-  mismatch. Every result is content-addressed via `app/run_recorder.py` (nanopublication triples).
-- **`HERMES-MCP-API.md`** — how a hermes agent drives the service (MCP tools + recipes).
-- **`skills/deal-radar/SKILL.md`** — the hermes driver skill (verified loads).
-- **Kanban board** `dealradar` — P1–P5 tasks with dependency links.
-
-## The three surfaces (agents are the primary users)
-
-### 1. MCP server (the primary interface) — `mcp/server.py`
-11 goal-oriented tools (perf doctrine: fewer tools work better for agents):
-```
-pick_model(task, min_quality, prefer_free)  → best model for THIS task (coding/research/extraction/long-context/reasoning)
-check_live_prices()                          → price-health (canary + validation)
-get_model_details(model, task)               → granular detail + measured benchmark quality
-get_free_sources()                           → free-pool + rate limits
-recommend_for_query(query)                   → analyze a natural-language query → profile → pick + reason
-recommend_model_for_layer(layer)             → per translation-layer model (T1/ARGMAP/L2/L200/C1)
-get_capability_health()                      → capability coverage across providers
-find_inference_deals(task, max_cost)         → find deals matching task + budget
-compare_inference_offers(model, task)        → compare providers for a specific model
-get_deal_changes(since_hours)                → recent price/promo changes
-explain_deal(model, provider)                → full reasoning for a model+provider pick
-```
-Uses the MCP SDK v2 (MCPServer). Compact (token-minimal) by design.
-
-### 2. HTTP API (FastAPI, port 8799) — `app/api.py`
-```
-/health /models /frontiers /deals /route
-/recommend /tasks /benchmarks /rate-limits /canary /validation
-/compute-sources /free-pool /capabilities
-/recommend-layer /layer-config /ask
-/patala/layer-config  ← OpenPāṭala Factory integration
-POST /refresh
-```
-Agent-optimized: `format=compact` (54% smaller payloads), `ETag` + `Cache-Control: stale-while-revalidate`,
-provenance envelope on every response.
-
-### 3. Lean static site (Astro, 0-JS) — `web/`
-One homepage with category sections (free/coding/reasoning/vision) + the MCP/API callout. SEO for
-agents: JSON-LD structured data, canonical, robots. Build: `cd web && npx astro build`.
-
-## The data (canonical, live)
-- **3,439+ models** from litellm + llm-prices + models.dev + OpenRouter
-- **modality/capability tags** (vision/audio/reasoning/tool_call) from models.dev
-- **measured benchmarks** (SWE-Bench 1134 models, GPQA, Terminal-Bench) as quality_source=measured
-- **rate limits** for free tiers + the free-pool compute sources
-
-## The legitimacy (anti-theatre)
-Prices pulled live + validated against the API (drift-catching). Quality labeled `measured` vs
-`estimated` (never overclaimed). Providers canary-checked (live since X). All gates reproducible:
-`app/test*.py` → 25 PASS.
-
-## Run it
-```bash
-cd /root/ass-rape-spunk-porn
-python3 app/normalize.py          # re-pull + merge all sources → canonical DB
-python3 app/refresh.py            # daily: refresh + validate prices (exit 1 on drift)
-python3 app/canary.py             # daily: verify free providers are alive
-PYTHONPATH=. python3 -m uvicorn app.api:app --port 8799 --app-dir .   # API
-PYTHONPATH=mcp:app python3 mcp/server.py                                             # MCP (stdio)
-cd web && npx astro build         # the lean homepage
-```
-
-## OpenPāṭala integration
-
-Garglecum serves OpenPāṭala's Translation Factory by providing per-layer model recommendations:
+## Quick Start
 
 ```bash
-# Get the recommended model for a specific translation layer
-curl localhost:8799/patala/layer-config?layer=L2
-
-# MCP tool for agents
-get_patala_layer_config(layer="T1")
+pip install -r requirements.txt
+python -m app.cron_poll --all     # Poll all 17 sources
+python -m uvicorn app.api_canonical:app --port 8803  # Start API
 ```
 
-Translation layers: `SOURCE → T1 → L0 → ARGMAP → L2 → L200 → C1`
+## Architecture
 
-Each layer has different quality/cost/latency requirements:
-- **T1** (gloss): cheap, fast, bulk
-- **L0** (literal): moderate quality
-- **ARGMAP** (argument mapping): high quality, careful
-- **L2** (literary): high quality, nuanced
-- **L200** (scholarly): highest quality, expert-level
-- **C1** (commentary): high quality, contextual
+```
+Source Adapters → Canonical SQLite → DealService → REST + MCP + Site
+      ↓                                    ↓
+  Observations                      /v1/catalog
+      ↓                             /v1/deals
+  Claims                            /v1/deals/hot
+      ↓                             /v1/free
+  Evidence                          /v1/models
+      ↓                             /v1/providers
+  Adjudication                      /v1/recommend
+      ↓
+  Append-only Events
+      ↓
+  Current Projections
+```
+
+## API (port 8803)
+
+| Endpoint | Purpose |
+|----------|---------|
+| `GET /v1/models` | What models exist |
+| `GET /v1/providers` | What providers exist |
+| `GET /v1/deals` | Unusual opportunities |
+| `GET /v1/deals/hot` | Active deals |
+| `GET /v1/free` | Free models ranked by utility |
+| `GET /v1/catalog` | Everything (exhaustive) |
+| `GET /v1/recommend` | Task-first recommendation |
+| `GET /v1/stats` | Dataset statistics |
+| `GET /v1/glossary` | Terms for agents |
+
+## Sources (17 adapters)
+
+| Source | Data |
+|--------|------|
+| OpenRouter | 414 models, prices, free tiers |
+| models.dev | 349 models, benchmarks, capabilities |
+| HuggingFace Router | 312 models, per-provider pricing |
+| Artificial Analysis | 608 models, intelligence scores |
+| OpenCode Go | 11 models, 30K+ req/5h capacity |
+| Alibaba Bailian | 246 free per-model quotas |
+| Vercel Changelog | Launch pricing |
+| Hacker News | Community leads |
+| RSS (8 blogs) | Deal announcements |
+| SenseNova, Sakura, Scaleway, OVH, Z.AI, + more | Regional providers |
+
+## MCP Tools (9)
+
+| Tool | Purpose |
+|------|---------|
+| `find_inference_deals` | Search by task/price/free |
+| `get_free_models` | Ranked free models |
+| `get_providers` | Provider setup info |
+| `get_provider_setup` | Step-by-step setup |
+| `get_best_by_badge` | Category rankings |
+| `recommend_model` | Task-first recommendation |
+| `get_deal_changes` | Recent changes |
+| `explain_deal` | Deal deep-dive |
+| `get_dataset_stats` | Overview |
+
+## Identity System
+
+```text
+EXACT_SAME_MODEL → can propagate benchmarks
+SIBLING_VARIANT → cannot propagate benchmarks
+SAME_MODEL_DIFFERENT_PROVIDER → may propagate context
+```
+
+## Scoring
+
+10 dimensions: Intelligence, Workhorse, Value, Coding, Agentic, Tool Calling, Research, Long Context, Speed, Reliability
+
+21 badges: Mega Deal, Frontier, Workhorse, Coder, Agentic, Fast, Hidden Gem, Free, Long Context, Tool Caller, etc.
+
+## Testing
+
+```bash
+python -m app.invariant_tests  # 10/10 invariants
+python -m app.cron_poll         # Full pipeline
+```
