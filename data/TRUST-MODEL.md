@@ -72,10 +72,11 @@ LLM Deals is a **data layer** for LLM inference economics. It provides:
 
 ## Known Limitations
 
-1. **No expiry tracking**: 0/2463 offers have expiry dates
-2. **No live verification**: Most deals are not actively checked
-3. **No human verification**: All checks are automated
-4. **No streaming**: Data is batch-updated, not real-time
+1. **Partial expiry tracking**: Expiry dates not yet populated for most offers
+2. **Partial verification**: 33% of offers have full provenance
+3. **No live verification**: Most deals are not actively checked
+4. **No human verification**: All checks are automated
+5. **No streaming**: Data is batch-updated, not real-time
 
 ## What We Don't Claim
 

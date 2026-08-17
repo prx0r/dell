@@ -242,3 +242,32 @@ python3 -m app.certify --profile production  # Full certification
 8. MODEL != ENDPOINT != OFFER
 9. Provider != model author
 10. Unknown quantization stays UNKNOWN
+
+---
+
+## Documentation Governance
+
+### Single Source of Truth
+**AGENTS.md is the single source of truth.** All other docs must reference it.
+
+### How to Know What's Stale
+
+1. **Check modification time**: Any doc not updated in 7+ days is suspect
+2. **Check offer counts**: Current count is 1861 (as of 2026-08-18)
+3. **Check feature status**: If doc says "not implemented", it's a future plan
+4. **Check contradictions**: Any doc contradicting AGENTS.md is stale
+
+### Conflict Resolution
+
+| Doc Says | AGENTS.md Says | Status |
+|----------|----------------|--------|
+| 2463 offers | 1861 offers | STALE |
+| 1714 models | 1714 models | CURRENT |
+| 30 provenanced | 33% provenanced | CURRENT |
+| "not implemented" | Feature status | FUTURE PLAN |
+
+### Archive Policy
+
+- Archive any doc not updated in 7+ days
+- Archive any doc with stale references
+- Keep only docs that are actively maintained
