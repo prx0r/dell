@@ -331,19 +331,26 @@ def promotions(limit: int = Query(20, le=100)):
 
 @app.get("/v1/mega-deals")
 def mega_deals(limit: int = Query(10, le=50)):
-    """Abnormal institutional-quality deals — the most valuable opportunities.
-
-    Mega deals are offers where:
-    - Capacity is >3x baseline (e.g. MiMo 30K req/5h vs 4K baseline)
-    - Free with >10K requests
-    - Usage multiplier >=2x (e.g. Luna 2x usage)
-    - Price anomaly ($0 but not marked free)
-    """
+    """Abnormal institutional-quality deals — the most valuable opportunities."""
     data = _load_all()
     from mega_deals import detect_mega_deals, get_mega_deal_summary
     mega = detect_mega_deals(data["offers"])
     summary = get_mega_deal_summary(data["offers"])
     return {"mega_deals": mega[:limit], "summary": summary, "count": len(mega)}
+
+
+@app.get("/v1/deals/hot")
+def deals_hot(limit: int = Query(10, le=50)):
+    """Unusual opportunities — deals only, not ordinary catalog entries."""
+    data = _load_all()
+    from deal_classifier import classify_as_deal
+    deals = []
+    for o in data["offers"]:
+        result = classify_as_deal(o)
+        if result["is_deal"]:
+            deals.append({**o, "_deal_type": result["deal_type"], "_reasons": result["deal_reasons"]})
+    deals.sort(key=lambda x: len(x.get("_reasons", [])), reverse=True)
+    return {"deals": deals[:limit], "count": len(deals)}
 
 
 # --- Derived Economics ---

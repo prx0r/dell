@@ -24,6 +24,8 @@ import canonical_db
 import promo_extract
 import source_diff
 import source_health
+import event_recorder
+import discovery_claims
 from sources import registry
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -64,12 +66,14 @@ def run_discovery(sources: list[str] | None = None) -> dict:
                           and "MISSING_KEY" not in o.text and "RATE_LIMITED" not in o.text
                           for o in observations)
 
-            # Record observation in DB
-            if observations:
-                obs = observations[0]
-                canonical_db.insert_observation(
-                    conn, source_id, obs.url or "",
-                    obs.status or 0, obs.sha256, 0)
+            # Record ALL observations (P0.6 fix — not just first)
+            obs_ids = []
+            for obs in observations:
+                if obs.status is not None and not obs.text.startswith("FETCH_ERROR"):
+                    obs_id = canonical_db.insert_observation(
+                        conn, source_id, obs.url or "",
+                        obs.status or 0, obs.sha256, 0)
+                    obs_ids.append(obs_id)
 
             # Record fetch status
             source_health.record_fetch(source_id, success, latency,
@@ -83,22 +87,28 @@ def run_discovery(sources: list[str] | None = None) -> dict:
 
             registry.record_fetch(source_id, True)
 
-            # Extract offers
+            # Extract offers from ALL observations (not just first)
             source_offers = []
+            all_claims = []
             for obs in observations:
                 if obs.status is not None and not obs.text.startswith("FETCH_ERROR"):
                     offers = adapter.extract(obs)
                     source_offers.extend(offers)
+
+                    # Extract claims from this observation (P0.4)
+                    if obs_ids:
+                        claims = discovery_claims.extract_claims_from_adapter(adapter, obs)
+                        discovery_claims.commit_claims(conn, claims, obs_ids[-1])
+                        all_claims.extend(claims)
 
             # Deduplicate by offer_id
             seen = set()
             unique = []
             for o in source_offers:
                 oid = canonical_db.generate_offer_id(
-                    o.provider_id, o.model_id, o.offer_kind, "global")
+                    o.provider_id, o.model_id, o.offer_kind, None)
                 if oid not in seen:
                     seen.add(oid)
-                    # Store with offer_id
                     o_dict = o.__dict__.copy()
                     o_dict["offer_id"] = oid
                     unique.append(o_dict)
@@ -114,7 +124,7 @@ def run_discovery(sources: list[str] | None = None) -> dict:
                     o.get("free", False), o.get("context_tokens"),
                     o.get("requests_per_day"),
                     source_url=meta.get("source_url"),
-                    region=None,  # NULL = unknown, NOT 'global'
+                    region=None,
                     cache_read_per_m=o.get("cache_read_per_m"),
                     requests_per_5h=o.get("requests_per_5h") or meta.get("requests_per_5h"),
                     requests_per_minute=o.get("requests_minute"),
@@ -127,14 +137,17 @@ def run_discovery(sources: list[str] | None = None) -> dict:
                     deal_type=o.get("offer_kind"),
                     metadata_json=json.dumps(meta))
 
-            # Extract promotion events
+            # Record promotion events (P0.12)
             for obs in observations:
                 if obs.status is not None and not obs.text.startswith("FETCH_ERROR"):
                     events = promo_extract.extract_promotions(obs.text, source_id)
-                    all_events.extend(events)
+                    for event in events:
+                        event_recorder.record_event(
+                            conn, source_id, event.get("event_type", "unknown"),
+                            current_value=event, source_url=obs.url or "")
 
             all_offers.extend(source_offers)
-            logger.info("%s: %d offers", source_id, len(source_offers))
+            logger.info("%s: %d offers, %d claims", source_id, len(source_offers), len(all_claims))
 
         except Exception as e:
             logger.error("Error processing %s: %s", source_id, e)
