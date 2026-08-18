@@ -3,14 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join } from 'path';
 
-// Load MANIFEST
 const manifestPath = join(process.cwd(), '..', 'MANIFEST.json');
 let manifest = {};
 if (existsSync(manifestPath)) {
   manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
 }
 
-// Load snapshots for legacy display
 const snapshotsDir = join(process.cwd(), '..', 'snapshots');
 let allOffers = [];
 if (existsSync(snapshotsDir)) {
@@ -23,158 +21,138 @@ if (existsSync(snapshotsDir)) {
 
 const free = allOffers.filter(o => o.free);
 const providers = [...new Set(allOffers.map(o => o.provider_id))];
-const mega = allOffers.filter(o => (o.metadata?.capacity_ratio_vs_median || 0) >= 3 || (o.metadata?.multiplier || 0) >= 2);
-const topFree = free.filter(o => o.context_tokens).sort((a,b) => (b.context_tokens||0) - (a.context_tokens||0)).slice(0, 10);
-const topPaid = allOffers.filter(o => !o.free && o.input_per_m > 0).sort((a,b) => (a.input_per_m||999) - (b.input_per_m||999)).slice(0, 10);
+const mega = allOffers.filter(o => (o.metadata?.multiplier || 0) >= 2);
+const topFree = free.filter(o => o.context_tokens).sort((a,b) => (b.context_tokens||0) - (a.context_tokens||0)).slice(0, 8);
+const topPaid = allOffers.filter(o => !o.free && o.input_per_m > 0).sort((a,b) => (a.input_per_m||999) - (b.input_per_m||999)).slice(0, 8);
 ---
-<Layout title="Dell — LLM Inference Economics Oracle" description="Trustworthy, machine-readable inference-economics data for LLM routing and cost optimization.">
-  <header>
-    <h1>Dell</h1>
-    <p class="subtitle">LLM Inference Economics Oracle</p>
-    <p class="stats">
-      <strong>{manifest.stats?.offers || allOffers.length}</strong> models · 
-      <strong>{manifest.stats?.providers || providers.length}</strong> providers · 
-      <strong>{manifest.stats?.endpoints || 0}</strong> endpoints · 
-      <strong>{manifest.proof_kernel || '14/14'}</strong> proof kernel
-    </p>
-  </header>
+<Layout title="Dell — LLM Inference Economics" description="Find the cheapest, fastest, or best LLM route for your workload.">
+  <main>
+    <section class="hero">
+      <h1>Dell</h1>
+      <p class="tagline">Which model should I use?</p>
+      <div class="stats-row">
+        <span><strong>{manifest.stats?.offers || allOffers.length}</strong> models</span>
+        <span>·</span>
+        <span><strong>{manifest.stats?.providers || providers.length}</strong> providers</span>
+        <span>·</span>
+        <span><strong>{mega.length}</strong> deals</span>
+      </div>
+    </section>
 
-  <section class="hero">
-    <h2>Trustworthy Inference Data</h2>
-    <p>Every fact traceable to evidence. Every uncertainty represented honestly.</p>
-    <div class="cta">
-      <a href="/v1/resolve" class="primary">POST /v1/resolve</a>
-      <a href="/docs/API" class="secondary">API Docs</a>
-    </div>
-  </section>
+    <section class="query-box">
+      <h2>Quick Find</h2>
+      <div class="query-examples">
+        <code>POST /v1/resolve</code>
+        <pre>{`{
+  "workload": { "task": "coding" },
+  "constraints": {
+    "tools": "required",
+    "context_tokens": { "min": 64000 }
+  },
+  "preferences": { "optimize": "cost" }
+}`}</pre>
+      </div>
+    </section>
 
-  <section class="features">
-    <h2>What Dell Provides</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>🔍 Verified Data</h3>
-        <p>Every claim backed by evidence. Provenance chain from source to API.</p>
-      </div>
-      <div class="card">
-        <h3>🎯 Task-Aware Scoring</h3>
-        <p>Recommendations based on your workload, not generic rankings.</p>
-      </div>
-      <div class="card">
-        <h3>💰 Cost Optimization</h3>
-        <p>Find the cheapest route that meets your requirements.</p>
-      </div>
-      <div class="card">
-        <h3>🤖 Agent-Ready</h3>
-        <p>MCP tools for autonomous agents. Machine-readable decisions.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="mega-deals">
-    <h2>Mega Deals</h2>
-    {mega.length === 0 ? <p>No mega deals detected.</p> : (
-      <table>
-        <thead><tr><th>MODEL</th><th>PROVIDER</th><th>DEAL</th><th>CTX</th></tr></thead>
-        <tbody>
-        {mega.slice(0, 5).map(o => (
-          <tr>
-            <td>{o.model_id?.split('/').pop()}</td>
-            <td>{o.provider_id}</td>
-            <td>{o.metadata?.capacity_ratio_vs_median ? `${o.metadata.capacity_ratio_vs_median}x capacity` : o.metadata?.multiplier ? `${o.metadata.multiplier}x usage` : ''}</td>
-            <td>{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '-'}</td>
-          </tr>
-        ))}
-        </tbody>
-      </table>
+    {mega.length > 0 && (
+      <section class="deals">
+        <h2>🔥 Mega Deals</h2>
+        <table>
+          <thead><tr><th>Model</th><th>Provider</th><th>Deal</th><th>Context</th></tr></thead>
+          <tbody>
+          {mega.slice(0, 5).map(o => (
+            <tr>
+              <td><strong>{o.model_id?.split('/').pop()}</strong></td>
+              <td>{o.provider_id}</td>
+              <td class="deal-badge">{o.metadata?.multiplier}x usage</td>
+              <td>{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '—'}</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </section>
     )}
-  </section>
 
-  <section class="free-models">
-    <h2>Best Free Models</h2>
-    <table>
-      <thead><tr><th>MODEL</th><th>PROVIDER</th><th>CTX</th><th>TOOLS</th></tr></thead>
-      <tbody>
-      {topFree.map(o => (
-        <tr>
-          <td>{o.model_id?.split('/').pop()}</td>
-          <td>{o.provider_id}</td>
-          <td>{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '-'}</td>
-          <td>{o.metadata?.tool_call ? '✅' : '—'}</td>
-        </tr>
-      ))}
-      </tbody>
-    </table>
-  </section>
+    <section class="two-col">
+      <div class="col">
+        <h2>Best Free</h2>
+        <table>
+          <thead><tr><th>Model</th><th>Context</th></tr></thead>
+          <tbody>
+          {topFree.map(o => (
+            <tr>
+              <td>{o.model_id?.split('/').pop()}</td>
+              <td>{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '—'}</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <h2>Cheapest Paid</h2>
+        <table>
+          <thead><tr><th>Model</th><th>$/M</th></tr></thead>
+          <tbody>
+          {topPaid.map(o => (
+            <tr>
+              <td>{o.model_id?.split('/').pop()}</td>
+              <td>${o.input_per_m?.toFixed(4)}</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-  <section class="cheapest">
-    <h2>Cheapest Paid</h2>
-    <table>
-      <thead><tr><th>MODEL</th><th>PROVIDER</th><th>$/M tokens</th><th>CTX</th></tr></thead>
-      <tbody>
-      {topPaid.map(o => (
-        <tr>
-          <td>{o.model_id?.split('/').pop()}</td>
-          <td>{o.provider_id}</td>
-          <td>${o.input_per_m?.toFixed(4)}</td>
-          <td>{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '-'}</td>
-        </tr>
-      ))}
-      </tbody>
-    </table>
-  </section>
+    <section class="api-box">
+      <h2>API</h2>
+      <div class="endpoints">
+        <span class="method">POST</span> <code>/v1/resolve</code>
+        <span class="method">GET</span> <code>/v1/models</code>
+        <span class="method">GET</span> <code>/v1/free</code>
+        <span class="method">GET</span> <code>/v1/deals</code>
+        <span class="method">GET</span> <code>/v1/providers</code>
+      </div>
+      <p class="mcp-note">MCP available · 9 tools · Agent-ready</p>
+    </section>
 
-  <section class="api">
-    <h2>API</h2>
-    <div class="endpoints">
-      <code>POST /v1/resolve</code>
-      <code>GET /v1/routes</code>
-      <code>GET /v1/models</code>
-      <code>GET /v1/providers</code>
-      <code>GET /v1/deals</code>
-      <code>GET /v1/free</code>
-      <code>GET /v1/workhorses</code>
-      <code>GET /v1/high-value</code>
-      <code>GET /v1/evidence/:id</code>
-      <code>GET /v1/coverage</code>
-    </div>
-    <p class="mcp">MCP: resolve_inference · search_routes · compare_routes · explain_route · get_deal_changes · get_provider_setup · get_dataset_stats · plan_free_workload · list_models</p>
-  </section>
-
-  <section class="trust">
-    <h2>Trust Model</h2>
-    <ul>
-      <li>✅ Every fact traceable to evidence</li>
-      <li>✅ Every uncertainty represented honestly</li>
-      <li>✅ 14/14 proof kernel gates</li>
-      <li>✅ 100% mutation kill rate</li>
-      <li>✅ Cryptographic provenance</li>
-    </ul>
-    <p class="note">Dell provides evidence-based confidence levels, not guarantees.</p>
-  </section>
-
-  <footer>
-    <p>Version {manifest.version || '1.0.0'} · Schema {manifest.schema_version || 7} · <a href="/docs/API">API Docs</a></p>
-  </footer>
+    <footer>
+      <p>v{manifest.version || '1.0'} · {manifest.stats?.offers || '—'} models · <a href="/docs/API">Docs</a></p>
+    </footer>
+  </main>
 </Layout>
 
 <style>
-  .subtitle { color: #666; font-size: 1.2em; }
-  .stats { color: #444; }
-  .hero { text-align: center; padding: 2rem 0; }
-  .cta { margin-top: 1rem; }
-  .cta a { margin: 0 0.5rem; padding: 0.5rem 1rem; text-decoration: none; border-radius: 4px; }
-  .cta .primary { background: #007bff; color: white; }
-  .cta .secondary { border: 1px solid #007bff; color: #007bff; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
-  .card { border: 1px solid #ddd; padding: 1rem; border-radius: 8px; }
-  .card h3 { margin-top: 0; }
-  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-  th, td { padding: 0.5rem; text-align: left; border-bottom: 1px solid #ddd; }
-  th { background: #f5f5f5; }
-  .endpoints { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
-  .endpoints code { background: #f0f0f0; padding: 0.25rem 0.5rem; border-radius: 4px; }
-  .mcp { color: #666; font-size: 0.9em; }
-  .note { color: #666; font-style: italic; }
-  section { margin: 2rem 0; }
-  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; }
+  main { max-width: 720px; margin: 0 auto; padding: 2rem 1rem; }
+  .hero { text-align: center; margin-bottom: 2rem; }
+  .tagline { color: #666; font-size: 1.1em; margin: 0.5rem 0; }
+  .stats-row { display: flex; gap: 0.5rem; justify-content: center; color: #444; font-size: 0.95em; }
+  
+  .query-box { background: #f8f9fa; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .query-box h2 { margin-top: 0; font-size: 1.1em; }
+  .query-examples code { background: #e9ecef; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.85em; }
+  .query-examples pre { background: #1a1a1a; color: #f8f9fa; padding: 1rem; border-radius: 6px; overflow-x: auto; font-size: 0.85em; margin-top: 0.5rem; }
+  
+  .deals { background: #fff3cd; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .deals h2 { margin-top: 0; font-size: 1.1em; }
+  .deal-badge { background: #ffc107; color: #000; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.85em; font-weight: 600; }
+  
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+  .two-col h2 { font-size: 1.1em; }
+  
+  table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+  th, td { padding: 0.4rem 0.6rem; text-align: left; border-bottom: 1px solid #eee; }
+  th { color: #666; font-weight: 500; }
+  td:first-child { font-weight: 500; }
+  
+  .api-box { background: #f8f9fa; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .api-box h2 { margin-top: 0; font-size: 1.1em; }
+  .endpoints { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+  .method { background: #198754; color: white; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.75em; font-weight: 600; }
+  .endpoints code { background: #e9ecef; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.85em; }
+  .mcp-note { color: #666; font-size: 0.85em; margin-top: 0.5rem; }
+  
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #eee; color: #666; font-size: 0.85em; text-align: center; }
+  footer a { color: #0a58ca; }
 </style>
