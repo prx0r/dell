@@ -218,8 +218,9 @@ def list_deals(task: str = None, max_price: float = None, free: bool = None,
     result.sort(key=lambda x: x.get("input_per_m") if x.get("input_per_m") is not None else 9999)
     result = _enrich_with_verification(result)
     # Filter by price_state: exclude offers with unknown prices unless explicitly requested
-    result = [o for o in result if o.get("price_state") != "unknown"]
-    return {"deals": result[:limit], "count": len(result)}
+    # Free offers are always included regardless of price_state
+    result = [o for o in result if o.get("free") or o.get("price_state") != "unknown"]
+    return {"deals": result[:int(limit)], "count": len(result)}
 
 
 @app.get("/v1/deals/live")
@@ -342,6 +343,11 @@ def cheapest(task: str = Query("short_chat"), limit: int = Query(10, le=50)):
     data = _load_all()
     scored = []
     for o in data["offers"]:
+        # Filter by mode - only chat models for text tasks
+        meta = o.get("metadata", {})
+        mode = meta.get("mode", "")
+        if task in ("short_chat", "long_chat", "coding", "reasoning") and mode not in ("chat", "completion", ""):
+            continue
         if o.get("free"):
             cost = 0
         elif o.get("input_per_m") is None:
@@ -367,7 +373,7 @@ def best_value(limit: int = Query(10, le=50)):
 
 
 @app.get("/v1/free")
-def free_models(limit: int = Query(20, le=100)):
+def free_models(limit: int = 20):
     """All free models/offers."""
     return list_deals(free=True, limit=limit)
 
