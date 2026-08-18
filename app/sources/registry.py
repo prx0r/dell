@@ -67,6 +67,8 @@ SOURCES: dict[str, SourceEntry] = {
     "litellm-prices": SourceEntry("litellm-prices", "litellm prices", "app.sources.litellm_prices", 1440, priority=2),
     "context-engineering": SourceEntry("context-engineering", "Context Engineering", "app.sources.context_engineering", 1440, priority=3),
     "mcp-registry": SourceEntry("mcp-registry", "MCP Registry", "app.sources.mcp_registry", 1440, priority=2),
+    "price-performance": SourceEntry("price-performance", "Price-Performance Dataset", "app.sources.price_performance", 1440, priority=2),
+    "genai-prices": SourceEntry("genai-prices", "GenAI Prices", "app.sources.genai_prices", 1440, priority=2),
 }
 
 
