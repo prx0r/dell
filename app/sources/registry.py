@@ -62,6 +62,11 @@ SOURCES: dict[str, SourceEntry] = {
     "nebius": SourceEntry("nebius", "Nebius", "app.sources.nebius", 1440, priority=3),
     "novita": SourceEntry("novita", "Novita", "app.sources.novita", 1440, priority=2),
     "io-net": SourceEntry("io-net", "io.net", "app.sources.io_net", 1440, priority=3),
+    # Cloned repo sources
+    "awesome-free-llm-apis": SourceEntry("awesome-free-llm-apis", "awesome-free-llm-apis", "app.sources.free_llm_apis", 1440, priority=1),
+    "litellm-prices": SourceEntry("litellm-prices", "litellm prices", "app.sources.litellm_prices", 1440, priority=2),
+    "context-engineering": SourceEntry("context-engineering", "Context Engineering", "app.sources.context_engineering", 1440, priority=3),
+    "mcp-registry": SourceEntry("mcp-registry", "MCP Registry", "app.sources.mcp_registry", 1440, priority=2),
 }
 
 
