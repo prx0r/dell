@@ -906,3 +906,147 @@ def resolve_route(request: dict):
     
     result = resolve(req, data["offers"])
     return result.to_dict()
+
+
+# =============================================================================
+# EXPORT ENDPOINTS — litellm-compatible + universal router formats
+# =============================================================================
+
+@app.get("/v1/export/litellm")
+def export_litellm_format(free_only: bool = False):
+    """Export offers in litellm model_prices_and_context_window.json format.
+    
+    This allows any litellm-compatible router to consume Dell's data.
+    """
+    conn = canonical_db.connect()
+    try:
+        if free_only:
+            rows = conn.execute(
+                "SELECT * FROM offers WHERE free=1 OR free='true' OR free=1 ORDER BY provider_id, model_id"
+            ).fetchall()
+        else:
+            rows = conn.execute(
+                "SELECT * FROM offers ORDER BY provider_id, model_id"
+            ).fetchall()
+        
+        litellm_format = {}
+        for row in [dict(r) for r in rows]:
+            model_id = row["model_id"] or row.get("provider_model_slug", "unknown")
+            meta = json.loads(row["metadata_json"] or "{}")
+            
+            entry = {
+                "litellm_provider": row.get("provider_id", "unknown"),
+                "input_cost_per_token": (row["input_per_m"] / 1_000_000) if row.get("input_per_m") else None,
+                "output_cost_per_token": (row["output_per_m"] / 1_000_000) if row.get("output_per_m") else None,
+                "max_input_tokens": row.get("context_tokens"),
+                "max_output_tokens": meta.get("max_output_tokens"),
+                "mode": meta.get("mode", "chat"),
+                "supports_function_calling": "function_calling" in meta.get("supports", []),
+                "supports_vision": "vision" in meta.get("supports", []),
+                "supports_prompt_caching": "prompt_caching" in meta.get("supports", []),
+                "supports_reasoning": "reasoning" in meta.get("supports", []),
+                "supports_response_schema": "response_schema" in meta.get("supports", []),
+                "supports_system_messages": "system_messages" in meta.get("supports", []),
+                "supports_tool_choice": "tool_choice" in meta.get("supports", []),
+            }
+            
+            # Add cache costs if available
+            if meta.get("cache_read_input"):
+                entry["cache_read_input_token_cost"] = meta["cache_read_input"] / 1_000_000
+            if meta.get("batch_input_per_m"):
+                entry["input_cost_per_token_batches"] = meta["batch_input_per_m"] / 1_000_000
+            if meta.get("priority_input_per_m"):
+                entry["input_cost_per_token_priority"] = meta["priority_input_per_m"] / 1_000_000
+            
+            litellm_format[model_id] = entry
+        
+        return litellm_format
+    finally:
+        conn.close()
+
+
+@app.get("/v1/export/universal")
+def export_universal_format(free_only: bool = False, task: str = None):
+    """Export offers in a universal router-agnostic format.
+    
+    Works with any LLM router: litellm, openrouter, custom, etc.
+    """
+    conn = canonical_db.connect()
+    try:
+        if free_only:
+            rows = conn.execute(
+                "SELECT * FROM offers WHERE free=1 OR free='true' OR free=1 ORDER BY provider_id, model_id"
+            ).fetchall()
+        else:
+            rows = conn.execute(
+                "SELECT * FROM offers ORDER BY provider_id, model_id"
+            ).fetchall()
+        
+        universal = []
+        for row in [dict(r) for r in rows]:
+            meta = json.loads(row["metadata_json"] or "{}")
+            
+            entry = {
+                "provider": row.get("provider_id", "unknown"),
+                "model": row.get("model_id", "unknown"),
+                "slug": row.get("provider_model_slug"),
+                "free": bool(row.get("free")),
+                "pricing": {
+                    "input_per_million": row.get("input_per_m"),
+                    "output_per_million": row.get("output_per_m"),
+                    "cache_read_per_million": row.get("cache_read_per_m"),
+                },
+                "limits": {
+                    "context_tokens": row.get("context_tokens"),
+                    "requests_per_day": row.get("requests_day"),
+                    "tokens_per_day": row.get("tokens_day"),
+                },
+                "capabilities": meta.get("supports", []),
+                "metadata": {
+                    "source": row.get("source"),
+                    "mode": meta.get("mode"),
+                    "deprecation": meta.get("deprecation_date"),
+                    "regions": meta.get("supported_regions"),
+                },
+            }
+            universal.append(entry)
+        
+        return {"models": universal, "count": len(universal), "format": "universal"}
+    finally:
+        conn.close()
+
+
+@app.get("/v1/export/deals")
+def export_deals_format():
+    """Export only deals/promotions in a format suitable for deal aggregators."""
+    conn = canonical_db.connect()
+    try:
+        rows = conn.execute(
+            "SELECT * FROM offers WHERE free=1 OR free='true' OR free=1 ORDER BY provider_id, model_id"
+        ).fetchall()
+        
+        deals = []
+        for row in [dict(r) for r in rows]:
+            meta = json.loads(row["metadata_json"] or "{}")
+            
+            entry = {
+                "provider": row.get("provider_id", "unknown"),
+                "model": row.get("model_id", "unknown"),
+                "type": "free_tier",
+                "value": {
+                    "context_tokens": row.get("context_tokens"),
+                    "requests_per_day": row.get("requests_day"),
+                    "tokens_per_day": row.get("tokens_day"),
+                },
+                "quality": {
+                    "supports": meta.get("supports", []),
+                    "mode": meta.get("mode"),
+                },
+                "source": row.get("source"),
+                "verified_at": row.get("verified_at"),
+            }
+            deals.append(entry)
+        
+        return {"deals": deals, "count": len(deals), "format": "deals"}
+    finally:
+        conn.close()
