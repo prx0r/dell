@@ -16,3 +16,28 @@
 - Decision (constraints, cost)
 - Scoring (no priors, coverage)
 - Mutation (kill rate)
+
+## Source Adapter Tests
+
+Each source adapter has `fetch()` and `extract()` functions that can be tested independently:
+
+```python
+from app.sources.free_llm_apis import fetch, extract
+obs = fetch()
+offers = extract(obs[0])
+print(f"Offers: {len(offers)}")
+```
+
+## Verified Sources (42 total)
+
+| Priority | Source | Cadence | Offers |
+|----------|--------|---------|--------|
+| 1 | opencode-go | 120min | models |
+| 1 | nous-portal | 120min | models |
+| 1 | awesome-free-llm-apis | 24h | 145 free tiers |
+| 2 | litellm-prices | 24h | 3040 model prices |
+| 2 | mcp-registry | 24h | 234 MCP tools |
+| 2 | openrouter-models | 6h | models |
+| 2 | hackernews | 2h | signals |
+| 3 | models-dev | 24h | capabilities |
+| 3 | context-engineering | 24h | patterns |

@@ -188,6 +188,15 @@ python3 -m app.certify_final         # Final certificate
 - `app/provenance.py` — Provenance chain
 - `app/resolve.py` — Resolve endpoint
 
+### Sources (42 total)
+- `app/sources/registry.py` — Source registry (42 sources)
+- `app/sources/free_llm_apis.py` — awesome-free-llm-apis (145 free tiers)
+- `app/sources/litellm_prices.py` — litellm model prices (3040 models)
+- `app/sources/mcp_registry.py` — MCP server registry (234 tools)
+- `app/sources/context_engineering.py` — Context patterns
+- `app/sources/opencode.py` — OpenCode Go pricing
+- `app/sources/models_dev.py` — models.dev capabilities
+
 ### Schema
 - `app/migrations/0001-0007` — 7 migrations
 - `app/schema_check.py` — Schema verification
