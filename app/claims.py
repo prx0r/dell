@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import time
+import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
@@ -84,7 +85,7 @@ class VerifiedResource:
     claim_url: str = ""
     
     # From verification
-    verified_state: VerificationState = VerificationState.UNVERIFIED
+    verified_state: VerificationState = VerificationStatus.UNVERIFIED
     last_probe_at: str | None = None
     probe_count: int = 0
     success_count: int = 0
@@ -169,20 +170,20 @@ def build_verified_resource(
     
     # Determine state
     if total_probes == 0:
-        state = VerificationState.UNVERIFIED
+        state = VerificationStatus.UNVERIFIED
     elif success_rate >= 0.9:
-        state = VerificationState.VERIFIED
+        state = VerificationStatus.VERIFIED
     elif success_rate >= 0.5:
-        state = VerificationState.DEGRADED
+        state = VerificationStatus.DEGRADED
     else:
-        state = VerificationState.FAILED
+        state = VerificationStatus.FAILED
     
     # Check freshness
     if verifications:
         last_probe = max(v.measured_at for v in verifications)
         hours_since = (datetime.now(timezone.utc) - datetime.fromisoformat(last_probe)).total_seconds() / 3600
         if hours_since > 24:
-            state = VerificationState.STALE
+            state = VerificationStatus.STALE
     
     # Extract verified capabilities
     verified_caps = []
