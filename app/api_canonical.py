@@ -1383,20 +1383,37 @@ def gpu_cheapest(
     gpu: str = "H100",
     count: int = 1,
     duration_hours: int = 1,
-    limit: int = Query(10, le=50),
+    limit: int = 10,
 ):
     """Cheapest GPU compute across centralized + decentralized."""
-    # Placeholder — would query Akash, Bittensor, etc.
+    from networks.akash import AKASH
+    from networks.bittensor import BITTENSOR
+    from networks.nosana import NOSANA
+    
+    # Collect prices from all networks
+    all_prices = []
+    all_prices.extend(AKASH.get_gpu_prices())
+    all_prices.extend(BITTENSOR.get_gpu_prices())
+    all_prices.extend(NOSANA.get_gpu_prices())
+    
+    # Filter by GPU type
+    filtered = [p for p in all_prices if p["gpu"].upper() == gpu.upper()]
+    
+    # Calculate total cost
+    for p in filtered:
+        p["total_cost_usd"] = p["price_per_hour_usd"] * count * duration_hours
+        p["count"] = count
+        p["duration_hours"] = duration_hours
+    
+    # Sort by price
+    filtered.sort(key=lambda x: x["price_per_hour_usd"])
+    
     return {
         "gpu": gpu,
         "count": count,
         "duration_hours": duration_hours,
-        "providers": [
-            {"network": "akash", "price_per_hour": 1.20, "status": "LIVE"},
-            {"network": "bittensor", "price_per_hour": 0.85, "status": "EXPERIMENTAL"},
-            {"network": "nosana", "price_per_hour": 1.10, "status": "LIVE"},
-        ],
-        "count": 3,
+        "providers": filtered[:int(limit)],
+        "count": len(filtered),
     }
 
 
@@ -1431,34 +1448,42 @@ def provider_health(provider_id: str):
 @app.get("/v1/networks/{network_id}")
 def network_info(network_id: str):
     """Info about a compute network (bittensor, akash, etc.)."""
-    # Placeholder — would query network-specific APIs
+    from networks.akash import AKASH
+    from networks.bittensor import BITTENSOR
+    from networks.nosana import NOSANA
+    
     networks = {
-        "bittensor": {
-            "name": "Bittensor",
-            "type": "decentralized",
-            "subnets": 64,
-            "total_miners": 10000,
-            "status": "ACTIVE",
-        },
-        "akash": {
+        "akash": lambda: {
             "name": "Akash",
             "type": "decentralized",
-            "total_providers": 500,
+            "description": "Decentralized serverless compute marketplace",
             "total_spend_5m": 5000000,
-            "status": "ACTIVE",
+            "status": AKASH.probe_health()["status"],
+            "gpu_prices": AKASH.get_gpu_prices(),
         },
-        "nosana": {
+        "bittensor": lambda: {
+            "name": "Bittensor",
+            "type": "decentralized",
+            "description": "Decentralized neural network subnets",
+            "subnets": len(BITTENSOR.get_all_subnets()),
+            "total_miners": 10000,
+            "status": "ACTIVE",
+            "subnets": BITTENSOR.get_all_subnets(),
+        },
+        "nosana": lambda: {
             "name": "Nosana",
             "type": "decentralized",
+            "description": "Solana-based decentralized compute",
             "network": "solana",
-            "status": "ACTIVE",
+            "status": NOSANA.probe_health()["status"],
+            "gpu_prices": NOSANA.get_gpu_prices(),
         },
     }
     
     if network_id not in networks:
         return {"network": network_id, "status": "NOT_FOUND"}
     
-    return networks[network_id]
+    return networks[network_id]()
 
 
 @app.get("/v1/opportunities")
