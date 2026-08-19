@@ -69,6 +69,7 @@ SOURCES: dict[str, SourceEntry] = {
     "mcp-registry": SourceEntry("mcp-registry", "MCP Registry", "app.sources.mcp_registry", 1440, priority=2),
     "price-performance": SourceEntry("price-performance", "Price-Performance Dataset", "app.sources.price_performance", 1440, priority=2),
     "genai-prices": SourceEntry("genai-prices", "GenAI Prices", "app.sources.genai_prices", 1440, priority=2),
+    "decentralized-compute": SourceEntry("decentralized-compute", "Decentralized Compute", "app.sources.decentralized_compute", 1440, priority=2),
 }
 
 
