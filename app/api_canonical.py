@@ -1556,3 +1556,179 @@ def breakeven(
         }
     finally:
         conn.close()
+
+
+# =============================================================================
+# COMPUTE RADAR — 3 core concepts: offers, resolve, probe
+# =============================================================================
+
+@app.get("/v1/compute/offers")
+def compute_offers(
+    gpu: str = None,
+    provider: str = None,
+    max_price: float = None,
+    limit: int = 20,
+):
+    """Raw market intelligence — what GPUs/compute exist and what providers claim."""
+    import canonical_db
+    from friction import get_friction_score
+    
+    conn = canonical_db.connect()
+    try:
+        query = "SELECT * FROM offers WHERE 1=1"
+        params = []
+        
+        if gpu:
+            query += " AND metadata_json LIKE ?"
+            params.append(f"%{gpu}%")
+        if provider:
+            query += " AND provider_id = ?"
+            params.append(provider)
+        
+        rows = conn.execute(query, params).fetchall()
+        
+        offers = []
+        for row in [dict(r) for r in rows]:
+            meta = json.loads(row.get("metadata_json", "{}") or "{}")
+            provider_id = row.get("provider_id", "")
+            
+            # Calculate friction
+            friction = get_friction_score(provider_id)
+            
+            offers.append({
+                "provider": provider_id,
+                "model": row.get("model_id"),
+                "advertised_price": row.get("input_per_m"),
+                "free": bool(row.get("free")),
+                "context": row.get("context_tokens"),
+                "supports": meta.get("supports", []),
+                "friction_score": friction,
+                "state": meta.get("state", "UNKNOWN"),
+            })
+        
+        offers.sort(key=lambda x: x["friction_score"])
+        return {"offers": offers[:limit], "count": len(offers)}
+    finally:
+        conn.close()
+
+
+@app.post("/v1/compute/resolve")
+def compute_resolve(
+    workload: dict = None,
+    requirements: dict = None,
+    optimize: str = "effective_cost",
+):
+    """Decision — what execution substrate gives best expected outcome."""
+    import canonical_db
+    from friction import get_friction_score, calculate_friction, FrictionFactors
+    
+    conn = canonical_db.connect()
+    try:
+        # Get all inference offers
+        rows = conn.execute("""
+            SELECT * FROM offers WHERE metadata_json LIKE '%chat%'
+            AND (input_per_m IS NOT NULL OR free = 1)
+        """).fetchall()
+        
+        results = []
+        for row in [dict(r) for r in rows]:
+            meta = json.loads(row.get("metadata_json", "{}") or "{}")
+            provider_id = row.get("provider_id", "")
+            input_m = row.get("input_per_m") or 0
+            free = bool(row.get("free"))
+            
+            # Calculate effective cost
+            rental_cost = 0 if free else input_m / 1_000_000
+            storage_cost = 0
+            startup_cost = 0
+            failure_cost = 0
+            effective_cost = rental_cost + storage_cost + startup_cost + failure_cost
+            
+            # Get friction
+            friction = get_friction_score(provider_id)
+            
+            # Calculate success probability
+            success_prob = 0.95  # base
+            if friction > 0.5:
+                success_prob *= 0.8
+            if free:
+                success_prob *= 0.95  # free = less reliable
+            
+            results.append({
+                "provider": provider_id,
+                "model": row.get("model_id"),
+                "effective_cost": effective_cost,
+                "friction_score": friction,
+                "success_probability": success_prob,
+                "context": row.get("context_tokens"),
+                "free": free,
+                "supports": meta.get("supports", []),
+                "state": meta.get("state", "UNKNOWN"),
+            })
+        
+        # Sort by optimization target
+        if optimize == "effective_cost":
+            results.sort(key=lambda x: x["effective_cost"])
+        elif optimize == "success_probability":
+            results.sort(key=lambda x: -x["success_probability"])
+        elif optimize == "friction":
+            results.sort(key=lambda x: x["friction_score"])
+        
+        return {
+            "resolve": results[:10],
+            "optimize": optimize,
+            "total_candidates": len(results),
+        }
+    finally:
+        conn.close()
+
+
+@app.post("/v1/compute/probe")
+def compute_probe(
+    provider: str,
+    model: str = None,
+    endpoint_url: str = None,
+):
+    """Reality check — does the thing actually provision and run?"""
+    from probes import probe_endpoint as probe_fn
+    from observations import create_observation, update_observation
+    
+    # Default endpoint URL
+    if not endpoint_url:
+        endpoint_urls = {
+            "chutes": "https://api.chutes.ai/v1/chat/completions",
+            "venice": "https://api.venice.ai/v1/chat/completions",
+            "hyperbolic": "https://api.hyperbolic.xyz/v1/chat/completions",
+            "heurist": "https://api.heurist.ai/v1/chat/completions",
+            "io_intelligence": "https://api.io.net/v1/chat/completions",
+            "akash_ml": "https://api.akashml.io/v1/chat/completions",
+        }
+        endpoint_url = endpoint_urls.get(provider, f"https://api.{provider}.com/v1/chat/completions")
+    
+    if not model:
+        model = "default"
+    
+    obs = create_observation(provider, model, AdvertisedSpec(), source="probe")
+    result = probe_fn(provider, model, endpoint_url)
+    
+    from observations import update_observation
+    updated = update_observation(
+        obs,
+        success=result["success"],
+        latency_ms=result.get("latency_ms"),
+        ttft_ms=result.get("ttft_ms"),
+        rate_429=result.get("is_429", False),
+        error=result.get("error"),
+    )
+    
+    return {
+        "provider": provider,
+        "model": model,
+        "state": updated.state.value,
+        "success": result["success"],
+        "latency_ms": result.get("latency_ms"),
+        "ttft_ms": result.get("ttft_ms"),
+        "error": result.get("error"),
+        "is_429": result.get("is_429", False),
+        "verified": result["success"],
+    }
