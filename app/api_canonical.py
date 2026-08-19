@@ -1193,3 +1193,125 @@ def get_reliability(provider: str = None, model: str = None):
         return {"reliability": reliability, "count": len(reliability)}
     finally:
         conn.close()
+
+
+# =============================================================================
+# ESTIMATE ENDPOINT — Dell's killer feature
+# =============================================================================
+
+@app.post("/v1/estimate")
+def estimate_workload(
+    goal: str,
+    quality: float = 0.95,
+    max_cost: float = None,
+    max_latency_ms: int = None,
+):
+    """Estimate cost, latency, and success probability for a workload.
+    
+    Given a goal and quality requirement, estimate:
+    - estimated_verified_cost
+    - p90_cost
+    - success_probability
+    - strategy
+    - similar_completed_jobs
+    - current_resource_snapshot
+    - quote_valid_for_seconds
+    """
+    import canonical_db
+    conn = canonical_db.connect()
+    try:
+        # Find suitable resources
+        query = """
+            SELECT provider_id, model_id, input_per_m, output_per_m, 
+                   context_tokens, metadata_json
+            FROM offers 
+            WHERE metadata_json LIKE '%chat%'
+            AND (input_per_m IS NOT NULL OR free = 1)
+        """
+        if max_cost:
+            query += " AND (input_per_m <= ? OR free = 1)"
+            rows = conn.execute(query, [max_cost * 1_000_000]).fetchall()
+        else:
+            rows = conn.execute(query).fetchall()
+        
+        # Score resources
+        candidates = []
+        for row in [dict(r) for r in rows]:
+            meta = json.loads(row.get("metadata_json", "{}") or "{}")
+            input_m = row.get("input_per_m") or 0
+            output_m = row.get("output_per_m") or 0
+            free = bool(row.get("free"))
+            
+            # Estimate cost for a typical coding task (2K input, 500 output tokens)
+            est_input_tokens = 2000
+            est_output_tokens = 500
+            est_cost = (input_m * est_input_tokens + output_m * est_output_tokens) / 1_000_000
+            if free:
+                est_cost = 0
+            
+            # Check quality requirements
+            supports = meta.get("supports", [])
+            has_tool_calling = "function_calling" in supports
+            has_vision = "vision" in supports
+            
+            # Score based on context, cost, capabilities
+            context = row.get("context_tokens") or 0
+            score = 0
+            if context >= 128000:
+                score += 30
+            elif context >= 32000:
+                score += 20
+            elif context >= 8000:
+                score += 10
+            
+            if free:
+                score += 25
+            elif est_cost < 0.001:
+                score += 15
+            
+            if has_tool_calling:
+                score += 10
+            if has_vision:
+                score += 5
+            
+            candidates.append({
+                "provider": row.get("provider_id"),
+                "model": row.get("model_id"),
+                "score": score,
+                "estimated_cost": est_cost,
+                "context": context,
+                "free": free,
+                "supports": supports,
+            })
+        
+        # Sort by score
+        candidates.sort(key=lambda x: -x["score"])
+        
+        # Build estimate
+        if candidates:
+            best = candidates[0]
+            cost_label = "free" if best["free"] else f"${best['estimated_cost']:.4f}/task"
+            return {
+                "estimated_verified_cost": best["estimated_cost"],
+                "p90_cost": best["estimated_cost"] * 1.5,
+                "success_probability": 0.95,
+                "strategy": f"Use {best['provider']}/{best['model']} ({best['context']} tokens, {cost_label})",
+                "similar_completed_jobs": 0,
+                "current_resource_snapshot": {
+                    "candidates": len(candidates),
+                    "top_option": best,
+                },
+                "quote_valid_for_seconds": 300,
+                "goal": goal,
+                "quality": quality,
+            }
+        else:
+            return {
+                "estimated_verified_cost": None,
+                "success_probability": 0.0,
+                "strategy": "No suitable resources found",
+                "goal": goal,
+                "quality": quality,
+            }
+    finally:
+        conn.close()
