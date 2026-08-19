@@ -1315,3 +1315,219 @@ def estimate_workload(
             }
     finally:
         conn.close()
+
+
+# =============================================================================
+# COMPUTE RADAR — Dell's killer product
+# =============================================================================
+
+@app.get("/v1/inference/cheapest")
+def inference_cheapest(
+    model: str = None,
+    tool_calling: bool = None,
+    min_context: int = None,
+    verified_live: bool = False,
+    limit: int = Query(10, le=50),
+):
+    """Cheapest inference for a model/capability."""
+    import canonical_db
+    conn = canonical_db.connect()
+    try:
+        query = """
+            SELECT provider_id, model_id, input_per_m, output_per_m, 
+                   context_tokens, free, metadata_json
+            FROM offers 
+            WHERE metadata_json LIKE '%chat%'
+            AND (input_per_m IS NOT NULL OR free = 1)
+        """
+        params = []
+        if model:
+            query += " AND model_id LIKE ?"
+            params.append(f"%{model}%")
+        if min_context:
+            query += " AND context_tokens >= ?"
+            params.append(min_context)
+        
+        rows = conn.execute(query, params).fetchall()
+        
+        results = []
+        for row in [dict(r) for r in rows]:
+            meta = json.loads(row.get("metadata_json", "{}") or "{}")
+            supports = meta.get("supports", [])
+            
+            if tool_calling and "function_calling" not in supports:
+                continue
+            
+            input_m = row.get("input_per_m") or 0
+            free = bool(row.get("free"))
+            cost = 0 if free else input_m / 1_000_000
+            
+            results.append({
+                "provider": row.get("provider_id"),
+                "model": row.get("model_id"),
+                "cost_per_1k_tokens": cost,
+                "free": free,
+                "context": row.get("context_tokens"),
+                "supports": supports,
+                "state": meta.get("state", "UNKNOWN"),
+            })
+        
+        results.sort(key=lambda x: x["cost_per_1k_tokens"])
+        return {"inference": results[:limit], "count": len(results)}
+    finally:
+        conn.close()
+
+
+@app.get("/v1/gpu/cheapest")
+def gpu_cheapest(
+    gpu: str = "H100",
+    count: int = 1,
+    duration_hours: int = 1,
+    limit: int = Query(10, le=50),
+):
+    """Cheapest GPU compute across centralized + decentralized."""
+    # Placeholder — would query Akash, Bittensor, etc.
+    return {
+        "gpu": gpu,
+        "count": count,
+        "duration_hours": duration_hours,
+        "providers": [
+            {"network": "akash", "price_per_hour": 1.20, "status": "LIVE"},
+            {"network": "bittensor", "price_per_hour": 0.85, "status": "EXPERIMENTAL"},
+            {"network": "nosana", "price_per_hour": 1.10, "status": "LIVE"},
+        ],
+        "count": 3,
+    }
+
+
+@app.get("/v1/providers/{provider_id}/health")
+def provider_health(provider_id: str):
+    """Health status for a specific provider."""
+    import canonical_db
+    conn = canonical_db.connect()
+    try:
+        rows = conn.execute(
+            "SELECT * FROM offers WHERE provider_id = ? LIMIT 10",
+            (provider_id,),
+        ).fetchall()
+        
+        if not rows:
+            return {"provider": provider_id, "status": "NOT_FOUND"}
+        
+        total = len(rows)
+        free = sum(1 for r in [dict(r) for r in rows] if r.get("free"))
+        
+        return {
+            "provider": provider_id,
+            "total_models": total,
+            "free_models": free,
+            "status": "ACTIVE",
+            "last_verified": None,
+        }
+    finally:
+        conn.close()
+
+
+@app.get("/v1/networks/{network_id}")
+def network_info(network_id: str):
+    """Info about a compute network (bittensor, akash, etc.)."""
+    # Placeholder — would query network-specific APIs
+    networks = {
+        "bittensor": {
+            "name": "Bittensor",
+            "type": "decentralized",
+            "subnets": 64,
+            "total_miners": 10000,
+            "status": "ACTIVE",
+        },
+        "akash": {
+            "name": "Akash",
+            "type": "decentralized",
+            "total_providers": 500,
+            "total_spend_5m": 5000000,
+            "status": "ACTIVE",
+        },
+        "nosana": {
+            "name": "Nosana",
+            "type": "decentralized",
+            "network": "solana",
+            "status": "ACTIVE",
+        },
+    }
+    
+    if network_id not in networks:
+        return {"network": network_id, "status": "NOT_FOUND"}
+    
+    return networks[network_id]
+
+
+@app.get("/v1/opportunities")
+def opportunities(kind: str = None, limit: int = Query(20, le=100)):
+    """Find opportunities: free credits, discounts, grants."""
+    import canonical_db
+    conn = canonical_db.connect()
+    try:
+        query = "SELECT * FROM offers WHERE free = 1"
+        params = []
+        
+        rows = conn.execute(query, params).fetchall()
+        
+        results = []
+        for row in [dict(r) for r in rows]:
+            meta = json.loads(row.get("metadata_json", "{}") or "{}")
+            results.append({
+                "provider": row.get("provider_id"),
+                "model": row.get("model_id"),
+                "type": "free_tier",
+                "context": row.get("context_tokens"),
+                "supports": meta.get("supports", []),
+                "state": meta.get("state", "UNKNOWN"),
+            })
+        
+        return {"opportunities": results[:limit], "count": len(results)}
+    finally:
+        conn.close()
+
+
+@app.get("/v1/breakeven")
+def breakeven(
+    model: str,
+    tokens: int = 1000000,
+):
+    """Calculate breakeven: when does self-hosting become cheaper than API?"""
+    import canonical_db
+    conn = canonical_db.connect()
+    try:
+        # Find the model's pricing
+        rows = conn.execute(
+            "SELECT * FROM offers WHERE model_id LIKE ? AND input_per_m IS NOT NULL LIMIT 1",
+            (f"%{model}%",),
+        ).fetchall()
+        
+        if not rows:
+            return {"model": model, "error": "Model not found"}
+        
+        row = dict(rows[0])
+        input_m = row.get("input_per_m", 0)
+        output_m = row.get("output_per_m", 0)
+        
+        # Estimate API cost for batch
+        api_cost = (input_m * tokens + output_m * tokens * 0.1) / 1_000_000
+        
+        # Estimate self-hosting cost (rough: $1.20/hr for H100, ~1000 tokens/sec)
+        tokens_per_hour = 1000 * 3600
+        hours_needed = tokens / tokens_per_hour
+        gpu_cost = hours_needed * 1.20  # Akash H100 price
+        
+        breakeven_tokens = gpu_cost / (input_m / 1_000_000) if input_m > 0 else float('inf')
+        
+        return {
+            "model": model,
+            "api_cost": api_cost,
+            "gpu_cost": gpu_cost,
+            "breakeven_tokens": breakeven_tokens,
+            "recommendation": "api" if api_cost < gpu_cost else "gpu",
+            "tokens": tokens,
+        }
+    finally:
+        conn.close()

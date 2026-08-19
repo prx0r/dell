@@ -70,6 +70,8 @@ SOURCES: dict[str, SourceEntry] = {
     "price-performance": SourceEntry("price-performance", "Price-Performance Dataset", "app.sources.price_performance", 1440, priority=2),
     "genai-prices": SourceEntry("genai-prices", "GenAI Prices", "app.sources.genai_prices", 1440, priority=2),
     "decentralized-compute": SourceEntry("decentralized-compute", "Decentralized Compute", "app.sources.decentralized_compute", 1440, priority=2),
+    "bittensor-subnets": SourceEntry("bittensor-subnets", "Bittensor Subnets", "app.sources.bittensor_subnets", 360, priority=1),
+    "new-providers": SourceEntry("new-providers", "New Providers", "app.sources.new_providers", 1440, priority=1),
 }
 
 
