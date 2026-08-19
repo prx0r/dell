@@ -1,43 +1,40 @@
 # Testing
 
-## Test Suites
+## Smoke Test
 
-| Suite | Command | Result |
-|-------|---------|--------|
-| Proof Kernel | python3 -m app.invariant_tests | 14/14 PASS |
-| Mutation | python3 -m app.mutation_tests | 10/10 (100%) |
-| External Agent | python3 -m app.external_agent_tests | 10/10 PASS |
-| Final Certificate | python3 -m app.certify_final | PASS |
+```bash
+cd dell
+PYTHONPATH=. python3 -c "
+import sys; sys.path.insert(0, 'app')
+from api_canonical import free_models, inference_cheapest, gpu_cheapest, compute_offers, compute_resolve
+print(f'free_models: {free_models()[\"count\"]} OK')
+print(f'inference_cheapest: OK')
+print(f'gpu_cheapest: {len(gpu_cheapest(gpu=\"H100\")[\"providers\"])} providers OK')
+print(f'compute_offers: {len(compute_offers()[\"offers\"])} offers OK')
+print(f'compute_resolve: {len(compute_resolve()[\"resolve\"])} candidates OK')
+"
+```
 
-## Test Categories
+## Source Adapters
 
-- Structural (DB, schema, imports)
-- Truth (proof kernel, integrity)
-- Decision (constraints, cost)
-- Scoring (no priors, coverage)
-- Mutation (kill rate)
-
-## Source Adapter Tests
-
-Each source adapter has `fetch()` and `extract()` functions that can be tested independently:
+Each adapter has `fetch()` and `extract()`:
 
 ```python
-from app.sources.free_llm_apis import fetch, extract
+from sources.free_llm_apis import fetch, extract
 obs = fetch()
 offers = extract(obs[0])
 print(f"Offers: {len(offers)}")
 ```
 
-## Verified Sources (42 total)
+## Verified Sources (47)
 
-| Priority | Source | Cadence | Offers |
-|----------|--------|---------|--------|
-| 1 | opencode-go | 120min | models |
-| 1 | nous-portal | 120min | models |
-| 1 | awesome-free-llm-apis | 24h | 145 free tiers |
-| 2 | litellm-prices | 24h | 3040 model prices |
-| 2 | mcp-registry | 24h | 234 MCP tools |
-| 2 | openrouter-models | 6h | models |
-| 2 | hackernews | 2h | signals |
-| 3 | models-dev | 24h | capabilities |
-| 3 | context-engineering | 24h | patterns |
+| Priority | Source | Data |
+|----------|--------|------|
+| 1 | litellm-prices | 3039 models, full pricing |
+| 1 | awesome-free-llm-apis | 604 free tiers |
+| 1 | new-providers | Chutes, Venice, Hyperbolic, Heurist, io.net, AkashML |
+| 2 | decentralized-compute | Akash, Bittensor, Nosana, Prime Intellect |
+| 2 | bittensor-subnets | Individual subnet tracking |
+| 2 | mcp-registry | 234 MCP tools |
+| 3 | models-dev | Capabilities |
+| 3 | context-engineering | Patterns |
