@@ -63,7 +63,18 @@ def detect_mega_deals(offers: list[dict]) -> list[dict]:
             reasons.append("$0 price (not marked free)")
             score += 15
 
-        # 6. Multi-provider arbitrage (same model, dramatically different price)
+        # 6. Free with extreme context (>1M tokens) — genuine mega deal
+        ctx = o.get("context_tokens") or 0
+        if o.get("free") and ctx >= 1000000:
+            reasons.append("Free with %sK context" % f"{ctx//1000:,}")
+            score += min(40, ctx / 100000)
+
+        # 7. Free with high context (>500K tokens)
+        if o.get("free") and ctx >= 500000 and ctx < 1000000:
+            reasons.append("Free with %sK context" % f"{ctx//1000:,}")
+            score += min(20, ctx / 100000)
+
+        # 8. Multi-provider arbitrage (same model, dramatically different price)
         # This would need cross-provider comparison — skip for now
 
         if reasons and score >= 20:
