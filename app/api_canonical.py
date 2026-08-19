@@ -1056,3 +1056,140 @@ def export_deals_format():
         return {"deals": deals, "count": len(deals), "format": "deals"}
     finally:
         conn.close()
+
+
+# =============================================================================
+# OBSERVATION ENDPOINTS — Dell's reality layer
+# =============================================================================
+
+@app.get("/v1/observations")
+def list_observations(provider: str = None, model: str = None, state: str = None):
+    """List endpoint observations with advertised vs observed vs verified."""
+    import canonical_db
+    conn = canonical_db.connect()
+    try:
+        sql = "SELECT * FROM offers WHERE 1=1"
+        params = []
+        if provider:
+            sql += " AND provider_id = ?"
+            params.append(provider)
+        if model:
+            sql += " AND model_id LIKE ?"
+            params.append(f"%{model}%")
+        
+        rows = conn.execute(sql, params).fetchall()
+        observations = []
+        for row in [dict(r) for r in rows]:
+            meta = json.loads(row.get("metadata_json", "{}") or "{}")
+            obs = {
+                "provider": row.get("provider_id"),
+                "model": row.get("model_id"),
+                "advertised": {
+                    "cost_per_m_input": row.get("input_per_m"),
+                    "cost_per_m_output": row.get("output_per_m"),
+                    "context_window": row.get("context_tokens"),
+                    "free": bool(row.get("free")),
+                    "supports": meta.get("supports", []),
+                },
+                "observed": {
+                    "last_probe": meta.get("last_probe_at"),
+                    "success_rate": meta.get("success_rate"),
+                    "median_ttft": meta.get("median_ttft_ms"),
+                    "median_tok_s": meta.get("median_tokens_per_sec"),
+                    "p95_latency": meta.get("p95_latency_ms"),
+                    "rate_429": meta.get("rate_429"),
+                },
+                "verified": {
+                    "basic_completion": meta.get("verified_basic", "UNKNOWN"),
+                    "tool_calling": meta.get("verified_tool_call", "UNKNOWN"),
+                    "structured_output": meta.get("verified_structured", "UNKNOWN"),
+                },
+                "state": meta.get("state", "UNKNOWN"),
+                "confidence": meta.get("confidence", 0.0),
+            }
+            
+            if state and obs["state"] != state:
+                continue
+            
+            observations.append(obs)
+        
+        return {"observations": observations, "count": len(observations)}
+    finally:
+        conn.close()
+
+
+@app.post("/v1/probes/{provider}/{model}")
+def probe_endpoint(provider: str, model: str, endpoint_url: str = None, api_key: str = None):
+    """Probe an endpoint with a real request."""
+    from .probes import probe_endpoint as probe_fn
+    from .observations import create_observation, update_observation
+    
+    # Default endpoint URL patterns
+    if not endpoint_url:
+        endpoint_urls = {
+            "openrouter": "https://openrouter.ai/api/v1/chat/completions",
+            "groq": "https://api.groq.com/openai/v1/chat/completions",
+            "together": "https://api.together.xyz/v1/chat/completions",
+            "fireworks": "https://api.fireworks.ai/inference/v1/chat/completions",
+        }
+        endpoint_url = endpoint_urls.get(provider, f"https://api.{provider}.com/v1/chat/completions")
+    
+    obs = create_observation(provider, model, AdvertisedSpec(), source="probe")
+    result = probe_fn(provider, model, endpoint_url, api_key)
+    
+    from .observations import update_observation
+    updated = update_observation(
+        obs,
+        success=result["success"],
+        latency_ms=result.get("latency_ms"),
+        ttft_ms=result.get("ttft_ms"),
+        rate_429=result.get("is_429", False),
+        error=result.get("error"),
+    )
+    
+    return {
+        "provider": provider,
+        "model": model,
+        "state": updated.state.value,
+        "success": result["success"],
+        "latency_ms": result.get("latency_ms"),
+        "ttft_ms": result.get("ttft_ms"),
+        "error": result.get("error"),
+        "is_429": result.get("is_429", False),
+    }
+
+
+@app.get("/v1/reliability")
+def get_reliability(provider: str = None, model: str = None):
+    """Get reliability metrics for endpoints."""
+    import canonical_db
+    conn = canonical_db.connect()
+    try:
+        sql = "SELECT provider_id, model_id, metadata_json FROM offers WHERE 1=1"
+        params = []
+        if provider:
+            sql += " AND provider_id = ?"
+            params.append(provider)
+        if model:
+            sql += " AND model_id LIKE ?"
+            params.append(f"%{model}%")
+        
+        rows = conn.execute(sql, params).fetchall()
+        reliability = []
+        for row in [dict(r) for r in rows]:
+            meta = json.loads(row.get("metadata_json", "{}") or "{}")
+            if meta.get("last_probe_at"):
+                reliability.append({
+                    "provider": row.get("provider_id"),
+                    "model": row.get("model_id"),
+                    "state": meta.get("state", "UNKNOWN"),
+                    "success_rate": meta.get("success_rate"),
+                    "median_ttft": meta.get("median_ttft_ms"),
+                    "p95_latency": meta.get("p95_latency_ms"),
+                    "last_probe": meta.get("last_probe_at"),
+                    "total_probes": meta.get("total_probes", 0),
+                })
+        
+        return {"reliability": reliability, "count": len(reliability)}
+    finally:
+        conn.close()
