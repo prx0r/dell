@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={`${post.data.title} — Dell`} description={post.data.description}>
+  <main>
+    <article>
+      <header>
+        <time>{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <h1>{post.data.title}</h1>
+        <p class="description">{post.data.description}</p>
+        <div class="meta">
+          <span class="author">By {post.data.author}</span>
+          <div class="tags">
+            {post.data.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <Content />
+      </div>
+
+      <footer>
+        <p><a href="/blog">← Back to Blog</a></p>
+      </footer>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  main { max-width: 720px; margin: 0 auto; padding: 2rem 1rem; }
+  
+  header { margin-bottom: 2rem; }
+  time { color: #666; font-size: 0.85em; }
+  h1 { margin: 0.5rem 0; font-size: 2em; line-height: 1.2; }
+  .description { color: #444; font-size: 1.1em; line-height: 1.6; margin: 1rem 0; }
+  
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1rem; }
+  .author { color: #666; font-size: 0.9em; }
+  .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .tag { 
+    background: #e9ecef; 
+    color: #495057; 
+    padding: 0.2rem 0.6rem; 
+    border-radius: 12px; 
+    font-size: 0.8em; 
+  }
+  
+  .content { line-height: 1.8; }
+  .content :global(h2) { margin-top: 2rem; margin-bottom: 1rem; }
+  .content :global(h3) { margin-top: 1.5rem; margin-bottom: 0.75rem; }
+  .content :global(p) { margin-bottom: 1rem; }
+  .content :global(ul), .content :global(ol) { margin-bottom: 1rem; padding-left: 1.5rem; }
+  .content :global(li) { margin-bottom: 0.5rem; }
+  .content :global(code) { background: #f8f9fa; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.9em; }
+  .content :global(pre) { background: #1a1a1a; color: #f8f9fa; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; }
+  .content :global(blockquote) { border-left: 4px solid #0a58ca; margin: 1rem 0; padding: 0.5rem 1rem; background: #f8f9fa; }
+  .content :global(table) { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .content :global(th), .content :global(td) { padding: 0.5rem; border: 1px solid #dee2e6; text-align: left; }
+  .content :global(th) { background: #f8f9fa; }
+  
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #eee; }
+  footer a { color: #0a58ca; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>

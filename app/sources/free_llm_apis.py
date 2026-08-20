@@ -75,6 +75,13 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
         for model in provider.get("models", []):
             model_id = model.get("id", "")
             model_name = model.get("name", model_id)
+            
+            # Generate synthetic model_id if empty
+            if not model_id:
+                import hashlib
+                model_hash = hashlib.md5(f"{provider_name}:{model_name}".encode()).hexdigest()[:8]
+                model_id = f"unknown-{model_hash}"
+            
             context = _parse_context(model.get("context", ""))
             max_output = _parse_context(model.get("maxOutput", ""))
             modality = model.get("modality", "")

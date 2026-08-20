@@ -55,8 +55,11 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
             score = item.get("score", 0)
             if score < 5:
                 continue
+            # Generate synthetic model_id from story ID
+            synthetic_model_id = f"hn-{item.get('id', 'unknown')}"
+            
             offers.append(OfferSnapshot(
-                provider_id="community", model_id=None, provider_model_slug=None,
+                provider_id="community", model_id=synthetic_model_id, provider_model_slug=None,
                 offer_kind="community_lead",
                 metadata={"source_url": f"https://news.ycombinator.com/item?id={item.get('id')}",
                           "title": title, "score": score, "author": item.get("by", ""),

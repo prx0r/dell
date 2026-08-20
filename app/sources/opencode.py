@@ -70,28 +70,34 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
         # Find all data-model attributes
         models = re.findall(r'data-model="([^"]+)"', text)
         
-        # For each model, check if it has a 2x usage badge in its SEMANTIC container
-        # Not in 500 chars, but in the actual model row/card
-        for model in models:
-            # Find the container for this model (up to next model or 2000 chars)
-            model_pos = text.find('data-model="%s"' % model)
-            if model_pos == -1:
-                continue
+        # Find the pills section which contains the actual model cards
+        pills_pos = text.find('data-slot="pills"')
+        if pills_pos != -1:
+            # Extract 10000 chars after pills to get all model cards
+            pills_section = text[pills_pos:pills_pos + 10000]
             
-            # Find the end of this model's container (next model or reasonable boundary)
-            next_model_pos = len(text)
-            for other_model in models:
-                if other_model != model:
-                    other_pos = text.find('data-model="%s"' % other_model, model_pos + 1)
-                    if other_pos != -1 and other_pos < next_model_pos:
-                        next_model_pos = other_pos
+            # Find all data-item elements with data-model and check for data-bonus
+            # Pattern: <span ... data-model="modelname" ...>...</span>
+            # We need to find the closing </span> that matches the opening <span>
             
-            # Extract just this model's container
-            container = text[model_pos:min(next_model_pos, model_pos + 2000)]
-            
-            # Check for 2x usage badge in THIS container only
-            has_2x = bool(re.search(r'2x\s*usage', container, re.IGNORECASE))
-            model_promos[model] = has_2x
+            # Find all data-model positions
+            for match in re.finditer(r'data-model=\"([^\"]+)\"', pills_section):
+                model = match.group(1)
+                # Get the context around this model (1000 chars after)
+                start = match.start()
+                end = min(len(pills_section), start + 1000)
+                context = pills_section[start:end]
+                
+                # Check for data-bonus attribute with multiplier text
+                bonus_match = re.search(r'data-bonus[^>]*>(\d+)x\s*(?:usage|bonus|multiplier)', context, re.IGNORECASE)
+                if bonus_match:
+                    try:
+                        mult = float(bonus_match.group(1))
+                        model_promos[model] = mult
+                    except ValueError:
+                        model_promos[model] = None
+                else:
+                    model_promos[model] = None
         
         existing = set()
         for model in models:
@@ -99,7 +105,7 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
                 continue
             existing.add(model)
             mid = "opencode-go/%s" % model.lower()
-            is_promo = model_promos.get(model, False)
+            is_promo = model_promos.get(model)
             
             # Extract the selector for evidence
             selector = '[data-model="%s"]' % model
@@ -111,11 +117,11 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
                 model_id=mid,
                 provider_model_slug=model,
                 offer_kind="usage_multiplier" if is_promo else "metered_api",
-                usage_multiplier=2.0 if is_promo else None,
+                usage_multiplier=is_promo if is_promo else None,
                 metadata={
                     "source_url": observation.url,
                     "extracted_from": "playwright_browser",
-                    "multiplier": 2.0 if is_promo else None,
+                    "multiplier": is_promo if is_promo else None,
                     "selector": selector,
                     "evidence": "data-model=%s container check" % model,
                 }))

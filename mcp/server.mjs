@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 // mcp/server.mjs — LLM Deals MCP server
 // Reads from DealService (canonical DB), NOT snapshots
-// Register: hermes mcp add llm-deals --command node --args /root/ass-rape-spunk-porn/mcp/server.mjs
+// Register: hermes mcp add llm-deals --command node --args mcp/server.mjs
 import { spawnSync } from "node:child_process";
 import process from "node:process";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT = "/root/ass-rape-spunk-porn";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT = resolve(__dirname, "..");
 const PY = "python3";
 
 function runPy(script, args=[]) {

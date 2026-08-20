@@ -40,7 +40,21 @@ TOOLS = [
 ]
 
 def _load_offers():
+    """Load offers from SQLite canonical DB, falling back to snapshots."""
     offers = []
+    db_path = ROOT / "data" / "llmdeals.sqlite3"
+    if db_path.exists():
+        try:
+            import sqlite3
+            conn = sqlite3.connect(str(db_path))
+            conn.row_factory = sqlite3.Row
+            rows = conn.execute("SELECT * FROM offers").fetchall()
+            offers = [dict(r) for r in rows]
+            conn.close()
+            return offers
+        except Exception:
+            pass
+    # Fallback to snapshots if DB not available
     d = ROOT / "snapshots"
     if d.exists():
         for f in d.glob("*.json"):

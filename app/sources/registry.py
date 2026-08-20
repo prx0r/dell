@@ -22,56 +22,76 @@ class SourceEntry:
 
 
 SOURCES: dict[str, SourceEntry] = {
+    # HIGH VALUE - Keep (direct providers with unique data)
     "opencode-go": SourceEntry("opencode-go", "OpenCode Go", "app.sources.opencode", 120, priority=1),
     "opencode-zen": SourceEntry("opencode-zen", "OpenCode Zen", "app.sources.opencode_zen", 240, priority=1),
     "nous-portal": SourceEntry("nous-portal", "Nous Portal", "app.sources.nous", 120, priority=1),
+    "sensenova": SourceEntry("sensenova", "SenseNova", "app.sources.sensenova", 240, priority=1),
+    "zai": SourceEntry("zai", "Z.AI", "app.sources.zai", 240, priority=1),
+    
+    # HIGH VALUE - Aggregators (complementary data)
     "openrouter-models": SourceEntry("openrouter-models", "OpenRouter", "app.sources.openrouter", 360, priority=2),
-    "models-dev": SourceEntry("models-dev", "models.dev", "app.sources.models_dev", 1440, priority=3),
-    "artificial-analysis": SourceEntry("artificial-analysis", "Artificial Analysis", "app.sources.artificial_analysis", 1440, priority=3),
     "hf-router": SourceEntry("hf-router", "HuggingFace Router", "app.sources.hf_router", 1440, priority=3),
-    "vercel-changelog": SourceEntry("vercel-changelog", "Vercel Changelog", "app.sources.vercel", 120, priority=2),
+    "artificial-analysis": SourceEntry("artificial-analysis", "Artificial Analysis", "app.sources.artificial_analysis", 1440, priority=3),
+    "models-dev": SourceEntry("models-dev", "models.dev", "app.sources.models_dev", 1440, priority=3),
+    
+    # HIGH VALUE - Community/Signal sources
     "rss-feeds": SourceEntry("rss-feeds", "RSS Feeds", "app.sources.rss", 120, priority=2),
     "hackernews": SourceEntry("hackernews", "Hacker News", "app.sources.hackernews", 120, priority=2),
-    # International providers
-    "sensenova": SourceEntry("sensenova", "SenseNova", "app.sources.sensenova", 240, priority=1),
-    "sakura-ai": SourceEntry("sakura-ai", "Sakura AI", "app.sources.sakura", 1440, priority=2),
-    "scaleway": SourceEntry("scaleway", "Scaleway", "app.sources.scaleway", 1440, priority=2),
-    "ovhcloud": SourceEntry("ovhcloud", "OVHcloud", "app.sources.ovhcloud", 1440, priority=2),
-    "zai": SourceEntry("zai", "Z.AI", "app.sources.zai", 240, priority=1),
-    "alibaba": SourceEntry("alibaba", "Alibaba Bailian", "app.sources.alibaba", 1440, priority=2),
-    "akashml": SourceEntry("akashml", "AkashML", "app.sources.akashml", 1440, priority=2),
-    # Additional providers from specs
-    "perplexity": SourceEntry("perplexity", "Perplexity", "app.sources.perplexity", 1440, priority=2),
-    "upstage": SourceEntry("upstage", "Upstage", "app.sources.upstage", 1440, priority=2),
-    "siliconflow": SourceEntry("siliconflow", "SiliconFlow", "app.sources.siliconflow", 1440, priority=2),
-    "xiaomi": SourceEntry("xiaomi", "Xiaomi MiMo", "app.sources.xiaomi", 1440, priority=2),
-    "minimax": SourceEntry("minimax", "MiniMax", "app.sources.minimax", 1440, priority=2),
-    "baidu": SourceEntry("baidu", "Baidu Qianfan", "app.sources.baidu", 1440, priority=2),
-    "tencent": SourceEntry("tencent", "Tencent TokenHub", "app.sources.tencent", 1440, priority=2),
-    "moonshot": SourceEntry("moonshot", "Moonshot/Kimi", "app.sources.moonshot", 1440, priority=2),
-    "infini": SourceEntry("infini", "Infini-AI", "app.sources.infini", 1440, priority=3),
-    "aion": SourceEntry("aion", "Aion Labs", "app.sources.aion", 1440, priority=2),
-    "maritaca": SourceEntry("maritaca", "Maritaca", "app.sources.maritaca", 1440, priority=2),
-    "sarvam": SourceEntry("sarvam", "Sarvam", "app.sources.sarvam", 1440, priority=3),
-    "typhoon": SourceEntry("typhoon", "Typhoon", "app.sources.typhoon", 1440, priority=3),
-    "nvidia": SourceEntry("nvidia", "NVIDIA NIM", "app.sources.nvidia", 1440, priority=2),
-    "kilo": SourceEntry("kilo", "Kilo Gateway", "app.sources.kilo", 1440, priority=2),
-    "chutes": SourceEntry("chutes", "Chutes", "app.sources.chutes", 1440, priority=3),
-    "aethir": SourceEntry("aethir", "Aethir", "app.sources.aethir", 1440, priority=3),
-    "nosana": SourceEntry("nosana", "Nosana", "app.sources.nosana", 1440, priority=3),
-    "nebius": SourceEntry("nebius", "Nebius", "app.sources.nebius", 1440, priority=3),
-    "novita": SourceEntry("novita", "Novita", "app.sources.novita", 1440, priority=2),
-    "io-net": SourceEntry("io-net", "io.net", "app.sources.io_net", 1440, priority=3),
-    # Cloned repo sources
-    "awesome-free-llm-apis": SourceEntry("awesome-free-llm-apis", "awesome-free-llm-apis", "app.sources.free_llm_apis", 1440, priority=1),
+    "vercel-changelog": SourceEntry("vercel-changelog", "Vercel Changelog", "app.sources.vercel", 120, priority=2),
+    
+    # HIGH VALUE - Pricing databases
     "litellm-prices": SourceEntry("litellm-prices", "litellm prices", "app.sources.litellm_prices", 1440, priority=2),
-    "context-engineering": SourceEntry("context-engineering", "Context Engineering", "app.sources.context_engineering", 1440, priority=3),
-    "mcp-registry": SourceEntry("mcp-registry", "MCP Registry", "app.sources.mcp_registry", 1440, priority=2),
     "price-performance": SourceEntry("price-performance", "Price-Performance Dataset", "app.sources.price_performance", 1440, priority=2),
-    "genai-prices": SourceEntry("genai-prices", "GenAI Prices", "app.sources.genai_prices", 1440, priority=2),
-    "decentralized-compute": SourceEntry("decentralized-compute", "Decentralized Compute", "app.sources.decentralized_compute", 1440, priority=2),
+    
+    # HIGH VALUE - Community free tier lists (merged - keep mnfst)
+    "mnfst-free-apis": SourceEntry("mnfst-free-apis", "mnfst awesome-free-llm-apis", "app.sources.mnfst_apis", 1440, priority=1),
+    
+    # HIGH VALUE - Decentralized compute
     "bittensor-subnets": SourceEntry("bittensor-subnets", "Bittensor Subnets", "app.sources.bittensor_subnets", 360, priority=1),
-    "new-providers": SourceEntry("new-providers", "New Providers", "app.sources.new_providers", 1440, priority=1),
+    
+    # MEDIUM VALUE - International providers (keep unique ones)
+    "alibaba": SourceEntry("alibaba", "Alibaba Bailian", "app.sources.alibaba", 1440, priority=2),
+    "siliconflow": SourceEntry("siliconflow", "SiliconFlow", "app.sources.siliconflow", 1440, priority=2),
+    "nvidia": SourceEntry("nvidia", "NVIDIA NIM", "app.sources.nvidia", 1440, priority=2),
+    "novita": SourceEntry("novita", "Novita", "app.sources.novita", 1440, priority=2),
+    
+    # MEDIUM VALUE - Browser automation (replaces opencode-go if reliable)
+    "ego-lite-browser": SourceEntry("ego-lite-browser", "ego-lite Browser", "app.sources.ego_lite", 240, priority=1),
+    
+    # LOW VALUE - Disabled (redundant or low quality)
+    # "awesome-free-llm-apis": DISABLED - same URL as mnfst-free-apis
+    # "genai-prices": DISABLED - only extraction patterns, no actual pricing
+    # "context-engineering": DISABLED - not relevant to pricing
+    # "new-providers": DISABLED - static config, never changes
+    # "decentralized-compute": DISABLED - static config, never changes
+    # "mcp-registry": DISABLED - MCP server catalog, not LLM pricing
+    
+    # LOW VALUE - Keep but low priority (signal sources)
+    
+    # DISABLED - Redundant or low quality (kept for reference)
+    # "sakura-ai": DISABLED - covered by litellm
+    # "scaleway": DISABLED - covered by litellm
+    # "ovhcloud": DISABLED - covered by litellm
+    # "akashml": DISABLED - covered by litellm
+    # "perplexity": DISABLED - covered by litellm
+    # "upstage": DISABLED - covered by litellm
+    # "xiaomi": DISABLED - covered by litellm
+    # "minimax": DISABLED - covered by litellm
+    # "baidu": DISABLED - covered by litellm
+    # "tencent": DISABLED - covered by litellm
+    # "moonshot": DISABLED - covered by litellm
+    # "infini": DISABLED - covered by litellm
+    # "aion": DISABLED - covered by litellm
+    # "maritaca": DISABLED - covered by litellm
+    # "sarvam": DISABLED - covered by litellm
+    # "typhoon": DISABLED - covered by litellm
+    # "kilo": DISABLED - covered by litellm
+    # "chutes": DISABLED - covered by litellm
+    # "aethir": DISABLED - covered by litellm
+    # "nosana": DISABLED - covered by litellm
+    # "nebius": DISABLED - covered by litellm
+    # "io-net": DISABLED - covered by litellm
 }
 
 

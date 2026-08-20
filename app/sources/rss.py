@@ -18,6 +18,18 @@ DEFAULT_FEEDS = [
     "https://groq.com/blog/rss/",
     "https://deepinfra.com/blog/rss.xml",
     "https://together.ai/blog/rss.xml",
+    # Additional deal-relevant feeds
+    "https://blog.fireworks.ai/rss.xml",
+    "https://www.anthropic.com/rss.xml",
+    "https://openai.com/blog/rss.xml",
+    "https://mistral.ai/feed.xml",
+    "https://blog.google/technology/ai/rss/",
+    "https://developer.nvidia.com/blog/feed/",
+    "https://blog.nebius.ai/rss/",
+    "https://siliconflow.cn/blog/rss.xml",
+    "https://www.sambanova.ai/blog/rss.xml",
+    "https://docs.kilo.ai/feed.xml",
+    "https://www.llm24.com/feed.xml",
 ]
 
 DEAL_KEYWORDS = re.compile(
@@ -56,8 +68,13 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
         link = (item.findtext("link") or "")
         text = f"{title} {desc}"
         if DEAL_KEYWORDS.search(text):
+            # Generate synthetic model_id from title hash
+            import hashlib
+            title_hash = hashlib.md5(title.encode()).hexdigest()[:8]
+            synthetic_model_id = f"rss-{title_hash}"
+            
             offers.append(OfferSnapshot(
-                provider_id="community", model_id=None, provider_model_slug=None,
+                provider_id="community", model_id=synthetic_model_id, provider_model_slug=None,
                 offer_kind="community_lead",
                 metadata={"source_url": link, "title": title, "excerpt": desc[:500],
                           "deal_keywords": DEAL_KEYWORDS.findall(text)}))
@@ -70,8 +87,13 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
         link = link_el.get("href", "") if link_el is not None else ""
         text = f"{title} {summary}"
         if DEAL_KEYWORDS.search(text):
+            # Generate synthetic model_id from title hash
+            import hashlib
+            title_hash = hashlib.md5(title.encode()).hexdigest()[:8]
+            synthetic_model_id = f"rss-{title_hash}"
+            
             offers.append(OfferSnapshot(
-                provider_id="community", model_id=None, provider_model_slug=None,
+                provider_id="community", model_id=synthetic_model_id, provider_model_slug=None,
                 offer_kind="community_lead",
                 metadata={"source_url": link, "title": title, "excerpt": summary[:500]}))
     return offers

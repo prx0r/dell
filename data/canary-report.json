@@ -1,18 +1,17 @@
 {
  "schema": "patala.dealradar.canary.v1",
- "checked_at": "2026-08-15T22:42:13Z",
+ "checked_at": "2026-08-20T06:32:15Z",
  "results": {
   "cloudflare": {
    "provider": "cloudflare",
-   "status": "live",
-   "latency_ms": 363,
-   "live_since": "2026-08-15T22:42:13Z"
+   "status": "not_reachable_here",
+   "note": "no CLOUDFLARE_AI_API_KEY key set"
   },
   "opencode-go": {
    "provider": "opencode-go",
    "status": "dead",
    "error": "HTTP Error 403: Forbidden",
-   "checked_at": "2026-08-15T22:42:13Z"
+   "checked_at": "2026-08-20T06:32:15Z"
   },
   "openrouter": {
    "provider": "openrouter",
@@ -21,8 +20,8 @@
   }
  },
  "summary": {
-  "live": 1,
-  "not_reachable_here": 1,
+  "live": 0,
+  "not_reachable_here": 2,
   "dead": 1
  }
 }

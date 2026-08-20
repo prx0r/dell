@@ -29,11 +29,73 @@ def connect(db_path: str | Path | None = None) -> sqlite3.Connection:
     return conn
 
 
+# Lifecycle/oracle columns added to `offers` after the initial subset schema.
+_OFFERS_ORACLE_COLUMNS = [
+    "first_seen_at TEXT",
+    "last_verified_at TEXT",
+    "next_check_at TEXT",
+    "discovered_by TEXT",
+    "value_state TEXT DEFAULT 'UNKNOWN'",
+    "lifecycle_state TEXT DEFAULT 'ACTIVE_UNVERIFIED'",
+    "last_source_success_at TEXT",
+    "stale_reason TEXT",
+    "valid_from TEXT",
+    "valid_until TEXT",
+    "superseded_at TEXT",
+]
+
+
 def migrate(conn: sqlite3.Connection):
-    """Apply schema."""
+    """Apply schema (idempotent). Creates missing tables/indexes and adds any
+    `offers` columns introduced after the initial subset schema, so existing
+    databases are upgraded in place without losing data."""
     schema_path = ROOT / "app" / "schema_canonical.sql"
     if schema_path.exists():
         conn.executescript(schema_path.read_text())
+
+    existing = {r["name"] for r in conn.execute("PRAGMA table_info(offers)").fetchall()}
+    for col_def in _OFFERS_ORACLE_COLUMNS:
+        col = col_def.split()[0]
+        if col not in existing:
+            conn.execute("ALTER TABLE offers ADD COLUMN %s" % col_def)
+            existing.add(col)
+
+    _seed_oracle_data(conn)
+
+
+def _seed_oracle_data(conn: sqlite3.Connection):
+    """Idempotently seed the oracle lookup tables (freshness policies + source
+    authority) that migration 0007 inserts, so databases built from
+    schema_canonical.sql are functionally equivalent to migrated ones."""
+    if conn.execute("SELECT COUNT(*) FROM freshness_policies").fetchone()[0] == 0:
+        now = "datetime('now')"
+        conn.executescript("""
+            INSERT INTO freshness_policies (claim_type, source_type, ttl_seconds, description, created_at)
+            VALUES
+                ('model_author', 'official_api', 31536000, 'permanent', datetime('now')),
+                ('context_window', 'official_api', 2592000, 'weeks/months', datetime('now')),
+                ('list_price', 'official_api', 86400, 'hours/day', datetime('now')),
+                ('flash_promo', 'official_api', 3600, 'minutes/hours', datetime('now')),
+                ('availability', 'official_api', 300, 'minutes', datetime('now')),
+                ('throughput', 'official_api', 60, 'seconds/minutes', datetime('now')),
+                ('rate_limit', 'official_api', 86400, 'hours/day', datetime('now')),
+                ('endpoint_reachable', 'probe', 60, 'seconds/minutes', datetime('now')),
+                ('list_price', 'aggregator', 43200, 'hours (aggregator less fresh)', datetime('now')),
+                ('availability', 'aggregator', 600, 'minutes (aggregator less fresh)', datetime('now'));
+        """)
+
+    if conn.execute("SELECT COUNT(*) FROM source_authority").fetchone()[0] == 0:
+        conn.executescript("""
+            INSERT INTO source_authority (source_id, claim_type, authority_level, confidence, notes, created_at)
+            VALUES
+                ('openrouter', 'price', 'primary', 0.95, 'OpenRouter API is authoritative for OpenRouter prices', datetime('now')),
+                ('openrouter', 'availability', 'primary', 0.9, 'OpenRouter API is authoritative for endpoint availability', datetime('now')),
+                ('openrouter', 'checkpoint', 'secondary', 0.7, 'OpenRouter reports but not authoritative for checkpoint details', datetime('now')),
+                ('artificial_analysis', 'speed', 'primary', 0.85, 'AA measures actual speed', datetime('now')),
+                ('artificial_analysis', 'quality', 'secondary', 0.7, 'AA benchmarks but not definitive', datetime('now')),
+                ('models_dev', 'context_window', 'primary', 0.9, 'models.dev tracks context windows', datetime('now'));
+        """)
+    conn.commit()
 
 
 @contextmanager

@@ -147,8 +147,10 @@ def run_discovery(sources: list[str] | None = None) -> dict:
                 if obs.status is not None and not obs.text.startswith("FETCH_ERROR"):
                     events = promo_extract.extract_promotions(obs.text, source_id)
                     for event in events:
+                        # Use source_id as offer_id for source-level events
+                        # (these are not tied to specific offers)
                         event_recorder.record_event(
-                            conn, source_id, event.get("event_type", "unknown"),
+                            conn, f"source:{source_id}", event.get("event_type", "unknown"),
                             current_value=event, source_url=obs.url or "")
 
             all_offers.extend(source_offers)

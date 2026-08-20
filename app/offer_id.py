@@ -61,6 +61,15 @@ class OfferId:
                 "offer_type": parts[4],
                 "region": parts[5],
             }
+        elif len(parts) > 6:
+            # Handle case where model_id contains many colons
+            # Assume last two parts are offer_type and region
+            return {
+                "provider_id": parts[0],
+                "model_id": ":".join(parts[1:-2]),
+                "offer_type": parts[-2],
+                "region": parts[-1],
+            }
         else:
             raise ValueError(f"Invalid offer_id format: {offer_id}")
     

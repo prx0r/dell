@@ -56,7 +56,7 @@ def extract_claims_from_adapter(adapter_module, observation) -> list[dict]:
             if offer.context_tokens:
                 claims.append({
                     "subject_type": "model",
-                    "subject_id": offer.model_id,
+                    "subject_id": offer_id,  # Use offer_id, not model_id
                     "predicate": "context_tokens",
                     "value_json": json.dumps({"context_tokens": offer.context_tokens}),
                     "confidence": 0.9,

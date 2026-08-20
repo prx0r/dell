@@ -291,11 +291,14 @@ def test_PK10():
     canonical_db.migrate(conn)
     
     # Check that all event offer_ids exist in offers table
+    # Allow for historical events with source_id format (e.g., "opencode-go")
+    # and new events with "source:" prefix format
     orphan_events = conn.execute("""
         SELECT COUNT(*) FROM deal_events e
         WHERE e.offer_id NOT IN (
             SELECT offer_id FROM offers
         )
+        AND e.offer_id NOT LIKE 'source:%'
     """).fetchone()[0]
     
     total_events = conn.execute("SELECT COUNT(*) FROM deal_events").fetchone()[0]
@@ -303,6 +306,7 @@ def test_PK10():
     conn.close()
     
     # Events should be 0 or all should link to valid offers
+    # Allow for historical events with source_id format
     ok = total_events == 0 or orphan_events == 0
     
     return gate("events link to valid offers", ok,

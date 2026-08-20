@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Blog — Dell" description="Latest insights on LLM pricing, deals, and inference economics.">
+  <main>
+    <section class="hero">
+      <h1>Blog</h1>
+      <p class="tagline">Latest insights on LLM pricing, deals, and inference economics</p>
+    </section>
+
+    <section class="posts">
+      {sortedPosts.map(post => (
+        <article class="post-card">
+          <time>{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          <h2><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
+          <p>{post.data.description}</p>
+          <div class="tags">
+            {post.data.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main { max-width: 720px; margin: 0 auto; padding: 2rem 1rem; }
+  .hero { text-align: center; margin-bottom: 2rem; }
+  .tagline { color: #666; font-size: 1.1em; margin: 0.5rem 0; }
+  
+  .posts { display: flex; flex-direction: column; gap: 2rem; }
+  
+  .post-card { 
+    background: #f8f9fa; 
+    border-radius: 8px; 
+    padding: 1.5rem; 
+    transition: transform 0.2s;
+  }
+  .post-card:hover { transform: translateY(-2px); }
+  
+  time { color: #666; font-size: 0.85em; }
+  h2 { margin: 0.5rem 0; font-size: 1.3em; }
+  h2 a { color: #1a1a1a; text-decoration: none; }
+  h2 a:hover { color: #0a58ca; }
+  p { color: #444; line-height: 1.6; }
+  
+  .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+  .tag { 
+    background: #e9ecef; 
+    color: #495057; 
+    padding: 0.2rem 0.6rem; 
+    border-radius: 12px; 
+    font-size: 0.8em; 
+  }
+  
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #eee; color: #666; font-size: 0.85em; text-align: center; }
+  footer a { color: #0a58ca; }
+</style>

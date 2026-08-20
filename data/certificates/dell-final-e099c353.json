@@ -1,0 +1,56 @@
+{
+  "product": "dell",
+  "git_sha": "e099c35326e36e9b1f3652bd14f45ba9576513f3",
+  "certified_at": "2026-08-20T02:10:35Z",
+  "results": [
+    {
+      "gate": "S1",
+      "status": "PASS",
+      "detail": "29 tables"
+    },
+    {
+      "gate": "S2",
+      "status": "PASS",
+      "detail": "schema check passed"
+    },
+    {
+      "gate": "S3",
+      "status": "PASS",
+      "detail": "no deprecated imports"
+    },
+    {
+      "gate": "T1",
+      "status": "PASS",
+      "detail": "14/14"
+    },
+    {
+      "gate": "T2",
+      "status": "PASS",
+      "detail": "0 orphans"
+    },
+    {
+      "gate": "D1",
+      "status": "PASS",
+      "detail": "unknown tools excluded"
+    },
+    {
+      "gate": "D2",
+      "status": "PASS",
+      "detail": "cost=0.056000"
+    },
+    {
+      "gate": "S1",
+      "status": "PASS",
+      "detail": "coverage=0.25"
+    },
+    {
+      "gate": "M1",
+      "status": "PASS",
+      "detail": "10/10 (100%)"
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 0
+  }
+}

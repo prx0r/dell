@@ -1,17 +1,11 @@
 {
-  "product": "dell",
-  "version": "1.0.0",
-  "git_sha": "3c5bdb308683d9f2e2ad0b32750f9cbf1b9afe36",
-  "schema_version": 7,
+  "version": "2.0.0",
   "stats": {
-    "offers": 1861,
-    "models": 1527,
-    "providers": 65,
-    "endpoints": 79
+    "total_offers": 8609,
+    "free_offers": 2096,
+    "providers": 236,
+    "mega_deals": 0,
+    "exported_at": "2026-08-20T03:38:15Z"
   },
-  "api_routes": 24,
-  "mcp_tools": 9,
-  "proof_kernel": "14/14",
-  "mutation_kill_rate": 1.0,
-  "certificate": "PASS"
+  "generated_at": "2026-08-20T03:38:15Z"
 }

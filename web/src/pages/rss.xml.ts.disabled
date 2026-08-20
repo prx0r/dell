@@ -1,0 +1,59 @@
+---
+// RSS feed endpoint - generates RSS XML from deals data
+import { readFileSync, existsSync, readdirSync } from 'fs';
+import { join } from 'path';
+
+const snapshotsDir = join(process.cwd(), '..', 'snapshots');
+let allOffers: any[] = [];
+if (existsSync(snapshotsDir)) {
+  for (const f of readdirSync(snapshotsDir)) {
+    if (f.endsWith('.json') && f !== 'events.json' && f !== 'all-offers.json') {
+      try { allOffers = allOffers.concat(JSON.parse(readFileSync(join(snapshotsDir, f), 'utf-8')).offers || []); } catch {}
+    }
+  }
+}
+
+// Build RSS items from deals
+const items = allOffers
+  .filter(o => o.free || (o.metadata?.multiplier || 0) >= 2 || o.credits_included > 0)
+  .sort((a, b) => {
+    const aScore = (a.metadata?.multiplier || 0) + (a.credits_included || 0) + (a.free ? 1 : 0);
+    const bScore = (b.metadata?.multiplier || 0) + (b.credits_included || 0) + (b.free ? 1 : 0);
+    return bScore - aScore;
+  })
+  .slice(0, 50)
+  .map(o => {
+    const title = o.free 
+      ? `Free: ${o.model_id || o.provider_id} on ${o.provider_id}`
+      : o.credits_included 
+        ? `$${o.credits_included} credits on ${o.provider_id}`
+        : `${o.metadata?.multiplier}x deal on ${o.provider_id}`;
+    const desc = o.metadata?.description || `${o.offer_kind} from ${o.provider_id}`;
+    const link = o.metadata?.source_url || `https://deal-radar.patala.org/deals`;
+    return `    <item>
+      <title>${title.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>
+      <description>${desc.substring(0, 200).replace(/&/g, '&amp;').replace(/</g, '&lt;')}</description>
+      <link>${link}</link>
+      <pubDate>${new Date().toUTCString()}</pubDate>
+      <guid>${o.model_id || o.provider_id}-${Date.now()}</guid>
+    </item>`;
+  }).join('\n');
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dell LLM Deals</title>
+    <description>LLM deals, free API credits, sign-on bonuses, and pricing changes across 60+ providers.</description>
+    <link>https://deal-radar.patala.org</link>
+    <atom:link href="https://deal-radar.patala.org/rss.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>{new Date().toUTCString()}</lastBuildDate>
+    <item>
+      <title>LLM Deals Feed</title>
+      <description>Automated feed of LLM deals, free tiers, and pricing changes.</description>
+      <link>https://deal-radar.patala.org/deals</link>
+      <pubDate>{new Date().toUTCString()}</pubDate>
+    </item>
+{items}
+  </channel>
+</rss>

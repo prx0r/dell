@@ -43,8 +43,13 @@ def extract(observation: Observation) -> list[OfferSnapshot]:
         context = text[max(0, match.start()-200):match.end()+200]
         keywords = PRICING_KEYWORDS.findall(context)
         if len(keywords) >= 2:
+            # Generate synthetic model_id from context hash
+            import hashlib
+            context_hash = hashlib.md5(context.encode()).hexdigest()[:8]
+            synthetic_model_id = f"vercel-{context_hash}"
+            
             offers.append(OfferSnapshot(
-                provider_id="vercel", model_id=None, provider_model_slug=None,
+                provider_id="vercel", model_id=synthetic_model_id, provider_model_slug=None,
                 offer_kind="community_lead",
                 metadata={"source_url": URL, "excerpt": context[:500],
                           "keywords": keywords}))

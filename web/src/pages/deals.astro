@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readFileSync, existsSync, readdirSync } from 'fs';
+import { join } from 'path';
+
+const snapshotsDir = join(process.cwd(), '..', 'snapshots');
+let allOffers = [];
+if (existsSync(snapshotsDir)) {
+  for (const f of readdirSync(snapshotsDir)) {
+    if (f.endsWith('.json') && f !== 'events.json' && f !== 'all-offers.json') {
+      try { allOffers = allOffers.concat(JSON.parse(readFileSync(join(snapshotsDir, f), 'utf-8')).offers || []); } catch {}
+    }
+  }
+}
+
+// Deal categories
+const mega = allOffers.filter(o => (o.metadata?.multiplier || 0) >= 2);
+const freeOffers = allOffers.filter(o => o.free);
+const signupCredits = allOffers.filter(o => o.credits_included > 0);
+const promoSignals = allOffers.filter(o => o.metadata?.promo_signals || o.offer_kind === 'promo_signal');
+const expiringSoon = allOffers.filter(o => o.expires_at && new Date(o.expires_at) < new Date(Date.now() + 7 * 24 * 60 * 60 * 1000));
+
+// Group by provider for the deals overview
+const byProvider = {};
+for (const o of allOffers) {
+  const p = o.provider_id || 'unknown';
+  if (!byProvider[p]) byProvider[p] = { free: 0, paid: 0, deals: 0, credits: 0 };
+  if (o.free) byProvider[p].free++;
+  else byProvider[p].paid++;
+  if (o.metadata?.multiplier >= 2) byProvider[p].deals++;
+  if (o.credits_included > 0) byProvider[p].credits++;
+}
+const providerList = Object.entries(byProvider)
+  .sort((a, b) => (b[1].deals + b[1].credits) - (a[1].deals + a[1].credits))
+  .slice(0, 20);
+---
+<Layout title="Dell — LLM Deals & Free API Credits" description="Track LLM deals, free API credits, sign-on bonuses, and pricing changes across 60+ providers.">
+  <main>
+    <section class="hero">
+      <h1>Dell</h1>
+      <p class="tagline">LLM Deals, Free Credits & Pricing Intelligence</p>
+      <div class="stats-row">
+        <span><strong>{allOffers.length}</strong> offers tracked</span>
+        <span>·</span>
+        <span><strong>{freeOffers.length}</strong> free tiers</span>
+        <span>·</span>
+        <span><strong>{mega.length}</strong> active deals</span>
+        <span>·</span>
+        <span><strong>{providerList.length}</strong> providers</span>
+      </div>
+    </section>
+
+    {mega.length > 0 && (
+      <section class="deals-section">
+        <h2>Active Deals & Multipliers</h2>
+        <table>
+          <thead><tr><th>Provider</th><th>Model</th><th>Deal</th><th>Context</th></tr></thead>
+          <tbody>
+          {mega.slice(0, 10).map(o => (
+            <tr>
+              <td><strong>{o.provider_id}</strong></td>
+              <td>{o.model_id?.split('/').pop()}</td>
+              <td class="deal-badge">{o.metadata?.multiplier}x usage</td>
+              <td>{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '—'}</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+
+    {signupCredits.length > 0 && (
+      <section class="credits-section">
+        <h2>Sign-Up Credits</h2>
+        <table>
+          <thead><tr><th>Provider</th><th>Credits</th><th>Requires Card</th><th>Details</th></tr></thead>
+          <tbody>
+          {signupCredits.slice(0, 10).map(o => (
+            <tr>
+              <td><strong>{o.provider_id}</strong></td>
+              <td class="credit-badge">${o.credits_included}</td>
+              <td>{o.metadata?.requires_credit_card ? 'Yes' : 'No'}</td>
+              <td>{o.metadata?.description?.substring(0, 60)}...</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+
+    <section class="two-col">
+      <div class="col">
+        <h2>Best Free Tiers</h2>
+        <table>
+          <thead><tr><th>Provider</th><th>Context</th><th>Rate</th></tr></thead>
+          <tbody>
+          {freeOffers.filter(o => o.context_tokens).sort((a,b) => (b.context_tokens||0) - (a.context_tokens||0)).slice(0, 10).map(o => (
+            <tr>
+              <td>{o.model_id?.split('/').pop()}</td>
+              <td>{o.context_tokens ? `${(o.context_tokens/1000).toFixed(0)}K` : '—'}</td>
+              <td>{o.requests_day ? `${o.requests_day} RPD` : '—'}</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <h2>Provider Overview</h2>
+        <table>
+          <thead><tr><th>Provider</th><th>Free</th><th>Deals</th></tr></thead>
+          <tbody>
+          {providerList.map(([name, stats]) => (
+            <tr>
+              <td><strong>{name}</strong></td>
+              <td>{stats.free > 0 ? `✓ ${stats.free}` : '—'}</td>
+              <td>{stats.deals > 0 ? `🔥 ${stats.deals}` : stats.credits > 0 ? `💰 ${stats.credits}` : '—'}</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    {expiringSoon.length > 0 && (
+      <section class="expiring">
+        <h2>⚠️ Expiring Soon</h2>
+        <table>
+          <thead><tr><th>Provider</th><th>Model</th><th>Expires</th></tr></thead>
+          <tbody>
+          {expiringSoon.slice(0, 5).map(o => (
+            <tr>
+              <td>{o.provider_id}</td>
+              <td>{o.model_id?.split('/').pop()}</td>
+              <td class="expiring-badge">{new Date(o.expires_at).toLocaleDateString()}</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+
+    <section class="api-box">
+      <h2>MCP Tools</h2>
+      <div class="endpoints">
+        <code>find_inference_deals</code>
+        <code>get_free_models</code>
+        <code>get_deal_changes</code>
+        <code>recommend_model</code>
+        <code>explain_deal</code>
+      </div>
+      <p class="mcp-note">Agent-ready · Consume via MCP or REST API</p>
+    </section>
+
+    <section class="data-sources">
+      <h2>Data Sources</h2>
+      <p>Consuming from <strong>mnfst/awesome-free-llm-apis</strong> · <strong>OpenRouter</strong> · <strong>HuggingFace</strong> · <strong>ego-lite browser</strong> · <strong>47+ source adapters</strong></p>
+      <p>Verification: <strong>promo_extract.py</strong> · <strong>evidence gates</strong> · <strong>live probes</strong></p>
+    </section>
+
+    <footer>
+      <p>Dell LLM Deals · <a href="/rss.xml">RSS</a> · <a href="https://github.com/prx0r/dell">GitHub</a></p>
+    </footer>
+  </main>
+</Layout>
+
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  .hero { text-align: center; margin-bottom: 2rem; }
+  .tagline { color: #666; font-size: 1.1em; margin: 0.5rem 0; }
+  .stats-row { display: flex; gap: 0.5rem; justify-content: center; color: #444; font-size: 0.95em; flex-wrap: wrap; }
+  
+  .deals-section { background: #fff3cd; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .deals-section h2 { margin-top: 0; font-size: 1.2em; }
+  .deal-badge { background: #ffc107; color: #000; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.85em; font-weight: 600; }
+  
+  .credits-section { background: #d4edda; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .credits-section h2 { margin-top: 0; font-size: 1.2em; }
+  .credit-badge { background: #28a745; color: white; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.85em; font-weight: 600; }
+  
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+  .two-col h2 { font-size: 1.1em; }
+  
+  table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+  th, td { padding: 0.4rem 0.6rem; text-align: left; border-bottom: 1px solid #eee; }
+  th { color: #666; font-weight: 500; }
+  td:first-child { font-weight: 500; }
+  
+  .expiring { background: #f8d7da; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .expiring h2 { margin-top: 0; font-size: 1.1em; }
+  .expiring-badge { color: #dc3545; font-weight: 600; }
+  
+  .api-box { background: #f8f9fa; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .api-box h2 { margin-top: 0; font-size: 1.1em; }
+  .endpoints { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .endpoints code { background: #e9ecef; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.85em; }
+  .mcp-note { color: #666; font-size: 0.85em; margin-top: 0.5rem; }
+  
+  .data-sources { background: #f8f9fa; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .data-sources h2 { margin-top: 0; font-size: 1.1em; }
+  
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #eee; color: #666; font-size: 0.85em; text-align: center; }
+  footer a { color: #0a58ca; }
+</style>

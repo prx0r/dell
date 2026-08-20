@@ -1,4 +1,4 @@
-"""app/sources/base.py — Base source adapter protocol and observation dataclass."""
+"""app/sources/__init__.py — Base source adapter protocol and observation dataclass."""
 from __future__ import annotations
 
 import hashlib
@@ -43,6 +43,14 @@ class OfferSnapshot:
     expires_at: str | None = None
     metadata: dict = field(default_factory=dict)
 
+    def to_dict(self) -> dict:
+        """Serialize to dict for JSON output."""
+        d = {}
+        for k, v in self.__dict__.items():
+            if v is not None and v != {} and v != False:
+                d[k] = v
+        return d
+
 
 class SourceAdapter(Protocol):
     source_id: str
@@ -58,3 +66,39 @@ def sha256(text: str) -> str:
 
 def now_iso() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+
+
+def run_promo_extraction(observation: Observation, offers: list[OfferSnapshot]) -> list[OfferSnapshot]:
+    """Run promo_extract.py on observation text and attach promotion signals to offers.
+    
+    This wires the standalone promo extraction engine into the adapter pipeline.
+    Call this after extract() to enrich offers with promotion detection.
+    """
+    try:
+        from promo_extract import extract_promotions
+        promotions = extract_promotions(observation.text, observation.source_id)
+        if promotions and offers:
+            # Attach promotion signals to the first offer (or create one if empty)
+            promo_data = {
+                "promotions_found": len(promotions),
+                "promo_types": list(set(p["event_type"] for p in promotions)),
+                "max_confidence": max(p["confidence"] for p in promotions),
+            }
+            if offers:
+                offers[0].metadata["promo_signals"] = promo_data
+            else:
+                # Generate synthetic model_id for promo signals
+                import hashlib
+                url_hash = hashlib.md5(observation.url.encode()).hexdigest()[:8]
+                synthetic_model_id = f"promo-{url_hash}"
+                
+                offers.append(OfferSnapshot(
+                    provider_id=observation.source_id,
+                    model_id=synthetic_model_id,
+                    provider_model_slug=None,
+                    offer_kind="promo_signal",
+                    metadata={**promo_data, "source_url": observation.url}
+                ))
+        return offers
+    except ImportError:
+        return offers
